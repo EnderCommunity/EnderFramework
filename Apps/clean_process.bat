@@ -1,4 +1,5 @@
 dir
 rmdir /Q /S "process/"
 mkdir "process"
-pause
+cd "process/"
+fsutil file createnew ".keep" 0
