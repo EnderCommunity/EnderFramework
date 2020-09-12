@@ -1,4 +1,6 @@
 .git/
 node_modules/
-Apps/installed/
-Apps/process/
+Apps/installed/*
+!Apps/installed/
+Apps/process/*
+!Apps/process/
