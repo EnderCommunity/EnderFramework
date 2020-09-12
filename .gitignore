@@ -1,6 +1,7 @@
 .git/
 node_modules/
 Apps/installed/*
-!Apps/installed/
+!Apps/installed/.gitkeep
 Apps/process/*
-!Apps/process/
+!Apps/process/.gitkeep
+!.gitignore
