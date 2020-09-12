@@ -1,0 +1,392 @@
+.COfMainActions{
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 216px);
+}
+.RecentC{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: calc(100% - 280px);
+  padding: 0px 16px;
+  overflow: hidden;
+}
+.StartC{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: -10px;
+  width: 280px;
+  padding: 0px 16px;
+  overflow: visible;
+  text-align: center;
+}
+.COfSearch{
+  overflow: hidden;
+  height: 40px;
+}
+.COfSearch icon{
+  font-size: 28px;
+  display: inline-block;
+  margin-top: 6px;
+  position: absolute;
+  color: var(--Color1);
+}
+.COfSearch input{
+  margin-left: 36px;
+}
+#_projects{
+  position: absolute;
+  top: 120px;
+  bottom: 0px;
+  left: 0px;
+  width: calc(100% - 80px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 6px;
+  padding-right: 0px;
+}
+#_projects .project{
+  position: relative;
+  width: calc(100% - 38px);
+  border-radius: 6px;
+  height: 60px;
+  padding: 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+#_projects .project:hover{
+  background-color: var(--Color6);
+}
+#_projects .project:active{
+  background-color: var(--Color5);
+}
+#_projects .project img{
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+}
+#_projects .project .title{
+  font-size: 18px;
+  position: absolute;
+  top: -12px;
+  left: 92px;
+}
+#_projects .project .dir{
+  font-size: 18px;
+  position: absolute;
+  top: 16px;
+  left: 92px;
+  font-weight: 100;
+  opacity: 0.6;
+}
+#_projects .project text{
+  display: inline-block;
+  font-size: 18px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-weight: 100;
+  opacity: 0.6;
+}
+.StartC .option{
+  position: relative;
+  padding: 18px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: var(--Color6);
+  cursor: pointer;
+  text-align: left;
+}
+.StartC .option:hover{
+  background-color: var(--Color5);
+}
+.StartC .option:active{
+  background-color: var(--Color7);
+}
+.StartC .option img{
+  width: 40px;
+  height: 40px;
+}
+.StartC .option .title{
+  position: absolute;
+  top: -14px;
+  left: 78px;
+  font-size: 18px;
+  font-weight: 400;
+}
+.StartC .option .desc{
+  position: absolute;
+  top: 14px;
+  left: 78px;
+  font-size: 14px;
+  font-weight: 100;
+  width: 60%;
+}
+.profile{
+  width: 26px;
+  height: 26px;
+  border-radius: 100px;
+  background-color: var(--Color6);
+}
+#_start h1{
+  margin-top: 0px;
+  margin-bottom: 8px;
+}
+#_start h3{
+  margin: 10px 0px;
+}
+.StartC h2{
+  text-align: left;
+}
+.StartC a{
+  cursor: pointer;
+}
+#_editorLayout{
+  position: fixed;
+  z-index: 2;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  font-size: 0px;
+  background-color: var(--Color4);
+}
+#_topBar{
+  width: 100vw;
+  height: 48px;
+  background-color: var(--Color5);
+}
+#_editorC{
+  display: inline-block;
+  width: calc(100vw - 260px);
+  height: calc(100vh - 70px);
+  overflow: hidden;
+}
+#_editor{
+  display: inline-block;
+  width: 100%;
+  /*height: calc(100vh - 72px - 16vw);*/
+  height: calc(100vh - 70px);
+  background-color: var(--Color4);
+}
+#_bottomSection{
+  display: none;
+  width: 100%;
+  height: 16vw;
+  background-color: purple;
+}
+#_bottomBar{
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  height: 22px;
+  background-color: var(--Color1);
+}
+#_fileExplorer{
+  display: inline-block;
+  width: 240px;
+  height: calc(100vh - 80px);
+  background-color: var(--Color4);
+  overflow: hidden;
+  padding: 0px 10px;
+  padding-top: 10px;
+  overflow: scroll;
+  position: relative;
+}
+#_fileExplorer:before{
+  content: "Files Explorer";
+  display: inline-block;
+  color: var(--Color11);
+  font-size: 18px;
+  padding-bottom: 18px;
+}
+#_fileExplorer:after{
+  content: "Files Explorer";
+  position: absolute;
+  display: inline-block;
+  background-color: var(--Color11);
+  height: 1px;
+  width: calc(100% - 16px);
+  left: 8px;
+  right: 8px;
+  top: 38px;
+}
+.folder{
+  width: 100%;
+  position: relative;
+  height: 24px;
+  overflow: hidden;
+}
+.folder icon{
+  display: inline-block;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+.folder icon:after{
+  content: "keyboard_arrow_right";
+}
+.folder[opened] icon:after{
+  content: "keyboard_arrow_down";
+}
+.folder[notopened] icon:After{
+  content: "keyboard_arrow_right";
+}
+.folder text{
+  display: inline-block;
+  font-size: 16px;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+}
+.folder .content{
+  display: inline-block;
+  width: calc(100% - 20px);
+  padding: 4px 10px;
+  padding-bottom: 0px;
+  overflow: hidden;
+  height: 0px;
+}
+.folder:before{
+  content: "";
+  position: absolute;
+  display: block;
+  width: 1px;
+  height: 0px;
+  top: 28px;
+  left: 5px;
+  background-color: var(--Color27);
+  transition: height 0.14s linear;
+}
+.folder[opened]:before{
+  height: calc(100% - 28px);
+  transition: height 0.14s linear;
+}
+.folder[opened], .folder[opened] .content{
+  height: fit-content;
+}
+.item{
+  width: 100%;
+  position: relative;
+}
+.item text{
+  display: inline-block;
+  font-size: 16px;
+  margin: 0px;
+  overflow: hidden;
+  padding-left: 4px;
+  width: calc(100% - 20px);
+  height: 20px;
+  overflow: hidden;
+}
+.item text, .item img, .folder text, .folder icon{
+  cursor: pointer;
+}
+.item{
+  opacity: 0.8;
+}
+.item:hover{
+  opacity: 0.9;
+}
+.item:active{
+  opacity: 1;
+}
+#_topBar{
+  overflow: hidden;
+  font-size: 0px;
+  white-space: none;
+}
+#_topBar img:nth-child(1){
+  margin-left: 12px;
+}
+#_topBar img:last-child{
+  margin-left: 0px;
+}
+#_topBar img{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 14px 8px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+#_topBar img[disabled]{
+  opacity: 0.3;
+}
+#_topBar img:hover{
+  opacity: 0.9;
+}
+#_topBar img:active{
+  opacity: 1;
+}
+#_topBar hr{
+  display: inline-block;
+  width: 26px;
+  padding: 0px;
+  margin: -12px;
+  margin-bottom: 22px;
+  transform: rotate(90deg);
+}
+#_topBar select{
+  display: inline-block;
+  vertical-align: bottom;
+  margin: 0px 8px;
+  margin-bottom: 7px;
+  background-color: var(--Color4);
+}
+#_topBar .live_share{
+  position: absolute;
+  top: 0px;
+  right: 14px;
+  font-size: 0px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.9;
+}
+#_topBar .live_share:hover{
+  opacity: 1;
+}
+#_topBar .live_share img:hover, #_topBar .live_share img:active{
+  opacity: 0.8;
+}
+#_topBar .live_share[disabled]{
+  opacity: 0.3;
+}
+#_topBar .live_share text{
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 300;
+  vertical-align: bottom;
+  margin-bottom: 12px;
+}
+#_bottomBar img:nth-child(1){
+  margin-left: 16px;
+}
+#_bottomBar img{
+  margin: 2px 1px;
+  height: 15px;
+  width: 15px;
+}
+#_bottomBar text{
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 100;
+  vertical-align: bottom;
+  margin: 1px 4px;
+}
+#_bottomBar .right{
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  right: 12px;
+  width: fit-content;
+}
+#_bottomBar .right text{
+  margin-left: 18px;
+  margin-right: 0px;
+}

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta http-equiv="Content-Security-Policy" content="style-src 'self' 'unsafe-inline'; media-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' data:">-->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+    <title>Loading</title>
+    <link id="_pageIcon" rel="icon">
+    <script defer type="text/javascript" src="./_resources.js"></script>
+    <script defer type="text/javascript" src="./_server.js"></script>
+    <script defer type="text/javascript" src="./_record.js"></script>
+    <script defer type="text/javascript" src="./_controls.js"></script>
+    <script defer type="text/javascript" src="./_contextMenu.js"></script>
+    <script defer type="text/javascript" src="./_contextMenuS.js"></script>
+    <script defer type="text/javascript" src="./_toLoad.js"></script>
+    <script defer type="text/javascript" src="./_content.js"></script>
+    <script defer type="text/javascript" src="./_load.js"></script>
+    <script defer type="text/javascript" src="./_menu.js"></script>
+    <script defer type="text/javascript" src="./_system.js"></script>
+    <script defer type="text/javascript" src="./_infoScreen.js"></script>
+    <script defer type="text/javascript" src="./_error.js"></script>
+    <script defer type="text/javascript" src="./_window.js"></script>
+    <script defer type="text/javascript" src="./_browser.js"></script>
+    <link rel="stylesheet" id="_mainFrameLink" href="../_themes/_default/_mainFrame.css">
+    <link rel="stylesheet" id="_styleLink" href="../_themes/_default/_style.css">
+    <link rel="stylesheet" id="_fontsLink" href="../_themes/_default/_font.css">
+    <link rel="stylesheet" id="_iconsLink" href="../_themes/_default/_icons.css">
+    <link rel="stylesheet" href="./libraries/animateCSS/animate.min.css">
+    <script>
+      var links = [document.getElementById("_mainFrameLink"), document.getElementById("_styleLink"), document.getElementById("_fontsLink"), document.getElementById("_iconsLink")];
+      for(var i = 0; i < links.length; i++)
+        links[i].setAttribute("href", links[i].getAttribute("href").replace("_default", theme_));
+    </script>
+  </head>
+  <body>
+    <div id="_topBar" class="topBar" style="display: none;" hideInFullscreen>
+      <img id="_icon" class="topBar--icon" style="display: none;">
+      <div id="_title" class="topBar--title" style="display: inline-block;"></div>
+      <div id="_menu2" style="display: none;"></div>
+      <div id="_closeWin" class="topBar--close click_">×</div>
+      <div id="_maxWin" class="topBar--max click">▢</div>
+      <div id="_exitFullscreen" class="topBar--fullscreen click" style="display: none;">↗</div>
+      <div id="_minWin" class="topBar--min click">-</div>
+    </div>
+    <!--<div id="_topBarWindowCover" style="display: none;"></div>-->
+    <div id="_menus" hideInFullscreen>
+      <div id="_topMenu" class="topMenu" blur style="display: none;">
+        <div id="_topMenu_options" class="topMenu--options">
+          <div id="_selector"></div>
+        </div>
+        <div id="_topMenu_account">
+          <div class="profilePicture" style="display: none;"></div>
+        </div>
+      </div>
+      <div id="_topMenuBorder" style="display: none;"></div>
+      <div id="_sideMenu" blur style="display: none;">
+        <h2 id="_sideTitle">Home</h2>
+      </div>
+      <div id="_sideMenuBorder" style="display: none;"></div>
+    </div>
+    <div id="__sideMenu" style="display: none;" hideInFullscreen>
+      <icon id="_sideMenuButton">menu</icon>
+    </div>
+    <div id="_sideMenuCover" style="display: none;" hideInFullscreen></div>
+    <div id="_menu3" class="animated slideInLeft faster" blur style="display: none;" hideInFullscreen>
+      <div class="c"></div>
+      <div id="_sideMenuAccount" class="option account" style="display: none;">
+        <img>
+        <div>
+          <h3>Username</h3>
+          <h4>email@example.com</h4>
+        </div>
+      </div>
+    </div>
+    <div id="_splash" class="splash">
+      <img id="_splash_image">
+      <text id="_splashText"></text>
+    </div>
+    <div id="_menu"></div>
+    <webview id="_contentView" hideInFullscreen style="display: none;"></webview>
+    <div id="_cover" class="cover"></div>
+    <div id="_longLoading" class="cover" style="display: none;">
+      <loading></loading>
+    </div>
+    <div id="_ErrorScreen" style="display: none;">
+      <float center pageCenter20>
+        <h1 boldText>An error has accured!</h1>
+        <h3 lightText>This page has failed to load, the page path might be incorrect.</h3>
+        <button primary>Reload</button>
+        <button>Go home</button>
+      </float>
+    </div>
+    <div id="_CrashScreen" style="display: none;">
+      <float center pagecenter20>
+        <h1 boldtext>Oops, something went wrong!</h1>
+        <h3 lighttext>The app has crashed! You might want to report this to the app's developers.</h3>
+        <button primary>Close the app</button>
+        <button>restart</button>
+      </float>
+    </div>
+    <div id="_notification">
+      <h4>Hello there!</h4>
+      <button onclick="document.getElementById('_notification').removeAttribute('show');">Dismiss</button>
+    </div>
+    <div id="_contextMenuCover"></div>
+    <div id="_infoScreen" class="animated slideInRight fast-ish" style="display: none;">
+      <center>
+        <button>Clear data</button>
+        <button>Force close</button>
+      </center>
+      <br><hr><br>
+      <div class="scroll">
+        <h3>App info:</h3>
+        <h4>App name: <text id="_infoScreen_Name">[Name]</text></h4>
+        <h4>App publisher: <text id="_infoScreen_Publisher">[Publisher]</text></h4>
+        <h4>App version: <text id="_infoScreen_Version">[Version]</text></h4>
+        <br>
+        <h3>Process info:</h3>
+        <h4 style="display: none;">Process type: <text id="_infoScreen_ProcessType">[Version]</text></h4>
+        <h4>EnderFramework version: <text>0.00.1</text></h4>
+        <h4>Electron version: <text id="_infoScreen_ElectronVersion">[Version]</text></h4>
+        <h4>Chrome version: <text id="_infoScreen_ChromeVersion">[Version]</text></h4>
+        <h4>Node version: <text id="_infoScreen_NodeVersion">[Version]</text></h4>
+        <h4>V8 version: <text id="_infoScreen_V8Version">[Version]</text></h4>
+        <h4>Unicode version: <text id="_infoScreen_UnicodeVersion">[Version]</text></h4>
+        <br>
+        <h3>System info:</h3>
+        <h4>Platform: <text id="_infoScreen_Platform">[Data]</text></h4>
+        <h4>Release: <text id="_infoScreen_Release">[Data]</text></h4>
+        <h4>OS type: <text id="_infoScreen_Type">[Data]</text></h4>
+        <h4>The computer's CPUs: <text id="_infoScreen_CPUs">[Data]</text></h4>
+        <h4>The system's memory: <text id="_infoScreen_SystemMemory">[Data]</text></h4>
+        <h4>Load averages: <text id="_infoScreen_LoadAverages">[Data]</text></h4>
+        <h4>Directory for temporary files: <text id="_infoScreen_DirOfTempFiles">[Data]</text></h4>
+        <br>
+        <h3>User info:</h3>
+        <h4>Name: <text id="_infoScreen_Username">[Data]</text></h4>
+        <h4>ID: <text id="_infoScreen_UserID">[Data]</text></h4>
+        <h4>Directory: <text id="_infoScreen_UserHomeDirectory">[Data]</text></h4>
+      </div>
+    </div>
+    <div id="_webBrowserC" class="animated slideInUp fast" style="display: none;">
+      <div class="WebBrowser--Bar">
+        <icon class="option WebBrowser--Bar-Refresh">refresh</icon>
+        <icon class="option WebBrowser--Bar-Back" disabled>arrow_back</icon>
+        <icon class="option WebBrowser--Bar-Forward" disabled>arrow_forward</icon>
+        <div class="WebBrowser--Bar-Bar">
+          <icon id="_MBrowserConnectionStatus" class="status">https</icon>
+          <text id="_MBrowserURL"></text>
+        </div>
+        <icon class="option WebBrowser--Bar-Close">close</icon>
+      </div>
+      <progress id="_webBrowserProgressBar" style="display: none;"></progress>
+      <webview id="_webBrowserWebview"></webview>
+    </div>
+    <div id="_FeedbackBar" class="animated slideInUp faster" style="display: none;">
+      Are you satisfied with your experience within our app? Give us your feedback!
+      <button primary onclick="document.getElementById('_FeedbackBar').style.display = 'none'; showFeedbackScreen();">Give feedback</button>
+      <button primary onclick="document.getElementById('_FeedbackBar').style.display = 'none';">No thanks</button>
+    </div>
+    <div id="_COfFeedback" class="animated fadeIn faster" style="display: none;">
+      <div id="_FeedbackUI" class="animated fadeInUp faster" style="display: none;">
+        <h3>What do you think? Give us your opinion. Or maybe, you can suggest something new!</h3>
+        <textarea id="_feedbackTextarea" placeholder="You can write your feedback here! Maybe you can just say hi! Ok, maybe not."></textarea>
+        <button primary onclick="SendFeedback(document.getElementById('_feedbackTextarea').value); hideFeedbackScreen();">Send feedback</button>
+        <button onclick="hideFeedbackScreen();">Cancel</button>
+      </div>
+    </div>
+    <div>
+      <div class="contextMenu animated contextMenuAnimations fast-ish" style="top: 0px; left: 0px; pointer-events: none; opacity: 0;"><hr><div class="option" disabled="">_</div><div class="option">_</div></div>
+    </div>
+  </body>
+</html>
