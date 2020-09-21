@@ -2007,7 +2007,13 @@ dropdown:after{
 dropdown option{
   display: none;
 }
-
+code{
+  background-color: var(--Color5);
+  padding: 5px;
+  border-radius: 4px;
+  color: var(--color11);
+  display: inline-block;
+}
 
 
 

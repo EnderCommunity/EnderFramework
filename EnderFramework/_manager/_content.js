@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function(){
       }
       content.setAttribute("webpreferences", "devTools=" + enableDevTools + ", nodeIntegration=yes, nodeIntegrationInWorker=yes, nodeIntegrationInSubFrames=yes, sandbox=no, webviewTag=yes, enableRemoteModule=yes, javascript=" + enableJavaScript + ", webSecurity=yes, images=yes, textAreasAreResizable=no, webgl=yes, experimentalFeatures=no, scrollBounce=no, defaultFontFamily=\"standard\", defaultFontSiz=16, defaultMonospaceFontSize=13, minimumFontSize=0, defaultEncoding=\"ISO-8859-1\", offscreen=no, contextIsolation=no, nativeWindowOpen=no, safeDialogs=no, navigateOnDragDrop=no, autoplayPolicy=\"no-user-gesture-required\" disableHtmlFullscreenWindowResize=no, spellcheck=" + enableSpellcheck);
       content.setAttribute("enableremotemodule", "true");
+      //content.setAttribute("partition", "");
       var first = true, isMainLoad = true;
       content.addEventListener('did-frame-finish-load', (e) => {
         if(e.isMainFrame && first){
@@ -34,6 +35,10 @@ document.addEventListener("DOMContentLoaded", function(){
           isMainLoad = false;
         }
       });
+      /*content.addEventListener('blur', () => {
+        //console.log(Math.round());
+        document.removeContextMenus();
+      });*/
       content.addEventListener('will-navigate', function(){
         isMainLoad = true;
       });
@@ -264,7 +269,9 @@ document.addEventListener("DOMContentLoaded", function(){
           //console.log(event.args[0][0]);
           //console.log(event.args[0][1]);
           //event.args[0][1].top += content.offsetTop;
-          showAContextMenu(event.args[0][0], event.args[0][1]);
+          var c = event.args[0][1];
+          c.top += content.offsetTop;
+          showAContextMenu(event.args[0][0], c);
         }else if(event.channel == "enderframework--contextmenu-remove"){
           //
         }else if(event.channel == "enderframework--contextmenu-hideall"){
@@ -482,6 +489,10 @@ document.addEventListener("DOMContentLoaded", function(){
         }
       }, 1000);
       clearInterval(sInt);
+      //webContents.fromId(id);
+      /*content.webContents.on('crashed', (event, killed) => {
+        console.log(event, killed);
+      });*/
     }
   }, 10);
 });

@@ -371,32 +371,45 @@ html, body, .splash{
   backdrop-filter: blur(22px) saturate(128%) saturate(1.6);
   background-color: var(--Blur5);
   color: var(--Color11);
-  -webkit-box-shadow: 1px 2px 12px 0px var(--Blur3);
-  box-shadow: 1px 2px 12px 0px var(--Blur3);
+  -webkit-box-shadow: 1px 2px 8px 0px var(--Blur3);
+  box-shadow: 1px 2px 8px 0px var(--Blur3);
   border-color: var(--Color5);
   border-style: solid;
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
-  -webkit-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  -webkit-transition: color 0.1s;
-  transition: color 0.1s;
-  padding: 4px 0px;
-  max-height: 18px;
+  -webkit-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+  -webkit-transition: color 0.06s;
+  transition: color 0.06s;
+  padding: 6px 0px;
   -webkit-transform: translate3d(0,-18px,0);
   transform: translate3d(0, -18px,0);
   opacity: 0;
 }
+.contextMenu.b{
+  max-height: 18px;
+  opacity: 1;
+}
 .contextMenuAnimations{
   opacity: 1;
   overflow: hidden;
-  transition: max-height 0.15s ease-in;
+  transition: max-height 0.18s ease-in;
   -webkit-animation-name: contextMenuAnimations;
   animation-name: contextMenuAnimations;
   animation-duration: 0.4s;
   animation-timing-function: cubic-bezier(0, -0.01, 0.22, 0.96);
-  max-height: 100%;
+  max-height: 100% !important;
+}
+.contextMenuAnimations2{
+  opacity: 1;
+  overflow: hidden;
+  transition: max-height 0.18s ease-in;
+  -webkit-animation-name: contextMenuAnimations2;
+  animation-name: contextMenuAnimations2;
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0, -0.01, 0.22, 0.96);
+  max-height: 100% !important;
 }
 @-webkit-keyframes contextMenuAnimations{
   0%{
@@ -416,10 +429,26 @@ html, body, .splash{
     transform:translate3d(0, 0px,0);
   }
 }
-
-
+@-webkit-keyframes contextMenuAnimations2{
+  0%{
+    -webkit-transform:translate3d(0,18px,0);
+    transform:translate3d(0,18px,0);
+  }to{
+    -webkit-transform:translate3d(0, 0px,0);
+    transform:translate3d(0, 0px,0);
+  }
+}
+@keyframes contextMenuAnimations2{
+  0%{
+    -webkit-transform:translate3d(0,18px,0);
+    transform:translate3d(0,18px,0);
+  }to{
+    -webkit-transform:translate3d(0, 0px,0);
+    transform:translate3d(0, 0px,0);
+  }
+}
 .contextMenu .option{
-  padding: 10px 28px;
+  padding: 12px 28px;
   cursor: pointer;
   opacity: 0.8;
 }
@@ -441,9 +470,9 @@ html, body, .splash{
   overflow: hidden;
 }
 .contextMenu hr{
-  width: 80%;
+  width: calc(100% - 52px);
   border-width: 1px;
-  margin: 5px auto;
+  margin: 6px auto;
 }
 #_contextMenuCover{
   position: fixed;
@@ -452,6 +481,7 @@ html, body, .splash{
   right: 0px;
   left: 0px;
   bottom: 0px;
+  -webkit-app-region: no-drag;
 }
 .contextMenu .option.Dropdown *{
   display: none;
@@ -463,9 +493,15 @@ html, body, .splash{
   position: fixed;
   z-index: 150;
 }
-.contextMenu.covered{
+/*.contextMenu.covered{
   color: var(--Color27);
   opacity: 0.95;
+}*/
+.contextMenu.covered{
+  color: var(--Color27);
+  opacity: 0.96;
+  -webkit-backdrop-filter: blur(22px) saturate(128%) saturate(1.6);
+  backdrop-filter: blur(22px) saturate(128%) saturate(1.6) contrast(.986);
 }
 #_infoScreen{
   position: fixed;

@@ -58,8 +58,10 @@ if(location.protocol == "file:"){
     return true;
   };
   const { ipcRenderer } = require('electron');
+  const chromeAlert = alert;
+  global._alert = chromeAlert;
   global.alert = function(){
-    console.warn("You need to wait until the page is done loading to use the `alert()` function!");
+    console.warn("You need to wait until the page is done loading to use the `alert()` function! You can instead use `_alert()`!");
   };
   global.loadedImages = 0;
   global.allImages = 0;
@@ -81,7 +83,59 @@ if(location.protocol == "file:"){
         }
       }
     })();
-    global.alert = function(t, m, bt, pbt, bf = function(){}, pbf = function(){}){
+    //global.alert = function(t, m, bt, pbt, bf = function(){}, pbf = function(){}){
+    global.alert = function(t = null, m = null, callback = function(){}){
+      setTimeout(function(){
+        var main, box, title, message, buttonsC,button, primaryButton;
+        document.getElementsByTagName("body")[0].classList.add("noScroll");
+        main = document.createElement("div");
+        main.classList.add("COfAlert");
+        var actionButtons = document.getElementsByTagName("floatingactionbutton");
+        for(var i = 0; i < actionButtons.length; i++){
+          actionButtons[i].setAttribute("style", "right: 42px; -webkit-transition-duration: 0s; transition-duration: 0s;");
+          setTimeout(function(){
+            actionButtons[i].setAttribute("style", "right: 42px;");
+          }, 100);
+        }
+        const removeF = function(){
+          main.outerHTML = "";
+          document.getElementsByTagName("body")[0].classList.remove("noScroll");
+          for(var i = 0; i < actionButtons.length; i++){
+            actionButtons[i].setAttribute("style", "-webkit-transition-duration: 0s; transition-duration: 0s;");
+            setTimeout(function(){
+              actionButtons[i].setAttribute("style", "");
+            }, 100);
+          }
+        };
+        document.body.appendChild(main);
+        box = document.createElement("div");
+        box.classList.add("AlertBox", "animated", "pulse", "faster");
+        main.appendChild(box);
+        title = document.createElement("text");
+        title.classList.add("title");
+        title.innerHTML = (m == null) ? "This page says" : t;
+        box.appendChild(title);
+        message = document.createElement("text");
+        message.classList.add("message");
+        message.innerHTML = (m == null) ? t : m;
+        box.appendChild(message);
+        buttonsC = document.createElement("div");
+        buttonsC.classList.add("COfButton");
+        box.appendChild(buttonsC);
+        primaryButton = document.createElement("button");
+        primaryButton.setAttribute("primary", "");
+        primaryButton.innerHTML = "Ok";
+        primaryButton.addEventListener("click", function(){
+          setTimeout(function(){
+            removeF();
+            callback();
+          }, 160);
+        });
+        buttonsC.appendChild(primaryButton);
+      }, 0);
+    };
+    /*
+        global.alert = function(t, m, bt, pbt, bf = function(){}, pbf = function(){}){
       setTimeout(function(){
         var main, box, title, message, buttonsC,button, primaryButton;
         document.getElementsByTagName("body")[0].classList.add("noScroll");
@@ -140,6 +194,7 @@ if(location.protocol == "file:"){
         buttonsC.appendChild(primaryButton);
       }, 0);
     };
+    */
     const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches, isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches, isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches, hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified;
     if(isDarkMode)
       document.documentElement.setAttribute('prefers-color-scheme', 'dark');
@@ -344,7 +399,42 @@ if(location.protocol == "file:"){
       //
     }
   };
+  //The objects
+  function ContextMenu(id){
+    this.ID = id;
+  }
+  ContextMenu.prototype.attachTo = function(element, v = false){
+    var menuID = this.ID;
+    try{
+      element.addEventListener("contextmenu", function(e){
+        e.preventDefault();
+        const rect = this.getBoundingClientRect();
+        showAMenu(menuID, (!v) ? {
+          top: rect.top + rect.height,
+          left: rect.left
+        } : {
+          top: e.clientY,
+          left: e.clientX
+        });
+      });
+      return true;
+    }catch{
+      return false;
+    }
+  };
+  //
   global.EnderFramework = {
+    notification: {
+      snack: message => {
+        if(typeof message == "string")
+          ipcRenderer.sendToHost('do--notify', message);
+        else
+          console.error("You can only pass strings to this function!");
+      },
+      toast: (type) => {
+        //System notifications
+      }
+    },
     encryption: {
       key: () => {
         return key;
@@ -364,11 +454,44 @@ if(location.protocol == "file:"){
           functionName: "something",
           title: "option 1"
         }, {
+          type: "divider"
+        }, {
+          type: "link",
+          link: "the/path/to/your/file",
+          title: "option 3"
+        }, {
+          type: "action",
+          actionName: "[copy/paste/cut/delete]",
+          title: "option 4"
+        }, {
+          type: "link",
+          link: "the/path/to/your/file",
+          disabled: true,
+          title: "option 4"
+        }, {
+          type: "divider"
+        }, {
+          type: "dropdown",
+          content: [
+            {
+              type: "link",
+              link: "the/path/to/your/file",
+              disabled: true,
+              title: "option 4"
+            }, {
+              type: "function",
+              functionName: "something",
+              title: "option 1"
+            }
+          ],
+          title: "option 5"
+        }]*/
+        //
+        /*
+        EnderFramework.contextMenu.create([{
           type: "function",
-          function: function(){
-            alert(0);
-          },
-          title: "option 2"
+          functionName: "something",
+          title: "option 1"
         }, {
           type: "divider"
         }, {
@@ -384,29 +507,52 @@ if(location.protocol == "file:"){
           link: "the/path/to/your/file",
           disabled: true,
           title: "option 4"
-        }]*/
+        }, {
+          type: "divider"
+        }, {
+          type: "dropdown",
+          content: [
+            {
+              type: "link",
+              link: "the/path/to/your/file",
+              disabled: true,
+              title: "option 4"
+            }, {
+              type: "dropdown",
+              content: [{
+                type: "link",
+                link: "the/path/to/your/file",
+                disabled: true,
+                title: "option 4"
+              }, {
+                type: "link",
+                link: "the/path/to/your/file",
+                disabled: true,
+                title: "option 4"
+              }],
+              title: "An option"
+            }, {
+              type: "function",
+              functionName: "something",
+              title: "option 1"
+            }
+          ],
+          title: "option 5"
+        }], function(error, menu){
+          console.log(error);
+          console.log(menu.attachTo(document.documentElement, true));
+        });
+        */
         (function(){
           const _menuID = menuID;
           ipcRenderer.sendToHost('enderframework--contextmenu-create', [_menuID, content]);
           ipcRenderer.on("enderframework--contextmenu-createdone", function(){
             if(!menus[_menuID]){
               menus[_menuID] = true;
-              callback(false, {
-                id: _menuID,
-                attachTo: (element, v = false) => {
-                  element.addEventListener("contextmenu", function(e){
-                    e.preventDefault();
-                    const rect = this.getBoundingClientRect();
-                    showAMenu(_menuID, (!v) ? {
-                      top: rect.top + rect.height,
-                      left: rect.left
-                    } : {
-                      top: e.screenY,
-                      left: e.screenX
-                    });
-                  });
-                }
-              });
+              console.log(_menuID);
+              var menu = new ContextMenu(_menuID);
+              console.log(menu);
+              callback(false, menu);
             }
           });
           ipcRenderer.on("enderframework--contextmenu-createfailed", function(){

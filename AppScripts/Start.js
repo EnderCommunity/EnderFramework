@@ -197,8 +197,8 @@ if(handleSquirrelEvent(app)) {
       appPath = startPath + "Apps\\built-in\\Installer\\";
       createAWindow(appPath);
       break;
-    }else if(process.argv[i] == "--studio"){
-    //}else if(true){
+    //}else if(process.argv[i] == "--studio"){
+    }else if(true){
       runOS = false;
       done = true;
       appPath = startPath + "Apps\\built-in\\Studio\\";
@@ -560,3 +560,21 @@ function handleSquirrelEvent(application){
           return true;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.on('ready', () => {
+  var processor_ = require('./../Processor/start.js');
+  processor_.powerMonitor();
+});

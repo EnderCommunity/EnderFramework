@@ -1,3 +1,6 @@
+const Dimension = (elm) => {
+  return elm.offsetHeight + parseInt(document.defaultView.getComputedStyle(elm, '').getPropertyValue('margin-top')) + parseInt(document.defaultView.getComputedStyle(elm, '').getPropertyValue('margin-bottom'));
+}
 document.cover = document.getElementById("_contextMenuCover");
 document.cover.hide = function(){
   var menuCovers = document.getElementsByClassName("menuCover");
@@ -24,24 +27,71 @@ document.removeContextMenus = function(){
 };
 document.cover.hide();
 var number = 0;
+function sharedFunctionDropdown(element){
+  var mainContextMenu_ = element.mainContextMenu;
+  var allContextMenus = document.getElementsByClassName("contextMenu");
+  for(var tI = 0; tI < allContextMenus.length; tI++){
+    if(allContextMenus[tI].number > mainContextMenu_.number){
+      allContextMenus[tI].outerHTML = "";
+    }else if(allContextMenus[tI].number == mainContextMenu_.number){
+      mainContextMenu_.classList.add("covered");
+      var tempCover = document.createElement("div");
+      tempCover.number = mainContextMenu_.number;
+      tempCover.classList.add("menuCover");
+      tempCover.setAttribute("style", "width: " + mainContextMenu_.offsetWidth + "px; height: " + mainContextMenu_.offsetHeight + "px; top: " + mainContextMenu_.offsetTop + "px; left: " + mainContextMenu_.offsetLeft + "px;");
+      tempCover.addEventListener("click", function(){
+        var allContextMenus = document.getElementsByClassName("contextMenu"), allMenusCovers = document.getElementsByClassName("menuCover");
+        for(var tI = 0; tI < allContextMenus.length; tI++){
+          if(allContextMenus[tI].number > mainContextMenu_.number){
+            allContextMenus[tI].outerHTML = "";
+          }
+        }
+        tempCover.outerHTML = "";
+        mainContextMenu_.classList.remove("covered");
+        for(var tI = 0; tI < allMenusCovers.length; tI++)
+          if(allMenusCovers[tI].number > tempCover.number)
+            allMenusCovers[tI].click();
+      });
+      document.body.insertAdjacentElement('beforeend', tempCover);
+    }
+  }
+  showContextMenu(element.dropdown, element);
+}
 const showContextMenu = (content, c) => {
   //console.log(content);
-  var Coords;
+  var Coords, should = false;
   try{
     const rect = c.getBoundingClientRect();
     Coords = {
       left: rect.left + rect.width,
       top: rect.top
     };
+    should = true;
     if(typeof content === "undefined")
       content = c.contextMenu;
   }catch{
     Coords = c;
   }
+  //check the height
+  /*var contextMenuHeight = 0;
+  (function(){
+    var p = -1;
+    for(var c in content){
+      contextMenuHeight += contextMenuOptionHeight;
+      if(c != p + 1)
+        contextMenuHeight += contentMenuHrHeight;
+      p = c;
+    }
+  })();
+  if(Coords.top + contextMenuHeight > window.innerHeight){
+    console.log("flip");
+    Coords.top -= contextMenuHeight;
+  }*/
   var _ContextMenu = document.createElement("div");
   _ContextMenu.classList.add("contextMenu");
   _ContextMenu.number = number++;
-  const LoopContent = function(c, MainElement){
+  const LoopContent = function(c_, MainElement){
+    const c = c_;
     for(var i in c){
       var Element = document.createElement("div");
       Element.classList.add("option");
@@ -66,35 +116,23 @@ const showContextMenu = (content, c) => {
       }else if(c[i].dropdown !== undefined){
         Element.classList.add("Dropdown");
         Element.mainContextMenu = _ContextMenu;
-        Element.addEventListener("click", function(){
-          var mainContextMenu_ = this.mainContextMenu;
-          var allContextMenus = document.getElementsByClassName("contextMenu");
-          for(var tI = 0; tI < allContextMenus.length; tI++){
-            if(allContextMenus[tI].number > mainContextMenu_.number){
-              allContextMenus[tI].outerHTML = "";
-            }else if(allContextMenus[tI].number == mainContextMenu_.number){
-              mainContextMenu_.classList.add("covered");
-              var tempCover = document.createElement("div");
-              tempCover.number = mainContextMenu_.number;
-              tempCover.classList.add("menuCover");
-              tempCover.setAttribute("style", "width: " + mainContextMenu_.offsetWidth + "px; height: " + mainContextMenu_.offsetHeight + "px; top: " + mainContextMenu_.offsetTop + "px; left: " + mainContextMenu_.offsetLeft + "px;");
-              tempCover.addEventListener("click", function(){
-                var allContextMenus = document.getElementsByClassName("contextMenu"), allMenusCovers = document.getElementsByClassName("menuCover");
-                for(var tI = 0; tI < allContextMenus.length; tI++){
-                  if(allContextMenus[tI].number > mainContextMenu_.number){
-                    allContextMenus[tI].outerHTML = "";
-                  }
-                }
-                tempCover.outerHTML = "";
-                mainContextMenu_.classList.remove("covered");
-                for(var tI = 0; tI < allMenusCovers.length; tI++)
-                  if(allMenusCovers[tI].number > tempCover.number)
-                    allMenusCovers[tI].click();
-              });
-              document.body.insertAdjacentElement('beforeend', tempCover);
-            }
+        Element.dropdown = c[i].dropdown;
+        //
+        //
+        /*Element.timeout = null;
+        Element.addEventListener("mouseover", function(){
+          Element.timeout = setTimeout(function(){
+            sharedFunctionDropdown(this);
+          }, 1000);
+        });
+        Element.addEventListener("mouseout", function(){
+          if(Element.timeout != null){
+            clearTimeout(Element.timeout);
+            Element.timeout = null;
           }
-          showContextMenu(c[i].dropdown, Element);
+        });*/
+        Element.addEventListener("click", function(){
+          sharedFunctionDropdown(this);
         });
         var a = MainElement.insertAdjacentElement('beforeend', Element);
         LoopContent(c[i].dropdown, Element);
@@ -113,14 +151,24 @@ const showContextMenu = (content, c) => {
   document.cover.show();
   _ContextMenu.classList.add("animated", "fast-ish");
   document.body.insertAdjacentElement('beforeend', _ContextMenu);
+  var name = "contextMenuAnimations";
   setTimeout(function(){
-    if(Coords.top + _ContextMenu.offsetHeight > window.innerHeight)
-      Coords.top = window.innerHeight - _ContextMenu.offsetHeight;
+    var height = _ContextMenu.offsetHeight;
+    _ContextMenu.classList.add("b");
+    if(Coords.top + height > window.innerHeight){
+      name += "2";
+      Coords.top -= height;
+      if(should){
+        Coords.top += Dimension(c);
+      }
+    }
+    if(Coords.top < 0)
+      Coords.top = 0;
     if(Coords.left + _ContextMenu.offsetWidth > window.innerWidth)
       Coords.left = window.innerWidth - _ContextMenu.offsetWidth;
     _ContextMenu.setAttribute("style", "top: " + Coords.top + "px; left: " + Coords.left + "px");
     setTimeout(function(){
-      _ContextMenu.classList.add("contextMenuAnimations");
+      _ContextMenu.classList.add(name);
     }, 1);
   }, 0);
 };
