@@ -160,6 +160,7 @@ if(handleSquirrelEvent(app)) {
   global.appName = null;
   for(var i = 0; i < process.argv.length; i++){
     if(process.argv[i].includes("--start=")){
+    //if(true){
       runOS = false;
     //if(true){
       done = true;
@@ -178,10 +179,18 @@ if(handleSquirrelEvent(app)) {
       appPath = startPath + "Apps\\built-in\\Store\\";
       createAWindow(appPath);
       break;
-    }else if(process.argv[i] == "--file-explorer"){
+    }else if(process.argv[i] == "--installer"){
+    //}else if(true){
       runOS = false;
       done = true;
-      appPath = startPath + "Apps\\built-in\\FileExplorer\\";
+      appPath = startPath + "Apps\\built-in\\Installer\\";
+      createAWindow(appPath);
+      break;
+    }else if(process.argv[i] == "--studio"){
+    //}else if(true){
+      runOS = false;
+      done = true;
+      appPath = startPath + "Apps\\built-in\\Studio\\";
       createAWindow(appPath);
       break;
     }else if(process.argv[i] == "--settings"){
@@ -190,27 +199,21 @@ if(handleSquirrelEvent(app)) {
       appPath = startPath + "Apps\\built-in\\Settings\\";
       createAWindow(appPath);
       break;
-    }else if(process.argv[i] == "--installer"){
-      runOS = false;
-    //}else if(true){
-      done = true;
-      appPath = startPath + "Apps\\built-in\\Installer\\";
-      createAWindow(appPath);
-      break;
-    //}else if(process.argv[i] == "--studio"){
-    }else if(true){
+    }
+    /*else if(process.argv[i] == "--file-explorer"){
       runOS = false;
       done = true;
-      appPath = startPath + "Apps\\built-in\\Studio\\";
+      appPath = startPath + "Apps\\built-in\\FileExplorer\\";
       createAWindow(appPath);
       break;
-    }else if(process.argv[i] == "--assistant"){
+    }*/
+    /*else if(process.argv[i] == "--assistant"){
       runOS = false;
       done = true;
       appPath = startPath + "Apps\\built-in\\Assistant\\";
       createAWindow(appPath);
       break;
-    }
+    }*/
   }
   /*if(!done){
     done = true;
@@ -396,7 +399,7 @@ if(!done && done !== null){
       comment: 'EnderFramework app'
     }
   });
-  createDesktopShortcut_({
+  /*createDesktopShortcut_({
     onlyCurrentOS: true,
     verbose: true,
     windows: {
@@ -409,7 +412,7 @@ if(!done && done !== null){
       windowMode: 'normal',
       comment: 'EnderFramework app'
     }
-  });
+  });*/
   createDesktopShortcut_({
     onlyCurrentOS: true,
     verbose: true,
@@ -424,7 +427,7 @@ if(!done && done !== null){
       comment: 'EnderFramework app'
     }
   });
-  createDesktopShortcut_({
+  /*createDesktopShortcut_({
     onlyCurrentOS: true,
     verbose: true,
     windows: {
@@ -437,7 +440,7 @@ if(!done && done !== null){
       windowMode: 'normal',
       comment: 'EnderFramework app'
     }
-  });
+  });*/
   createDesktopShortcut_({
     onlyCurrentOS: true,
     verbose: true,
