@@ -1,0 +1,73 @@
+{
+  "name": "enderservices",
+  "version": "0.0.1",
+  "main": "AppScripts/Start.js",
+  "devDependencies": {
+    "electron": "^10.1.1",
+    "electron-builder": "^22.7.0",
+    "electron-packager": "^15.1.0",
+    "electron-transparency-mouse-fix": "^1.0.0-rc.1",
+    "electron-wix-msi": "^3.0.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "dependencies": {
+    "aes256": "^1.0.4",
+    "asar": "^3.0.3",
+    "auto-launch": "^5.0.5",
+    "chokidar": "^3.4.2",
+    "create-desktop-shortcuts": "^1.0.2",
+    "cross-fetch": "^3.0.6",
+    "del": "^5.1.0",
+    "download-file": "^0.1.5",
+    "electron-json-storage": "^4.2.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-vibrancy-fixforlatest": "^0.2.0",
+    "fetch": "^1.1.0",
+    "fs": "0.0.1-security",
+    "gulp": "^4.0.2",
+    "monaco-editor": "^0.20.0",
+    "mv": "^2.1.1",
+    "node-gyp": "^7.1.0",
+    "node-notifier": "^8.0.0",
+    "opn": "^6.0.0",
+    "rage-edit": "^1.2.0",
+    "rimraf": "^3.0.2",
+    "terser": "^5.3.1",
+    "unzipper": "^0.10.11",
+    "v8-compile-cache": "^2.1.1"
+  },
+  "license": "MIT",
+  "description": "EnderServices installs and runs EnderFramework apps!",
+  "author": "EnderAdel <enderadel.email@gmail.com>",
+  "postinstall": "electron-builder install-app-deps",
+  "electronPackagerConfig": {
+    "icon": "build/icon.ico",
+    "win32metadata": {
+      "ProductName": "EnderBrowser",
+      "CompanyName": "EnderAdel"
+    }
+  },
+  "build": {
+    "files": [
+      "Apps/",
+      "AppScripts/",
+      "EnderFramework/",
+      "EnderOS/",
+      "node_modules/",
+      "Services/",
+      "package.json",
+      "package-lock.json"
+    ],
+    "appId": "net.enderadel.services",
+    "produceName": "EnderServices",
+    "category": "services",
+    "win": {
+      "target": "squirrel",
+      "icon": "build/icon.ico"
+    }
+  }
+}
