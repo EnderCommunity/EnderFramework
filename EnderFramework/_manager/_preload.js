@@ -118,6 +118,7 @@ contextMenu_ = appInfoS[11];
 connection_ = appInfoS[12];
 appPath = appInfoS[13];
 maximizeOnStart__ = appInfoS[14];
+//var currentAppInfo = ipcRenderer.sendSync('data', "");
 doneLoadingInfo();
 
 global.path = require('path');

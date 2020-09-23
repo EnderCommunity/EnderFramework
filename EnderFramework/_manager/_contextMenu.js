@@ -169,7 +169,7 @@ const showContextMenu = (content, c) => {
     _ContextMenu.setAttribute("style", "top: " + Coords.top + "px; left: " + Coords.left + "px");
     setTimeout(function(){
       _ContextMenu.classList.add(name);
-    }, 1);
+    }, 0);
   }, 0);
 };
 document.cover.addEventListener("mousedown", function(){

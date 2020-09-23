@@ -1,4 +1,5 @@
-var done = false, runOS = false;//EnderOS
+var done = false;
+//var done = false, runOS = false;//EnderOS
 const { screen } = require('electron'), path = require("path"), { ipcMain, nativeTheme } = require('electron'), url = require("url"), storage = require('electron-json-storage'), electron = require("electron"), WindowsToaster = require('node-notifier').WindowsToaster, app = electron.app;
 //
 // Module to control application life. (this variable should already exist)
@@ -161,7 +162,7 @@ if(handleSquirrelEvent(app)) {
   for(var i = 0; i < process.argv.length; i++){
     if(process.argv[i].includes("--start=")){
     //if(true){
-      runOS = false;
+      //runOS = false;
     //if(true){
       done = true;
       var appID = process.argv[i].replace(/\s/g, '').substring(8), length = appID.replace(/[^.]/g, "").length;
@@ -174,27 +175,27 @@ if(handleSquirrelEvent(app)) {
       createAWindow(appPath);
       break;
     }else if(process.argv[i] == "--store"){
-      runOS = false;
+      //runOS = false;
       done = true;
       appPath = startPath + "Apps\\built-in\\Store\\";
       createAWindow(appPath);
       break;
     }else if(process.argv[i] == "--installer"){
     //}else if(true){
-      runOS = false;
+      //runOS = false;
       done = true;
       appPath = startPath + "Apps\\built-in\\Installer\\";
       createAWindow(appPath);
       break;
     }else if(process.argv[i] == "--studio"){
     //}else if(true){
-      runOS = false;
+      //runOS = false;
       done = true;
       appPath = startPath + "Apps\\built-in\\Studio\\";
       createAWindow(appPath);
       break;
     }else if(process.argv[i] == "--settings"){
-      runOS = false;
+      //runOS = false;
       done = true;
       appPath = startPath + "Apps\\built-in\\Settings\\";
       createAWindow(appPath);
@@ -220,7 +221,8 @@ if(handleSquirrelEvent(app)) {
     appPath = startPath + "Apps\\built-in\\Installer\\";
     createAWindow(appPath);
   }*/
-  if(!done && !runOS){
+  if(!done){
+  //if(!done && !runOS){
     appPath = startPath + "Services\\";
     //start EnderServices background process
     var AutoLaunch = require('auto-launch');
@@ -239,13 +241,14 @@ if(handleSquirrelEvent(app)) {
       message: "You're signed in as Adel Sbeh (adel@example.com)",
       icon: path.join(startPath, "Services/User/1/profilePhoto.png"),
       id: undefined,
-      appID: "enderservices"
+      appID: "EnderServices"
     });
-  }else if(runOS){
+  }/*else if(runOS){
     runOS = null;
-  }
+  }*/
   app.on("ready", function(){
-    if(!done && runOS !== null){
+    if(!done){
+    //if(!done && runOS !== null){
       let overlayWindow = new BrowserWindow({
         title: "EnderServices",
         show: false,
@@ -282,7 +285,7 @@ if(handleSquirrelEvent(app)) {
           overlayWindow.webContents.send('endermessage', {'action': 'menu'});
         });
       });
-    }else if(runOS === null){
+    }/*else if(runOS === null){
       //console.log("run!");
       let OSWindow = new BrowserWindow({
         title: "EnderOS",
@@ -307,7 +310,7 @@ if(handleSquirrelEvent(app)) {
         OSWindow = null;
       });
       //
-    }
+    }*/
   });
   app.on('renderer-process-crashed', function(){
     notifier.notify({

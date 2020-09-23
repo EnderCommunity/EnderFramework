@@ -431,8 +431,24 @@ if(location.protocol == "file:"){
         else
           console.error("You can only pass strings to this function!");
       },
-      toast: (type) => {
-        //System notifications
+      toast: (title, message, icon = undefined, callback) => {
+        const cbf = callback, ID = Math.round(Math.random()*100000000000000000000);
+        ipcRenderer.sendToHost('enderframework--notification-show', [ID, title, message, icon]);
+        ipcRenderer.on("enderframework--notification-e" + ID, function(){
+          callback(true, undefined);
+        });
+        ipcRenderer.on("enderframework--notification-c" + ID, function(){
+          callback(false, "clicked");
+        });
+        ipcRenderer.on("enderframework--notification-d" + ID, function(){
+          callback(false, "dismissed");
+        });
+        ipcRenderer.on("enderframework--notification-t" + ID, function(){
+          callback(false, "timeout");
+        });
+        ipcRenderer.on("enderframework--notification-u" + ID, function(){
+          callback(false, "unknown");
+        });
       }
     },
     encryption: {

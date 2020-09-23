@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function(){
           if(_menuContent.type == "top" || _menuContent.type == "side"){
             setTimeout(function(){
               content.executeJavaScript("setTimeout(function(){ if(_checkFunction1()){ document.body.insertBefore(document.createElement('space'), document.body.firstChild); } }, 100);");
-            }, 200);
+            }, 100);
           }
         }catch{
           alert("Something went wrong!");
@@ -257,6 +257,23 @@ document.addEventListener("DOMContentLoaded", function(){
           content.executeJavaScript(ToolTip);
         }else if(event.channel == "get--media"){
           content.executeJavaScript(Media);
+        }else if(event.channel == "enderframework--notification-show"){
+          var id = event.args[0][0], title = event.args[0][1], message = event.args[0][2], icon = event.args[0][3];
+          notify_1(title, message, icon, function(error, action){
+            if(error){
+              content.send("enderframework--notification-e" + id);
+            }else{
+              if(action == "dismissed"){
+                content.send("enderframework--notification-d" + id);
+              }else if(action == "click"){
+                content.send("enderframework--notification-c" + id);
+              }else if(action == "timeout"){
+                content.send("enderframework--notification-t" + id);
+              }else{
+                content.send("enderframework--notification-u" + id);
+              }
+            }
+          });
         }else if(event.channel == "enderframework--contextmenu-create"){
           var id = event.args[0][0], c = event.args[0][1];
           if(!checkContextMenuID(id)){

@@ -520,7 +520,7 @@
   margin-left: 18px;
   margin-right: 0px;
 }
-.context-view.monaco-menu-container{
+/*.context-view.monaco-menu-container{
   height: fit-content;
   background-color: transparent;
 }
@@ -563,7 +563,7 @@
   margin: 26px 0px;
   overflow: hidden;
   background-color: transparent;
-}
+}*/
 #_topBar *{
   transition-duration: 0s;
 }
