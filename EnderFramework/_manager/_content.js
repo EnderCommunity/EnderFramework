@@ -1,3 +1,6 @@
+//var windowNum = 0;
+const path = require("path");
+var windowsArray = {};
 document.addEventListener("DOMContentLoaded", function(){
   var sInt = setInterval(() => {
     document.getElementById("_cover").style.display = "block";
@@ -6,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function(){
       if(!isSub){
         content.setAttribute("src", appPath + "content\\_main.html");
       }else{
-        content.setAttribute("src", appPath + "content\\" + subInfo.url);
+        content.setAttribute("src", path.join(appPath, "content\\", subInfo.url));
       }
       content.addEventListener("dom-ready", function(){ });
       content.addEventListener("DOM", function(){ });
@@ -249,14 +252,22 @@ document.addEventListener("DOMContentLoaded", function(){
           content.executeJavaScript(CodeMirror_CodeBox_INSERT);
         }else if(event.channel == "get--customelements"){
           content.executeJavaScript(CustomElementsScript);
-        }else if(event.channel == "get--customfunctions"){
-          content.executeJavaScript(CustomFunctionsScript);
         }else if(event.channel == "get--scrollAnimation"){
           content.executeJavaScript(OnScrollAnimation);
         }else if(event.channel == "get--tooltip"){
           content.executeJavaScript(ToolTip);
         }else if(event.channel == "get--media"){
           content.executeJavaScript(Media);
+        }else if(event.channel == "enderframework--theme-changetolight"){
+          stopThemeAutoChange = true;
+          document.documentElement.setAttribute("prefers-color-scheme", "light");
+        }else if(event.channel == "enderframework--theme-changetodark"){
+          stopThemeAutoChange = true;
+          document.documentElement.setAttribute("prefers-color-scheme", "dark");
+        }else if(event.channel == "enderframework--theme-changeunlock"){
+          stopThemeAutoChange = false;
+        }else if(event.channel == "enderframework--share-show"){
+          showShareScreen(event.args[0][0]);
         }else if(event.channel == "enderframework--notification-show"){
           var id = event.args[0][0], title = event.args[0][1], message = event.args[0][2], icon = event.args[0][3];
           notify_1(title, message, icon, function(error, action){
@@ -314,18 +325,28 @@ document.addEventListener("DOMContentLoaded", function(){
           window.open("_window.html");
         }else if(event.channel == "enderframework--new2"){
           try{
-            var _window = window.open("_subwindow.html");
+            //var _window = window.open("_subwindow.html");
+            //windowNum++;
+            //console.log(event);
+            event.args = event.args[0];
+            var url = window.location + "?subwindow=" + event.args.id, _window = window.open(url);
+            windowsArray[event.args.id] = _window;
+            //console.log(url);
+            //console.log(event.args.id);
+            //window.location.search.indexOf("?subwindow") == 0
+            //console.log(event.args.data[0]);
             var loop_ = 0, loop = setInterval(function(){
               _window.postMessage({
-                url: event.args[0],
-                width: event.args[1],
-                height: event.args[2],
-                title: event.args[3],
-                minWidth: event.args[4],
-                minHeight: event.args[5],
-                maxWidth: event.args[6],
-                maxHeight: event.args[7],
-              }, "*");
+                url: event.args.data[0],
+                width: event.args.data[1],
+                height: event.args.data[2],
+                title: event.args.data[3],
+                minWidth: event.args.data[4],
+                minHeight: event.args.data[5],
+                maxWidth: event.args.data[6],
+                maxHeight: event.args.data[7],
+                menu: event.args.data[8]
+              }, url);
               if(loop_ == 6){
                 clearInterval(loop);
               }
@@ -334,6 +355,12 @@ document.addEventListener("DOMContentLoaded", function(){
           }catch{
             //
           }
+        }else if(event.channel == "enderframework--subwindow-sendmessage"){
+          event.args = event.args[0];
+          windowsArray[event.args.id].postMessage({
+            channel: event.args.channel,
+            data: event.args.data
+          });
         }else if(event.channel == "enderframework--menu-color"){
           document.getElementById("_topBar").style.background = event.args;
         }else if(event.channel == "enderframework--title-show"){

@@ -1,3 +1,4 @@
+if(!isSub)
 document.addEventListener("DOMContentLoaded", function(event){
   if(infoScreen_){
     const appIcon = document.getElementById("_icon"), infoScreen = document.getElementById("_infoScreen");

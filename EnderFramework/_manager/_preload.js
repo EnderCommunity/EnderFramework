@@ -1,12 +1,14 @@
+var isDOMContentReady = false;
 global._shouldWait = false;
 global.loop____ = null;
 const win__ = require('electron').remote.getCurrentWindow();
-global.isSub = false;
+global.isSub = window.location.search.indexOf("?subwindow") == 0;
+//alert(isSub);
 global.subInfo = {
   url: null,
   width: null,
   height: null,
-  title: null
+  title: "loading"
 };
 var _messageDone = false;
 window.addEventListener("message", function(e){
@@ -15,15 +17,16 @@ window.addEventListener("message", function(e){
     //alert(message);
     isSub = true;
     //win.webContents.openDevTools();
-    console.log(e);
-    subInfo.url = e.data.url[0];
-    subInfo.width = e.data.url[1];
-    subInfo.height = e.data.url[2];
-    subInfo.title = e.data.url[3];
-    subInfo.minWidth = e.data.url[4];
-    subInfo.minHeight = e.data.url[5];
-    subInfo.maxWidth = e.data.url[6];
-    subInfo.maxHeight = e.data.url[7];
+    //console.log(e);
+    subInfo.url = e.data.url;
+    subInfo.width = e.data.width;
+    subInfo.height = e.data.height;
+    subInfo.title = e.data.title;
+    subInfo.minWidth = e.data.minWidth;
+    subInfo.minHeight = e.data.minHeight;
+    subInfo.maxWidth = e.data.maxWidth;
+    subInfo.maxHeight = e.data.maxHeight;
+    subInfo.menu = e.data.menu;
     (function(){
       win__.setResizable(true);
       win__.setMaximizable(false);
@@ -36,6 +39,30 @@ window.addEventListener("message", function(e){
     })();
   }
 }, false);
+if(isSub){
+  window.addEventListener("message", function(e){
+    //_content.send("enderframework--subwindow-reciveamessage", e.data);
+    if(e.data.channel != undefined){
+      const f = () => {
+        console.log(e.data);
+        _content.executeJavaScript(`ENDERFRAMEWORK_ENVIRONMENT.EventReceiver("${e.data.channel}", ${e.data.data.toString()})`);
+      };
+      if(typeof _content == "object" && _content != null && isDOMContentReady){
+        f();
+      }else{
+        var loop = setInterval(function(){
+          if(typeof _content == "object" && _content != null && isDOMContentReady){
+            clearInterval(loop);
+            setTimeout(function(){
+              f();
+            }, 0);
+          }
+        }, 10);
+      }
+    }
+  });
+  //
+}
 global._content = null;
 global.system = require('os');
 global.content = null;
@@ -64,17 +91,19 @@ global.TopFramework = {
     document.getElementById("_title").innerHTML = t;
   },
   setIcon: function(path){
-    if(path.substring(path.length - 3) == "png"){
-      document.getElementById("_icon").setAttribute("src", appPath + "resources\\" + path);
-      document.getElementById("_icon").style.display = "inline-block";
-      try{
-        document.getElementById("_pageIcon").setAttribute("href", appPath + "resources\\" + path);
-        win.setIcon(appPath + "resources\\" + path);
-      }catch{
-        console.error("The icon isn't valid!");
+    if(!isSub){
+      if(path.substring(path.length - 3) == "png"){
+        document.getElementById("_icon").setAttribute("src", appPath + "resources\\" + path);
+        document.getElementById("_icon").style.display = "inline-block";
+        try{
+          document.getElementById("_pageIcon").setAttribute("href", appPath + "resources\\" + path);
+          win.setIcon(appPath + "resources\\" + path);
+        }catch{
+          console.error("The icon isn't valid!");
+        }
+      }else{
+        console.warn("The icon format must be PNG!");
       }
-    }else{
-      console.warn("The icon format must be PNG!");
     }
   },
   splashText: function(t){
@@ -119,6 +148,7 @@ connection_ = appInfoS[12];
 appPath = appInfoS[13];
 maximizeOnStart__ = appInfoS[14];
 //var currentAppInfo = ipcRenderer.sendSync('data', "");
+global.stopThemeAutoChange = false;
 doneLoadingInfo();
 
 global.path = require('path');
@@ -127,6 +157,20 @@ global.win = remote.getCurrentWindow();
 win.hide();
 
 document.addEventListener("DOMContentLoaded", function(event){
+  setTimeout(function(){
+    isDOMContentReady = true;
+  }, 100);
+  if(isSub){
+    document.getElementById("__longLoading").style.display = "block";
+    var toHide = document.getElementsByName("hideOnSub");
+    for(var i = 0; i < toHide.length; i++){
+      toHide[i].classList.add("_subWindowHIDDEN");
+      toHide[i].setAttribute("style", "display: none;");
+    }
+    document.getElementById("_title").setAttribute("style", "display: inline-block; margin-left: 6px;");
+    document.getElementById("_icon").outerHTML = "";
+  }
+  //
   //document.getElementById("_contentView").openDevTools();
   var loop = setInterval(function(){
     if(maximizeOnStart__ != null){
@@ -139,6 +183,17 @@ document.addEventListener("DOMContentLoaded", function(event){
           title.innerHTML = title.innerHTML + " | " + subInfo.title;
           document.getElementById("__longLoading").style.display = "none";
         }, 0);
+        if(!subInfo.menu){
+          //name="_menus"
+          var toHide = document.getElementsByName("_menus");
+          for(var i = 0; i < toHide.length; i++){
+            toHide[i].setAttribute("style", "display: none;");
+          }
+          setTimeout(function(){
+            document.getElementById("_topBar").classList.remove("withTopMenu", "withSideMenu");
+            document.getElementById("_contentView").classList.remove("withTopMenu", "withSideMenu");
+          }, 0);
+        }
         //require('electron').remote.getCurrentWindow().setSize("260px", "180px");
       }
       win.show();
@@ -300,7 +355,7 @@ global.CodeMirror_Mode_YAML = null;
 global.CodeMirror_Mode_YAMLFrontMatter = null;
 global.CodeMirror_Mode_Z80 = null;
 global.CustomElementsScript = null;
-global.CustomFunctionsScript = null;
+//global.CustomFunctionsScript = null;
 global.OnScrollAnimation = null;
 global.ToolTip = null;
 global.Media = null;

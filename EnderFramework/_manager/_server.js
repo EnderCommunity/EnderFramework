@@ -81,6 +81,15 @@ const alertN = function(m){
   document.getElementById('_COfFeedback').style.display = 'none';
   document.getElementById('_FeedbackUI').style.display = 'none';
   document.getElementById('_feedbackTextarea').value = '';
+}, showShareScreen = function(text){
+  currentShareValue = text;
+  document.getElementById("_COfShare").style.display = "block";
+  document.getElementById("_shareUI").style.display = "block";
+  document.getElementById('_shareContent').textContent = text;
+}, hideShareScreen = function(){
+  document.getElementById('_COfShare').style.display = 'none';
+  document.getElementById('_shareUI').style.display = 'none';
+  document.getElementById('_shareContent').textContent = "[the_content]";
 };
 window.onerror = function(message, source, lineno, colno, error) {
   ReportError("Message: " + message + "\nSource: " + source + "/\nLine Number: " + lineno + "\nColumn Number: " + colno + "\nType: Window (JS)");

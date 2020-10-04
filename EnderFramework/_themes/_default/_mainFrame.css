@@ -301,7 +301,7 @@ html, body, .splash{
 #_notification{
   position: fixed;
   z-index: 100;
-  bottom: -260px;
+  bottom: 22px;
   right: 0px;
   left: 0px;
   padding: 36px 6px;
@@ -318,14 +318,15 @@ html, body, .splash{
   border-color: var(--Color26);
   border-style: solid;
   border-width: 1px;
-  -webkit-transition-duration: 0.1s;
-  transition-duration: 0.1s;
+  -webkit-transition-duration: 0.06s;
+  transition-duration: 0.06s;
+  opacity: 0.96;
+  display: none;
+  -webkit-box-shadow: 0px 6px 14px 0px var(--Color19);
+  box-shadow: 0px 6px 14px 0px var(--Color19);
 }
 #_notification[show]{
-  opacity: 0.95;
-  bottom: 18px;
-  -webkit-box-shadow: 0px 6px 18px 0px var(--Color19);
-  box-shadow: 0px 6px 18px 0px var(--Color19);
+  display: block;
 }
 #_notification *{
   display: inline-block;
@@ -349,15 +350,11 @@ html, body, .splash{
   height: 36px;
 }
 #_notification h4{
-  margin-right: 4px;
-  margin-left: 0px;
+  margin-right: 16px;
+  margin-left: 14px;
   margin-bottom: 0px;
   max-width: calc(100% - 136px);
   padding-bottom: 9px;
-}
-#_notification[show] h4{
-  margin-right: 14px;
-  margin-left: 4px;
 }
 .contextMenu{
   position: fixed;
@@ -448,6 +445,7 @@ html, body, .splash{
   }
 }
 .contextMenu .option{
+  position: relative;
   padding: 12px 28px;
   cursor: pointer;
   opacity: 0.8;
@@ -465,9 +463,16 @@ html, body, .splash{
   position: absolute;
   right: 0px;
   display: inline-block;
-  margin: 0px 10px;
+  margin: 0px 22px;
   font-size: 18px;
   overflow: hidden;
+}
+.contextMenu .option badge{
+  display: inline-block;
+  position: absolute;
+  margin: 0px;
+  top: 8px;
+  right: 28px;
 }
 .contextMenu hr{
   width: calc(100% - 52px);
@@ -888,7 +893,7 @@ html, body, .splash{
 
 
 
-#_COfFeedback{
+#_COfFeedback, #_COfShare{
   position: fixed;
   z-index: 1000;
   top: 0px;
@@ -899,7 +904,7 @@ html, body, .splash{
   -webkit-backdrop-filter: blur(18px) saturate(1.2);
   backdrop-filter: blur(18px) saturate(1.2);
 }
-#_FeedbackUI{
+#_FeedbackUI, #_shareUI{
   width: 368px;
   height: 440px;
   margin: calc(50vh - 230px) auto;
@@ -909,7 +914,11 @@ html, body, .splash{
   box-shadow: 0px 8px 28px 4px var(--Color8);
   padding: 28px 36px;
 }
-#_FeedbackUI h3{
+#_shareUI{
+  height: 500px;
+  margin: calc(50vh - 280px) auto;
+}
+#_FeedbackUI h3, #_shareUI h3{
   font-weight: 300;
   margin-bottom: 36px;
 }
@@ -919,7 +928,95 @@ html, body, .splash{
   background-color: var(--Color4);
   margin-bottom: 26px;
 }
+#_shareUI h2, #_shareUI h3{
+  text-align: center;
+}
+#_shareUI .content{
+  height: fit-content;
+  padding: 12px 0px;
+  max-height: 100px;
+  overflow: scroll;
+  color: var(--Color11);
+}
+#_shareUI button{
+  position: absolute;
+  bottom: 32px;
+  right: 36px;
+}
+#_shareUI #_NearbyShareButton{
+  position: absolute;
+  bottom: 39px;
+  left: 40px;
+  z-index: 2;
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+#_shareUI #_NearbyShareButton:hover{
+  opacity: 1;
+}
+#_shareUI #_NearbyShareButton:active{
+  opacity: 0.7;
+}
+#_shareUI .methods{
+  width: 100%;
+  height: 236px;
+  overflow: scroll;
+  text-align: center;
+}
+#_shareUI .methods .option{
+  display: inline-block;
+  width: 100px;
+  min-height: 120px;
+  height: fit-content;
+  margin: 6px 6px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+#_shareUI .methods .option:hover{
+  background-color: var(--Color8);
+}
+#_shareUI .methods .option:active{
+  background-color: var(--Blur3);
+  opacity: 0.7;
+}
+#_shareUI .methods .option img{
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+  margin-bottom: 4px;
+}
+#_shareUI .methods .option.r img{
+  width: 100px;
+  height: 100px;
+  margin: 0px;
+  margin-bottom: 4px;
+}
+#_shareUI .methods .option icon{
+  width: 52px;
+  height: 56px;
+  padding: 12px 14px;
+  margin: 10px;
+  margin-bottom: 4px;
+  font-size: 56px;
+}
+#_shareUI .methods .option text{
+  display: block;
+  font-size: 20px;
+  width: calc(100% - 10px);
+  margin: 0px 5px;
+  margin-bottom: 8px;
+}
+#_shareUI .methods .option.r text{
+  margin-top: -10px;
+}
 #_topBar, #_menu2{
   -webkit-transition-duration: 0.1s;
   transition-duration: 0.1s;
+}
+._subWindowHIDDEN{
+  display: none;
+  opacity: 0;
 }

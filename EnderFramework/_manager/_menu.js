@@ -282,24 +282,26 @@ document.addEventListener("DOMContentLoaded", function(){
               for(var i = 0; i < options.length; i++)
                 options[i].removeAttribute("selected");
               for(var i = 0; i < mainBarOptions.length; i++)
-                if(e.url == mainBarOptions[i]){
+                if(e.url == encodeURI(mainBarOptions[i])){
                   var newOptions = [];
                   for(var i2 = 0; i2 < options.length; i2++)
                     if(options[i2].url !== undefined)
                       newOptions[newOptions.length] = options[i2];
                   for(var i2 in newOptions){
-                    var _url = newOptions[i2].url, url = _url.split("");
-                    _url = "";
-                    for(var i2_ = 0; i2_ < url.length; i2_++){
-                      _url += url[i2_].replace("\\", "/");
-                    }
-                    _url = "file:///" + _url;
-                    if(mainBarOptions[i] == _url){
-                      isThereAMatch = true;
-                      var potition = newOptions[i2].getBoundingClientRect();
-                      var _selectorBar = document.getElementById("_selector");
-                      _selectorBar.setAttribute("style", "left: " + (potition.left + 8) + "px; width: " + (potition.width - 18) + "px;");
-                      newOptions[i2].setAttribute("selected", "");
+                    if(typeof newOptions[i2] == "object"){
+                      var _url = newOptions[i2].url, url = _url.split("");
+                      _url = "";
+                      for(var i2_ = 0; i2_ < url.length; i2_++){
+                        _url += url[i2_].replace("\\", "/");
+                      }
+                      _url = "file:///" + _url;
+                      if(mainBarOptions[i] == _url){
+                        isThereAMatch = true;
+                        var potition = newOptions[i2].getBoundingClientRect();
+                        var _selectorBar = document.getElementById("_selector");
+                        _selectorBar.setAttribute("style", "left: " + (potition.left + 8) + "px; width: " + (potition.width - 18) + "px;");
+                        newOptions[i2].setAttribute("selected", "");
+                      }
                     }
                   }
                 }

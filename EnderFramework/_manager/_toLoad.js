@@ -19,3 +19,8 @@ var tLotF = setInterval(function(){
     console.log(filesToLoad__);
   }
 }, 100);
+
+
+var links = document.getElementsByClassName("_themeSrc");
+for(var i = 0; i < links.length; i++)
+  links[i].setAttribute("href", links[i].getAttribute("src").replace("_default", theme_));

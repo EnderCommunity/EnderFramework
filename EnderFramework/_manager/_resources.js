@@ -32,7 +32,7 @@ fs.readFile(path.join(startPath_, "/EnderFramework/_themes/" + theme_ + "/_font.
 fs.readFile(path.join(startPath_, "/EnderFramework/_themes/" + theme_ + "/_codebox.css"), 'utf-8', (err, data) => {
   CodeMirror_CodeBox = data;
 });
-fs.readFile(path.join(startPath_, "/_themes/" + theme_ + "/_hint.css"), 'utf-8', (err, data) => {
+fs.readFile(path.join(startPath_, "/EnderFramework/_themes/" + theme_ + "/_hint.css"), 'utf-8', (err, data) => {
   CodeMirror_CodeBox_Hints = data;
 });
 fs.readFile(path.join(startPath_, "/EnderFramework/_manager/libraries/CodeMirror/lib/codemirror.js"), 'utf-8', (err, data) => {
@@ -429,9 +429,9 @@ fs.readFile(path.join(startPath_, "/EnderFramework/_manager/libraries/CodeMirror
 fs.readFile(path.join(startPath_, "/EnderFramework/_manager/_customElements.js"), 'utf-8', (err, data) => {
   CustomElementsScript = data;
 });
-fs.readFile(path.join(startPath_, "/EnderFramework/_manager/_customFunctions.js"), 'utf-8', (err, data) => {
+/*fs.readFile(path.join(startPath_, "/EnderFramework/_manager/_customFunctions.js"), 'utf-8', (err, data) => {
   CustomFunctionsScript = data;
-});
+});*/
 fs.readFile(path.join(startPath_, "/EnderFramework/_manager/_scroll.js"), 'utf-8', (err, data) => {
   OnScrollAnimation = data;
 });
