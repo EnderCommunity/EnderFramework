@@ -19,6 +19,7 @@
     "asar": "^3.0.3",
     "auto-launch": "^5.0.5",
     "chokidar": "^3.4.2",
+    "chromecast-api": "^0.3.4",
     "create-desktop-shortcuts": "^1.1.0",
     "cross-fetch": "^3.0.6",
     "del": "^6.0.0",

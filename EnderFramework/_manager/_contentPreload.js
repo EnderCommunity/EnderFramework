@@ -228,10 +228,10 @@ if(location.protocol == "file:"){
     var Inputs = document.getElementsByTagName("input");
     if(Inputs.length > 0){
       global.ContextMenuElement_ = undefined;
-      global.ContextMenuFunction_Copy = function(){ document.execCommand('copy'); };
+      /*global.ContextMenuFunction_Copy = function(){ document.execCommand('copy'); };
       global.ContextMenuFunction_Paste = function(){ document.execCommand("paste") };
       global.ContextMenuFunction_Cut = function(){ document.execCommand("cut"); };
-      global.ContextMenuFunction_Delete = function(){ ContextMenuElement_.value = ''; };
+      global.ContextMenuFunction_Delete = function(){ ContextMenuElement_.value = ''; };*/
     }
     for(var i = 0; i < Inputs.length; i++){
       var v = Inputs[i].getAttribute("type");
@@ -584,6 +584,11 @@ if(location.protocol == "file:"){
   };
   //
   global.EnderFramework = {
+    /*cast: {
+      media: (url) => {
+        //
+      }
+    },*/
     theme: {
       mode: {
         isDark: () => {
@@ -1221,6 +1226,26 @@ if(location.protocol == "file:"){
           }
         }
       }
+    },
+    actions: {
+      Copy: function(){
+        document.execCommand('copy');
+      },
+      Paste: function(){
+        document.execCommand("paste")
+      },
+      Cut: function(){
+        document.execCommand("cut");
+      },
+      Delete: function(){
+        ContextMenuElement_.value = '';
+      }
+      /*
+      global.ContextMenuFunction_Copy
+      ENDERFRAMEWORK_ENVIRONMENT.actions.
+      global.ContextMenuFunction_Paste
+      global.ContextMenuFunction_Cut
+      global.ContextMenuFunction_Delete*/
     }
   };
   //

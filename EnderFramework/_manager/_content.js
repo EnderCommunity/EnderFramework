@@ -425,19 +425,19 @@ document.addEventListener("DOMContentLoaded", function(){
               showContextMenu({
                 0: {
                   title: "Cut",
-                  function: "ContextMenuFunction_Cut"
+                  function: "ENDERFRAMEWORK_ENVIRONMENT.actions.Cut"
                 },
                 1: {
                   title: "Copy",
-                  function: "ContextMenuFunction_Copy"
+                  function: "ENDERFRAMEWORK_ENVIRONMENT.actions.Copy"
                 },
                 2: {
                   title: "Paste",
-                  function: "ContextMenuFunction_Paste"
+                  function: "ENDERFRAMEWORK_ENVIRONMENT.actions.Paste"
                 },
                 3: {
                   title: "Delete",
-                  function: "ContextMenuFunction_Delete"
+                  function: "ENDERFRAMEWORK_ENVIRONMENT.actions.Delete"
                 }
               }, {
                 left: Left_,
@@ -447,11 +447,11 @@ document.addEventListener("DOMContentLoaded", function(){
               showContextMenu({
                 2: {
                   title: "Paste",
-                  function: "ContextMenuFunction_Paste"
+                  function: "ENDERFRAMEWORK_ENVIRONMENT.actions.Paste"
                 },
                 3: {
                   title: "Delete",
-                  function: "ContextMenuFunction_Delete"
+                  function: "ENDERFRAMEWORK_ENVIRONMENT.actions.Delete"
                 }
               }, {
                 left: Left_,

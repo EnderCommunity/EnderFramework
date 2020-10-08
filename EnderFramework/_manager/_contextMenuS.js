@@ -46,7 +46,7 @@ const changeContextMenuData = data_ => {
         //Copy, paste, cut, delete, open devtools, close devtools, toggle devtools
         result[v] = {
           title: data[v].title,
-          function: "EnderFramework_ContextMenuActions." + data[v].actionName
+          function: "ENDERFRAMEWORK_ENVIRONMENT.actions." + data[v].actionName
         };
         if(data[v].disabled == true)
           result[v].disable = true;

@@ -893,7 +893,7 @@ html, body, .splash{
 
 
 
-#_COfFeedback, #_COfShare{
+#_COfFeedback, #_COfShare, #_COfCast{
   position: fixed;
   z-index: 1000;
   top: 0px;
@@ -904,7 +904,7 @@ html, body, .splash{
   -webkit-backdrop-filter: blur(18px) saturate(1.2);
   backdrop-filter: blur(18px) saturate(1.2);
 }
-#_FeedbackUI, #_shareUI{
+#_FeedbackUI, #_shareUI, #_castUI{
   width: 368px;
   height: 440px;
   margin: calc(50vh - 230px) auto;
@@ -917,6 +917,38 @@ html, body, .splash{
 #_shareUI{
   height: 500px;
   margin: calc(50vh - 280px) auto;
+}
+#_castUI{
+  height: 400px;
+  width: 500px;
+  margin: calc(50vh - 220px) auto;
+}
+#_castUI .list{
+  height: 240px;
+  overflow: scroll;
+}
+#_castUI .option{
+  border-radius: 2px;
+  margin: 0px 0px;
+  padding: 4px 8px;
+  margin: 12px 16px;
+  cursor: pointer;
+}
+#_castUI .option:hover{
+  background-color: var(--Blur2);
+  opacity: 0.8;
+}
+#_castUI .option:active{
+  background-color: var(--Blur2);
+  opacity: 1;
+}
+#_castUI .option icon{
+  /**/
+}
+#_castUI .option text{
+  font-size: 20px;
+  position: relative;
+  top: -20px;
 }
 #_FeedbackUI h3, #_shareUI h3{
   font-weight: 300;

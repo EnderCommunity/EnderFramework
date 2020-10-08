@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<meta http-equiv="Content-Security-Policy" content="style-src 'self' 'unsafe-inline'; media-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' data:">-->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+    <!--<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">-->
     <title>Loading</title>
     <link id="_pageIcon" rel="icon">
     <script defer type="text/javascript" src="./_openApps.js"></script>
@@ -17,6 +17,7 @@
     <script defer type="text/javascript" src="./_contextMenuS.js"></script>
     <script defer type="text/javascript" src="./_toLoad.js"></script>
     <script defer type="text/javascript" src="./_notifications.js"></script>
+    <script defer type="text/javascript" src="./_cast.js"></script>
     <script defer type="text/javascript" src="./_content.js"></script>
     <script defer type="text/javascript" src="./_load.js"></script>
     <script defer type="text/javascript" src="./_menu.js"></script>
@@ -204,6 +205,21 @@
         </div>
         <icon id="_NearbyShareButton" onclick="hideShareScreen();">near_me</icon>
         <button onclick="hideShareScreen();">Cancel</button>
+      </div>
+    </div>
+
+
+    <div id="_COfCast" class="animated fadeIn faster" style="display: none;">
+      <div id="_castUI" class="animated fadeInUp faster" style="display: none;">
+        <h2>Cast</h2>
+        <h3>Choose a device to start casting:</h3>
+        <div class="list">
+          <div class="option">
+            <icon>tv</icon>
+            <text>text</text>
+          </div>
+        </div>
+        <button onclick="hideCastScreen();">Cancel</button>
       </div>
     </div>
   </body>
