@@ -1,0 +1,46 @@
+{
+  "name": "EnderInstaller",
+  "version": "0.1",
+  "publisher": "EnderAdel",
+  "splashScreen": false,
+  "splashCooldown": 0,
+  "splashText": null,
+  "server": {
+    "feedback": "https://example.com/MyServerFiles/Feedback.php?message=[0]",
+    "bugTracking": "https://example.com/MyServerFiles/BugsTracking.php?useragent=[0]&appversion=[1]&error=[2]",
+    "bugReporting": "https://example.com/MyServerFiles/BugReprots.php?message=[0]"
+  },
+  "window": {
+    "type": "transparent",
+    "width": 840,
+    "height": 460,
+    "minWidth": 840,
+    "minHeight": 460,
+    "maxWidth": 840,
+    "maxHeight": 460,
+    "isFullscreenable": false,
+    "isClosable": true,
+    "isMinimizable": false,
+    "isMaximizable": false,
+    "maximizeOnStart": false,
+    "resizable": false
+  },
+  "content": {
+    "theme": "_default",
+    "colorScheme": "system",
+    "redirectAnimations": false,
+    "redirectAnimationsCooldown": 0,
+    "contextMenu": false,
+    "infoScreen": true,
+    "protocol": "installer"
+  },
+  "enable": {
+    "JavaScript": true,
+    "WebGL": false,
+    "devTools": true,
+    "spellcheck": false
+  },
+  "menu": {
+    "type": "none"
+  }
+}

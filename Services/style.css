@@ -1,0 +1,58 @@
+:root, [prefers-color-scheme="light"]{
+  --TheCoverColor: rgba(200, 200, 200, 0.9);
+}
+[prefers-color-scheme="dark"]{
+  --TheCoverColor: rgba(16, 16, 16, 0.9);
+}
+*{
+  pointer-events: none;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+[clickable_]{
+  pointer-events: all;
+}
+html, body{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: transparent;
+  /*backdrop-filter: blur(12px);*/
+}
+body.AlertsC{
+  background-color: var(--TheCoverColor);
+  pointer-events: all;
+}
+#_menu{
+  position: fixed;
+  top: 4vw;
+  bottom: 4vw;
+  right: 4vw;
+  left: 4vw;
+}
+card{
+  display: inline-block;
+}
+.account_box{
+  width: calc(26vw - 96px);
+  height: calc(20vw - 96px);
+  padding: 48px;
+  margin: 1.666667vw;
+  pointer-events: all;
+}
+.shortcuts_box{
+  width: calc(52vw - 96px);
+  height: calc(20vw - 96px);
+  padding: 48px;
+  margin: 1.666667vw;
+  pointer-events: all;
+}
+#_backgroundcover{
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  z-index: 0;
+  pointer-events: all;
+}

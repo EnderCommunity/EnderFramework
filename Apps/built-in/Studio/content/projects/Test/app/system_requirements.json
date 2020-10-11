@@ -1,0 +1,19 @@
+{
+  "OS": {
+    "Windows": true,
+    "MacOS": true,
+    "Linux": true
+  },
+  "FreeMemory": 8000000,
+  "RAM": 1000000000,
+  "Architecture": "x86",
+  "CPU": null,
+  "GPU": null,
+  "Hardware": {
+    "Mouse": null,
+    "Touchpad": null,
+    "TouchScreen": null,
+    "Keyboard": null,
+    "Controller": null
+  }
+}

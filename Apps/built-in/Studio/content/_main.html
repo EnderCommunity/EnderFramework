@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <request name="customElements"></request>
+    <request name="scrollAnimation"></request>
+    <link rel="stylesheet" href="./style.css">
+    <script type="text/javascript" src="./global_actions.js"></script>
+    <script type="text/javascript" src="./start.js"></script>
+    <script type="text/javascript" src="./monitor.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <pad id="_start">
+      <!-- <profile></profile> -->
+      <img class="profile">
+      <h1>Welcome, [Username]!</h1>
+      <h3>You're free to be creative and build whatever you want!</h3>
+      <div class="COfMainActions">
+        <div class="RecentC">
+          <h2>Open recent</h2>
+          <div class="COfSearch" disabled>
+            <icon>search</icon>
+            <input type="search">
+          </div>
+          <div id="_projects">
+            <div class="project" disabled>
+              <img>
+              <h5 class="title">[title]</h5>
+              <h5 class="dir">[dir]</h5>
+              <text>MM/DD/YYYY HH:MM TT</text>
+            </div>
+          </div>
+        </div>
+        <div class="StartC">
+          <h2>Get started</h2>
+          <div class="option" disabled>
+            <icon>cloud_download</icon>
+            <h5 class="title">Clone code</h5>
+            <h5 class="desc">Get code from GitHub</h5>
+          </div>
+          <div class="option" disabled>
+            <icon>file_copy</icon>
+            <h5 class="title">Open a project</h5>
+            <h5 class="desc">Open a packed EnderStudio project (.PEP)</h5>
+          </div>
+          <div class="option" disabled>
+            <icon>folder_open</icon>
+            <h5 class="title">Open a local folder</h5>
+            <h5 class="desc">Navigiate and edit within any folder</h5>
+          </div>
+          <div class="option" disabled>
+            <icon>note_add</icon>
+            <h5 class="title">Create a new project</h5>
+            <h5 class="desc">Create a project using templates</h5>
+          </div>
+          <a disabled>Connect to a live project</a>
+        </div>
+      </div>
+    </pad>
+    <div id="_editorLayout" style="display: none;">
+      <div id="_topBar">
+        <img id="_newFileButton" src="./vs_icons/new_file/icon.svg" disabled>
+        <img id="_saveButton" src="./vs_icons/save/icon.svg" disabled>
+        <img id="_saveAllButton" src="./vs_icons/save_all/icon.svg" disabled>
+        <hr>
+        <img id="_undoButton" src="./vs_icons/undo/icon.svg" disabled>
+        <img id="_redoButton" src="./vs_icons/redo/icon.svg" disabled>
+        <hr>
+        <select disabled>
+          <option value="debug">Debug</option>
+          <option value="release">Release</option>
+          <option value="enderdesktop">EnderDesktop</option>
+        </select>
+        <img id="_runButton" src="./vs_icons/run/icon.svg" disabled>
+        <div class="live_share" disabled>
+          <img src="./vs_icons/share/icon.svg">
+          <text>Start a live project</text>
+        </div>
+      </div>
+      <div id="_editorC">
+        <loading></loading>
+        <div id="_tabs">
+          <!--<div class="tab" selected="">
+            <img src="C:\Users\win10\Desktop\Electron_Projects\EnderServices\Apps\built-in\Studio\content\icons\dark\file-code.svg">
+            <text>[name]</text>
+            <icon>close</icon>
+          </div>-->
+        </div>
+        <breadcrumb id="_bar"></breadcrumb>
+        <div id="_editor" disabled_></div>
+        <div id="_bottomSection">
+          <!---->
+        </div>
+      </div>
+      <div id="_fileExplorer">
+        <div class="c"></div>
+        <!--
+        <div class="folder">
+          <icon></icon>
+          <text>[name]</text>
+          <div class="content"></div>
+        </div>-->
+      </div>
+      <div id="_bottomBar">
+        <img src="./icons/error.svg">
+        <text id="_Errors">0</text>
+        <img src="./icons/warning.svg">
+        <text id="_Warnings">0</text>
+        <div class="right">
+          <text id="_Position">Ln -, Col -</text>
+          <text id="_Type">-</text>
+        </div>
+      </div>
+    </div>
+    <script>
+      var nodeRequire = global.require;
+    </script>
+    <script src="../../../../node_modules/monaco-editor/min/vs/loader.js"></script>
+    <script>
+      var amdRequire = global.require;
+      global.require = nodeRequire;
+      var path = require('path');
+      function uriFromPath(_path){
+        var pathName = path.resolve(_path).replace(/\\/g, '/');
+        if(pathName.length > 0 && pathName.charAt(0) !== '/'){
+          pathName = '/' + pathName;
+        }
+        return encodeURI('file://' + pathName);
+      }
+      amdRequire.config({
+        baseUrl: uriFromPath(path.join(__dirname.replace("\\Apps\\built-in\\Studio\\content", ""), 'node_modules/monaco-editor/min'))
+      });
+      self.module = undefined;
+      self.process.browser = true;
+    </script>
+    <script>
+      require('./editor.js')
+    </script>
+    <script type="text/javascript" src="./file_manager.js"></script>
+    <script type="text/javascript" src="./editor_process.js"></script>
+    <script type="text/javascript" src="./actions.js"></script>
+  </body>
+</html>
