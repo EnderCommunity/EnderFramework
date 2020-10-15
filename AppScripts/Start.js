@@ -142,6 +142,7 @@ if(handleSquirrelEvent(app)) {
   app.commandLine.appendSwitch("--enable-transparent-visuals");
   app.commandLine.appendSwitch("--disable-http2");
   app.commandLine.appendSwitch("--disable-renderer-backgrounding");
+  app.commandLine.appendSwitch('--enable-features', 'OverlayScrollbar');
   app.commandLine.appendSwitch('--flag-switches-end');
   global.enableDevTools = false;
   global.enableSpellcheck = false;
@@ -262,7 +263,8 @@ if(handleSquirrelEvent(app)) {
           nodeIntegration: true,
           nodeIntegrationInWorker: true,
           nodeIntegrationInSubFrames: true,
-          preload: path.join(appPath, "preload.js")
+          preload: path.join(appPath, "preload.js"),
+          blinkFeatures: 'OverlayScrollbars'
         },
         skipTaskbar: true,
         resizable: false,

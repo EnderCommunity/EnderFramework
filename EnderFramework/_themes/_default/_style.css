@@ -446,24 +446,19 @@ card{
   margin: 16px 12px;
   margin-bottom: 36px;
 }
-.noScroll{
+/*.noScroll{
   margin: 0;
   height: 100%;
   width: calc(100% - 10px);
   margin-right: 10px;
   overflow: hidden;
-}
-::-webkit-scrollbar{
-  width: 10px;
-  height: 10px;
-  background: transparent;
-}
-::-webkit-scrollbar-track, ::-webkit-scrollbar-corner{
-  background: transparent;
+}*/
+.noScroll{
+  height: 100%;
+  overflow: hidden;
 }
 ::-webkit-scrollbar-thumb{
   border-radius: 2px;
-  /*background-color: var(--Color5);*/
   background-color: var(--Color8);
 }
 ::-webkit-scrollbar-thumb:hover{
@@ -1751,7 +1746,7 @@ textarea{
   width: fit-content;
   border-color: var(--Color8);
 }
-top{
+/*top{
   display: block;
   position: relative;
   width: calc(100vw / 1.012);
@@ -1766,6 +1761,24 @@ top{
   -webkit-transform: scale(1.012);
   transform: scale(1.012);
   box-shadow: inset 5px -2px 14px var(--Color7);
+  align-self: center;
+  z-index: 8;
+}*/
+top{
+  display: block;
+  position: relative;
+  width: calc(100vw / 1.005);
+  height: 80vh;
+  margin: 0px;
+  margin-bottom: 6vh;
+  background-color: var(--Color8);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-transform: scale(1.012);
+  transform: scale(1.012);
+  box-shadow: inset 0px 0px 14px var(--Color7);
   align-self: center;
   z-index: 8;
 }
