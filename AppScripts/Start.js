@@ -137,6 +137,8 @@ if(handleSquirrelEvent(app)) {
   app.commandLine.appendSwitch('--ssl-version-fallback-min', 'tls1.2');
   app.commandLine.appendSwitch('disable-features', 'cookies-without-samesite-must-be-secure');
   app.commandLine.appendSwitch('enable-features', 'same-site-by-default-cookies');
+  //app.commandLine.appendSwitch('enable-features', 'elastic-overscroll-win');
+  //app.commandLine.appendSwitch("--elastic-overscroll-win");
   app.commandLine.appendSwitch('js-flags', '--max-old-space-size=8192');
   app.commandLine.appendSwitch("autoplay-policy", "no-user-gesture-required");
   app.commandLine.appendSwitch("--enable-transparent-visuals");
@@ -163,8 +165,6 @@ if(handleSquirrelEvent(app)) {
   for(var i = 0; i < process.argv.length; i++){
     if(process.argv[i].includes("--start=")){
     //if(true){
-      //runOS = false;
-    //if(true){
       done = true;
       var appID = process.argv[i].replace(/\s/g, '').substring(8), length = appID.replace(/[^.]/g, "").length;
       //var appID = "com.enderadel.test", length = appID.replace(/[^.]/g, "").length;
@@ -176,41 +176,35 @@ if(handleSquirrelEvent(app)) {
       createAWindow(appPath);
       break;
     }else if(process.argv[i] == "--store"){
-      //runOS = false;
       done = true;
       appPath = startPath + "Apps\\built-in\\Store\\";
       createAWindow(appPath);
       break;
     }else if(process.argv[i] == "--installer"){
     //}else if(true){
-      //runOS = false;
       done = true;
       appPath = startPath + "Apps\\built-in\\Installer\\";
       createAWindow(appPath);
       break;
     }else if(process.argv[i] == "--studio"){
     //}else if(true){
-      //runOS = false;
       done = true;
       appPath = startPath + "Apps\\built-in\\Studio\\";
       createAWindow(appPath);
       break;
     }else if(process.argv[i] == "--settings"){
-      //runOS = false;
       done = true;
       appPath = startPath + "Apps\\built-in\\Settings\\";
       createAWindow(appPath);
       break;
     }
     /*else if(process.argv[i] == "--file-explorer"){
-      runOS = false;
       done = true;
       appPath = startPath + "Apps\\built-in\\FileExplorer\\";
       createAWindow(appPath);
       break;
     }*/
     /*else if(process.argv[i] == "--assistant"){
-      runOS = false;
       done = true;
       appPath = startPath + "Apps\\built-in\\Assistant\\";
       createAWindow(appPath);
