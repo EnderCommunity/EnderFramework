@@ -86,16 +86,16 @@ if(handleSquirrelEvent(app)) {
             maxWidth: data.window.maxWidth,
             maxHeight: data.window.maxHeight,
             paintWhenInitiallyHidden: true,
+            transparent: false,
             titleBarStyle: "customButtonsOnHover"
           });
-          //
-          //const electronVibrancy = require("electron-vibrancy-fixforlatest");
-          //electronVibrancy.SetVibrancy(win, "NSVisualEffectMaterialLight");
           //
           win.webContents.openDevTools()
           win.hide();
           win.startPath = startPath;
           win.setBackgroundColor((nativeTheme.shouldUseDarkColors) ? '#151515' : '#F5F5F5');
+          //else
+          //  win.setBackgroundColor('#00000000');
           win.setMenu(null);
           //const { screen } = require('electron');
           var d = screen.getPrimaryDisplay().size;
@@ -168,6 +168,7 @@ if(handleSquirrelEvent(app)) {
       done = true;
       var appID = process.argv[i].replace(/\s/g, '').substring(8), length = appID.replace(/[^.]/g, "").length;
       //var appID = "com.enderadel.test", length = appID.replace(/[^.]/g, "").length;
+      //var appID = "com.enderadel.test2", length = appID.replace(/[^.]/g, "").length;
       for(var i2 = 0; i2 <= length; i2++){
         appPath += appID.substring(0, (appID.indexOf(".") > -1) ? appID.indexOf(".") : appID.length) + "\\";
         appID = appID.substring(appID.indexOf(".") + 1);

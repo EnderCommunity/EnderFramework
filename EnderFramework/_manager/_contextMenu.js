@@ -182,3 +182,8 @@ document.cover.addEventListener("mousedown", function(){
     document.removeContextMenus();
   });
 })();
+document.addEventListener('keyup', function(event){
+	if(event.key == "Escape"){
+    document.removeContextMenus();
+	}
+});

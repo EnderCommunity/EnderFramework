@@ -1,5 +1,81 @@
 global.projectFileName = null;
 global.projectPath = null;
+/*
+EnderFramework.contextMenu.create([{
+          type: "function",
+          functionName: "something",
+          title: "option 1"
+        }, {
+          type: "divider"
+        }, {
+          type: "link",
+          link: "the/path/to/your/file",
+          title: "option 3"
+        }, {
+          type: "link",
+          link: "the/path/to/your/file",
+          title: "option 3"
+        }, {
+          type: "link",
+          link: "the/path/to/your/file",
+          title: "option 3"
+        }, {
+          type: "link",
+          link: "the/path/to/your/file",
+          title: "option 3"
+        }, {
+          type: "link",
+          link: "the/path/to/your/file",
+          title: "option 3"
+        }, {
+          type: "link",
+          link: "the/path/to/your/file",
+          title: "option 3"
+        }, {
+          type: "action",
+          actionName: "[copy/paste/cut/delete]",
+          title: "option 4"
+        }, {
+          type: "link",
+          link: "the/path/to/your/file",
+          disabled: true,
+          title: "option 4"
+        }, {
+          type: "divider"
+        }, {
+          type: "dropdown",
+          content: [
+            {
+              type: "link",
+              link: "the/path/to/your/file",
+              disabled: true,
+              title: "option 4"
+            }, {
+              type: "dropdown",
+              content: [{
+                type: "link",
+                link: "the/path/to/your/file",
+                disabled: true,
+                title: "option 4"
+              },{
+                type: "link",
+                link: "the/path/to/your/file",
+                disabled: true,
+                title: "option 4"
+              }],
+              title: "An option"
+            }, {
+              type: "function",
+              functionName: "something",
+              title: "option 1"
+            }
+          ],
+          title: "option 5"
+        }], function(error, menu){
+  console.log(error);
+  console.log(menu.attachTo(document.documentElement, true));
+});
+*/
 const startProcess = (path) => {
   projectPath = path;
   projectFileName = path.substring((__dirname + "\\projects\\").length);

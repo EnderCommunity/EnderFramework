@@ -61,7 +61,7 @@ function onModuleLoaded(){
     autoClosingQuotes: true,
     automaticLayout: true,
     colorDecorators: true,
-    contextmenu: true,
+    contextmenu: false,
     fontSize: "16px",
     readOnly: true,
     model: null
@@ -159,4 +159,48 @@ function onModuleLoaded(){
     }
   });
   startMonitoring();
+  //
+  EnderFramework.contextMenu.create([{
+    type: "function",
+    functionName: "_quickOutline",
+    title: "Go to Symbol..."
+  }, {
+    type: "divider"
+  }, {
+    type: "function",
+    functionName: "_rename",
+    title: "Rename Symbol"
+  }, {
+    type: "function",
+    functionName: "_changeAll",
+    title: "Change All Occurrences"
+  }, {
+    type: "function",
+    functionName: "_formatDocument",
+    title: "Format Document"
+  }, {
+    type: "divider"
+  }, {
+    type: "action",
+    actionName: "Cut",
+    title: "Cut"
+  }, {
+    type: "action",
+    actionName: "Copy",
+    title: "Copy"
+  }, {
+    type: "action",
+    actionName: "Paste",
+    title: "Paste"
+  }, {
+    type: "divider"
+  }, {
+    type: "function",
+    functionName: "_commandPalette",
+    title: "Command Palette"
+  }], function(error, menu){
+    console.log(error);
+    menu.attachTo(document.getElementById('_editor'), true);
+  });
+  //
 }

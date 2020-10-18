@@ -751,7 +751,7 @@ if(location.protocol == "file:"){
           title: "option 3"
         }, {
           type: "action",
-          actionName: "[copy/paste/cut/delete]",
+          actionName: "[Copy/Paste/Cut/Delete]",
           title: "option 4"
         }, {
           type: "link",
@@ -1214,6 +1214,13 @@ if(location.protocol == "file:"){
       }
     }
   };
+  //
+  document.addEventListener('keyup', function(event){
+    if(event.key == "Escape"){
+      ipcRenderer.sendToHost('enderframework--contextmenu-hideall');
+    }
+  });
+  //
   //The ENVIRONMENT object
   global.ENDERFRAMEWORK_ENVIRONMENT = {
     ReceiverEnabled: true,

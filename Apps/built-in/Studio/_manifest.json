@@ -126,9 +126,8 @@
             "function": "_find"
           },
           "6": {
-            "disable": true,
             "title": "Replace",
-            "function": "DoSomething",
+            "function": "_replace",
             "space": true
           },
           "7": {

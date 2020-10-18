@@ -127,9 +127,17 @@ const _newWindow = () => {
 }, _findInFiles = () => {
   //
 }, _replace = () => {
-  //
+  window.editor.getAction('editor.action.startFindReplaceAction').run();
 }, _replaceInFiles = () => {
   //
+}, _formatDocument = () => {
+  window.editor.getAction('editor.action.formatDocument').run();
+}, _changeAll = () => {
+  window.editor.getAction('editor.action.changeAll').run();
+}, _rename = () => {
+  window.editor.getAction('editor.action.rename').run();
+}, _quickOutline = () => {
+  window.editor.getAction('editor.action.quickOutline').run();
 }, _terminal = () => {
   //
 }, _build = (type) => {
