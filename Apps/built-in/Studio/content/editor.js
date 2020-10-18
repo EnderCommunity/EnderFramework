@@ -61,7 +61,7 @@ function onModuleLoaded(){
     autoClosingQuotes: true,
     automaticLayout: true,
     colorDecorators: true,
-    contextmenu: false,
+    contextmenu: true,
     fontSize: "16px",
     readOnly: true,
     model: null
@@ -202,5 +202,11 @@ function onModuleLoaded(){
     console.log(error);
     menu.attachTo(document.getElementById('_editor'), true);
   });
+  document.oncontextmenu = function(){
+    var element = document.getElementsByClassName("shadow-root-host")[0];
+    if(element != undefined){
+      element.outerHTML = "";
+    }
+  };
   //
 }

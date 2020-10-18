@@ -1,4 +1,24 @@
 :root, [prefers-color-scheme="light"]{
+  --PrimaryColor1: #004CC7;
+  --PrimaryColor2: #5596ff;
+  --PrimaryColor3: #002F7A;
+  --PrimaryColor4: #0043ad;
+  --TextColor: #000000;
+  --Inputs-BackgroundColor: #d8d8d8;
+  --Inputs-ShadowBoxColor: #d8d8d8;
+  --Inputs-BorderColor: #dadada;
+  --Inputs-ShadowBoxColorACTIVE: #d8d8d8;
+  --Inputs-BorderColorACTIVE: #c3c3c3;
+  --PageBorder-Color: #000000;
+  --Buttons-BackgroundColor: #d8d8d8;
+  --Buttons-ShadowColor: #d8d8d8;
+  --Buttons-BorderColor: #dadada;
+  --Buttons-BackgroundColorHOVER: #d8d8d8;
+  --Buttons-ShadowColorHOVER: #dadada;
+  --Buttons-BorderColorHOVER: #c3c3c3;
+  --Buttons-BackgroundColorACTIVE: #5596ff;
+  --Buttons-ShadowColorACTIVE: #5596ff;
+  --Buttons-BorderColorACTIVE: #004CC7;
   --Color1: #004CC7;
   --Color2: #5596ff;
   --Color3: #002F7A;
@@ -42,6 +62,26 @@
   --Constrast: 0.9;
 }
 [prefers-color-scheme="dark"]{
+  --PrimaryColor1: #003ea0;
+  --PrimaryColor2: #002F7A;
+  --PrimaryColor3: #0050d2;
+  --PrimaryColor4: #0043ad;
+  --TextColor: #ffffff;
+  --Inputs-BackgroundColor: #101010;
+  --Inputs-ShadowBoxColor: #101010;
+  --Inputs-BorderColor: #0c0c0c;
+  --Inputs-ShadowBoxColorACTIVE: #101010;
+  --Inputs-BorderColorACTIVE: #080808;
+  --PageBorder-Color: #ffffff;
+  --Buttons-BackgroundColor: #101010;
+  --Buttons-ShadowColor: #101010;
+  --Buttons-BorderColor: #0c0c0c;
+  --Buttons-BackgroundColorHOVER: #101010;
+  --Buttons-ShadowColorHOVER: #101010;
+  --Buttons-BorderColorHOVER: #080808;
+  --Buttons-BackgroundColorACTIVE: #002F7A;
+  --Buttons-ShadowColorACTIVE: #002F7A;
+  --Buttons-BorderColorACTIVE: #003ea0;
   --Color1: #003ea0;
   --Color2: #002F7A;
   --Color3: #0050d2;
@@ -107,27 +147,30 @@ html{
   user-select: none;
   -webkit-transition-duration: 0ms;
   transition-duration: 0ms;
-}
-text, h, h1, h2, h3, h4, h5, h6{
-  color: var(--Color11);
+  /*color: var(--Color11);*/
+  color: var(--TextColor);
 }
 dropdown, input[type=text], input[type=tel], input[type=date], input[type=datetime-local], input[type=month], input[type=week], input[type=time], input[type=email], input[type=number], input[type=password], input[type=search], input[type=url], select{
-  background-color: var(--Color6);
+  /*background-color: var(--Color6);*/
+  background-color: var(--Inputs-BackgroundColor);
   min-width: 120px;
   height: 32px;
   font-size: 18px;
-  -webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
-  box-shadow: 0px 1px 10px 0px var(--Color6);
+  /*-webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
+  box-shadow: 0px 1px 10px 0px var(--Color6);*/
+  -webkit-box-shadow: 0px 1px 10px 0px var(--Inputs-ShadowBoxColor);
+  box-shadow: 0px 1px 10px 0px var(--Inputs-ShadowBoxColor);
   border-width: 1px;
   border-style: solid;
-  border-color: var(--Color7);
+  /*border-color: var(--Color7);*/
+  border-color: var(--Inputs-BorderColor);
   border-radius: 2px;
   margin: 4px;
-  color: var(--Color11);
+  color: var(--TextColor);
   padding-left: 6px;
 }
 input[type=image]{
-  color: var(--Color11);
+  color: var(--TextColor);
 }
 input[type=text], input[type=tel], input[type=email], input[type=number], input[type=password], input[type=search], input[type=url], select{
   padding-left: 6px;
@@ -136,13 +179,15 @@ input[type=text], input[type=tel], input[type=email], input[type=number], input[
 dropdown:active, input[type=text]:active, input[type=tel]:active, input[type="date"]:active, input[type=datetime-local]:active, input[type=month]:active, input[type=week]:active, input[type=time]:active, input[type=email]:active, input[type=number]:active, input[type=password]:active, input[type=search]:active, input[type=url]:active, select:active{
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
-  background-color: var(--Color6);
-  -webkit-box-shadow: 0px 1px 16px 0px var(--Color6);
-  box-shadow: 0px 1px 16px 0px var(--Color6);
-  border-color: var(--Color8);
+  /*-webkit-box-shadow: 0px 1px 16px 0px var(--Color6);
+  box-shadow: 0px 1px 16px 0px var(--Color6);*/
+  -webkit-box-shadow: 0px 1px 16px 0px var(--Inputs-ShadowBoxColorACTIVE);
+  box-shadow: 0px 1px 16px 0px var(--Inputs-ShadowBoxColorACTIVE);
+  /*border-color: var(--Color8);*/
+  border-color: var(--Inputs-BorderColorACTIVE);
 }
 input[type="date"]::-webkit-calendar-picker-indicator, input[type=datetime-local]::-webkit-calendar-picker-indicator, input[type=month]::-webkit-calendar-picker-indicator, input[type=week]::-webkit-calendar-picker-indicator{
-  color: rgba(0, 0, 0, 0);
+  color: transparent;
   opacity: 1;
   display: block;
   background: url(./_icons/calendar.svg) no-repeat;
@@ -153,7 +198,7 @@ input[type="date"]::-webkit-calendar-picker-indicator, input[type=datetime-local
   cursor: pointer;
 }
 input[type=search]::-webkit-search-cancel-button{
-  color: rgba(0, 0, 0, 0);
+  color: transparent;
   opacity: 1;
   display: block;
   width: 20px;
@@ -168,7 +213,7 @@ input[type=number]::-webkit-inner-spin-button{
   opacity: 0;
 }
 input[type=time]::-webkit-calendar-picker-indicator{
-  color: rgba(0, 0, 0, 0);
+  color: transparent;
   opacity: 1;
   display: block;
   background: url(./_icons/schedule.svg) no-repeat;
@@ -186,12 +231,12 @@ input[type=color]{
   overflow: hidden;
   width: 48px;
   height: 32px;
-  -webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
-  box-shadow: 0px 1px 10px 0px var(--Color6);
+  -webkit-box-shadow: 0px 1px 10px 0px var(--Inputs-ShadowBoxColor);
+  box-shadow: 0px 1px 10px 0px var(--Inputs-ShadowBoxColor);
   border-width: 8px;
   border-style: solid;
-  border-color: var(--Color7);
-  background-color: var(--Color6);
+  border-color: var(--Inputs-BorderColor);
+  background-color: var(--Inputs-BackgroundColor);
   cursor: pointer;
 }
 input[type="color"]::-webkit-color-swatch-wrapper{
@@ -209,28 +254,28 @@ input[type=checkbox]{
   overflow: hidden;
   width: 22px;
   height: 22px;
-  background-color: var(--Color6);
-  -webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
-  box-shadow: 0px 1px 10px 0px var(--Color6);
+  background-color: var(--Inputs-BackgroundColor);
+  -webkit-box-shadow: 0px 1px 10px 0px var(--Inputs-ShadowBoxColor);
+  box-shadow: 0px 1px 10px 0px var(--Inputs-ShadowBoxColor);
   border-width: 1px;
   border-style: solid;
-  border-color: var(--Color7);
+  border-color: var(--Inputs-BorderColor);
   cursor: pointer;
 }
 input[type=checkbox]:hover{
   -webkit-transition-duration: 80ms;
   transition-duration: 80ms;
-  background-color: var(--Color6);
-  -webkit-box-shadow: 0px 1px 16px 0px var(--Color6);
-  box-shadow: 0px 1px 16px 0px var(--Color6);
-  border-color: var(--Color8);
+  background-color: var(--Inputs-BackgroundColor);
+  -webkit-box-shadow: 0px 1px 16px 0px var(--Inputs-ShadowBoxColor);
+  box-shadow: 0px 1px 16px 0px var(--Inputs-ShadowBoxColor);
+  border-color: var(--Inputs-BorderColor);
 }
 input[type=checkbox]:checked{
   transition-duration: 80ms;
-  background-color: var(--Color3);
-  -webkit-box-shadow: 0px 1px 6px 0px var(--Color4);
-  box-shadow: 0px 1px 6px 0px var(--Color2);
-  border-color: var(--Color1);
+  background-color: var(--PrimaryColor3);
+  -webkit-box-shadow: 0px 1px 6px 0px var(--PrimaryColor2);
+  box-shadow: 0px 1px 6px 0px var(--PrimaryColor2);
+  border-color: var(--PrimaryColor1);
 }
 input[type=checkbox]:checked:after{
   transition-duration: 0ms;
@@ -249,10 +294,10 @@ input[type=file]{
   padding: 6px;
   border-radius: 6px;
   margin: 6px;
-  background-color: var(--Color1);
+  background-color: var(--PrimaryColor1);
   border-width: 1px;
   border-style: solid;
-  border-color: var(--Color9);
+  border-color: var(--PrimaryColor4);
   cursor: pointer;
   color: #ffffff;
 }
@@ -263,30 +308,34 @@ input[type=file]:after{
   margin-top: -3px;
   margin-left: -90px;
   height: 20px;
-  background-color: var(--Color2);
+  background-color: var(--PrimaryColor2);
   border-radius: 4px;
   content: "Select a file";
   text-align: center;
   font-size: 14px;
   font-weight: bold;
-  color: var(--Color11);
+  color: var(--TextColor);
 }
 button, input[type=reset], input[type=button], input[type=submit]{
-  background-color: var(--Color6);
+  /*background-color: var(--Color6);*/
+  background-color: var(--Buttons-BackgroundColor);
   width: fit-content;
   min-width: 120px;
   height: 42px;
   font-size: 18px;
   padding: 0px 26px;
-  -webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
-  box-shadow: 0px 1px 10px 0px var(--Color6);
+  /*-webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
+  box-shadow: 0px 1px 10px 0px var(--Color6);*/
+  -webkit-box-shadow: 0px 1px 10px 0px var(--Buttons-ShadowColor);
+  box-shadow: 0px 1px 10px 0px var(--Buttons-ShadowColor);
   border-width: 1px;
   border-style: solid;
-  border-color: var(--Color7);
+  /*border-color: var(--Color7);*/
+  border-color: var(--Buttons-BorderColor);
   cursor: pointer;
   border-radius: 4px;
   margin: 4px;
-  color: var(--Color11);
+  color: var(--TextColor);
 }
 button[bigger], input[type=reset][bigger], input[type=button][bigger], input[type=submit][bigger]{
   min-width: 160px;
@@ -299,18 +348,26 @@ button[bigger], input[type=reset][bigger], input[type=button][bigger], input[typ
 button:hover, input[type=reset]:hover, input[type=button]:hover, input[type=submit]:hover{
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
-  background-color: var(--Color6);
-  -webkit-box-shadow: 0px 1px 16px 0px var(--Color6);
-  box-shadow: 0px 1px 16px 0px var(--Color6);
-  border-color: var(--Color8);
+  /*background-color: var(--Color6);*/
+  background-color: var(--Buttons-BackgroundColorHOVER);
+  /*-webkit-box-shadow: 0px 1px 16px 0px var(--Color6);
+  box-shadow: 0px 1px 16px 0px var(--Color6);*/
+  -webkit-box-shadow: 0px 1px 16px 0px var(--Buttons-ShadowColorHOVER);
+  box-shadow: 0px 1px 16px 0px var(--Buttons-ShadowColorHOVER);
+  /*border-color: var(--Color8);*/
+  border-color: var(--Buttons-BorderColorHOVER);
 }
 button:active, input[type=reset]:active, input[type=button]:active, input[type=submit]:active{
   -webkit-transition-duration: 160ms;
   transition-duration: 160ms;
-  background-color: var(--Color2);
-  -webkit-box-shadow: 0px 1px 16px 0px var(--Color2);
-  box-shadow: 0px 1px 16px 0px var(--Color2);
-  border-color: var(--Color1);
+  /*background-color: var(--Color2);*/
+  background-color: var(--Buttons-BackgroundColorACTIVE);
+  /*-webkit-box-shadow: 0px 1px 16px 0px var(--Color2);
+  box-shadow: 0px 1px 16px 0px var(--Color2);*/
+  -webkit-box-shadow: 0px 1px 16px 0px var(--Buttons-ShadowColorACTIVE);
+  box-shadow: 0px 1px 16px 0px var(--Buttons-ShadowColorACTIVE);
+  /*border-color: var(--Color1);*/
+  border-color: var(--Buttons-BorderColorACTIVE);
 }
 button[primary], input[type=reset][primary], input[type=button][primary], input[type=submit][primary]{
   background-color: var(--Color1);
@@ -447,6 +504,13 @@ card{
   display: block;
   margin: 16px 12px;
   margin-bottom: 36px;
+}
+.COfAlert .AlertBox .details{
+  font-size: 16px;
+  opacity: 0.6;
+  display: block;
+  margin: 8px 6px;
+  margin-top: 24px;
 }
 /*.noScroll{
   margin: 0;
@@ -837,7 +901,7 @@ floatingActionButton{
   position: fixed;
   z-index: 12;
   bottom: 28px;
-  right: 32px;
+  right: 42px;
   width: 46px;
   height: 46px;
   padding: 3px;
@@ -1110,7 +1174,7 @@ hr{
   width: 90%;
   margin: 6px auto;
   border-width: 1px;
-  border-color: var(--Color28);
+  border-color: var(--PageBorder-Color);
   padding: 0px;
   border-style: solid;
   border-radius: 100px;
@@ -1799,7 +1863,7 @@ top{
   background-size: cover;
   -webkit-transform: scale(1.012);
   transform: scale(1.012);
-  box-shadow: inset 0px 0px 14px var(--Color7);
+  /*box-shadow: inset 4px -1px 6px var(--Top-ShadowColor);*/
   align-self: center;
   z-index: 8;
 }

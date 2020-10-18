@@ -24,12 +24,59 @@ if(location.protocol == "file:"){
   };
   const { ipcRenderer } = require('electron');
   const chromeAlert = alert;
-  global._alert = chromeAlert;
   global.alert = function(){
     console.warn("You need to wait until the page is done loading to use the `alert()` function! You can instead use `_alert()`!");
   };
   global.loadedImages = 0;
   global.allImages = 0;
+  //
+  const dialog_ = function(t, m, d, b){
+    setTimeout(function(){
+      var main, box, title, message, details, buttonsC, primaryButton;
+      document.getElementsByTagName("body")[0].classList.add("noScroll");
+      main = document.createElement("div");
+      main.classList.add("COfAlert");
+      const removeF = function(){
+        main.outerHTML = "";
+        document.getElementsByTagName("body")[0].classList.remove("noScroll");
+      };
+      document.body.appendChild(main);
+      box = document.createElement("div");
+      box.classList.add("AlertBox", "animated", "pulse", "faster");
+      main.appendChild(box);
+      title = document.createElement("text");
+      title.classList.add("title");
+      title.innerHTML = t;
+      box.appendChild(title);
+      message = document.createElement("text");
+      message.classList.add("message");
+      message.innerHTML = m;
+      box.appendChild(message);
+      buttonsC = document.createElement("div");
+      buttonsC.classList.add("COfButton");
+      box.appendChild(buttonsC);
+      for(var i = 0; i < b.length; i++){
+        const cb = b[i];
+        var button = document.createElement("button");
+        button.setAttribute(cb.type, "");
+        button.innerHTML = cb.text;
+        button.function = cb.onclick;
+        button.addEventListener("click", function(){
+          const f = this.function;
+          setTimeout(function(){
+            removeF();
+            f();
+          }, 160);
+        });
+        buttonsC.appendChild(button);
+      }
+      details = document.createElement("text");
+      details.classList.add("details");
+      details.innerHTML = d;
+      box.appendChild(details);
+    }, 0);
+  };
+  //
   document.addEventListener("DOMContentLoaded", function(event){
     /*
     var scrollbars = require(path.join(__dirname, "_bars.js"));
@@ -55,26 +102,13 @@ if(location.protocol == "file:"){
     //global.alert = function(t, m, bt, pbt, bf = function(){}, pbf = function(){}){
     global.alert = function(t = null, m = null, callback = function(){}){
       setTimeout(function(){
-        var main, box, title, message, buttonsC,button, primaryButton;
+        var main, box, title, message, buttonsC, primaryButton;
         document.getElementsByTagName("body")[0].classList.add("noScroll");
         main = document.createElement("div");
         main.classList.add("COfAlert");
-        var actionButtons = document.getElementsByTagName("floatingactionbutton");
-        for(var i = 0; i < actionButtons.length; i++){
-          actionButtons[i].setAttribute("style", "right: 42px; -webkit-transition-duration: 0s; transition-duration: 0s;");
-          setTimeout(function(){
-            actionButtons[i].setAttribute("style", "right: 42px;");
-          }, 100);
-        }
         const removeF = function(){
           main.outerHTML = "";
           document.getElementsByTagName("body")[0].classList.remove("noScroll");
-          for(var i = 0; i < actionButtons.length; i++){
-            actionButtons[i].setAttribute("style", "-webkit-transition-duration: 0s; transition-duration: 0s;");
-            setTimeout(function(){
-              actionButtons[i].setAttribute("style", "");
-            }, 100);
-          }
         };
         document.body.appendChild(main);
         box = document.createElement("div");
@@ -175,10 +209,22 @@ if(location.protocol == "file:"){
         if(item.name == "warn"){
           var settings = JSON.parse(item.value);
           buttons[i].addEventListener("click", function(){
-            alert("Warning", settings.message, "cancel", "ok", function(){
-              eval("(function()" + settings.ondisagree + ")();");
-            }, function(){
-              eval("(function()" + settings.onagree + ")();");
+            EnderFramework.dialog.messageBox({
+              title: "Warning",
+              message: settings.message,
+              buttons: [{
+                text: "cancel",
+                onclick: function(){
+                  eval("(" + settings.ondisagree + ")();");
+                }
+              }, {
+                text: "ok",
+                type: "warn",
+                onclick: function(){
+                  eval("(" + settings.onagree + ")();");
+                }
+              }],
+              details: ""
             });
           });
         }
@@ -584,6 +630,20 @@ if(location.protocol == "file:"){
   };
   //
   global.EnderFramework = {
+    page: {
+      redirect: url => {
+        ipcRenderer.sendToHost('enderframework--theme-coverpage');
+        location.href = url;
+      },
+      reload: () => {
+        ipcRenderer.sendToHost('enderframework--theme-coverpage');
+        location.reload();
+      }
+      //
+      //_content.loadURL(appPath + "content/" + this.url);
+      //document.getElementById("_cover").style.display = "block";
+      //
+    },
     /*cast: {
       media: (url) => {
         //
@@ -880,11 +940,8 @@ if(location.protocol == "file:"){
       }
     },
     dialog: {
-      showMessageBox: (options = {}) => {
-        var type = "none", buttons = ["ok"], title = "", message = "", detail = "";
-        if(options.type != undefined){
-          type = options.type;
-        }
+      messageBox: (options = {}) => {
+        var buttons = [], title = "", message = "", detail = "";
         if(options.buttons != undefined){
           buttons = options.buttons;
         }
@@ -894,12 +951,15 @@ if(location.protocol == "file:"){
         if(options.message != undefined){
           message = options.message;
         }
-        if(options.detail != undefined){
-          detail = options.detail;
+        if(options.details != undefined){
+          detail = options.details;
         }
-      },
-      showErrorBox: () => {
         //
+        dialog_(title, message, detail, buttons);
+        //
+      },
+      appInfoScreen: () => {
+        ipcRenderer.sendToHost('enderframework--dialog-infoscreen');
       }
       /*showOpenDialog: () => {//File explorer
         //
@@ -1223,6 +1283,9 @@ if(location.protocol == "file:"){
   //
   //The ENVIRONMENT object
   global.ENDERFRAMEWORK_ENVIRONMENT = {
+    original:{
+      alert: chromeAlert
+    },
     ReceiverEnabled: true,
     events: {},
     EventReceiver: function(channel, data){

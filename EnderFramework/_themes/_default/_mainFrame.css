@@ -230,6 +230,7 @@ body:before{
   top: 99px;
   right: 0px;
   z-index: 10;
+  opacity: 0.8;
 }
 .topMenu--options{
   position: absolute;
@@ -237,9 +238,12 @@ body:before{
   left: 0px;
   right: 52px;
   height: 52px;
-  overflow: hidden;
   -webkit-transition-duration: 0s;
   transition-duration: 0s;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }
 .topMenu--options .option{
   height: 36px;

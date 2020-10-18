@@ -300,6 +300,10 @@ document.addEventListener("DOMContentLoaded", function(){
           var c = event.args[0][1];
           c.top += content.offsetTop;
           showAContextMenu(event.args[0][0], c);
+        }else if(event.channel == "enderframework--theme-coverpage"){
+          document.getElementById("_cover").style.display = "block";
+        }else if(event.channel == "enderframework--dialog-infoscreen"){
+          document.getElementById("_icon").click();
         }else if(event.channel == "enderframework--contextmenu-remove"){
           //
         }else if(event.channel == "enderframework--contextmenu-hideall"){
