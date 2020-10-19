@@ -1,19 +1,61 @@
+:root, [prefers-color-scheme="light"]{
+  --WindowBackgroundColor: #f7f7f7;
+  --NoiseDisplay: block;
+  --WindowBorderDisplay: none;
+  --WindowBorderColor: #e0e0e0;
+}
+[prefers-color-scheme="dark"]{
+  --WindowBackgroundColor: #101010;
+  --WindowBorderColor: ;
+  --WindowBorderColor: #3e3e3e;
+}
+[window-type="acrylic"]{
+  --WindowBackgroundColor: transparent;
+  --NoiseDisplay: none;
+}
+[window-is-minimized]{
+  --WindowBorderDisplay: block;
+}
 *{
   -webkit-transition-duration: 200ms;
   transition-duration: 200ms;
 }
-html, body, .splash{
+html{
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  background-color: var(--WindowBackgroundColor);
+  background: var(--WindowBackgroundColor);
+}
+html:after{
+  content: "";
+  display: var(--WindowBorderDisplay);
+  position: absolute;
+  pointer-events: none;
+  z-index: 10000 !important;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  border: var(--WindowBorderColor) 1px solid;
+}
+.splash{
   padding: 0px;
   margin: 0px;
   background-color: var(--Color4);
   overflow: hidden;
 }
-body {
-  background-color: var(--Color32);
+body{
+  padding: 0px;
+  margin: 0px;
+  background-color: var(--WindowBackgroundColor);
+  background: var(--WindowBackgroundColor);
+  overflow: hidden;
 }
 body:before{
   content: "";
   position: absolute;
+  display: var(--NoiseDisplay);
   z-index: -2;
   height: 100%;
   top:0;
@@ -409,7 +451,7 @@ body:before{
   z-index: 150;
   top: 200px;
   left: 180px;
-  min-width: 200px;
+  min-width: 240px;
   min-height: 28px;
   width: fit-content;
   -webkit-backdrop-filter: blur(32px) saturate(1.6);
@@ -508,7 +550,7 @@ body:before{
 }
 .contextMenu .option{
   position: relative;
-  padding: 12px 28px;
+  padding: 10px 26px;
   cursor: pointer;
   opacity: 0.8;
 }

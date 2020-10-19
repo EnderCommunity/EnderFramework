@@ -115,10 +115,13 @@ const _newWindow = () => {
 }, _closeTheEditor = () => {
   //
 }, _cut = () => {
+  window.editor.focus()
   window.editor.trigger('source','editor.action.clipboardCutAction');
 }, _copy = () => {
+  window.editor.focus()
   window.editor.trigger('source','editor.action.clipboardCopyAction');
 }, _paste = () => {
+  window.editor.focus()
   window.editor.trigger('source','editor.action.clipboardPasteAction');
 }, _find = () => {
   window.editor.getAction('actions.find').run();
@@ -133,10 +136,14 @@ const _newWindow = () => {
 }, _formatDocument = () => {
   window.editor.getAction('editor.action.formatDocument').run();
 }, _changeAll = () => {
+  window.editor.focus();
   window.editor.getAction('editor.action.changeAll').run();
+  window.editor.focus();
 }, _rename = () => {
+  window.editor.focus()
   window.editor.getAction('editor.action.rename').run();
 }, _quickOutline = () => {
+  window.editor.focus()
   window.editor.getAction('editor.action.quickOutline').run();
 }, _terminal = () => {
   //

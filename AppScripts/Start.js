@@ -9,8 +9,9 @@ if(handleSquirrelEvent(app)) {
   return;
 }
 //
+var windowType = "normal";
 (function(){
-  const startPath = __dirname.replace("AppScripts", ""), BrowserWindow = electron.BrowserWindow, notifier =  new WindowsToaster({
+  const startPath = __dirname.replace("AppScripts", ""), {BrowserWindow} = require("electron-acrylic-window"), notifier =  new WindowsToaster({
     withFallback: false,
     customPath: undefined
   }), createAWindow = (path_) => {
@@ -87,13 +88,23 @@ if(handleSquirrelEvent(app)) {
             maxHeight: data.window.maxHeight,
             paintWhenInitiallyHidden: true,
             transparent: false,
-            titleBarStyle: "customButtonsOnHover"
+            titleBarStyle: "customButtonsOnHover",
+            vibrancy: (data.window.type == "acrylic") ? {
+              theme: (nativeTheme.shouldUseDarkColors) ? '#1010107D' : '#f7f7f77D',
+              effect: 'acrylic',
+              disableOnBlur: false
+            } : false
           });
+          windowType = data.window.type;
+          //const { setVibrancy } = require("electron-acrylic-window");
+          console.log(data.window.type);
+          if(data.window.type != "acrylic")
+            win.setBackgroundColor((nativeTheme.shouldUseDarkColors) ? '#151515' : '#F5F5F5');
           //
-          win.webContents.openDevTools()
+          //win.webContents.openDevTools({mode:'undocked'});
+          win.webContents.openDevTools();
           win.hide();
           win.startPath = startPath;
-          win.setBackgroundColor((nativeTheme.shouldUseDarkColors) ? '#151515' : '#F5F5F5');
           //else
           //  win.setBackgroundColor('#00000000');
           win.setMenu(null);
@@ -106,6 +117,7 @@ if(handleSquirrelEvent(app)) {
           //  win.webContents.openDevTools();
           win.loadURL(url.format({
             pathname: path.join(startPath, 'EnderFramework\\_manager\\_window.html'),
+            //pathname: path.join('C:\\Users\\win10\\Desktop\\test\\electron-acrylic-window\\test\\test.html'),
             protocol: "file",
             slashes: true
           }));
@@ -323,8 +335,26 @@ if(handleSquirrelEvent(app)) {
     app.quit();
   });
   ipcMain.on('data', (event, arg) => {
-    event.returnValue = [enableDevTools, enableSpellcheck, enableJavaScript, enableRedirectAnimations, _redirectCooldown, theme, startPath, enableSplashScreen, theMenuOfTheWindow, infoScreen, appDFTOS, __contextMenu, serverConnectionURLs, appPath, maximizeOnStart_];
+    event.returnValue = [enableDevTools, enableSpellcheck, enableJavaScript, enableRedirectAnimations, _redirectCooldown, theme, startPath, enableSplashScreen, theMenuOfTheWindow, infoScreen, appDFTOS, __contextMenu, serverConnectionURLs, appPath, maximizeOnStart_, windowType];
   });
+  /*ipcMain.on('setAcrylicLight', (event, arg) => {
+    setVibrancy(win, {
+      theme: 'appearance-based',
+      effect: 'acrylic',
+      useCustomWindowRefreshMethod: true,
+      maximumRefreshRate: 60,
+      disableOnBlur: true
+    });
+  });
+  ipcMain.on('setAcrylicDark', (event, arg) => {
+    setVibrancy(win, {
+      theme: 'appearance-based',
+      effect: 'acrylic',
+      useCustomWindowRefreshMethod: true,
+      maximumRefreshRate: 60,
+      disableOnBlur: true
+    });
+  });*/
   /*app.setUserTasks([{
     program: process.execPath,
     arguments: '--new-window',

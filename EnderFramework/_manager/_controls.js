@@ -25,7 +25,13 @@ var closeWin_, minWin_, maxWin_;
     window.minimize();
   };
   maxWin_ = function(){
-    (isMax) ? window.unmaximize() : window.maximize();
+    (isMax) ? (function(){
+      document.documentElement.setAttribute("window-is-minimized", "");
+      window.unmaximize();
+    })() : (function(){
+      document.documentElement.removeAttribute("window-is-minimized");
+      window.maximize();
+    })();
   };
   function init(){
     document.getElementById("_minWin").addEventListener("click", minWin_, true);

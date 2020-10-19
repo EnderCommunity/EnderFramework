@@ -1,6 +1,10 @@
 /*const wallpaper = require('wallpaper');
 (async () => {
-  await wallpaper.get();
-  var b = 0;
-})();
-*/
+  console.log(await wallpaper.get());//What now?
+})();*/
+console.log(windowType__);
+document.documentElement.setAttribute("window-type", windowType__);
+if(windowType__ == "acrylic"){
+  //
+  //
+}

@@ -149,7 +149,7 @@
 .StartC a{
   cursor: pointer;
 }
-#_editorLayout{
+#_editorLayout, #_newProjectLayout{
   position: fixed;
   z-index: 2;
   top: 0px;

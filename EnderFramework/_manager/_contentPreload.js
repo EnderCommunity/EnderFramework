@@ -60,7 +60,7 @@ if(location.protocol == "file:"){
         var button = document.createElement("button");
         button.setAttribute(cb.type, "");
         button.innerHTML = cb.text;
-        button.function = cb.onclick;
+        button.function = (cb.onclick != undefined) ? cb.onclick : function(){};
         button.addEventListener("click", function(){
           const f = this.function;
           setTimeout(function(){
@@ -899,10 +899,10 @@ if(location.protocol == "file:"){
           ipcRenderer.on("enderframework--contextmenu-createdone", function(){
             if(!menus[_menuID]){
               menus[_menuID] = true;
-              console.log(_menuID);
-              var menu = new ContextMenu(_menuID);
-              console.log(menu);
-              callback(false, menu);
+              //console.log(_menuID);
+              //var menu = new ContextMenu(_menuID);
+              //console.log(menu);
+              callback(false, new ContextMenu(_menuID));
             }
           });
           ipcRenderer.on("enderframework--contextmenu-createfailed", function(){

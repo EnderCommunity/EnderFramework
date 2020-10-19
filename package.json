@@ -24,6 +24,7 @@
     "cross-fetch": "^3.0.6",
     "del": "^6.0.0",
     "download-file": "^0.1.5",
+    "electron-acrylic-window": "^0.4.7",
     "electron-json-storage": "^4.2.0",
     "electron-squirrel-startup": "^1.0.0",
     "electron-vibrancy-fixforlatest": "^0.2.0",
@@ -39,7 +40,7 @@
     "rage-edit": "^1.2.0",
     "request": "^2.88.2",
     "rimraf": "^3.0.2",
-    "terser": "^5.3.5",
+    "terser": "^5.3.7",
     "unzipper": "^0.10.11",
     "v8-compile-cache": "^2.1.1"
   },
