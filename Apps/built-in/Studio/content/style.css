@@ -159,6 +159,11 @@
   font-size: 0px;
   background-color: var(--Color4);
 }
+#_newProjectLayout{
+  padding: 26px 100px;
+  font-size: 18px;
+  bottom: 0px;
+}
 #_topBar{
   width: 100vw;
   height: 48px;
@@ -955,3 +960,86 @@ input.input{
   }
 }
 /* [END] ~ source: https://codepen.io/anatravas/pen/mOyNWR */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#_newProjectLayout .COfTemplates{
+  width: 100%;
+  height: calc(100% - 200px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+#_newProjectLayout button{
+  position: absolute;
+  right: 100px;
+}
+#_newProjectLayout .COfTemplates .sC{
+  position: relative;
+  top: -88px;
+  left: 72px;
+  width: calc(100% - 100px);
+  margin: 10px;
+  padding: 5px 5px;
+  border-radius: 6px;
+  height: fit-content;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin-bottom: -80px;
+}
+#_newProjectLayout .COfTemplates .template{
+  width: calc(100% - 30px);
+  margin: 10px;
+  padding: 5px 5px;
+  border-radius: 6px;
+  height: fit-content;
+  cursor: pointer;
+}
+#_newProjectLayout .COfTemplates .template:hover{
+  background-color: var(--Color5);
+}
+#_newProjectLayout .COfTemplates .template:active{
+  background-color: var(--Color7);
+}
+#_newProjectLayout .COfTemplates .note{
+  font-size: 18px;
+  margin: 28px 0px;
+  opacity: 0.4;
+}
+#_newProjectLayout .COfTemplates .template img{
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+}
+#_newProjectLayout .COfTemplates .template .title{
+  font-size: 22px;
+  display: block;
+}
+#_newProjectLayout .COfTemplates .template .desc{
+  font-size: 18px;
+  opacity: 0.8;
+  display: block;
+  margin-bottom: 18px;
+}
+#_newProjectLayout .COfTemplates .template badge{
+  display: inline-block;
+  margin: 6px 2px;
+}

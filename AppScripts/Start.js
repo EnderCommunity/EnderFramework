@@ -102,7 +102,7 @@ var windowType = "normal";
             win.setBackgroundColor((nativeTheme.shouldUseDarkColors) ? '#151515' : '#F5F5F5');
           //
           //win.webContents.openDevTools({mode:'undocked'});
-          win.webContents.openDevTools();
+          //win.webContents.openDevTools();
           win.hide();
           win.startPath = startPath;
           //else
@@ -181,6 +181,7 @@ var windowType = "normal";
       var appID = process.argv[i].replace(/\s/g, '').substring(8), length = appID.replace(/[^.]/g, "").length;
       //var appID = "com.enderadel.test", length = appID.replace(/[^.]/g, "").length;
       //var appID = "com.enderadel.test2", length = appID.replace(/[^.]/g, "").length;
+      //var appID = "com.enderadel.CommandPrompt", length = appID.replace(/[^.]/g, "").length;
       for(var i2 = 0; i2 <= length; i2++){
         appPath += appID.substring(0, (appID.indexOf(".") > -1) ? appID.indexOf(".") : appID.length) + "\\";
         appID = appID.substring(appID.indexOf(".") + 1);
