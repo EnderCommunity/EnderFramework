@@ -604,6 +604,7 @@ if(location.protocol == "file:"){
     this.windowSettings = settings;
     this.creationTime = new Date();
   };
+  const _dialog = require("electron").remote.dialog;
   Window.prototype.send = function(channel, data = ""){
     const _channel = channel, _data = data, ID = this.windowID, f = () => {
       if(_data instanceof Window){
@@ -960,16 +961,16 @@ if(location.protocol == "file:"){
       },
       appInfoScreen: () => {
         ipcRenderer.sendToHost('enderframework--dialog-infoscreen');
+      },
+      showOpenDialog: (options) => {//https://www.electronjs.org/docs/api/dialog#dialogshowopendialogbrowserwindow-options
+        _dialog.showOpenDialog(options);
+      },
+      showSaveDialog: (options) => {//https://www.electronjs.org/docs/api/dialog#dialogshowsavedialogbrowserwindow-options
+        _dialog.showSaveDialog(options);
+      },
+      showCertificateTrustDialog: (options) => {//https://www.electronjs.org/docs/api/dialog#dialogshowcertificatetrustdialogbrowserwindow-options-macos-windows
+        _dialog.showCertificateTrustDialog(options);//Replace this Dialog with a custom one
       }
-      /*showOpenDialog: () => {//File explorer
-        //
-      },
-      showSaveDialog: () => {//File explorer
-        //
-      },
-      showCertificateTrustDialog: () => {
-        //
-      }*/
     },
     process: {
       /*report: function(){
