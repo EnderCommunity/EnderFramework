@@ -495,6 +495,12 @@ document.addEventListener("DOMContentLoaded", function(){
           var webview = document.getElementById("_webBrowserWebview");
           webview.setAttribute("src", event.args);
           document.getElementById("_webBrowserC").style.display = "block";
+        }else if(event.channel == "reportingsystem--window"){
+          __reportErrorWindow(event.args[0], event.args[1], event.args[2], event.args[3], event.args[4]);
+        }else if(event.channel == "reportingsystem--process"){
+          __reportErrorProcess(event.args[0], event.args[1], event.args[2], event.args[3], event.args[4]);
+        }else if(event.channel == "reportingsystem--api"){
+          __reportErrorAPI(event.args[0], event.args[1], event.args[2], event.args[3], event.args[4]);
         }
       });
       global.currentCountdown_notify = null;

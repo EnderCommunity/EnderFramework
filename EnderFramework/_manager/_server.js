@@ -91,14 +91,30 @@ const alertN = function(m){
   document.getElementById('_shareUI').style.display = 'none';
   document.getElementById('_shareContent').textContent = "[the_content]";
 };
-window.onerror = function(message, source, lineno, colno, error) {
-  ReportError("Message: " + message + "\nSource: " + source + "/\nLine Number: " + lineno + "\nColumn Number: " + colno + "\nType: Window (JS)");
+const __reportErrorWindow = function(message, source, lineno, colno, error){
+  ReportError("Message: " + message + "\nSource: " + source + "/\nLine Number: " + lineno + "\nColumn Number: " + colno + "\nType: window");
+  console.log(0);
+  //console.log("Error object:");
+  //console.log(error);
+}, __reportErrorProcess = function(message, source, lineno, colno, error){
+  ReportError("Message: " + message + "\nSource: " + source + "/\nLine Number: " + lineno + "\nColumn Number: " + colno + "\nType: Process");
+  console.log(1);
+  //console.log("Error object:");
+  //console.log(error);
+}, __reportErrorAPI = function(message, source, lineno, colno, error){
+  ReportError("Message: " + message + "\nSource: " + source + "/\nLine Number: " + lineno + "\nColumn Number: " + colno + "\nType: API");
+  console.log(2);
+  //console.log("Error object:");
+  //console.log(error);
+};
+/*window.onerror = function(message, source, lineno, colno, error) {
+  ReportError("Message: " + message + "\nSource: " + source + "/\nLine Number: " + lineno + "\nColumn Number: " + colno + "\nType: window");
   console.log("Error object:");
   console.log(error);
   //new Notification(error);
 };
 process.on('uncaughtException', function(message, source, lineno, colno, error){
-  ReportError("Message: " + message + "\nSource: " + source + "/\nLine Number: " + lineno + "\nColumn Number: " + colno + "\nType: Process (NodeJS)");
+  ReportError("Message: " + message + "\nSource: " + source + "/\nLine Number: " + lineno + "\nColumn Number: " + colno + "\nType: Process");
   console.log("Error object:");
   console.log(error);
-});
+});*/

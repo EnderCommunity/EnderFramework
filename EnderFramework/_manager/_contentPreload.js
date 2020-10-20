@@ -1192,6 +1192,9 @@ if(location.protocol == "file:"){
         console.error("There is no such event!");
       }
     },
+    report: function(message, source, lineNumber, columnNumber, errorObject = null){
+      ipcRenderer.sendToHost('reportingsystem--api', [message, source, lineNumber, columnNumber, errorObject]);
+    },
     feedback: function(tS = true){
       ipcRenderer.sendToHost('enderframework--feedback', tS);
     },
@@ -1325,6 +1328,13 @@ if(location.protocol == "file:"){
       global.ContextMenuFunction_Delete*/
     }
   };
+  //
+  window.onerror = function(message, source, lineno, colno, error){
+    ipcRenderer.sendToHost('reportingsystem--window', [message, source, lineno, colno, error]);
+  };
+  process.on('uncaughtException', function(message, source, lineno, colno, error){
+    ipcRenderer.sendToHost('reportingsystem--process', [message, source, lineno, colno, error]);
+  });
   //
 }else{
   console.warn("You can't access any of EnderFramework native functions using the current protocol (`" + location.protocol + "`)!");
