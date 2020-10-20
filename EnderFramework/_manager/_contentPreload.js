@@ -32,9 +32,9 @@ if(location.protocol == "file:"){
   //
   const dialog_ = function(t, m, d, b){
     setTimeout(function(){
-      var main, box, title, message, details, buttonsC, primaryButton;
+      var box, title, message, details, buttonsC, primaryButton;
       document.getElementsByTagName("body")[0].classList.add("noScroll");
-      main = document.createElement("div");
+      const main = document.createElement("div");
       main.classList.add("COfAlert");
       const removeF = function(){
         main.outerHTML = "";
@@ -630,7 +630,13 @@ if(location.protocol == "file:"){
     }
   };
   //
+  var vm = process.versions;
+  vm.process = process.version;
+  vm.framework = require("electron").remote.app.getVersion();
+  //
+  //
   global.EnderFramework = {
+    versions: vm,
     page: {
       redirect: url => {
         ipcRenderer.sendToHost('enderframework--theme-coverpage');
@@ -651,7 +657,7 @@ if(location.protocol == "file:"){
       }
     },*/
     theme: {
-      mode: {
+      mode: {//(!) Change the blur color
         isDark: () => {
           return document.documentElement.getAttribute("prefers-color-scheme") == "dark";
         },
@@ -938,6 +944,71 @@ if(location.protocol == "file:"){
       },
       exitFullscreen: () => {
         document.exitFullscreen();
+      },
+      close: function(){
+        ipcRenderer.sendToHost('enderframework--close');
+      },
+      relaunch: function(){
+        ipcRenderer.sendToHost('enderframework--relaunch');
+      },
+      open: function(v = null){
+        if(v === undefined || v === "")
+          v = null;
+        if(v == null){
+          ipcRenderer.sendToHost('enderframework--new');
+        }else{
+          if(v.minWidth === undefined){
+            v.minWidth = null;
+          }
+          if(v.minHeight === undefined){
+            v.minHeight = null;
+          }
+          if(v.maxWidth === undefined){
+            v.maxWidth = null;
+          }
+          if(v.maxHeight === undefined){
+            v.maxHeight = null;
+          }
+          if(v.menu === undefined){
+            v.menu = false;
+          }
+          if(v.url !== undefined && v.width !== undefined && v.height !== undefined && v.title !== undefined){
+            windowNum++;
+            var data = [v.url, v.width, v.height, v.title, v.minWidth, v.minHeight, v.maxWidth, v.maxHeight, v.menu], id = windowNum + "-" + Math.round(Math.random()*100000000000000000000);
+            ipcRenderer.sendToHost('enderframework--new2', {id: id, data: data});
+            return new Window(id, data);
+          }else{
+            console.warn("Make sure to include the window's URL, width, height, and title!");
+            return null;
+          }
+        }
+      },
+      openInBrowser: function(tS){//Check the tS variable!
+        ipcRenderer.sendToHost('enderframework--openinbrowser', tS);
+      },
+      menu: {
+        hide: function(){
+          ipcRenderer.sendToHost('enderframework--menu-hide');
+        },
+        show: function(){
+          ipcRenderer.sendToHost('enderframework--menu-show');
+        }
+      },
+      topBar: {
+        setColor: function(c){
+          ipcRenderer.sendToHost('enderframework--menu-color', c);
+        },
+        title: {
+          hide: function(){
+            ipcRenderer.sendToHost('enderframework--title-hide');
+          },
+          show: function(){
+            ipcRenderer.sendToHost('enderframework--title-show');
+          },
+          set: function(v){
+            ipcRenderer.sendToHost('enderframework--title-set', v);
+          }
+        }
       }
     },
     dialog: {
@@ -1121,47 +1192,6 @@ if(location.protocol == "file:"){
         console.error("There is no such event!");
       }
     },
-    open: function(v = null){
-      if(v === undefined || v === "")
-        v = null;
-      if(v == null){
-        ipcRenderer.sendToHost('enderframework--new');
-      }else{
-        if(v.minWidth === undefined){
-          v.minWidth = null;
-        }
-        if(v.minHeight === undefined){
-          v.minHeight = null;
-        }
-        if(v.maxWidth === undefined){
-          v.maxWidth = null;
-        }
-        if(v.maxHeight === undefined){
-          v.maxHeight = null;
-        }
-        if(v.menu === undefined){
-          v.menu = false;
-        }
-        if(v.url !== undefined && v.width !== undefined && v.height !== undefined && v.title !== undefined){
-          windowNum++;
-          var data = [v.url, v.width, v.height, v.title, v.minWidth, v.minHeight, v.maxWidth, v.maxHeight, v.menu], id = windowNum + "-" + Math.round(Math.random()*100000000000000000000);
-          ipcRenderer.sendToHost('enderframework--new2', {id: id, data: data});
-          return new Window(id, data);
-        }else{
-          console.warn("Make sure to include the window's URL, width, height, and title!");
-          return null;
-        }
-      }
-    },
-    close: function(){
-      ipcRenderer.sendToHost('enderframework--close');
-    },
-    relaunch: function(){
-      ipcRenderer.sendToHost('enderframework--relaunch');
-    },
-    openInBrowser: function(tS){
-      ipcRenderer.sendToHost('enderframework--openinbrowser', tS);
-    },
     feedback: function(tS = true){
       ipcRenderer.sendToHost('enderframework--feedback', tS);
     },
@@ -1197,30 +1227,6 @@ if(location.protocol == "file:"){
         //
       }
     },*/
-    menu: {
-      hide: function(){
-        ipcRenderer.sendToHost('enderframework--menu-hide');
-      },
-      show: function(){
-        ipcRenderer.sendToHost('enderframework--menu-show');
-      }
-    },
-    topBar: {
-      setColor: function(c){
-        ipcRenderer.sendToHost('enderframework--menu-color', c);
-      },
-      title: {
-        hide: function(){
-          ipcRenderer.sendToHost('enderframework--title-hide');
-        },
-        show: function(){
-          ipcRenderer.sendToHost('enderframework--title-show');
-        },
-        set: function(v){
-          ipcRenderer.sendToHost('enderframework--title-set', v);
-        }
-      }
-    },
     parse: function(data){
       var result = [], length = data.replace(/[^\n]/g, "").length + 1;
       for(var i = 0; i < length; i++){
@@ -1276,7 +1282,7 @@ if(location.protocol == "file:"){
     }
   };
   //
-  document.addEventListener('keyup', function(event){
+  document.addEventListener('keydown', function(event){
     if(event.key == "Escape"){
       ipcRenderer.sendToHost('enderframework--contextmenu-hideall');
     }

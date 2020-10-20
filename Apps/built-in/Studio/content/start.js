@@ -1,6 +1,6 @@
 const dialog = require("electron").remote.dialog;
-EnderFramework.menu.hide();
-EnderFramework.topBar.setColor("var(--Color4)");
+EnderFramework.window.menu.hide();
+EnderFramework.window.topBar.setColor("var(--Color4)");
 //EnderFramework.topBar.title.hide();
 const fs = require("fs");
 function customText(v){

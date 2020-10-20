@@ -79,7 +79,7 @@ EnderFramework.contextMenu.create([{
 const startProcess = (path) => {
   projectPath = path;
   projectFileName = path.substring((__dirname + "\\projects\\").length);
-  EnderFramework.menu.show();
+  EnderFramework.window.menu.show();
   document.getElementById("_editorLayout").style.display = "block";
   document.getElementById("_Errors").innerHTML = "0";
   document.getElementById("_Warnings").innerHTML = "0";
@@ -113,5 +113,5 @@ const startProcess = (path) => {
       }
     }
   });
-  EnderFramework.topBar.setColor(null);
+  EnderFramework.window.topBar.setColor(null);
 };

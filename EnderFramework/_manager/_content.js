@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", function(){
       }else{
         content.setAttribute("src", path.join(appPath, "content\\", subInfo.url));
       }
-      content.addEventListener("dom-ready", function(){ });
+      content.addEventListener("dom-ready", function(){
+        content.focus()
+      });
       content.addEventListener("DOM", function(){ });
       _content = content;
       content.setAttribute("preload", startPath_ + "EnderFramework\\_manager\\_contentPreload.js");

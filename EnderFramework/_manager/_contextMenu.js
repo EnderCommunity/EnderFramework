@@ -108,6 +108,7 @@ const showContextMenu = (content, c) => {
       }else if(c[i].function !== undefined){
         Element.function_ = c[i].function;
         Element.addEventListener("click", function(){
+          _content.focus();
           _content.executeJavaScript(this.function_ + "();");
           document.removeContextMenus();
         });
@@ -182,7 +183,7 @@ document.cover.addEventListener("mousedown", function(){
     document.removeContextMenus();
   });
 })();
-document.addEventListener('keyup', function(event){
+document.addEventListener('keydown', function(event){
 	if(event.key == "Escape"){
     document.removeContextMenus();
 	}
