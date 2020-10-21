@@ -32,6 +32,7 @@
     "fetch-installed-software": "0.0.6",
     "fs": "0.0.1-security",
     "gulp": "^4.0.2",
+    "lock-system": "^2.0.0",
     "monaco-editor": "^0.21.2",
     "mv": "^2.1.1",
     "node-gyp": "^7.1.2",

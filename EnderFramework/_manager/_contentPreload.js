@@ -772,7 +772,7 @@ if(location.protocol == "file:"){
         else
           console.error("You can only pass strings to this function!");
       },
-      toast: (title, message, icon = undefined, callback = function(){}) => {
+      toast: (title, message, icon = "0", callback = function(){}) => {
         const cbf = callback, ID = Math.round(Math.random()*100000000000000000000);
         ipcRenderer.sendToHost('enderframework--notification-show', [ID, title, message, icon]);
         ipcRenderer.on("enderframework--notification-e" + ID, function(){
@@ -939,6 +939,12 @@ if(location.protocol == "file:"){
       }
     },
     window: {
+      enterLockMode: () => {
+        ipcRenderer.sendToHost('enderframework--lockmode-enter');
+      },
+      leaveLockMode: () => {
+        ipcRenderer.sendToHost('enderframework--lockmode-leave');
+      },
       enterFullscreen: () => {
         document.documentElement.requestFullscreen();
       },
@@ -984,7 +990,10 @@ if(location.protocol == "file:"){
         }
       },
       openInBrowser: function(tS){//Check the tS variable!
-        ipcRenderer.sendToHost('enderframework--openinbrowser', tS);
+        if(typeof tS == "object")
+          ipcRenderer.sendToHost('enderframework--openinbrowser', tS);
+        else
+          console.error("You must pass a JSON object!");
       },
       menu: {
         hide: function(){

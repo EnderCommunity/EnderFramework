@@ -260,6 +260,10 @@ document.addEventListener("DOMContentLoaded", function(){
           content.executeJavaScript(ToolTip);
         }else if(event.channel == "get--media"){
           content.executeJavaScript(Media);
+        }else if(event.channel == "enderframework--lockmode-enter"){
+          lockCurrentWindow();
+        }else if(event.channel == "enderframework--lockmode-leave"){
+          unlockCurrentWindow();
         }else if(event.channel == "enderframework--theme-changetolight"){
           stopThemeAutoChange = true;
           document.documentElement.setAttribute("prefers-color-scheme", "light");

@@ -99,6 +99,12 @@ body:before{
   position: absolute;
   font-weight: 100;
 }
+#_windowControls{
+  display: inline-block;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
 .topBar--fullscreen, .topBar--max, .topBar--min, .topBar--close{
   width: 48px;
   height: 36px;

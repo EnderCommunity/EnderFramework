@@ -19,6 +19,24 @@
   --Buttons-BackgroundColorACTIVE: #5596ff;
   --Buttons-ShadowColorACTIVE: #5596ff;
   --Buttons-BorderColorACTIVE: #004CC7;
+  --PrimaryButtons-BackgroundColor: #004CC7;
+  --PrimaryButtons-ShadowColor: #004CC7;
+  --PrimaryButtons-BorderColor: #0043ad;
+  --PrimaryButtons-BackgroundColorHOVER: #004CC7;
+  --PrimaryButtons-ShadowColorHOVER: #004CC7;
+  --PrimaryButtons-BorderColorHOVER: #002F7A;
+  --PrimaryButtons-BackgroundColorACTIVE: #0548b3;
+  --PrimaryButtons-ShadowColorACTIVE: #0548b3;
+  --PrimaryButtons-BorderColorACTIVE: #002F7A;
+  --GlassButtons-BackgroundColor: transparent;
+  --GlassButtons-BoxShadowColor: rgba(136, 136, 136, 0.6);
+  --GlassButtons-BorderColor: #a9a9a950;
+  --GlassButtons-BackgroundColorHOVER: transparent;
+  --GlassButtons-BoxShadowColorHOVER: rgba(136, 136, 136, 0.6);
+  --GlassButtons-BorderColorHOVER: #a9a9a950;
+  --GlassButtons-BackgroundColorACTIVE: transparent;
+  --GlassButtons-BoxShadowColorACTIVE: rgba(136, 136, 136, 0.6);
+  --GlassButtons-BorderColorACTIVE: #a9a9a950;
   --Color1: #004CC7;
   --Color2: #5596ff;
   --Color3: #002F7A;
@@ -82,6 +100,24 @@
   --Buttons-BackgroundColorACTIVE: #002F7A;
   --Buttons-ShadowColorACTIVE: #002F7A;
   --Buttons-BorderColorACTIVE: #003ea0;
+  --PrimaryButtons-BackgroundColor: #003ea0;
+  --PrimaryButtons-ShadowColor: #003ea0;
+  --PrimaryButtons-BorderColor: #0043ad;
+  --PrimaryButtons-BackgroundColorHOVER: #003ea0;
+  --PrimaryButtons-ShadowColorHOVER: #004CC7;
+  --PrimaryButtons-BorderColorHOVER: #0050d2;
+  --PrimaryButtons-BackgroundColorACTIVE: #002F7A;
+  --PrimaryButtons-ShadowColorACTIVE: #002F7A;
+  --PrimaryButtons-BorderColorACTIVE: #0050d2;
+  --GlassButtons-BackgroundColor: transparent;
+  --GlassButtons-BoxShadowColor: rgba(0, 0, 0, 0.6);
+  --GlassButtons-BorderColor: #00000050;
+  --GlassButtons-BackgroundColorHOVER: transparent;
+  --GlassButtons-BoxShadowColorHOVER: rgba(0, 0, 0, 0.6);
+  --GlassButtons-BorderColorHOVER: #00000050;
+  --GlassButtons-BackgroundColorACTIVE: transparent;
+  --GlassButtons-BoxShadowColorACTIVE: rgba(0, 0, 0, 0.6);
+  --GlassButtons-BorderColorACTIVE: #00000050;
   --Color1: #003ea0;
   --Color2: #002F7A;
   --Color3: #0050d2;
@@ -370,43 +406,67 @@ button:active, input[type=reset]:active, input[type=button]:active, input[type=s
   border-color: var(--Buttons-BorderColorACTIVE);
 }
 button[primary], input[type=reset][primary], input[type=button][primary], input[type=submit][primary]{
-  background-color: var(--Color1);
-  -webkit-box-shadow: 0px 1px 10px -2px var(--Color1);
-  box-shadow: 0px 1px 10px -2px var(--Color1);
-  border-color: var(--Color9);
+  /*background-color: var(--Color1);*/
+  background-color: var(--PrimaryButtons-BackgroundColor);
+  /*-webkit-box-shadow: 0px 1px 10px -2px var(--Color1);
+  box-shadow: 0px 1px 10px -2px var(--Color1);*/
+  -webkit-box-shadow: 0px 1px 10px -2px var(--PrimaryButtons-ShadowColor);
+  box-shadow: 0px 1px 10px -2px var(--PrimaryButtons-ShadowColor);
+  /*border-color: var(--Color9);*/
+  border-color: var(--PrimaryButtons-BorderColor);
   color: #ffffff;
 }
 button[primary]:hover, input[type=reset][primary]:hover, input[type=button][primary]:hover, input[type=submit][primary]:hover{
-  background-color: var(--Color1);
-  -webkit-box-shadow: 0px 1px 14px -2px var(--Color1);
-  box-shadow: 0px 1px 14px -2px var(--Color1);
-  border-color: var(--Color3);
+  /*background-color: var(--Color1);*/
+  background-color: var(--PrimaryButtons-BackgroundColorHOVER);
+  /*-webkit-box-shadow: 0px 1px 14px -2px var(--Color1);
+  box-shadow: 0px 1px 14px -2px var(--Color1);*/
+  -webkit-box-shadow: 0px 1px 14px -2px var(--PrimaryButtons-ShadowColorHOVER);
+  box-shadow: 0px 1px 14px -2px var(--PrimaryButtons-ShadowColorHOVER);
+  /*border-color: var(--Color3);*/
+  border-color: var(--PrimaryButtons-BorderColorHOVER);
 }
 button[primary]:active, input[type=reset][primary]:active, input[type=button][primary]:active, input[type=submit][primary]:active{
-  background-color: var(--Color10);
-  -webkit-box-shadow: 0px 1px 14px -2px var(--Color10);
-  box-shadow: 0px 1px 14px -2px var(--Color10);
-  border-color: var(--Color3);
+  /*background-color: var(--Color10);*/
+  background-color: var(--PrimaryButtons-BackgroundColorACTIVE);
+  /*-webkit-box-shadow: 0px 1px 14px -2px var(--Color10);
+  box-shadow: 0px 1px 14px -2px var(--Color10);*/
+  -webkit-box-shadow: 0px 1px 14px -2px var(--PrimaryButtons-ShadowColorACTIVE);
+  box-shadow: 0px 1px 14px -2px var(--PrimaryButtons-ShadowColorACTIVE);
+  /*border-color: var(--Color3);*/
+  border-color: var(--PrimaryButtons-BorderColorACTIVE);
 }
 button[glass], input[type=reset][glass], input[type=button][glass], input[type=submit][glass]{
-  background-color: transparent;
+  /*background-color: transparent;*/
+  background-color: var(--GlassButtons-BackgroundColor);
   -webkit-backdrop-filter: blur(12px) saturate(0.8);
   backdrop-filter: blur(12px) saturate(0.8);
-  -webkit-box-shadow: 0px 1px 2px 0px var(--Blur3);
-  box-shadow: 0px 1px 2px 0px var(--Blur3);
-  border-color: var(--Blur2);
+  /*-webkit-box-shadow: 0px 1px 2px 0px var(--Blur3);
+  box-shadow: 0px 1px 2px 0px var(--Blur3);*/
+  -webkit-box-shadow: 0px 1px 2px 0px var(--GlassButtons-BoxShadowColor);
+  box-shadow: 0px 1px 2px 0px var(--GlassButtons-BoxShadowColor);
+  /*border-color: var(--Blur2);*/
+  border-color: var(--GlassButtons-BorderColor);
 }
 button[glass]:hover, input[type=reset][glass]:hover, input[type=button][glass]:hover, input[type=submit][glass]:hover{
-  -webkit-box-shadow: 0px 1px 4px 0px var(--Blur3);
-  box-shadow: 0px 1px 4px 0px var(--Blur3);
+  background-color: var(--GlassButtons-BackgroundColorHOVER);
+  /*-webkit-box-shadow: 0px 1px 4px 0px var(--Blur3);
+  box-shadow: 0px 1px 4px 0px var(--Blur3);*/
+  -webkit-box-shadow: 0px 1px 4px 0px var(--GlassButtons-BoxShadowColorHOVER);
+  box-shadow: 0px 1px 4px 0px var(--GlassButtons-BoxShadowColorHOVER);
+  border-color: var(--GlassButtons-BorderColorHOVER);
   -webkit-transition-duration: 0ms;
   transition-duration: 0ms;
 }
 button[glass]:active, input[type=reset][glass]:active, input[type=button][glass]:active, input[type=submit][glass]:active{
+  background-color: var(--GlassButtons-BackgroundColorACTIVE);
   -webkit-backdrop-filter: blur(12px) saturate(0.6);
   backdrop-filter: blur(12px) saturate(0.6);
-  -webkit-box-shadow: 0px 1px 4px 0px var(--Blur3);
-  box-shadow: 0px 1px 4px 0px var(--Blur3);
+  /*-webkit-box-shadow: 0px 1px 4px 0px var(--Blur3);
+  box-shadow: 0px 1px 4px 0px var(--Blur3);*/
+  -webkit-box-shadow: 0px 1px 4px 0px var(--GlassButtons-BoxShadowColorACTIVE);
+  box-shadow: 0px 1px 4px 0px var(--GlassButtons-BoxShadowColorACTIVE);
+  border-color: var(--GlassButtons-BorderColorACTIVE);
   -webkit-transition-duration: 0ms;
   transition-duration: 0ms;
 }

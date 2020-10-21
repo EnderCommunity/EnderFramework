@@ -102,6 +102,7 @@ var windowType = "normal";
             win.setBackgroundColor((nativeTheme.shouldUseDarkColors) ? '#151515' : '#F5F5F5');
           //
           //win.webContents.openDevTools({mode:'undocked'});
+          //win.webContents.openDevTools({mode: 'docked'});
           //win.webContents.openDevTools();
           win.hide();
           win.startPath = startPath;

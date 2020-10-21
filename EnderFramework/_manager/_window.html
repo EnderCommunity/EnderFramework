@@ -19,6 +19,7 @@
     <script defer type="text/javascript" src="./_toLoad.js"></script>
     <script defer type="text/javascript" src="./_notifications.js"></script>
     <script defer type="text/javascript" src="./_cast.js"></script>
+    <script defer type="text/javascript" src="./_lockmode.js"></script>
     <script defer type="text/javascript" src="./_content.js"></script>
     <script defer type="text/javascript" src="./_load.js"></script>
     <script defer type="text/javascript" src="./_menu.js"></script>
@@ -45,10 +46,12 @@
       <img id="_icon" class="topBar--icon _img" style="display: none;">
       <div id="_title" class="topBar--title" style="display: inline-block;"></div>
       <div id="_menu2" style="display: none;"></div>
-      <div id="_closeWin" class="topBar--close click_">×</div>
-      <div id="_maxWin" name="hideOnSub" class="topBar--max click">▢</div>
-      <div id="_exitFullscreen" class="topBar--fullscreen click" style="display: none;">↗</div>
-      <div id="_minWin" name="hideOnSub" class="topBar--min click">-</div>
+      <div id="_windowControls">
+        <div id="_closeWin" class="topBar--close click_">×</div>
+        <div id="_maxWin" name="hideOnSub" class="topBar--max click">▢</div>
+        <div id="_exitFullscreen" class="topBar--fullscreen click" style="display: none;">↗</div>
+        <div id="_minWin" name="hideOnSub" class="topBar--min click">-</div>
+      </div>
     </div>
     <!--<div id="_topBarWindowCover" style="display: none;"></div>-->
     <div id="_menus" name="_menus" hideInFullscreen>
