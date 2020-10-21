@@ -3,9 +3,11 @@ var closeWin_, minWin_, maxWin_;
   const remote = electron.remote;
   var window = remote.getCurrentWindow(), isMax = true;
   window.on('maximize', () => {
+    document.documentElement.removeAttribute("window-is-minimized");
     isMax = true;
   });
   window.on('unmaximize', () => {
+    document.documentElement.setAttribute("window-is-minimized", "");
     isMax = false;
   });
   closeWin_ = function(){
@@ -26,10 +28,8 @@ var closeWin_, minWin_, maxWin_;
   };
   maxWin_ = function(){
     (isMax) ? (function(){
-      document.documentElement.setAttribute("window-is-minimized", "");
       window.unmaximize();
     })() : (function(){
-      document.documentElement.removeAttribute("window-is-minimized");
       window.maximize();
     })();
   };

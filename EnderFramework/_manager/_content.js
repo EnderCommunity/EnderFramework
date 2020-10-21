@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function(){
         isMainLoad = true;
       });
       content.addEventListener('did-start-loading', function(){
-        if(isMainLoad == true && redirectAnimations_){
+        if(isMainLoad == true){
           document.getElementById("_cover").style.display = "block";
         }
       });
@@ -112,15 +112,20 @@ document.addEventListener("DOMContentLoaded", function(){
           elem.style.display = "block";
         }else if(event.channel == "event--doneLoading"){
           var elem = document.getElementById("_longLoading");
-          content.classList.remove("animated", "fadeInUp2", "fast-ish");
-          setTimeout(function(){
-            //content.classList.remove("animated", "fadeInUp2", "fast-ish");
-            elem.style.display = "none";
-            content.classList.add("animated", "fadeInUp2", "fast-ish");
+          if(redirectAnimations_){
+            content.classList.remove("animated", "fadeInUp2", "fast-ish");
             setTimeout(function(){
-              content.classList.remove("animated", "fadeInUp2", "fast-ish");
+              elem.style.display = "none";
+              content.classList.add("animated", "fadeInUp2", "fast-ish");
+              setTimeout(function(){
+                content.classList.remove("animated", "fadeInUp2", "fast-ish");
+              }, 250);
+            }, 400);
+          }else{
+            setTimeout(function(){
+              elem.style.display = "none";
             }, 250);
-          }, 400);
+          }
         }else if(event.channel == "get--codebox"){
           content.executeJavaScript(CodeMirror_CodeBox_code);
           content.executeJavaScript(CodeMirror_AddOn_CloseTag);
