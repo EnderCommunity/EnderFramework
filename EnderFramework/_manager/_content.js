@@ -2,6 +2,18 @@
 const path = require("path");
 var windowsArray = {};
 document.addEventListener("DOMContentLoaded", function(){
+  /*var __topBar = document.getElementById("_topBar"), __topBarOffsetValue = __topBar.offsetHeight;
+  var __l = setInterval(function(){
+    if(__topBar.offsetHeight > 0){
+      clearInterval(__l);
+      __topBarOffsetValue = __topBar.offsetHeight;
+    }
+  }, 10);*/
+  const _changeContextMenuTopValue = function(value){
+    //if(_menuContent.type != "top")
+    //  value = value + __topBarOffsetValue;
+    return (value + _content.offsetTop);
+  };
   var sInt = setInterval(() => {
     document.getElementById("_cover").style.display = "block";
     if(doneLoadingInfo(-1) == (tN - 1)){
@@ -429,7 +441,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }else if(event.channel == "enderframework--relaunch"){
           electron.remote.app.relaunch();
           electron.remote.app.exit();
-        }else if(event.channel == "ContentContextMenu"){
+        }else if(event.channel == "enderframework--contextmenu-defaults"){
           if(contextMenu_){
             event.args = event.args[0];
             var Top_ = event.args.Y, Left_ = event.args.X;
@@ -456,7 +468,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 }
               }, {
                 left: Left_,
-                top: Top_
+                top: _changeContextMenuTopValue(Top_)
               });
             }else if(event.args.type == "password"){
               showContextMenu({
@@ -470,7 +482,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 }
               }, {
                 left: Left_,
-                top: Top_
+                top: _changeContextMenuTopValue(Top_)
               });
             }
           }

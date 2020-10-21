@@ -284,7 +284,7 @@ if(location.protocol == "file:"){
       if(v == null || v ==  "text" || v ==  "email" || v ==  "number" || v ==  "search" || v ==  "tel" || v ==  "url"){
         Inputs[i].addEventListener('contextmenu', e => {
           ContextMenuElement_ = e.target;
-          ipcRenderer.sendToHost('ContentContextMenu', {
+          ipcRenderer.sendToHost('enderframework--contextmenu-defaults', {
             X: e.clientX,
             Y: e.clientY,
             type: "input"
@@ -293,7 +293,7 @@ if(location.protocol == "file:"){
       }else if(Inputs[i].getAttribute("type") == "password"){
         Inputs[i].addEventListener('contextmenu', e => {
           ContextMenuElement_ = e.target;
-          ipcRenderer.sendToHost('ContentContextMenu', {
+          ipcRenderer.sendToHost('enderframework--contextmenu-defaults', {
             X: e.clientX,
             Y: e.clientY,
             type: "password"
