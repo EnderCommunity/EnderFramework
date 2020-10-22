@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function(){
         content.setAttribute("src", path.join(appPath, "content\\", subInfo.url));
       }
       content.addEventListener("dom-ready", function(){
-        content.focus()
+        content.focus();
       });
       content.addEventListener("DOM", function(){ });
       _content = content;
@@ -277,6 +277,9 @@ document.addEventListener("DOMContentLoaded", function(){
           content.executeJavaScript(ToolTip);
         }else if(event.channel == "get--media"){
           content.executeJavaScript(Media);
+        }else if(event.channel == "enderframework--dialogs-messagebox"){
+          event.args = event.args[0];
+          showMessageBox_(event.args[0], event.args[1], event.args[2], event.args[3]);
         }else if(event.channel == "enderframework--lockmode-enter"){
           lockCurrentWindow();
         }else if(event.channel == "enderframework--lockmode-leave"){

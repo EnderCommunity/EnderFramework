@@ -20,6 +20,7 @@
     <script defer type="text/javascript" src="./_notifications.js"></script>
     <script defer type="text/javascript" src="./_cast.js"></script>
     <script defer type="text/javascript" src="./_lockmode.js"></script>
+    <script defer type="text/javascript" src="./_dialog.js"></script>
     <script defer type="text/javascript" src="./_content.js"></script>
     <script defer type="text/javascript" src="./_load.js"></script>
     <script defer type="text/javascript" src="./_menu.js"></script>
@@ -83,20 +84,20 @@
         </div>
       </div>
     </div>
-    <div id="_splash" class="splash">
+    <div id="_splash" class="splash" window-background>
       <img id="_splash_image" class="_img">
       <text id="_splashText"></text>
     </div>
     <div id="_menu" name="_menus"></div>
     <webview id="_contentView" hideInFullscreen style="display: none;"></webview>
-    <div id="_cover" class="cover"></div>
-    <div id="__longLoading" class="cover" style="display: none;">
+    <div id="_cover" class="cover" window-background></div>
+    <div id="__longLoading" class="cover" window-background style="display: none;">
       <loading></loading>
     </div>
-    <div id="_longLoading" class="cover" style="display: none;">
+    <div id="_longLoading" class="cover" window-background style="display: none;">
       <loading></loading>
     </div>
-    <div id="_ErrorScreen" style="display: none;">
+    <div id="_ErrorScreen" window-background style="display: none;">
       <float center pageCenter20>
         <h1 boldText>An error has accured!</h1>
         <h3 lightText>This page has failed to load, the page path might be incorrect.</h3>
@@ -104,7 +105,7 @@
         <button>Go home</button>
       </float>
     </div>
-    <div id="_CrashScreen" style="display: none;">
+    <div id="_CrashScreen" window-background style="display: none;">
       <float center pagecenter20>
         <h1 boldtext>Oops, something went wrong!</h1>
         <h3 lighttext>The app has crashed! You might want to report this to the app's developers.</h3>

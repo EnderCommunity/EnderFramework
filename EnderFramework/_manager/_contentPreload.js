@@ -23,58 +23,26 @@ if(location.protocol == "file:"){
     return true;
   };
   const { ipcRenderer } = require('electron');
-  const chromeAlert = alert;
-  global.alert = function(){
-    console.warn("You need to wait until the page is done loading to use the `alert()` function! You can instead use `_alert()`!");
-  };
   global.loadedImages = 0;
   global.allImages = 0;
   //
   const dialog_ = function(t, m, d, b){
-    setTimeout(function(){
-      var box, title, message, details, buttonsC, primaryButton;
-      document.getElementsByTagName("body")[0].classList.add("noScroll");
-      const main = document.createElement("div");
-      main.classList.add("COfAlert");
-      const removeF = function(){
-        main.outerHTML = "";
-        document.getElementsByTagName("body")[0].classList.remove("noScroll");
-      };
-      document.body.appendChild(main);
-      box = document.createElement("div");
-      box.classList.add("AlertBox", "animated", "pulse", "faster");
-      main.appendChild(box);
-      title = document.createElement("text");
-      title.classList.add("title");
-      title.innerHTML = t;
-      box.appendChild(title);
-      message = document.createElement("text");
-      message.classList.add("message");
-      message.innerHTML = m;
-      box.appendChild(message);
-      buttonsC = document.createElement("div");
-      buttonsC.classList.add("COfButton");
-      box.appendChild(buttonsC);
-      for(var i = 0; i < b.length; i++){
-        const cb = b[i];
-        var button = document.createElement("button");
-        button.setAttribute(cb.type, "");
-        button.innerHTML = cb.text;
-        button.function = (cb.onclick != undefined) ? cb.onclick : function(){};
-        button.addEventListener("click", function(){
-          const f = this.function;
-          setTimeout(function(){
-            removeF();
-            f();
-          }, 160);
-        });
-        buttonsC.appendChild(button);
-      }
-      details = document.createElement("text");
-      details.classList.add("details");
-      details.innerHTML = d;
-      box.appendChild(details);
-    }, 0);
+    for(var i = 0; i < b.length; i++)
+      if(typeof b[i].onclick == "function")
+        b[i].onclick = b[i].onclick.toString();
+    ipcRenderer.sendToHost('enderframework--dialogs-messagebox', [t, m, d, b]);
+  };
+  const chromeAlert = alert;
+  global.alert = function(t = null, m = null, callback = function(){}){
+    if(m == null){
+      m = t;
+      t = "This page says";
+    }
+    dialog_(t, m, "", [{
+      text: "Ok",
+      onclick: callback,
+      type: "primary"
+    }]);
   };
   //
   document.addEventListener("DOMContentLoaded", function(event){
@@ -100,43 +68,6 @@ if(location.protocol == "file:"){
       }
     })();
     //global.alert = function(t, m, bt, pbt, bf = function(){}, pbf = function(){}){
-    global.alert = function(t = null, m = null, callback = function(){}){
-      setTimeout(function(){
-        var main, box, title, message, buttonsC, primaryButton;
-        document.getElementsByTagName("body")[0].classList.add("noScroll");
-        main = document.createElement("div");
-        main.classList.add("COfAlert");
-        const removeF = function(){
-          main.outerHTML = "";
-          document.getElementsByTagName("body")[0].classList.remove("noScroll");
-        };
-        document.body.appendChild(main);
-        box = document.createElement("div");
-        box.classList.add("AlertBox", "animated", "pulse", "faster");
-        main.appendChild(box);
-        title = document.createElement("text");
-        title.classList.add("title");
-        title.innerHTML = (m == null) ? "This page says" : t;
-        box.appendChild(title);
-        message = document.createElement("text");
-        message.classList.add("message");
-        message.innerHTML = (m == null) ? t : m;
-        box.appendChild(message);
-        buttonsC = document.createElement("div");
-        buttonsC.classList.add("COfButton");
-        box.appendChild(buttonsC);
-        primaryButton = document.createElement("button");
-        primaryButton.setAttribute("primary", "");
-        primaryButton.innerHTML = "Ok";
-        primaryButton.addEventListener("click", function(){
-          setTimeout(function(){
-            removeF();
-            callback();
-          }, 160);
-        });
-        buttonsC.appendChild(primaryButton);
-      }, 0);
-    };
     /*
         global.alert = function(t, m, bt, pbt, bf = function(){}, pbf = function(){}){
       setTimeout(function(){

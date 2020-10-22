@@ -64,7 +64,7 @@ body{
   overflow: hidden;
   -webkit-transition-duration: 0ms;
   transition-duration: 0ms;
-  z-index: 17;
+  z-index: 200;
 }
 .topBar--icon{
   width: 24px;
@@ -88,6 +88,9 @@ body{
   position: absolute;
   right: 0px;
   top: 0px;
+  overflow: hidden;
+  height: 36px;
+  width: 144px;
 }
 .topBar--fullscreen, .topBar--max, .topBar--min, .topBar--close{
   width: 48px;
@@ -188,11 +191,11 @@ body{
 }
 .splash{
   position: fixed;
-  top: 36px;
+  top: 0px;
   left: 0px;
   right: 0px;
   bottom: 0px;
-  z-index: 150;
+  z-index: 16;
 }
 .splash img{
   width: 180px;
@@ -219,7 +222,6 @@ body{
   right: 0px;
   bottom: 0px;
   z-index: 1;
-  background-color: var(--Color4);
 }
 #_CrashScreen{
   z-index: 1000;
@@ -604,7 +606,7 @@ body{
 }
 #_infoScreen{
   position: fixed;
-  z-index: 15;
+  z-index: 199;
   top: 0px;
   bottom: 0px;
   left: 0px;
@@ -987,9 +989,9 @@ body{
 
 
 
-#_COfFeedback, #_COfShare, #_COfCast{
+#_COfFeedback, #_COfShare, #_COfCast, .COfAlert{
   position: fixed;
-  z-index: 1000;
+  z-index: 190;
   top: 0px;
   bottom: 0px;
   left: 0px;
@@ -1137,6 +1139,39 @@ body{
 }
 #_shareUI .methods .option.r text{
   margin-top: -10px;
+}
+.COfAlert .AlertBox{
+  width: 620px;
+  height: fit-content;
+  min-height: 100px;
+  margin: 0px calc(50vw - 310px);
+  margin-top: calc(100px + 10vh);
+  text-align: center;
+  padding-top: 48px;
+  padding-bottom: 58px;
+
+  border-radius: 12px;
+  background-color: var(--Color6);
+  -webkit-box-shadow: 0px 1px 16px 0px var(--Color8);
+  box-shadow: 0px 8px 28px 4px var(--Color8);
+}
+.COfAlert .AlertBox .title{
+  font-size: 30px;
+  display: block;
+  margin-bottom: 26px;
+}
+.COfAlert .AlertBox .message{
+  font-size: 20px;
+  display: block;
+  margin: 16px 12px;
+  margin-bottom: 36px;
+}
+.COfAlert .AlertBox .details{
+  font-size: 16px;
+  opacity: 0.6;
+  display: block;
+  margin: 8px 6px;
+  margin-top: 24px;
 }
 #_topBar, #_menu2{
   -webkit-transition-duration: 0.1s;
