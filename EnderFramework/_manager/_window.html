@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<!--( EnderAdel )-->
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<meta http-equiv="Content-Security-Policy" content="style-src 'self' 'unsafe-inline'; media-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' data:">-->
     <!--<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">-->
     <title>Loading</title>
     <link id="_pageIcon" rel="icon">
@@ -21,6 +19,7 @@
     <script defer type="text/javascript" src="./_cast.js"></script>
     <script defer type="text/javascript" src="./_lockmode.js"></script>
     <script defer type="text/javascript" src="./_dialog.js"></script>
+    <script defer type="text/javascript" src="./_customElementsM.js"></script>
     <script defer type="text/javascript" src="./_content.js"></script>
     <script defer type="text/javascript" src="./_load.js"></script>
     <script defer type="text/javascript" src="./_menu.js"></script>
@@ -54,7 +53,6 @@
         <div id="_minWin" name="hideOnSub" class="topBar--min click">-</div>
       </div>
     </div>
-    <!--<div id="_topBarWindowCover" style="display: none;"></div>-->
     <div id="_menus" name="_menus" hideInFullscreen>
       <div id="_topMenu" class="topMenu" blur style="display: none;">
         <div id="_topMenu_options" class="topMenu--options">
@@ -171,17 +169,17 @@
     <div id="_FeedbackBar" class="animated slideInUp faster" style="display: none;">
       Are you satisfied with your experience within our app? Give us your feedback!
       <button primary onclick="document.getElementById('_FeedbackBar').style.display = 'none'; showFeedbackScreen();">Give feedback</button>
-      <button primary onclick="document.getElementById('_FeedbackBar').style.display = 'none';">No thanks</button>
+      <button primary onclick="document.getElementById('_FeedbackBar').style.display = 'none'; _content.focus();">No thanks</button>
     </div>
-    <div id="_COfFeedback" class="animated fadeIn faster" style="display: none;">
+    <div id="_COfFeedback" style="display: none;">
       <div id="_FeedbackUI" class="animated fadeInUp faster" style="display: none;">
         <h3>What do you think? Give us your opinion. Or maybe, you can suggest something new!</h3>
         <textarea id="_feedbackTextarea" placeholder="You can write your feedback here! Maybe you can just say hi! Ok, maybe not."></textarea>
-        <button primary onclick="SendFeedback(document.getElementById('_feedbackTextarea').value); hideFeedbackScreen();">Send feedback</button>
-        <button onclick="hideFeedbackScreen();">Cancel</button>
+        <button primary onclick="SendFeedback(document.getElementById('_feedbackTextarea').value); hideFeedbackScreen(); _content.focus();">Send feedback</button>
+        <button onclick="hideFeedbackScreen(); _content.focus();">Cancel</button>
       </div>
     </div>
-    <div id="_COfShare" class="animated fadeIn faster" style="display: none;">
+    <div id="_COfShare" style="display: none;">
       <div id="_shareUI" class="animated fadeInUp faster" style="display: none;">
         <h2>Share</h2>
         <h3>You're going to share the following content:</h3>
@@ -192,19 +190,19 @@
             <img>
             <text>Copy text</text>
           </div>-->
-          <div class="option" onclick="navigator.clipboard.writeText(document.getElementById('_shareContent').textContent); hideShareScreen();">
+          <div class="option" onclick="navigator.clipboard.writeText(document.getElementById('_shareContent').textContent); hideShareScreen(); _content.focus();">
             <icon>content_copy</icon>
             <text>Copy text</text>
           </div>
-          <div id="_shareViaEmail" class="option" onclick="hideShareScreen();">
+          <div id="_shareViaEmail" class="option" onclick="hideShareScreen(); _content.focus();">
             <icon>mail</icon>
             <text>Email</text>
           </div>
-          <div id="_twitterShareButton" class="option" onclick="hideShareScreen();">
+          <div id="_twitterShareButton" class="option" onclick="hideShareScreen(); _content.focus();">
             <img class="_themeSrc" src="./../_themes/_default/_icons/_share/twitter.svg">
             <text>Twitter</text>
           </div>
-          <div id="_redditShareButton" class="option r" onclick="hideShareScreen();">
+          <div id="_redditShareButton" class="option r" onclick="hideShareScreen(); _content.focus();">
             <img class="_themeSrc" src="./../_themes/_default/_icons/_share/reddit.svg">
             <text>Reddit</text>
           </div>
@@ -213,7 +211,7 @@
         <button onclick="hideShareScreen();">Cancel</button>
       </div>
     </div>
-    <div id="_COfCast" class="animated fadeIn faster" style="display: none;">
+    <div id="_COfCast" style="display: none;">
       <div id="_castUI" class="animated fadeInUp faster" style="display: none;">
         <h2>Cast</h2>
         <h3>Choose a device to start casting:</h3>
@@ -223,8 +221,9 @@
             <text>text</text>
           </div>
         </div>
-        <button onclick="hideCastScreen();">Cancel</button>
+        <button onclick="hideCastScreen(); _content.focus();">Cancel</button>
       </div>
     </div>
+    <div id="_transitionCover"></div>
   </body>
 </html>

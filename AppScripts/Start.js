@@ -1,3 +1,4 @@
+require('v8-compile-cache');
 var done = false;
 //var done = false, runOS = false;//EnderOS
 const { screen } = require('electron'), path = require("path"), { ipcMain, nativeTheme } = require('electron'), url = require("url"), storage = require('electron-json-storage'), electron = require("electron"), WindowsToaster = require('node-notifier').WindowsToaster, app = electron.app;
@@ -26,6 +27,7 @@ var windowType = "normal";
         enableSplashScreen = data.splashScreen;
         enableDevTools = data.enable.devTools;
         enableSpellcheck = data.enable.spellcheck;
+        enableWebview = data.enable.webview;
         enableJavaScript = data.enable.JavaScript;
         enableRedirectAnimations = data.content.redirectAnimations;
         _redirectCooldown = data.content.redirectAnimationsCooldown;
@@ -49,6 +51,7 @@ var windowType = "normal";
             title: data.name,
             width: data.window.width,
             height: data.window.height,
+            center: true,
             frame: false,
             show: false,
             icon: path.join(path_, "\\resources\\_icon.ico"),
@@ -102,7 +105,7 @@ var windowType = "normal";
             win.setBackgroundColor((nativeTheme.shouldUseDarkColors) ? '#151515' : '#F5F5F5');
           //
           //win.webContents.openDevTools({mode:'undocked'});
-          //win.webContents.openDevTools({mode: 'docked'});
+          win.webContents.openDevTools({mode: 'docked'});
           //win.webContents.openDevTools();
           win.hide();
           win.startPath = startPath;
@@ -161,6 +164,7 @@ var windowType = "normal";
   app.commandLine.appendSwitch('--flag-switches-end');
   global.enableDevTools = false;
   global.enableSpellcheck = false;
+  global.enableWebview = false;
   global.enableJavaScript = true;
   global.enableRedirectAnimations = true;
   global._redirectCooldown = true;
@@ -337,7 +341,7 @@ var windowType = "normal";
     app.quit();
   });
   ipcMain.on('data', (event, arg) => {
-    event.returnValue = [enableDevTools, enableSpellcheck, enableJavaScript, enableRedirectAnimations, _redirectCooldown, theme, startPath, enableSplashScreen, theMenuOfTheWindow, infoScreen, appDFTOS, __contextMenu, serverConnectionURLs, appPath, maximizeOnStart_, windowType];
+    event.returnValue = [enableDevTools, enableSpellcheck, enableJavaScript, enableRedirectAnimations, _redirectCooldown, theme, startPath, enableSplashScreen, theMenuOfTheWindow, infoScreen, appDFTOS, __contextMenu, serverConnectionURLs, appPath, maximizeOnStart_, windowType, enableWebview];
   });
   /*ipcMain.on('setAcrylicLight', (event, arg) => {
     setVibrancy(win, {

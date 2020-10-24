@@ -130,6 +130,7 @@ global.connection_ = [null, null, null];
 global.appPath = null;
 global.maximizeOnStart__ = null;
 global.windowType__ = null;
+global.enableWebview_ = false;
 
 var appInfoS = ipcRenderer.sendSync('data', "");
 devTools_ = appInfoS[0];
@@ -149,6 +150,7 @@ connection_ = appInfoS[12];
 appPath = appInfoS[13];
 maximizeOnStart__ = appInfoS[14];
 windowType__ = appInfoS[15];
+enableWebview_ = appInfoS[16];
 //var currentAppInfo = ipcRenderer.sendSync('data', "");
 global.stopThemeAutoChange = false;
 doneLoadingInfo();

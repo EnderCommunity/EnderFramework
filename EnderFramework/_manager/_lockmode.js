@@ -23,11 +23,15 @@ const mainWindow = electron.remote.getCurrentWindow(), fOL = function(){
     }
   }*/
   //mainWindow.restore();
-  mainWindow.focus();
   mainWindow.setKiosk(true);
+  mainWindow.setSkipTaskbar(true);
+  mainWindow.setAlwaysOnTop(true);
+  mainWindow.focus();
   COWC.style.display = "none";
   TWI.style.pointerEvents = "none";
 }, fOU = function(){
+  mainWindow.setAlwaysOnTop(false);
+  mainWindow.setSkipTaskbar(false);
   mainWindow.setKiosk(false);
   mainWindow.focus();
   //mainWindow.restore();
@@ -36,7 +40,9 @@ const mainWindow = electron.remote.getCurrentWindow(), fOL = function(){
 }, lockCurrentWindow = function(){
   fOL();
   mainWindow.on('blur', fOL);
+  //document.addEventListener("mouseout", eLEWAM);
 }, unlockCurrentWindow = function(){
   mainWindow.removeListener('blur', fOL);
+  //document.removeListener("mouseout", eLEWAM);
   fOU();
 };

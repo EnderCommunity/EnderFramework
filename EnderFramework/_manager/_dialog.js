@@ -2,10 +2,12 @@ const showMessageBox_ = function (t, m, d, b){
   var box, title, message, details, buttonsC;
   document.body.classList.add("noScroll");
   const main = document.createElement("div");
-  main.classList.add("COfAlert", "animated", "fadeIn", "faster");
+  //main.classList.add("COfAlert", "animated", "fadeIn", "faster");
+  main.classList.add("COfAlert");
   const removeF = function(){
     main.outerHTML = "";
     document.body.classList.remove("noScroll");
+    _content.focus();
   };
   document.body.appendChild(main);
   box = document.createElement("div");
@@ -29,8 +31,8 @@ const showMessageBox_ = function (t, m, d, b){
     button.innerHTML = cb.text;
     button.function = (cb.onclick != undefined) ? cb.onclick : "function(){}";
     button.addEventListener("click", function(){
-      removeF();
       _content.executeJavaScript(`(${this.function})();`);
+      removeF();
     });
     buttonsC.appendChild(button);
   }

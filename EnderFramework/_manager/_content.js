@@ -2,6 +2,16 @@
 const path = require("path");
 var windowsArray = {};
 document.addEventListener("DOMContentLoaded", function(){
+  window.cover = document.getElementById("_transitionCover");
+  window.cover.show = function(){
+    this.setAttribute("show", "");
+  };
+  window.cover.hide = function(){
+    this.removeAttribute("show");
+  };
+  window.cover.isHidden = function(){
+    return !(this.hasAttribute("show"));
+  };
   /*var __topBar = document.getElementById("_topBar"), __topBarOffsetValue = __topBar.offsetHeight;
   var __l = setInterval(function(){
     if(__topBar.offsetHeight > 0){
@@ -40,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function(){
       if(!JavaScript_){
         enableJavaScript = "no";
       }
-      content.setAttribute("webpreferences", "devTools=" + enableDevTools + ", nodeIntegration=yes, nodeIntegrationInWorker=yes, nodeIntegrationInSubFrames=yes, sandbox=no, webviewTag=yes, enableRemoteModule=yes, javascript=" + enableJavaScript + ", webSecurity=yes, images=yes, textAreasAreResizable=no, webgl=yes, experimentalFeatures=no, scrollBounce=no, defaultFontFamily=\"standard\", defaultFontSiz=16, defaultMonospaceFontSize=13, minimumFontSize=0, defaultEncoding=\"ISO-8859-1\", offscreen=no, contextIsolation=no, nativeWindowOpen=no, safeDialogs=no, navigateOnDragDrop=no, autoplayPolicy=\"no-user-gesture-required\" disableHtmlFullscreenWindowResize=no, spellcheck=" + enableSpellcheck);
+      content.setAttribute("webpreferences", "devTools=" + enableDevTools + ", nodeIntegration=yes, nodeIntegrationInWorker=yes, nodeIntegrationInSubFrames=yes, sandbox=no, webviewTag=" + ((enableWebview_) ? "yes" : "no") + ", enableRemoteModule=yes, javascript=" + enableJavaScript + ", webSecurity=yes, images=yes, textAreasAreResizable=no, webgl=yes, experimentalFeatures=no, scrollBounce=yes, defaultFontFamily=\"Muli\", defaultFontSiz=16, defaultMonospaceFontSize=13, minimumFontSize=0, defaultEncoding=\"ISO-8859-1\", offscreen=no, contextIsolation=no, nativeWindowOpen=no, safeDialogs=no, navigateOnDragDrop=no, autoplayPolicy=\"no-user-gesture-required\" disableHtmlFullscreenWindowResize=no, spellcheck=" + enableSpellcheck);
       content.setAttribute("enableremotemodule", "true");
       //content.setAttribute("partition", "");
       var first = true, isMainLoad = true;
@@ -277,6 +287,10 @@ document.addEventListener("DOMContentLoaded", function(){
           content.executeJavaScript(ToolTip);
         }else if(event.channel == "get--media"){
           content.executeJavaScript(Media);
+        }else if(event.channel == "enderframework--windowcover-hide"){
+          window.cover.hide();
+        }else if(event.channel == "enderframework--windowcover-show"){
+          window.cover.show();
         }else if(event.channel == "enderframework--dialogs-messagebox"){
           event.args = event.args[0];
           showMessageBox_(event.args[0], event.args[1], event.args[2], event.args[3]);
@@ -326,6 +340,15 @@ document.addEventListener("DOMContentLoaded", function(){
           var c = event.args[0][1];
           c.top += content.offsetTop;
           showAContextMenu(event.args[0][0], c);
+        }else if(event.channel == "enderframework--floatingaction-click"){
+          //document.getElementById("_cover").style.display = "block";
+          //
+          event.args = event.args[0];
+          const CEID = event.args[0], executeDOMJS = function(code){
+            content.executeJavaScript(code.replace(/{currentFloatingAction}/g, `ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton[${CEID}]`));
+          };
+          ShowFloatingActionContent(executeDOMJS, event.args[1]);
+          //
         }else if(event.channel == "enderframework--theme-coverpage"){
           document.getElementById("_cover").style.display = "block";
         }else if(event.channel == "enderframework--dialog-infoscreen"){

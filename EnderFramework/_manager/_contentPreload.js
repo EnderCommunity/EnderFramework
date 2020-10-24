@@ -139,21 +139,19 @@ if(location.protocol == "file:"){
       Array.prototype.slice.call(buttons[i].attributes).forEach(function(item){
         if(item.name == "warn"){
           var settings = JSON.parse(item.value);
+          buttons[i].settings = settings;
           buttons[i].addEventListener("click", function(){
+            const settings = this.settings;
             EnderFramework.dialog.messageBox({
               title: "Warning",
               message: settings.message,
               buttons: [{
                 text: "cancel",
-                onclick: function(){
-                  eval("(" + settings.ondisagree + ")();");
-                }
+                onclick: settings.ondisagree
               }, {
                 text: "ok",
                 type: "warn",
-                onclick: function(){
-                  eval("(" + settings.onagree + ")();");
-                }
+                onclick: settings.onagree
               }],
               details: ""
             });
@@ -870,6 +868,17 @@ if(location.protocol == "file:"){
       }
     },
     window: {
+      cover: {
+        hide: () => {
+          ipcRenderer.sendToHost('enderframework--windowcover-hide');
+        },
+        show: () => {
+          ipcRenderer.sendToHost('enderframework--windowcover-show');
+        }
+        /*isHidden: () => {
+          //
+        }*/
+      },
       enterLockMode: () => {
         ipcRenderer.sendToHost('enderframework--lockmode-enter');
       },
@@ -1088,11 +1097,24 @@ if(location.protocol == "file:"){
             isConfirmBeforeClosingEnabled = true;
             ipcRenderer.sendToHost('enderframework--waitbeforeclosing');
             ipcRenderer.on("enderframework--willclose", function(e){
-              alert("Warning!", message, "No", "Yes", function(){
+              EnderFramework.dialog.messageBox({
+                title: "Warning!",
+                message: message,
+                buttons: [{
+                  text: "No"
+                }, {
+                  text: "Yes",
+                  type: "primary",
+                  onclick: function(){
+                    ENDERFRAMEWORK_ENVIRONMENT.closingEvent.done();
+                  }
+                }]
+              });
+              /*alert("Warning!", message, "No", "Yes", function(){
                 //Nothing!
               }, function(){
                 ipcRenderer.sendToHost('enderframework--waitbeforeclosing-done');
-              });
+              });*/
             });
           }else{
             if(isConfirmBeforeClosingLocked){
@@ -1266,8 +1288,22 @@ if(location.protocol == "file:"){
       global.ContextMenuFunction_Paste
       global.ContextMenuFunction_Cut
       global.ContextMenuFunction_Delete*/
+    },
+    elements: {
+      floatingActionButton: []////Add floating action buttons in here!
+    },
+    elementActions: {
+      floatingButtonClicked: (id, content) => {
+        ipcRenderer.sendToHost('enderframework--floatingaction-click', [id, content]);
+      }
+    },
+    closingEvent: {
+      done: () => {
+        ipcRenderer.sendToHost('enderframework--waitbeforeclosing-done');
+      }
     }
   };
+  //ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton[ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton.length];//
   //
   window.onerror = function(message, source, lineno, colno, error){
     ipcRenderer.sendToHost('reportingsystem--window', [message, source, lineno, colno, error]);

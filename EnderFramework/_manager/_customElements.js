@@ -58,8 +58,12 @@ if(topElement.length > 0){
 }
 Elms = document.getElementsByTagName("floatingactionbutton");
 for(var i = 0; i < Elms.length; i++){
+  Elms[i].fABEID = ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton.length;
+  ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton[ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton.length] = Elms[i];
   Elms[i].addEventListener("click", function(){
-    var FABElm1 = document.createElement("div"), FABElm2 = document.createElement("floatingactionbutton"), FABElm3 = document.createElement("icon"), This = this;
+    ENDERFRAMEWORK_ENVIRONMENT.elementActions.floatingButtonClicked(this.fABEID, this.getAttribute("content"));
+    //ENDERFRAMEWORK_ENVIRONMENT.elementActions.floating
+    /*var FABElm1 = document.createElement("div"), FABElm2 = document.createElement("floatingactionbutton"), FABElm3 = document.createElement("icon"), This = this;
     FABElm1.classList.add("FloatingButtonDiv");
     FABElm3.innerHTML = "close";
     FABElm2.addEventListener("click", function(){
@@ -102,7 +106,7 @@ for(var i = 0; i < Elms.length; i++){
       FABElm1.appendChild(el);
     }
     document.body.insertBefore(FABElm1, document.body.lastChild);
-    document.body.classList.add("noScroll");
+    document.body.classList.add("noScroll");*/
   });
 }
 Elms = document.getElementsByTagName("cardView");
