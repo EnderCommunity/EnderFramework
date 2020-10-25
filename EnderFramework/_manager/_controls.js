@@ -1,32 +1,35 @@
 var closeWin_, minWin_, maxWin_;
-var shouldUseSmoothSwitch = false;
 (function(){
   const remote = electron.remote;
   var window = remote.getCurrentWindow(), isMax = true, showCover = function(c = true){
     var tE = document.getElementById("_transitionCover");
-    if(shouldUseSmoothSwitch){
-      tE.style.transitionDuration = 0;
+    if(coverOnMax_){
+      tE.style.transitionDuration = "0s";
       tE.setAttribute("sShow", "");
     }
-    if(shouldUseSmoothSwitch & c){
-      tE.removeAttribute("style");
-      setTimeout(function(){
-        tE.removeAttribute("sShow");
-      }, 200);
-    }
+    setTimeout(function(){
+      if(coverOnMax_ & c){
+        tE.removeAttribute("style");
+        setTimeout(function(){
+          tE.removeAttribute("sShow");
+        }, 200);
+      }
+    }, 50);
   };
   window.on('enter-full-screen', showCover);
   window.on('leave-full-screen', showCover);
-  window.on('maximize', () => {
-    document.documentElement.removeAttribute("window-is-minimized");
-    isMax = true;
-    showCover();
-  });
-  window.on('unmaximize', () => {
-    document.documentElement.setAttribute("window-is-minimized", "");
-    isMax = false;
-    showCover();
-  });
+  setTimeout(function(){
+    window.on('maximize', () => {
+      showCover();
+      document.documentElement.removeAttribute("window-is-minimized");
+      isMax = true;
+    });
+    window.on('unmaximize', () => {
+      showCover();
+      document.documentElement.setAttribute("window-is-minimized", "");
+      isMax = false;
+    });
+  }, 500);
   closeWin_ = function(){
     if(!_shouldWait){
       window.close();
@@ -51,7 +54,7 @@ var shouldUseSmoothSwitch = false;
       })() : (function(){
         window.maximize();
       })();
-    }, 20);
+    }, 50);
   };
   function init(){
     document.getElementById("_minWin").addEventListener("click", minWin_, true);

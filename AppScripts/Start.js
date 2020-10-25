@@ -12,12 +12,18 @@ if(handleSquirrelEvent(app)) {
 //
 var windowType = "normal";
 (function(){
-  const startPath = __dirname.replace("AppScripts", ""), {BrowserWindow} = require("electron-acrylic-window"), notifier =  new WindowsToaster({
+  const startPath = __dirname.replace("AppScripts", ""), {BrowserWindow} = require("electron"), notifier =  new WindowsToaster({
     withFallback: false,
     customPath: undefined
   }), createAWindow = (path_) => {
     storage.setDataPath(path_);
     storage.get('_manifest', function(error, data){
+      //console.log(data.hardware);
+      if(data.hardware.highGPUPerformance){
+        app.commandLine.appendSwitch("--force_high_performance_gpu");
+      }else{
+        app.commandLine.appendSwitch("--force_low_power_gpu");
+      }
       appName = data.name;
       nativeTheme.themeSource = "system";
       if(data.content.colorScheme != null){
@@ -41,6 +47,7 @@ var windowType = "normal";
         serverConnectionURLs[0] = data.server.bugTracking;
         serverConnectionURLs[1] = data.server.feedback;
         serverConnectionURLs[2] = data.server.bugReporting;
+        _coverOnMax = data.content.coverOnMaximize;
         if(_redirectCooldown > 1000){
           console.warn("The maximum value that can be assigned to the redirect animations cooldown is 1000 (1s). The given value (" + _redirectCooldown + ") will be reset to 1000!");
           _redirectCooldown = 1000;
@@ -92,11 +99,12 @@ var windowType = "normal";
             paintWhenInitiallyHidden: true,
             transparent: false,
             titleBarStyle: "customButtonsOnHover",
-            vibrancy: (data.window.type == "acrylic") ? {
+            thickFrame: true
+            /*vibrancy: (data.window.type == "acrylic") ? {
               theme: (nativeTheme.shouldUseDarkColors) ? '#1010107D' : '#f7f7f77D',
               effect: 'acrylic',
               disableOnBlur: false
-            } : false
+            } : false*/
           });
           windowType = data.window.type;
           //const { setVibrancy } = require("electron-acrylic-window");
@@ -148,7 +156,7 @@ var windowType = "normal";
       }, 0);
     });
   };
-  app.commandLine.appendSwitch('--flag-switches-begin');
+  //app.commandLine.appendSwitch('--flag-switches-begin');
   app.commandLine.appendSwitch('--enable-audio-service-sandbox');
   app.commandLine.appendSwitch('--ssl-version-fallback-min', 'tls1.2');
   app.commandLine.appendSwitch('disable-features', 'cookies-without-samesite-must-be-secure');
@@ -161,7 +169,7 @@ var windowType = "normal";
   app.commandLine.appendSwitch("--disable-http2");
   app.commandLine.appendSwitch("--disable-renderer-backgrounding");
   app.commandLine.appendSwitch('--enable-features', 'OverlayScrollbar');
-  app.commandLine.appendSwitch('--flag-switches-end');
+  //app.commandLine.appendSwitch('--flag-switches-end');
   global.enableDevTools = false;
   global.enableSpellcheck = false;
   global.enableWebview = false;
@@ -179,6 +187,7 @@ var windowType = "normal";
   global.serverConnectionURLs = [null, null, null];
   global.appPath = startPath + "Apps\\installed\\";
   global.appName = null;
+  global._coverOnMax = "none";
   for(var i = 0; i < process.argv.length; i++){
     if(process.argv[i].includes("--start=")){
     //if(true){
@@ -260,6 +269,7 @@ var windowType = "normal";
   }/*else if(runOS){
     runOS = null;
   }*/
+  //app.disableHardwareAcceleration();
   app.on("ready", function(){
     if(!done){
     //if(!done && runOS !== null){
@@ -341,7 +351,7 @@ var windowType = "normal";
     app.quit();
   });
   ipcMain.on('data', (event, arg) => {
-    event.returnValue = [enableDevTools, enableSpellcheck, enableJavaScript, enableRedirectAnimations, _redirectCooldown, theme, startPath, enableSplashScreen, theMenuOfTheWindow, infoScreen, appDFTOS, __contextMenu, serverConnectionURLs, appPath, maximizeOnStart_, windowType, enableWebview];
+    event.returnValue = [enableDevTools, enableSpellcheck, enableJavaScript, enableRedirectAnimations, _redirectCooldown, theme, startPath, enableSplashScreen, theMenuOfTheWindow, infoScreen, appDFTOS, __contextMenu, serverConnectionURLs, appPath, maximizeOnStart_, windowType, enableWebview, _coverOnMax];
   });
   /*ipcMain.on('setAcrylicLight', (event, arg) => {
     setVibrancy(win, {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="transition-duration: 0s;">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,8 +41,8 @@
         links[i].setAttribute("href", links[i].getAttribute("href").replace("_default", theme_));
     </script>
   </head>
-  <body window-background>
-    <div id="_topBar" class="topBar" style="display: none;" hideInFullscreen>
+  <body window-background style="transition-duration: 0s;">
+    <div id="_topBar" class="topBar" style="display: none; transition-duration: 0s;" hideInFullscreen>
       <img id="_icon" class="topBar--icon _img" style="display: none;">
       <div id="_title" class="topBar--title" style="display: inline-block;"></div>
       <div id="_menu2" style="display: none;"></div>
@@ -82,20 +82,20 @@
         </div>
       </div>
     </div>
-    <div id="_splash" class="splash" window-background>
+    <div id="_splash" class="splash" window-background style="transition-duration: 0s;">
       <img id="_splash_image" class="_img">
       <text id="_splashText"></text>
     </div>
     <div id="_menu" name="_menus"></div>
-    <webview id="_contentView" hideInFullscreen style="display: none;"></webview>
-    <div id="_cover" class="cover" window-background></div>
-    <div id="__longLoading" class="cover" window-background style="display: none;">
+    <webview id="_contentView" hideInFullscreen style="display: none; transition-duration: 0s;"></webview>
+    <div id="_cover" class="cover" window-background style="transition-duration: 0s;"></div>
+    <div id="__longLoading" class="cover" window-background style="display: none; transition-duration: 0s;">
       <loading></loading>
     </div>
-    <div id="_longLoading" class="cover" window-background style="display: none;">
+    <div id="_longLoading" class="cover" window-background style="display: none; transition-duration: 0s;">
       <loading></loading>
     </div>
-    <div id="_ErrorScreen" window-background style="display: none;">
+    <div id="_ErrorScreen" window-background style="display: none; transition-duration: 0s;">
       <float center pageCenter20>
         <h1 boldText>An error has accured!</h1>
         <h3 lightText>This page has failed to load, the page path might be incorrect.</h3>
@@ -103,7 +103,7 @@
         <button>Go home</button>
       </float>
     </div>
-    <div id="_CrashScreen" window-background style="display: none;">
+    <div id="_CrashScreen" window-background style="display: none; transition-duration: 0s;">
       <float center pagecenter20>
         <h1 boldtext>Oops, something went wrong!</h1>
         <h3 lighttext>The app has crashed! You might want to report this to the app's developers.</h3>
@@ -115,8 +115,8 @@
       <h4>Hello there!</h4>
       <button onclick="document.getElementById('_notification').removeAttribute('show');">Dismiss</button>
     </div>
-    <div id="_contextMenuCover"></div>
-    <div id="_infoScreen" class="animated slideInRight fast-ish" style="display: none;">
+    <div id="_contextMenuCover" style="transition-duration: 0s;"></div>
+    <div id="_infoScreen" class="animated slideInRight fast-ish" style="display: none; transition-duration: 0s;">
       <center>
         <button>Clear data</button>
         <button>Force close</button>
@@ -152,7 +152,7 @@
         <h4>Directory: <text id="_infoScreen_UserHomeDirectory">[Data]</text></h4>
       </div>
     </div>
-    <div id="_webBrowserC" class="animated slideInUp fast" style="display: none;">
+    <div id="_webBrowserC" class="animated slideInUp fast" style="display: none; transition-duration: 0s;">
       <div class="WebBrowser--Bar">
         <icon class="option WebBrowser--Bar-Refresh">refresh</icon>
         <icon class="option WebBrowser--Bar-Back" disabled>arrow_back</icon>
@@ -171,7 +171,7 @@
       <button primary onclick="document.getElementById('_FeedbackBar').style.display = 'none'; showFeedbackScreen();">Give feedback</button>
       <button primary onclick="document.getElementById('_FeedbackBar').style.display = 'none'; _content.focus();">No thanks</button>
     </div>
-    <div id="_COfFeedback" style="display: none;">
+    <div id="_COfFeedback" style="display: none; transition-duration: 0s;">
       <div id="_FeedbackUI" class="animated fadeInUp faster" style="display: none;">
         <h3>What do you think? Give us your opinion. Or maybe, you can suggest something new!</h3>
         <textarea id="_feedbackTextarea" placeholder="You can write your feedback here! Maybe you can just say hi! Ok, maybe not."></textarea>
@@ -179,7 +179,7 @@
         <button onclick="hideFeedbackScreen(); _content.focus();">Cancel</button>
       </div>
     </div>
-    <div id="_COfShare" style="display: none;">
+    <div id="_COfShare" style="display: none; transition-duration: 0s;">
       <div id="_shareUI" class="animated fadeInUp faster" style="display: none;">
         <h2>Share</h2>
         <h3>You're going to share the following content:</h3>
@@ -211,7 +211,7 @@
         <button onclick="hideShareScreen();">Cancel</button>
       </div>
     </div>
-    <div id="_COfCast" style="display: none;">
+    <div id="_COfCast" style="display: none; transition-duration: 0s;">
       <div id="_castUI" class="animated fadeInUp faster" style="display: none;">
         <h2>Cast</h2>
         <h3>Choose a device to start casting:</h3>
@@ -224,6 +224,6 @@
         <button onclick="hideCastScreen(); _content.focus();">Cancel</button>
       </div>
     </div>
-    <div id="_transitionCover"></div>
+    <div id="_transitionCover" style="display: block; transition-duration: 0s;"></div>
   </body>
 </html>

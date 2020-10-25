@@ -151,6 +151,7 @@ appPath = appInfoS[13];
 maximizeOnStart__ = appInfoS[14];
 windowType__ = appInfoS[15];
 enableWebview_ = appInfoS[16];
+coverOnMax_ = appInfoS[17];
 //var currentAppInfo = ipcRenderer.sendSync('data', "");
 global.stopThemeAutoChange = false;
 doneLoadingInfo();

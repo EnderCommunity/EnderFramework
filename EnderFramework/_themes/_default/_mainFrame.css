@@ -179,8 +179,8 @@ body{
   padding: 0px;
   margin: 0px;
   z-index: 1;
-  -webkit-transition-duration: 0ms;
-  transition-duration: 0ms;
+  -webkit-transition-duration: 0s;
+  transition-duration: 0s;
 }
 #_contentView.FSH{
   display: flex;
