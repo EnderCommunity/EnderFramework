@@ -1,17 +1,17 @@
 const showMessageBox_ = function (t, m, d, b){
   var box, title, message, details, buttonsC;
-  document.body.classList.add("noScroll");
+  //document.body.classList.add("noScroll");
   const main = document.createElement("div");
   //main.classList.add("COfAlert", "animated", "fadeIn", "faster");
   main.classList.add("COfAlert");
   const removeF = function(){
     main.outerHTML = "";
-    document.body.classList.remove("noScroll");
+    //document.body.classList.remove("noScroll");
     _content.focus();
   };
   document.body.appendChild(main);
   box = document.createElement("div");
-  box.classList.add("AlertBox", "animated", "fadeInUp", "faster");
+  box.classList.add("AlertBox", "animated", "fadeInUp");
   main.appendChild(box);
   title = document.createElement("text");
   title.classList.add("title");

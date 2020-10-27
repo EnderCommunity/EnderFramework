@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="transition-duration: 0s;">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -172,7 +172,7 @@
       <button primary onclick="document.getElementById('_FeedbackBar').style.display = 'none'; _content.focus();">No thanks</button>
     </div>
     <div id="_COfFeedback" style="display: none; transition-duration: 0s;">
-      <div id="_FeedbackUI" class="animated fadeInUp faster" style="display: none;">
+      <div id="_FeedbackUI" class="animated fadeInUp" style="display: none;">
         <h3>What do you think? Give us your opinion. Or maybe, you can suggest something new!</h3>
         <textarea id="_feedbackTextarea" placeholder="You can write your feedback here! Maybe you can just say hi! Ok, maybe not."></textarea>
         <button primary onclick="SendFeedback(document.getElementById('_feedbackTextarea').value); hideFeedbackScreen(); _content.focus();">Send feedback</button>
@@ -180,7 +180,7 @@
       </div>
     </div>
     <div id="_COfShare" style="display: none; transition-duration: 0s;">
-      <div id="_shareUI" class="animated fadeInUp faster" style="display: none;">
+      <div id="_shareUI" class="animated fadeInUp" style="display: none;">
         <h2>Share</h2>
         <h3>You're going to share the following content:</h3>
         <div id="_shareContent" class="content">[the_content]</div>
@@ -212,7 +212,7 @@
       </div>
     </div>
     <div id="_COfCast" style="display: none; transition-duration: 0s;">
-      <div id="_castUI" class="animated fadeInUp faster" style="display: none;">
+      <div id="_castUI" class="animated fadeInUp" style="display: none;">
         <h2>Cast</h2>
         <h3>Choose a device to start casting:</h3>
         <div class="list">

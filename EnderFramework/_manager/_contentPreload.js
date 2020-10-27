@@ -1,4 +1,5 @@
 if(location.protocol == "file:"){
+  const chromeAlert = alert;
   var windowNum = 0;
   //
   //const oldRequire = require;
@@ -32,7 +33,6 @@ if(location.protocol == "file:"){
         b[i].onclick = b[i].onclick.toString();
     ipcRenderer.sendToHost('enderframework--dialogs-messagebox', [t, m, d, b]);
   };
-  const chromeAlert = alert;
   global.alert = function(t = null, m = null, callback = function(){}){
     if(m == null){
       m = t;
@@ -558,6 +558,7 @@ if(location.protocol == "file:"){
       f();
     }
   };
+  const currentWindow = require("electron").remote.getCurrentWindow();
   //
   var vm = process.versions;
   vm.process = process.version;
@@ -868,6 +869,17 @@ if(location.protocol == "file:"){
       }
     },
     window: {
+      on: function(event, callback){
+        if(event == "enter-lock-mode"){
+          EnderFramework.receiver.on("enter-lock-mode", callback);
+        }else if(event == "leave-lock-mode"){
+          EnderFramework.receiver.on("leave-lock-mode", callback);
+        }else if(event == "cover-status-changed"){//function([isHidden]){}
+          EnderFramework.receiver.on("cover-status-changed", callback);
+        }else{
+          currentWindow.on(event, callback);
+        }
+      },
       cover: {
         hide: () => {
           ipcRenderer.sendToHost('enderframework--windowcover-hide');
@@ -943,6 +955,9 @@ if(location.protocol == "file:"){
           ipcRenderer.sendToHost('enderframework--menu-show');
         }
       },
+      setTitle: function(v){
+        ipcRenderer.sendToHost('enderframework--title-set', v);
+      },
       topBar: {
         setColor: function(c){
           ipcRenderer.sendToHost('enderframework--menu-color', c);
@@ -953,9 +968,14 @@ if(location.protocol == "file:"){
           },
           show: function(){
             ipcRenderer.sendToHost('enderframework--title-show');
+          }
+        },
+        icon: {
+          hide: function(){
+            ipcRenderer.sendToHost('enderframework--icon-hide');
           },
-          set: function(v){
-            ipcRenderer.sendToHost('enderframework--title-set', v);
+          show: function(){
+            ipcRenderer.sendToHost('enderframework--icon-show');
           }
         }
       }
@@ -977,6 +997,7 @@ if(location.protocol == "file:"){
         }
         //
         dialog_(title, message, detail, buttons);
+        return ENDERFRAMEWORK_ENVIRONMENT.closeDialogs;
         //
       },
       appInfoScreen: () => {
@@ -1253,13 +1274,22 @@ if(location.protocol == "file:"){
     }
   });
   //
+  global.chromeAlert = chromeAlert;
   //The ENVIRONMENT object
   global.ENDERFRAMEWORK_ENVIRONMENT = {
     original:{
-      alert: chromeAlert
+      alert: function(text){
+        return chromeAlert(text);
+      }
     },
     ReceiverEnabled: true,
     events: {},
+    /*addEventListener: function(channel, callback){
+      if(this.events[channel] == undefined){
+        this.events[channel] = [];
+      }
+      this.events[channel][this.events[channel].length] = callback;
+    },*/
     EventReceiver: function(channel, data){
       if(this.ReceiverEnabled){
         if(this.events[channel] != undefined){
@@ -1301,6 +1331,9 @@ if(location.protocol == "file:"){
       done: () => {
         ipcRenderer.sendToHost('enderframework--waitbeforeclosing-done');
       }
+    },
+    closeDialogs: () => {
+      ipcRenderer.sendToHost('enderframework--dialogs-close');
     }
   };
   //ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton[ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton.length];//

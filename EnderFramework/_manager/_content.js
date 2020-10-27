@@ -289,11 +289,18 @@ document.addEventListener("DOMContentLoaded", function(){
           content.executeJavaScript(Media);
         }else if(event.channel == "enderframework--windowcover-hide"){
           window.cover.hide();
+          _content.executeJavaScript(`ENDERFRAMEWORK_ENVIRONMENT.EventReceiver("cover-status-changed", true);`)
         }else if(event.channel == "enderframework--windowcover-show"){
           window.cover.show();
+          _content.executeJavaScript(`ENDERFRAMEWORK_ENVIRONMENT.EventReceiver("cover-status-changed", false);`)
         }else if(event.channel == "enderframework--dialogs-messagebox"){
           event.args = event.args[0];
           showMessageBox_(event.args[0], event.args[1], event.args[2], event.args[3]);
+        }else if(event.channel == "enderframework--dialogs-close"){
+          var alerts = document.getElementsByClassName("COfAlert");
+          for(var i = 0; i < alerts.length; i++){
+            alerts[i].outerHTML = "";
+          }
         }else if(event.channel == "enderframework--lockmode-enter"){
           lockCurrentWindow();
         }else if(event.channel == "enderframework--lockmode-leave"){
@@ -418,12 +425,24 @@ document.addEventListener("DOMContentLoaded", function(){
           document.getElementById("_topBar").style.background = event.args;
         }else if(event.channel == "enderframework--title-show"){
           document.getElementById("_title").style.display = "inline-block";
+        }else if(event.channel == "enderframework--icon-hide"){
+          if(!isSub){
+            document.getElementById("_icon").style.display = "none";
+            document.getElementById("_title").style.marginLeft = "8px";
+          }
+        }else if(event.channel == "enderframework--icon-show"){
+          if(!isSub){
+            document.getElementById("_icon").style.display = "inline-block";
+            document.getElementById("_title").style.marginLeft = "0px";
+          }
         }else if(event.channel == "enderframework--title-hide"){
           if(!isSub)
             document.getElementById("_title").style.display = "none";
         }else if(event.channel == "enderframework--title-set"){
-          if(!isSub)
+          if(!isSub){
             document.getElementById("_title").innerHTML = event.args;
+            document.getElementsByTagName("title")[0].innerHTML = event.args;
+          }
         }else if(event.channel == "enderframework--menu-hide"){
           if(_menuContent.type == "menu"){
             document.getElementById("_menu2").style.display = "none";

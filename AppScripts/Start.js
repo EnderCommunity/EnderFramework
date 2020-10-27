@@ -12,14 +12,14 @@ if(handleSquirrelEvent(app)) {
 //
 var windowType = "normal";
 (function(){
-  const startPath = __dirname.replace("AppScripts", ""), {BrowserWindow} = require("electron"), notifier =  new WindowsToaster({
+  const startPath = __dirname.replace("AppScripts", ""), {BrowserWindow} = require("electron-acrylic-window"), notifier =  new WindowsToaster({
     withFallback: false,
     customPath: undefined
   }), createAWindow = (path_) => {
     storage.setDataPath(path_);
     storage.get('_manifest', function(error, data){
       //console.log(data.hardware);
-      if(data.hardware.highGPUPerformance){
+      if(data.hardware != undefined && data.hardware.highGPUPerformance){
         app.commandLine.appendSwitch("--force_high_performance_gpu");
       }else{
         app.commandLine.appendSwitch("--force_low_power_gpu");
@@ -99,12 +99,11 @@ var windowType = "normal";
             paintWhenInitiallyHidden: true,
             transparent: false,
             titleBarStyle: "customButtonsOnHover",
-            thickFrame: true
-            /*vibrancy: (data.window.type == "acrylic") ? {
-              theme: (nativeTheme.shouldUseDarkColors) ? '#1010107D' : '#f7f7f77D',
+            vibrancy: (data.window.type == "acrylic") ? {
+              theme: (nativeTheme.shouldUseDarkColors) ? '#10101003' : '#f7f7f703',
               effect: 'acrylic',
               disableOnBlur: false
-            } : false*/
+            } : false
           });
           windowType = data.window.type;
           //const { setVibrancy } = require("electron-acrylic-window");
@@ -112,8 +111,8 @@ var windowType = "normal";
           if(data.window.type != "acrylic")
             win.setBackgroundColor((nativeTheme.shouldUseDarkColors) ? '#151515' : '#F5F5F5');
           //
-          //win.webContents.openDevTools({mode:'undocked'});
-          win.webContents.openDevTools({mode: 'docked'});
+          win.webContents.openDevTools({mode:'undocked'});
+          //win.webContents.openDevTools({mode: 'docked'});
           //win.webContents.openDevTools();
           win.hide();
           win.startPath = startPath;
@@ -189,11 +188,11 @@ var windowType = "normal";
   global.appName = null;
   global._coverOnMax = "none";
   for(var i = 0; i < process.argv.length; i++){
-    if(process.argv[i].includes("--start=")){
-    //if(true){
+    //if(process.argv[i].includes("--start=")){
+    if(true){
       done = true;
-      var appID = process.argv[i].replace(/\s/g, '').substring(8), length = appID.replace(/[^.]/g, "").length;
-      //var appID = "com.enderadel.test", length = appID.replace(/[^.]/g, "").length;
+      //var appID = process.argv[i].replace(/\s/g, '').substring(8), length = appID.replace(/[^.]/g, "").length;
+      var appID = "com.enderadel.test", length = appID.replace(/[^.]/g, "").length;
       //var appID = "com.enderadel.test2", length = appID.replace(/[^.]/g, "").length;
       //var appID = "com.enderadel.CommandPrompt", length = appID.replace(/[^.]/g, "").length;
       for(var i2 = 0; i2 <= length; i2++){

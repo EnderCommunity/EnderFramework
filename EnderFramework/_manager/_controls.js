@@ -22,14 +22,27 @@ var closeWin_, minWin_, maxWin_;
     window.on('maximize', () => {
       showCover();
       document.documentElement.removeAttribute("window-is-minimized");
+      //document.documentElement.removeAttribute("window-is-hidden");
       isMax = true;
     });
     window.on('unmaximize', () => {
       showCover();
       document.documentElement.setAttribute("window-is-minimized", "");
+      //document.documentElement.removeAttribute("window-is-hidden");
       isMax = false;
     });
   }, 500);
+  window.on('blur', () => {
+    document.documentElement.setAttribute("window-is-blurred", "");
+  });
+  window.on('focus', () => {
+    document.documentElement.removeAttribute("window-is-blurred");
+  });
+  /*window.on('restore', () => {
+    document.documentElement.setAttribute("window-is-hidden", "");
+    document.documentElement.setAttribute("window-is-minimized", "");
+    //alert(1);
+  });*/
   closeWin_ = function(){
     if(!_shouldWait){
       window.close();
@@ -45,6 +58,7 @@ var closeWin_, minWin_, maxWin_;
   };
   minWin_ = function(){
     window.minimize();
+    //document.documentElement.setAttribute("window-is-hidden", "");
   };
   maxWin_ = function(){
     showCover(false);

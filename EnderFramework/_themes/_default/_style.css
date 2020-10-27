@@ -90,7 +90,6 @@
   --Blur5: rgba(220, 220, 220, 0.7);
   --IconsMainColor: #242424;
   --splashText: #333333;
-  --ClickColor: #c1c1c1;
   --Constrast: 0.9;
 }
 [prefers-color-scheme="dark"]{
@@ -184,7 +183,6 @@
   --Blur5: rgba(19, 19, 19, 0.72);
   --IconsMainColor: #ececec;
   --splashText: #777777;
-  --ClickColor: #1d1d1d;
   --Constrast: 0.8;
 }
 html, body{
@@ -890,13 +888,12 @@ space{
   margin: 0px;
   padding: 0px;
 }
-switch {
+switch{
   display: inline-block;
   margin: 4px;
   width: 68px;
   height: 24px;
   border-radius: 100px;
-  background-color: var(--Color5);
   overflow: hidden;
   border-style: solid;
   border-width: 1px;
@@ -1006,7 +1003,7 @@ cardView card[side], cardView card[side2]{
   opacity: 0.8;
   z-index: 1;
 }
-cardView card::before{
+cardView card:before{
   content: "";
   display: block;
   position: absolute;
@@ -1018,7 +1015,7 @@ cardView card::before{
   -webkit-transition-duration: 0s;
   transition-duration: 0s;
 }
-cardView card[side]::before, cardView card[side2]::before{
+cardView card[side]:before, cardView card[side2]:before{
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
 }
@@ -1033,26 +1030,26 @@ cardView card.cards_center{
   height: 295px;
   top: 0px;
   margin: 19px calc(50vw - 265px);
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
   -webkit-transition: opacity 0.25s;
   transition: opacity 0.25s;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.3s;
 }
 cardView card.cards_left{
   position: absolute;
   left: -500px;
   bottom: 25px;
   z-index: 1;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 cardView card.cards_right{
   position: absolute;
   right: -500px;
   bottom: 25px;
   z-index: 1;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 cardView card.cards_left_{
   position: absolute;

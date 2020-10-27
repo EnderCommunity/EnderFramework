@@ -41,8 +41,10 @@ const mainWindow = electron.remote.getCurrentWindow(), fOL = function(){
   fOL();
   mainWindow.on('blur', fOL);
   //document.addEventListener("mouseout", eLEWAM);
+  _content.executeJavaScript(`ENDERFRAMEWORK_ENVIRONMENT.EventReceiver("enter-lock-mode", null);`);
 }, unlockCurrentWindow = function(){
   mainWindow.removeListener('blur', fOL);
   //document.removeListener("mouseout", eLEWAM);
+  _content.executeJavaScript(`ENDERFRAMEWORK_ENVIRONMENT.EventReceiver("leave-lock-mode", null);`);
   fOU();
 };

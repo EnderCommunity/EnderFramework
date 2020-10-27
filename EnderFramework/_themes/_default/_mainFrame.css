@@ -3,29 +3,48 @@
   --NoiseDisplay: block;
   --WindowBorderDisplay: none;
   --WindowBorderColor: #e0e0e0;
+  --TopBar-BackgroundColor: #d6d6d6;
+  --TopBar-TextColor: #000000;
+  --ClickColor: #6f6f6f60;
 }
 [prefers-color-scheme="dark"]{
   --WindowBackgroundColor: #101010;
-  --WindowBorderColor: ;
   --WindowBorderColor: #3e3e3e;
+  --TopBar-BackgroundColor: #0e0e0e;
+  --TopBar-TextColor: #ffffff;
+  --ClickColor: #3c3c3c60;
 }
 [window-type="acrylic"]{
-  --WindowBackgroundColor: transparent;
+  --WindowBackgroundColor: #f7f7f760;
   --NoiseDisplay: none;
+  --WindowBorderColor: #777777;
+  --TopBar-BackgroundColor: transparent;
+  --ClickColor: #c7c7c7b5;
+}
+[prefers-color-scheme="dark"][window-type="acrylic"]{
+  --WindowBackgroundColor: #10101060;
+  --WindowBorderColor: #333333;
+  --ClickColor: #3c3c3ce6;
+}
+[window-type="acrylic"][window-is-blurred]{
+  --WindowBackgroundColor: #f7f7f780;
+}
+[prefers-color-scheme="dark"][window-type="acrylic"][window-is-blurred]{
+  --WindowBackgroundColor: #10101080;
 }
 [window-is-minimized]{
   --WindowBorderDisplay: block;
 }
 *{
-  -webkit-transition-duration: 200ms;
-  transition-duration: 200ms;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 html{
   padding: 0px;
   margin: 0px;
   overflow: hidden;
   background-color: var(--WindowBackgroundColor);
-  background: var(--WindowBackgroundColor);
+  transition: background-color 0.2s;
 }
 html:after{
   content: "";
@@ -59,8 +78,10 @@ body{
   height: 36px;
   -webkit-user-select: none;
   -webkit-app-region: drag;
-  background-color: var(--Color5);
-  color: var(--Color11);
+  /*background-color: var(--Color5);*/
+  background-color: var(--TopBar-BackgroundColor);
+  /*color: var(--Color11);*/
+  color: var(--TopBar-TextColor);
   overflow: hidden;
   -webkit-transition-duration: 0ms;
   transition-duration: 0ms;
@@ -1021,6 +1042,8 @@ body{
   -webkit-box-shadow: 0px 1px 16px 0px var(--Color8);
   box-shadow: 0px 8px 28px 4px var(--Color8);
   padding: 28px 36px;
+  -webkit-animation-duration: 0.2s;
+  animation-duration: 0.2s
 }
 #_shareUI{
   height: 500px;
@@ -1161,11 +1184,12 @@ body{
   text-align: center;
   padding-top: 48px;
   padding-bottom: 58px;
-
   border-radius: 12px;
   background-color: var(--Color6);
   -webkit-box-shadow: 0px 1px 16px 0px var(--Color8);
   box-shadow: 0px 8px 28px 4px var(--Color8);
+  -webkit-animation-duration: 0.2s;
+  animation-duration: 0.2s
 }
 .COfAlert .AlertBox .title{
   font-size: 30px;
