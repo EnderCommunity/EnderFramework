@@ -36,6 +36,7 @@
     "monaco-editor": "^0.21.2",
     "mv": "^2.1.1",
     "node-gyp": "^7.1.2",
+    "node-iframe": "^1.5.10",
     "node-notifier": "^8.0.0",
     "opn": "^6.0.0",
     "rage-edit": "^1.2.0",
@@ -43,7 +44,7 @@
     "rimraf": "^3.0.2",
     "terser": "^5.3.8",
     "unzipper": "^0.10.11",
-    "v8-compile-cache": "^2.1.1"
+    "v8-compile-cache": "^2.2.0"
   },
   "license": "MIT",
   "description": "EnderServices installs and runs EnderFramework apps!",

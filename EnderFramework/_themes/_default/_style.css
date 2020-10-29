@@ -2271,6 +2271,9 @@ body:hover .scrollBar--main{
 .EnderFramework---scrollBar--main:hover .EnderFramework---scrollBar--main-submain .EnderFramework---scrollBar--main-submainbar, .EnderFramework---scrollBar--main:active .EnderFramework---scrollBar--main-submain .EnderFramework---scrollBar--main-submainbar{
   border-radius: 4px;
 }*/
+x-view{
+  display: inline-flex;
+}
 
 
 
@@ -2357,3 +2360,7 @@ body{
   background-image: var(--BlurNoise);
   opacity: 0.16;
 }
+/**{
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 5000px;
+}*/

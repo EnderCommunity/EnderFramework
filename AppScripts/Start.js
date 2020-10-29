@@ -12,12 +12,13 @@ if(handleSquirrelEvent(app)) {
 //
 var windowType = "normal";
 (function(){
-  const startPath = __dirname.replace("AppScripts", ""), {BrowserWindow} = require("electron-acrylic-window"), notifier =  new WindowsToaster({
+  const startPath = __dirname.replace("AppScripts", ""), notifier =  new WindowsToaster({
     withFallback: false,
     customPath: undefined
   }), createAWindow = (path_) => {
     storage.setDataPath(path_);
     storage.get('_manifest', function(error, data){
+      const {BrowserWindow} = (data.window.type == "acrylic") ? require("electron-acrylic-window") : require("electron");
       //console.log(data.hardware);
       if(data.hardware != undefined && data.hardware.highGPUPerformance){
         app.commandLine.appendSwitch("--force_high_performance_gpu");
@@ -105,11 +106,12 @@ var windowType = "normal";
               disableOnBlur: false
             } : false
           });
+          win.setOverlayIcon(path.join(path_, "\\resources\\_icon.ico"), data.name);
           windowType = data.window.type;
           //const { setVibrancy } = require("electron-acrylic-window");
           console.log(data.window.type);
           if(data.window.type != "acrylic")
-            win.setBackgroundColor((nativeTheme.shouldUseDarkColors) ? '#151515' : '#F5F5F5');
+            win.setBackgroundColor((nativeTheme.shouldUseDarkColors) ? '#101010' : '#f7f7f7');
           //
           //win.webContents.openDevTools({mode:'undocked'});
           //win.webContents.openDevTools({mode: 'docked'});
@@ -272,6 +274,7 @@ var windowType = "normal";
   app.on("ready", function(){
     if(!done){
     //if(!done && runOS !== null){
+      const {BrowserWindow} = require("electron")
       let overlayWindow = new BrowserWindow({
         title: "EnderServices",
         show: false,

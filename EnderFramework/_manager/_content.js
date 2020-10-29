@@ -2,6 +2,7 @@
 const path = require("path");
 var windowsArray = {};
 document.addEventListener("DOMContentLoaded", function(){
+  const icon__ = document.getElementById("_icon");
   window.cover = document.getElementById("_transitionCover");
   window.cover.show = function(){
     this.setAttribute("show", "");
@@ -58,25 +59,25 @@ document.addEventListener("DOMContentLoaded", function(){
         if(e.isMainFrame && first){
           first = false;
           doneLoadingInfo();
-        }else if(e.isMainFrame){
+        }/*else if(e.isMainFrame){
           isMainLoad = false;
-        }
+        }*/
       });
       /*content.addEventListener('blur', () => {
         //console.log(Math.round());
         document.removeContextMenus();
       });*/
-      content.addEventListener('will-navigate', function(){
+      /*content.addEventListener('will-navigate', function(){
         isMainLoad = true;
-      });
+      });*/
       content.addEventListener('did-start-loading', function(){
-        if(isMainLoad == true){
+        if(cotnent.isLoadingMainFrame()){
           document.getElementById("_cover").style.display = "block";
         }
       });
-      content.addEventListener('did-finish-loading', function(){
+      /*content.addEventListener('did-finish-loading', function(){
         isMainLoad = false;
-      });
+      });*/
       var showSrrorScreen = function(){
         document.getElementById("_cover").style.display = "block";
         document.getElementById("_ErrorScreen").style.display = "block";
@@ -132,7 +133,19 @@ document.addEventListener("DOMContentLoaded", function(){
         if(event.channel == "event--startLoading"){
           var elem = document.getElementById("_longLoading");
           elem.style.display = "block";
-        }else if(event.channel == "event--doneLoading"){
+        }/*else if(event.channel == "enderframework--xview-create"){
+          event.args = event.args[0];
+          var id = event.args[0], cData = event.args[1];
+          createNewView(id, cData, "https://example.com");
+        }else if(event.channel == "enderframework--xview-update"){
+          event.args = event.args[0];
+          var id = event.args[0], cData = event.args[1];
+          updateView(id, cData, "https://example.com");
+        }else if(event.channel == "enderframework--xview-remove"){
+          event.args = event.args[0];
+          var id = event.args[0], cData = event.args[1];
+          console.log(id, cData);
+        }*/else if(event.channel == "event--doneLoading"){
           var elem = document.getElementById("_longLoading");
           if(redirectAnimations_){
             content.classList.remove("animated", "fadeInUp2", "fast-ish");
@@ -308,9 +321,11 @@ document.addEventListener("DOMContentLoaded", function(){
         }else if(event.channel == "enderframework--theme-changetolight"){
           stopThemeAutoChange = true;
           document.documentElement.setAttribute("prefers-color-scheme", "light");
+          changeIcons(true);
         }else if(event.channel == "enderframework--theme-changetodark"){
           stopThemeAutoChange = true;
           document.documentElement.setAttribute("prefers-color-scheme", "dark");
+          changeIcons(false);
         }else if(event.channel == "enderframework--theme-changeunlock"){
           stopThemeAutoChange = false;
         }else if(event.channel == "enderframework--share-show"){

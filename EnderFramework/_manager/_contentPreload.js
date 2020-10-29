@@ -1,4 +1,5 @@
 if(location.protocol == "file:"){
+  const _xView = require('./_xView');
   const chromeAlert = alert;
   var windowNum = 0;
   //
@@ -46,6 +47,8 @@ if(location.protocol == "file:"){
   };
   //
   document.addEventListener("DOMContentLoaded", function(event){
+    _xView();
+    //
     /*
     var scrollbars = require(path.join(__dirname, "_bars.js"));
     scrollbars.page();
@@ -566,6 +569,19 @@ if(location.protocol == "file:"){
   //
   //
   global.EnderFramework = {
+    app: {
+      /*
+      pingToTaskbar: () => {
+        //
+      },
+      pingToDock: () => {
+        //
+      },
+      createShortcut: () => {
+        //
+      }
+      */
+    },
     versions: vm,
     page: {
       redirect: url => {
@@ -869,6 +885,9 @@ if(location.protocol == "file:"){
       }
     },
     window: {
+      flash: function(shouldEnable){
+        currentWindow.flashFrame(shouldEnable);
+      },
       on: function(event, callback){
         if(event == "enter-lock-mode"){
           EnderFramework.receiver.on("enter-lock-mode", callback);

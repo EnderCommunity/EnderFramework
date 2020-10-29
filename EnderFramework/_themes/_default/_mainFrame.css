@@ -5,26 +5,30 @@
   --WindowBorderColor: #e0e0e0;
   --TopBar-BackgroundColor: #d6d6d6;
   --TopBar-TextColor: #000000;
-  --ClickColor: #6f6f6f60;
+  --ClickColor: #ffffff66;
+  --TopBar-Opacity: 1;
 }
 [prefers-color-scheme="dark"]{
   --WindowBackgroundColor: #101010;
   --WindowBorderColor: #3e3e3e;
   --TopBar-BackgroundColor: #0e0e0e;
   --TopBar-TextColor: #ffffff;
-  --ClickColor: #3c3c3c60;
+  --ClickColor: #a0a0a04a;
 }
 [window-type="acrylic"]{
   --WindowBackgroundColor: #f7f7f760;
   --NoiseDisplay: none;
   --WindowBorderColor: #777777;
   --TopBar-BackgroundColor: transparent;
-  --ClickColor: #c7c7c7b5;
+  --ClickColor: #d0d0d0;
 }
 [prefers-color-scheme="dark"][window-type="acrylic"]{
   --WindowBackgroundColor: #10101060;
   --WindowBorderColor: #333333;
-  --ClickColor: #3c3c3ce6;
+  --ClickColor: #8a8a8a;
+}
+[window-is-blurred]{
+  --TopBar-Opacity: 0.8;
 }
 [window-type="acrylic"][window-is-blurred]{
   --WindowBackgroundColor: #f7f7f780;
@@ -86,6 +90,7 @@ body{
   -webkit-transition-duration: 0ms;
   transition-duration: 0ms;
   z-index: 200;
+  opacity: var(--TopBar-Opacity);
 }
 .topBar--icon{
   width: 24px;
