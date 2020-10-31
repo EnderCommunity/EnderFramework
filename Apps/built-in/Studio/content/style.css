@@ -987,10 +987,16 @@ input.input{
   height: calc(100% - 200px);
   overflow-x: hidden;
   overflow-y: scroll;
+  max-height: calc(100vh - 300px);
 }
-#_newProjectLayout button{
+#_newProjectLayout .COfButtons{
   position: absolute;
   right: 100px;
+  bottom: 40px;
+}
+#_newProjectLayout .COfButtons button{
+  position: relative;
+  display: inline-block;
 }
 #_newProjectLayout .COfTemplates .sC{
   position: relative;
@@ -1012,6 +1018,9 @@ input.input{
   border-radius: 6px;
   height: fit-content;
   cursor: pointer;
+}
+#_newProjectLayout .COfTemplates .template[name=selectedTemplate]{
+  background-color: var(--Color7);
 }
 #_newProjectLayout .COfTemplates .template:hover{
   background-color: var(--Color5);

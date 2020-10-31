@@ -567,10 +567,26 @@ if(location.protocol == "file:"){
   vm.process = process.version;
   vm.framework = require("electron").remote.app.getVersion();
   //
+  //const {c, cpp, node, python, java} = require('compile-run');
+  //
+  //
   //
   global.EnderFramework = {
+    /*accounts: {
+      authenticate: function(){
+        //
+      },
+      getCurrentAccount: function(){
+        //
+      },
+      signIn: function(){
+        //
+      },
+      signUp: function(){
+        //
+      }
+    },
     app: {
-      /*
       pingToTaskbar: () => {
         //
       },
@@ -580,8 +596,8 @@ if(location.protocol == "file:"){
       createShortcut: () => {
         //
       }
-      */
-    },
+    },*/
+    os: require("./_os.js"),
     versions: vm,
     page: {
       redirect: url => {
@@ -1033,12 +1049,11 @@ if(location.protocol == "file:"){
       }
     },
     process: {
-      /*report: function(){
-        //With photos
-      },
-      feedback: function(){
-        //With photos
-      },*/
+      /*c: c,
+      cpp: cpp,
+      node: node,
+      python: python,
+      java: java,*/
       folder: function(){
         return f;
       },

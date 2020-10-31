@@ -1,0 +1,1 @@
+global.osInfo = require("./_os.js");

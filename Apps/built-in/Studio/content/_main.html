@@ -116,27 +116,53 @@
       </div>
     </div>
     <div id="_newProjectLayout" style="display: none;">
-      <h1>Create a new project</h1>
-      <h3>Choose a template to start with!</h3>
-      <div class="COfTemplates">
-        <div class="template" id="_blankTemplate">
-          <img>
-          <div class="sC">
-            <text class="title">Empty Project</text>
-            <text class="desc">Start from scratch! This template does not provide any starting files except for the "_main" file.</text>
-            <badge>Windows</badge>
-            <!--<badge>Windows 10</badge>-->
-            <badge>macOS</badge>
-            <badge>Linux</badge>
-            <!--<badge>Android</badge>
-            <badge>iOS</badge>
-            <badge>Chrome OS</badge>
-            <badge>The Web</badge>-->
+      <div id="_projectType">
+        <h1>Create a new project</h1>
+        <h3>Choose a template to start with!</h3>
+        <div class="COfTemplates">
+          <div class="template" id="_blankTemplate" type="Blank App">
+            <img>
+            <div class="sC">
+              <text class="title">Empty Project</text>
+              <text class="desc">Start from scratch! This template does not provide any starting files except for the "_main" file.</text>
+              <badge>Windows</badge>
+              <!--<badge>Windows 10</badge>-->
+              <badge>macOS</badge>
+              <badge>Linux</badge>
+              <!--<badge>Android</badge>
+              <badge>iOS</badge>
+              <badge>Chrome OS</badge>
+              <badge>The Web</badge>-->
+            </div>
           </div>
+          <center class="note">More templates are coming soon...</center>
         </div>
-        <center class="note">More templates are coming soon...</center>
+        <div class="COfButtons">
+          <button id="_goBackHome">Cancel</button>
+          <button id="_newNextStep1" primary>Next</button>
+        </div>
       </div>
-      <button id="_goBackHome">Cancel</button>
+      <div id="_projectConfiguration" style="display: none;">
+        <h1>Configure your project</h1>
+        <h3 id="_currentPorjectType">[ProjectType]</h3>
+        <br>
+        <h4>Project Name</h4>
+        <input type="text" value="My Project">
+        <h4>Framework</h4>
+        <select>
+          <option selected>EnderFramework Master</option>
+          <option disabled>EnderFramework Pre-Alpha</option>
+          <option disabled>EnderFramework Alpha</option>
+          <option disabled>EnderFramework Pre-Beta</option>
+          <option disabled>EnderFramework Beta</option>
+          <option disabled>EnderFramework Pre-Release</option>
+          <option disabled>EnderFramework 1.0</option>
+        </select>
+        <div class="COfButtons">
+          <button id="_goBack1">Back</button>
+          <button id="_createProject" primary>Create</button>
+        </div>
+      </div>
     </div>
     <script>
       var nodeRequire = global.require;
@@ -168,5 +194,6 @@
     <script type="text/javascript" src="./projectFinder.js"></script>
     <script type="text/javascript" src="./newProject.js"></script>
     <script type="text/javascript" src="./homeMenu.js"></script>
+    <script type="text/javascript" src="./templates.js"></script>
   </body>
 </html>

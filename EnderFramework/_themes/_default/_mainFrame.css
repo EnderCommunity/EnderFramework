@@ -466,7 +466,7 @@ body{
 }*/
 .contextMenu{
   position: fixed;
-  z-index: 150;
+  z-index: 301;
   top: 200px;
   left: 180px;
   min-width: 240px;
@@ -603,7 +603,7 @@ body{
 }
 #_contextMenuCover{
   position: fixed;
-  z-index: 150;
+  z-index: 300;
   top: 0px;
   right: 0px;
   left: 0px;
@@ -1047,8 +1047,8 @@ body{
   -webkit-box-shadow: 0px 1px 16px 0px var(--Color8);
   box-shadow: 0px 8px 28px 4px var(--Color8);
   padding: 28px 36px;
-  -webkit-animation-duration: 0.2s;
-  animation-duration: 0.2s
+  -webkit-animation-duration: 0.1s;
+  animation-duration: 0.1s
 }
 #_shareUI{
   height: 500px;
@@ -1193,8 +1193,8 @@ body{
   background-color: var(--Color6);
   -webkit-box-shadow: 0px 1px 16px 0px var(--Color8);
   box-shadow: 0px 8px 28px 4px var(--Color8);
-  -webkit-animation-duration: 0.2s;
-  animation-duration: 0.2s
+  -webkit-animation-duration: 0.1s;
+  animation-duration: 0.1s
 }
 .COfAlert .AlertBox .title{
   font-size: 30px;

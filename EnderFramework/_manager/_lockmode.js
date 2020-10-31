@@ -1,4 +1,4 @@
-const _os = require('os'), isWindows10 = (_os.platform() == "win32" && _os.release() > "10"), lockSystem = require('lock-system');
+//const lockSystem = require('lock-system');
 /*console.log(_os.type()); // "Windows_NT"
 console.log(_os.release()); // "10.0.14393"
 console.log(_os.platform()); // "win32"*/
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
   TWI = document.getElementById("_icon");
 });
 const mainWindow = electron.remote.getCurrentWindow(), fOL = function(){
-  /*if(isWindows10){
+  /*if(osInfo.isWindows10){
     try{
       lockSystem();
       setTimeout(function(){

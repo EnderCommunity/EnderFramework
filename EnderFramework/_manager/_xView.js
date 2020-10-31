@@ -82,7 +82,7 @@ module.exports = function(){
   }
   //
   customElements.define('x-view', xView);
-  for(var i = 0; i < xViewElements.length; i++){
+  /*for(var i = 0; i < xViewElements.length; i++){
     xViewElements[i].inPageID = i;
     //let shadow = xViewElements[i].attachShadow({mode: 'open'});
     const type = xViewElements[i].getAttribute("type");
@@ -134,6 +134,6 @@ module.exports = function(){
     });
     window.onscroll = function(){
       reportChanges(cID);
-    }*/
-  }
+    }*\/
+  }*/
 };

@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function(){
         isMainLoad = true;
       });*/
       content.addEventListener('did-start-loading', function(){
-        if(cotnent.isLoadingMainFrame()){
+        if(content.isLoadingMainFrame()){
           document.getElementById("_cover").style.display = "block";
         }
       });
