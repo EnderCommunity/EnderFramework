@@ -170,6 +170,7 @@ var windowType = "normal";
   app.commandLine.appendSwitch("--disable-http2");
   app.commandLine.appendSwitch("--disable-renderer-backgrounding");
   app.commandLine.appendSwitch('--enable-features', 'OverlayScrollbar');
+  //app.commandLine.appendSwitch('--enable-features', 'ElasticOverscrollWin');
   //app.commandLine.appendSwitch('--flag-switches-end');
   global.enableDevTools = false;
   global.enableSpellcheck = false;

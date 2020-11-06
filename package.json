@@ -10,7 +10,7 @@
     "electron-wix-msi": "^3.0.4"
   },
   "scripts": {
-    "start": "electron .",
+    "start": "electron . --enable-features=ElasticOverscrollWin",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },

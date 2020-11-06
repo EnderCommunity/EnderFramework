@@ -72,6 +72,7 @@ body{
   padding: 0px;
   margin: 0px;
   overflow: hidden;
+  display: inline-flex;
 }
 .topBar{
   position: fixed;
@@ -132,6 +133,11 @@ body{
   font-weight: 300;
   padding-top: 2px;
 }
+.topBar--fullscreen svg, .topBar--max svg, .topBar--min svg, .topBar--close svg{
+  width: 11px;
+  height: 11px;
+  fill: white;
+}
 .topBar--fullscreen{
   padding-top: 5px;
   font-size: 18px;
@@ -139,33 +145,35 @@ body{
 .topBar--fullscreen, .topBar--max{
   right: 48px;
 }
-.topBar--max{
-  font-size: 18px;
-  padding: 3px 0px 0px 0px;
-  padding-top: 5px;
-  font-weight: 100;
-}
 .topBar--min{
   right: 96px;
 }
 .topBar--max[macOS], .topBar--min[macOS], .topBar--close[macOS]{
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
-  margin-top: 6px;
+  width: 16px;
+  height: 16px;
+  margin-right: 12px;
+  margin-top: 10px;
   font-size: 0px;
   background-color: #ffffff;
   border-radius: 100px;
   overflow: hidden;
   padding: 0px;
+  background: #ff5c5c;
+  border: #fb1b1b 1px solid;
+}
+.topBar--max[macOS]:hover, .topBar--min[macOS]:hover, .topBar--close[macOS]:hover{
+  opacity: 0.9;
 }
 .topBar--max[macOS]{
-  right: 30px;
+  right: 64px;
+  background: #00ca56;
+  border: #009e43 1px solid;
 }
 .topBar--min[macOS]{
-  right: 60px;
+  right: 32px;
+  background: #ffbd4c;
+  border: #fda000 1px solid;
 }
-
 .click:hover{
   background-color: var(--ClickColor);
   transition: all 200ms;
@@ -197,16 +205,23 @@ body{
   background-color: transparent;
 }*/
 #_contentView{
-  position: fixed;
+  /*position: fixed;
   top: 36px;
   left: 0px;
   right: 0px;
-  bottom: 0px;
+  bottom: 0px;*/
   padding: 0px;
   margin: 0px;
   z-index: 1;
   -webkit-transition-duration: 0s;
   transition-duration: 0s;
+  /*width: 100%;*/
+  flex: 1 1 auto;
+  width: 100%;
+  border: 0px;
+}
+#_contentView:host{
+  display: flex;
 }
 #_contentView.FSH{
   display: flex;

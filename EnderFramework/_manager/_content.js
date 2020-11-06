@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function(){
           content.executeJavaScript("global.path_ = \"" + appPath.replace(/\\/g, "\\\\") + "\";");
           if(_menuContent.type == "top" || _menuContent.type == "side"){
             setTimeout(function(){
-              content.executeJavaScript("setTimeout(function(){ if(_checkFunction1()){ document.body.insertBefore(document.createElement('space'), document.body.firstChild); } }, 100);");
+              content.executeJavaScript("{if(_checkFunction1()){ document.body.insertBefore(document.createElement('space'), document.body.firstChild); }}");
             }, 100);
           }
         }catch{

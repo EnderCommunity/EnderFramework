@@ -1,6 +1,13 @@
 var closeWin_, minWin_, maxWin_;
 (function(){
   const remote = electron.remote;
+  var maxIcon, unmaxIcon;
+  document.addEventListener("DOMContentLoaded", function(){
+    if(!osInfo.isMacOS){
+      maxIcon = document.getElementById("_unmaxWinIcon");
+      unmaxIcon = document.getElementById("_maxWinIcon");
+    }
+  });
   var window = remote.getCurrentWindow(), isMax = true, showCover = function(c = true){
     var tE = document.getElementById("_transitionCover");
     if(coverOnMax_){
@@ -24,12 +31,22 @@ var closeWin_, minWin_, maxWin_;
       document.documentElement.removeAttribute("window-is-minimized");
       //document.documentElement.removeAttribute("window-is-hidden");
       isMax = true;
+      if(!osInfo.isMacOS){
+        maxIcon.style.display = "inline-block";
+        unmaxIcon.style.display = "none";
+      }
+      document.getElementById("_maxWin").setAttribute("title", "Restore Down");
     });
     window.on('unmaximize', () => {
       showCover();
       document.documentElement.setAttribute("window-is-minimized", "");
       //document.documentElement.removeAttribute("window-is-hidden");
       isMax = false;
+      if(!osInfo.isMacOS){
+        maxIcon.style.display = "none";
+        unmaxIcon.style.display = "inline-block";
+      }
+      document.getElementById("_maxWin").setAttribute("title", "Maximize");
     });
   }, 500);
   window.on('blur', () => {
