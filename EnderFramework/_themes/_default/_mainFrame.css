@@ -205,24 +205,20 @@ body{
   background-color: transparent;
 }*/
 #_contentView{
-  /*position: fixed;
+  position: fixed;
   top: 36px;
   left: 0px;
   right: 0px;
-  bottom: 0px;*/
+  bottom: 0px;
   padding: 0px;
   margin: 0px;
   z-index: 1;
   -webkit-transition-duration: 0s;
   transition-duration: 0s;
-  /*width: 100%;*/
-  flex: 1 1 auto;
-  width: 100%;
-  border: 0px;
 }
-#_contentView:host{
+/*#_contentView:host{
   display: flex;
-}
+}*/
 #_contentView.FSH{
   display: flex;
   top: 0.001px;

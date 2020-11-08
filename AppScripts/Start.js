@@ -62,7 +62,7 @@ var windowType = "normal";
             center: true,
             frame: false,
             show: false,
-            icon: path.join(path_, "\\resources\\_icon.ico"),
+            icon: path.join(path_, "/resources/_icon.ico"),
             //icon: undefined,
             webPreferences: {
               worldSafeExecuteJavaScript: true,
@@ -70,7 +70,7 @@ var windowType = "normal";
               nodeIntegration: true,
               nodeIntegrationInWorker: true,
               nodeIntegrationInSubFrames: true,
-              preload: path.join(startPath, 'EnderFramework\\_manager\\_preload.js'),
+              preload: path.join(startPath, 'EnderFramework/_manager/_preload.js'),
               sandbox: false,//Find a way to change it to true
               enableRemoteModule: true,
               javascript: true,
@@ -106,14 +106,14 @@ var windowType = "normal";
               disableOnBlur: false
             } : false
           });
-          win.setOverlayIcon(path.join(path_, "\\resources\\_icon.ico"), data.name);
+          win.setOverlayIcon(path.join(path_, "/resources/_icon.ico"), data.name);
           windowType = data.window.type;
           //const { setVibrancy } = require("electron-acrylic-window");
           console.log(data.window.type);
           if(data.window.type != "acrylic")
             win.setBackgroundColor((nativeTheme.shouldUseDarkColors) ? '#101010' : '#f7f7f7');
           //
-          //win.webContents.openDevTools({mode:'undocked'});
+          win.webContents.openDevTools({mode:'undocked'});
           //win.webContents.openDevTools({mode: 'docked'});
           //win.webContents.openDevTools();
           win.hide();
@@ -129,7 +129,7 @@ var windowType = "normal";
           //if(data.enable.devTools)
           //  win.webContents.openDevTools();
           win.loadURL(url.format({
-            pathname: path.join(startPath, 'EnderFramework\\_manager\\_window.html'),
+            pathname: path.join(startPath, 'EnderFramework/_manager/_window.html'),
             //pathname: path.join('C:\\Users\\win10\\Desktop\\test\\electron-acrylic-window\\test\\test.html'),
             protocol: "file",
             slashes: true
@@ -187,7 +187,7 @@ var windowType = "normal";
   global.appDFTOS = [];
   global.__contextMenu = true;
   global.serverConnectionURLs = [null, null, null];
-  global.appPath = startPath + "Apps\\installed\\";
+  global.appPath = startPath + "Apps/installed/";
   global.appName = null;
   global._coverOnMax = "none";
   for(var i = 0; i < process.argv.length; i++){
@@ -199,7 +199,7 @@ var windowType = "normal";
       //var appID = "com.enderadel.test2", length = appID.replace(/[^.]/g, "").length;
       //var appID = "com.enderadel.CommandPrompt", length = appID.replace(/[^.]/g, "").length;
       for(var i2 = 0; i2 <= length; i2++){
-        appPath += appID.substring(0, (appID.indexOf(".") > -1) ? appID.indexOf(".") : appID.length) + "\\";
+        appPath += appID.substring(0, (appID.indexOf(".") > -1) ? appID.indexOf(".") : appID.length) + "/";
         appID = appID.substring(appID.indexOf(".") + 1);
       }
       //process.env.NODE_PATH+=':/includes/plugin:/includes/plugin/a';
@@ -207,24 +207,24 @@ var windowType = "normal";
       break;
     }else if(process.argv[i] == "--store"){
       done = true;
-      appPath = startPath + "Apps\\built-in\\Store\\";
+      appPath = startPath + "Apps/built-in/Store/";
       createAWindow(appPath);
       break;
     }else if(process.argv[i] == "--installer"){
     //}else if(true){
       done = true;
-      appPath = startPath + "Apps\\built-in\\Installer\\";
+      appPath = startPath + "Apps/built-in/Installer/";
       createAWindow(appPath);
       break;
     }else if(process.argv[i] == "--studio"){
     //}else if(true){
       done = true;
-      appPath = startPath + "Apps\\built-in\\Studio\\";
+      appPath = startPath + "Apps/built-in/Studio/";
       createAWindow(appPath);
       break;
     }else if(process.argv[i] == "--settings"){
       done = true;
-      appPath = startPath + "Apps\\built-in\\Settings\\";
+      appPath = startPath + "Apps/built-in/Settings/";
       createAWindow(appPath);
       break;
     }
@@ -248,7 +248,7 @@ var windowType = "normal";
   }*/
   if(!done){
   //if(!done && !runOS){
-    appPath = startPath + "Services\\";
+    appPath = startPath + "Services/";
     //start EnderServices background process
     var AutoLaunch = require('auto-launch');
     var autoLauncher = new AutoLaunch({
@@ -283,7 +283,7 @@ var windowType = "normal";
         height: 600, 
         transparent: true,
         frame:false,
-        icon: path.join(appPath, "resources\\_icon.ico"),
+        icon: path.join(appPath, "resources/_icon.ico"),
         webPreferences: {
           devTools: true,
           nodeIntegration: true,
@@ -386,7 +386,7 @@ var windowType = "normal";
     //start background activites
   });
   const createDesktopShortcut = require('create-desktop-shortcuts');
-  const os = require('os'), desktop = os.homedir() + "\\Desktop";
+  const os = require('os'), desktop = os.homedir() + "/Desktop";
   ipcMain.on('createadesktopshortcut', (event, args) => {
     createDesktopShortcut({
       onlyCurrentOS: true,
@@ -407,7 +407,7 @@ var windowType = "normal";
       verbose: true,
       windows: {
         filePath: process.execPath,
-        outputPath: __dirname + "\\Apps\\built-in\\Installer\\shortcuts\\",
+        outputPath: __dirname + "/Apps/built-in/Installer/shortcuts/",
         name: args.name,
         description: args.description,
         icon: args.icon,
@@ -419,7 +419,7 @@ var windowType = "normal";
   });
 })();
 if(!done && done !== null){
-  const createDesktopShortcut_ = require('create-desktop-shortcuts'), os_ = require('os'), desktop_ = os_.homedir() + "\\Desktop";
+  const createDesktopShortcut_ = require('create-desktop-shortcuts'), os_ = require('os'), desktop_ = os_.homedir() + "/Desktop";
   createDesktopShortcut_({
     onlyCurrentOS: true,
     verbose: true,
@@ -428,7 +428,7 @@ if(!done && done !== null){
       outputPath: desktop_,
       name: "EnderSettings",
       description: "",
-      icon: __dirname.replace("\\AppScripts", "") + "\\Apps\\built-in\\Settings\\resources\\_icon.ico",
+      icon: __dirname.replace("\\AppScripts", "") + "/Apps/built-in/Settings/resources/_icon.ico",
       arguments: "--settings",
       windowMode: 'normal',
       comment: 'EnderFramework app'
@@ -442,7 +442,7 @@ if(!done && done !== null){
       outputPath: desktop_,
       name: "EnderStore",
       description: "",
-      icon: __dirname.replace("\\AppScripts", "") + "\\Apps\\built-in\\Store\\resources\\_icon.ico",
+      icon: __dirname.replace("\\AppScripts", "") + "/Apps/built-in/Store/resources/_icon.ico",
       arguments: "--store",
       windowMode: 'normal',
       comment: 'EnderFramework app'
@@ -470,7 +470,7 @@ if(!done && done !== null){
       outputPath: desktop_,
       name: "EnderInstaller",
       description: "",
-      icon: __dirname.replace("\\AppScripts", "") + "\\Apps\\built-in\\Installer\\resources\\_icon.ico",
+      icon: __dirname.replace("\\AppScripts", "") + "/Apps/built-in/Installer/resources/_icon.ico",
       arguments: "--installer",
       windowMode: 'normal',
       comment: 'EnderFramework app'
@@ -498,7 +498,7 @@ if(!done && done !== null){
       outputPath: desktop_,
       name: "EnderStudio",
       description: "",
-      icon: __dirname.replace("\\AppScripts", "") + "\\Apps\\built-in\\Studio\\resources\\_icon.ico",
+      icon: __dirname.replace("\\AppScripts", "") + "/Apps/built-in/Studio/resources/_icon.ico",
       arguments: "--studio",
       windowMode: 'normal',
       comment: 'EnderFramework app'
