@@ -113,7 +113,7 @@ var windowType = "normal";
           if(data.window.type != "acrylic")
             win.setBackgroundColor((nativeTheme.shouldUseDarkColors) ? '#101010' : '#f7f7f7');
           //
-          win.webContents.openDevTools({mode:'undocked'});
+          //win.webContents.openDevTools({mode:'undocked'});
           //win.webContents.openDevTools({mode: 'docked'});
           //win.webContents.openDevTools();
           win.hide();

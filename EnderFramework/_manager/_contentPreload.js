@@ -249,12 +249,17 @@ if(location.protocol == "file:"){
     }, 380);*/
   });
   var isOnCloseEnabled = false, isConfirmBeforeClosingEnabled = false, isConfirmBeforeClosingLocked = false, newF = function(){
-    return __dirname.replace("EnderFramework\\_manager", `Apps\\process\\${(function(){
+    return (__dirname.indexOf("EnderFramework\\_manager") > -1) ? __dirname.replace("EnderFramework\\_manager", `Apps\\process\\${(function(){
       var result = '', characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
       for(var i = 0; i < 6; i++)
         result += characters.charAt(Math.floor(Math.random() * characters.length));
       return result;
-    })()}-${Math.round(Math.random()*10000000000000000000)}\\`);
+    })()}-${Math.round(Math.random()*10000000000000000000)}\\`) : __dirname.replace("EnderFramework/_manager", `Apps/process/${(function(){
+      var result = '', characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+      for(var i = 0; i < 6; i++)
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+      return result;
+    })()}-${Math.round(Math.random()*10000000000000000000)}/`);
   };
   const spawn = require('child_process').spawn, start_process = function(cb = function(){}){
     f = newF();
@@ -274,13 +279,13 @@ if(location.protocol == "file:"){
         done(false);
       }else{
         done();
-        fs.mkdir(f + "executables\\", function(err_){
+        fs.mkdir(path.join(f, "executables"), function(err_){
           if(err_){
             console.error(err_)
             done(false);
           }else{
             done();
-            fs.mkdir(f + "events\\", function(err_){
+            fs.mkdir(path.join(f, "events"), function(err_){
               if(err_){
                 console.error(err_);
                 done(false);
