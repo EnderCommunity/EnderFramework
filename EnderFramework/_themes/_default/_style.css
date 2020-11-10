@@ -90,6 +90,16 @@
   --SelectorOption-BackgroundColor: #dadada;
   --SelectorOption-TextColor: #000000;
   --SelectorOption-BackgroundColorACTIVE: #c3c3c3;
+  --SelectorIndicator-BackgroundColor: #004CC7;
+  --CollapseHeader-TextColor: #000000;
+  --CollapseHeader-LineColor: #cccccc;
+  --Banner-BackgroundColor: #004CC7;
+  --Banner-TextColor: #ffffff;
+  --Table-TextColor: #000000;
+  --Table-BorderColor: #dddddd;
+  --Table-StripColor: #d8d8d8;
+  --Collection-BorderColor: #c3c3c3;
+  --Breadcrumb-BackgroundColor: #004CC7;
   --Color1: #004CC7;
   --Color2: #5596ff;
   --Color3: #002F7A;
@@ -222,6 +232,16 @@
   --SelectorOption-BackgroundColor: #0c0c0c;
   --SelectorOption-TextColor: #ffffff;
   --SelectorOption-BackgroundColorACTIVE: #080808;
+  --SelectorIndicator-BackgroundColor: #003ea0;
+  --CollapseHeader-TextColor: #ffffff;
+  --CollapseHeader-LineColor: #b9b9b9;
+  --Banner-BackgroundColor: #003ea0;
+  --Banner-TextColor: #ffffff;
+  --Table-TextColor: #ffffff;
+  --Table-BorderColor: #dddddd;
+  --Table-StripColor: #101010;
+  --Collection-BorderColor: #080808;
+  --Breadcrumb-BackgroundColor: #003ea0;
   --Color1: #003ea0;
   --Color2: #002F7A;
   --Color3: #0050d2;
@@ -1313,6 +1333,7 @@ hr{
   padding: 0px;
   border-style: solid;
   border-radius: 100px;
+  border-bottom: 0px;
 }
 pad{
   display: block;
@@ -1493,7 +1514,8 @@ selector indicator{
   display: block;
   width: 0px;
   height: 6px;
-  background-color: var(--Color1);
+  /*background-color: var(--Color1);*/
+  background-color: var(--SelectorIndicator-BackgroundColor);
   bottom: 0px;
   right: 0px;
   left: 0px;
@@ -1530,7 +1552,8 @@ collapse header{
   padding: 8px 0px;
   padding-left: 50px;
   height: 34px;
-  color: var(--Color11);
+  /*color: var(--Color11);*/
+  color: var(--CollapseHeader-TextColor);
   cursor: pointer;
 }
 collapse header icon{
@@ -1545,7 +1568,7 @@ collapse header:after{
   display: block;
   position: absolute;
   z-index: 2;
-  background-color: var(--Color28);
+  background-color: var(--CollapseHeader-LineColor);
   width: 97%;
   height: 2px;
   border-radius: 100px;
@@ -1564,45 +1587,52 @@ collapse content{
 }
 banner{
   display: block;
-  background-color: var(--Color1);
+  /*background-color: var(--Color1);*/
+  background-color: var(--Banner-BackgroundColor);
   padding: 28px 62px;
   padding-bottom: 38px;
   text-align: center;
 }
 banner *{
-  color: #FFFFFF;
+  /*color: #FFFFFF;*/
+  color: var(--Banner-TextColor);
 }
 table{
-  color: var(--Color11);
+  /*color: var(--Color11);*/
+  color: var(--Table-TextColor);
   border-collapse: collapse;
 }
 table thead th{
-  border-bottom: 1px solid #ddd;
+  /*border-bottom: 1px solid #dddddd;*/
+  border-bottom: 1px solid var(--Table-BorderColor);
 }
 tr, th, td{
   padding: 16px 4vw;
 }
 table[divide] tr, table[dividers] th, table[dividers] td{
   color: var(--Color11);
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--Table-BorderColor);
 }
 table[strip] tr:nth-child(even){
-  background-color: var(--Color6);
+  /*background-color: var(--Color6);*/
+  background-color: var(--Table-StripColor);
 }
 table[strip] thead *{
   border-bottom: 0px solid transparent;
-  background-color: var(--Color6);
+  /*background-color: var(--Color6);*/
+  background-color: var(--Table-StripColor);
 }
 collection{
   position: relative;
   display: block;
-  border: 1px solid var(--Color8);
+  /*border: 1px solid var(--Color8);*/
+  border: 1px solid var(--Collection-BorderColor);
 }
 collection cheader{
   position: relative;
   display: block;
   padding: 6px 28px;
-  border-bottom: 1px solid var(--Color8);
+  border-bottom: 1px solid var(--Collection-BorderColor);
 }
 collection citem{
   position: relative;
@@ -1611,7 +1641,7 @@ collection citem{
   height: fit-content;
   padding: 1px 28px;
   overflow: hidden;
-  border-bottom: 1px solid var(--Color8);
+  border-bottom: 1px solid var(--Collection-BorderColor);
 }
 collection citem:last-child{
   border-bottom: 0px solid transparent;
@@ -1619,7 +1649,8 @@ collection citem:last-child{
 breadcrumb{
   position: relative;
   display: block;
-  background-color: var(--Color1);
+  /*background-color: var(--Color1);*/
+  background-color: var(--Breadcrumb-BackgroundColor);
   padding: 6px 12px;
   font-size: 20px;
   color: #FFFFFF;
@@ -1659,7 +1690,7 @@ breadcrumb crumb:last-child{
 breadcrumb crumb:last-child:after{
   display: none;
 }
-.tooltip--box{
+.tooltip--box{/* Move this to the mainframe! */
   position: fixed;
   z-index: 100;
   color: var(--Color11);

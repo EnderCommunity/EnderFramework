@@ -624,6 +624,9 @@ if(location.protocol == "file:"){
       }
     },*/
     theme: {
+      /*setColor: () => {
+        //
+      },*/
       mode: {//(!) Change the blur color
         isDark: () => {
           return document.documentElement.getAttribute("prefers-color-scheme") == "dark";
