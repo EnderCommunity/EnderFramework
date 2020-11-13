@@ -7,6 +7,7 @@
   --TopBar-TextColor: #000000;
   --ClickColor: #ffffff66;
   --TopBar-Opacity: 1;
+  --ControlIcon-FillColor: #000000;
 }
 [prefers-color-scheme="dark"]{
   --WindowBackgroundColor: #101010;
@@ -14,16 +15,17 @@
   --TopBar-BackgroundColor: #0e0e0e;
   --TopBar-TextColor: #ffffff;
   --ClickColor: #a0a0a04a;
+  --ControlIcon-FillColor: #ffffff;
 }
 [window-type="acrylic"]{
-  --WindowBackgroundColor: #f7f7f760;
+  --WindowBackgroundColor: #f7f7f766;
   --NoiseDisplay: none;
   --WindowBorderColor: #777777;
   --TopBar-BackgroundColor: transparent;
   --ClickColor: #d0d0d0;
 }
 [prefers-color-scheme="dark"][window-type="acrylic"]{
-  --WindowBackgroundColor: #10101060;
+  --WindowBackgroundColor: #10101066;
   --WindowBorderColor: #333333;
   --ClickColor: #8a8a8a;
 }
@@ -31,10 +33,10 @@
   --TopBar-Opacity: 0.8;
 }
 [window-type="acrylic"][window-is-blurred]{
-  --WindowBackgroundColor: #f7f7f780;
+  --WindowBackgroundColor: #f7f7f799;
 }
 [prefers-color-scheme="dark"][window-type="acrylic"][window-is-blurred]{
-  --WindowBackgroundColor: #10101080;
+  --WindowBackgroundColor: #10101099;
 }
 [window-is-minimized]{
   --WindowBorderDisplay: block;
@@ -136,7 +138,10 @@ body{
 .topBar--fullscreen svg, .topBar--max svg, .topBar--min svg, .topBar--close svg{
   width: 11px;
   height: 11px;
-  fill: white;
+  fill: var(--ControlIcon-FillColor);
+}
+.topBar--close:hover svg, .topBar--close:focus svg{
+  fill: #ffffff;
 }
 .topBar--fullscreen{
   padding-top: 5px;

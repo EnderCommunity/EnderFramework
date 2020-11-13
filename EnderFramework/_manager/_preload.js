@@ -97,6 +97,7 @@ global.TopFramework = {
         document.getElementById("_icon").style.display = "inline-block";
         try{
           document.getElementById("_pageIcon").setAttribute("href", appPath + "resources\\" + path);
+          //win.setIcon(electron.nativeImage.createFromPath(appPath + "resources/" + path));
           win.setIcon(electron.nativeImage.createFromPath(appPath + "resources/" + path));
         }catch{
           console.error("The icon isn't valid!");

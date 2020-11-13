@@ -48,6 +48,14 @@ var closeWin_, minWin_, maxWin_;
       }
       document.getElementById("_maxWin").setAttribute("title", "Maximize");
     });
+    if(!window.isMaximized()){
+      document.documentElement.setAttribute("window-is-minimized", "");
+      maxIcon.style.display = "none";
+      unmaxIcon.style.display = "inline-block";
+    }else{
+      maxIcon.style.display = "inline-block";
+      unmaxIcon.style.display = "none";
+    }
   }, 500);
   window.on('blur', () => {
     document.documentElement.setAttribute("window-is-blurred", "");

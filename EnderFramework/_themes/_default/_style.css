@@ -2461,6 +2461,7 @@ a[Xhref]{
   -webkit-box-shadow: 0px 0px 0px 0px transparent;
   box-shadow: 0px 0px 0px 0px transparent;
   cursor: not-allowed;
+  pointer-events: none;
 }
 [hidden]{
   display: none;

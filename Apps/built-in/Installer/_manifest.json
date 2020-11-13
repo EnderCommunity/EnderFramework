@@ -11,7 +11,7 @@
     "bugReporting": "https://example.com/MyServerFiles/BugReprots.php?message=[0]"
   },
   "window": {
-    "type": "transparent",
+    "type": "acrylic",
     "width": 840,
     "height": 460,
     "minWidth": 840,

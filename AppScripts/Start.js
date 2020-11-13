@@ -106,10 +106,10 @@ var windowType = "normal";
               disableOnBlur: false
             } : false
           });
-          win.setOverlayIcon(electron.nativeImage.createFromPath(path.join(path_, "/resources/_icon.ico")), data.name);
+          //win.setOverlayIcon(electron.nativeImage.createFromPath(path.join(path_, "/resources/_icon.ico")), data.name);
           windowType = data.window.type;
           //const { setVibrancy } = require("electron-acrylic-window");
-          console.log(data.window.type);
+          //console.log(data.window.type);
           if(data.window.type != "acrylic")
             win.setBackgroundColor((nativeTheme.shouldUseDarkColors) ? '#101010' : '#f7f7f7');
           //
