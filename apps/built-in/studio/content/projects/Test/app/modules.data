@@ -1,0 +1,4 @@
+##install `module_name` is used to install a module
+install `unzip` !latest
+##uninstall `module_name` is used to uninstall a module
+uninstall `unzip`

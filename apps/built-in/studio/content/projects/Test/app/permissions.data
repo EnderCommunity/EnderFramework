@@ -1,0 +1,12 @@
+##request `permission_name` is used to request a permission
+request `location`
+request `camera`
+request `microphone`
+request `notifications`
+request `web_access`
+request `usb_devices`
+request `file_editing`
+request `clipboard`
+request `storage`
+##remove `permission_name` is used to remove a permission
+remove `insecure_content`

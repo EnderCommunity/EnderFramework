@@ -1,0 +1,213 @@
+{
+  "name": "EnderStudio",
+  "version": "0.1",
+  "publisher": "EnderAdel",
+  "splashScreen": true,
+  "splashCooldown": 1000,
+  "splashText": "",
+  "server": {
+    "feedback": "https://example.com/MyServerFiles/Feedback.php?message=[0]",
+    "bugTracking": "https://example.com/MyServerFiles/BugsTracking.php?useragent=[0]&appversion=[1]&error=[2]",
+    "bugReporting": "https://example.com/MyServerFiles/BugReprots.php?message=[0]"
+  },
+  "window": {
+    "type": "normal",
+    "width": 1010,
+    "height": 680,
+    "minWidth": 1010,
+    "minHeight": 680,
+    "maxWidth": null,
+    "maxHeight": null,
+    "isFullscreenable": true,
+    "isClosable": true,
+    "isMinimizable": true,
+    "isMaximizable": true,
+    "maximizeOnStart": true,
+    "resizable": true
+  },
+  "content": {
+    "theme": "default",
+    "colorScheme": "system",
+    "redirectAnimations": false,
+    "redirectAnimationsCooldown": 0,
+    "contextMenu": true,
+    "infoScreen": true,
+    "protocol": "store",
+    "cursor": "default"
+  },
+  "enable": {
+    "JavaScript": true,
+    "WebGL": true,
+    "devTools": true,
+    "spellcheck": true
+  },
+  "menu": {
+    "type": "menu",
+    "withAccount": false,
+    "options": {
+      "0": {
+        "title": "File",
+        "dropdown": {
+          "0": {
+            "disable": true,
+            "title": "New File",
+            "function": "DoSomething",
+            "space": true
+          },
+          "1": {
+            "disable": true,
+            "title": "Open Project...",
+            "function": "DoSomething"
+          },
+          "3": {
+            "title": "Save",
+            "function": "_saveCurrentFile"
+          },
+          "4": {
+            "title": "Save As...",
+            "function": "_saveCurrentFileAs"
+          },
+          "5": {
+            "title": "Save All",
+            "function": "_saveAllFiles",
+            "space": true
+          },
+          "6": {
+            "disable": true,
+            "title": "Auto Save",
+            "function": "DoSomething",
+            "space": true
+          },
+          "7": {
+            "disable": true,
+            "title": "New Window",
+            "function": "DoSomething",
+            "space": true
+          },
+          "8": {
+            "disable": true,
+            "title": "Close Editor",
+            "function": "DoSomething"
+          },
+          "9": {
+            "disable": true,
+            "title": "Close Project",
+            "function": "DoSomething"
+          }
+        }
+      },
+      "2": {
+        "title": "Edit",
+        "dropdown": {
+          "0": {
+            "title": "Undo",
+            "function": "_undo"
+          },
+          "1": {
+            "title": "Redo",
+            "function": "_redo",
+            "space": true
+          },
+          "2": {
+            "title": "Cut",
+            "function": "_cut"
+          },
+          "3": {
+            "title": "Copy",
+            "function": "_copy"
+          },
+          "4": {
+            "title": "Paste",
+            "function": "_paste",
+            "space": true
+          },
+          "5": {
+            "title": "Find",
+            "function": "_find"
+          },
+          "6": {
+            "title": "Replace",
+            "function": "_replace",
+            "space": true
+          },
+          "7": {
+            "disable": true,
+            "title": "Find in files",
+            "function": "DoSomething"
+          },
+          "8": {
+            "disable": true,
+            "title": "Replace in files",
+            "function": "DoSomething"
+          }
+        }
+      },
+      "3": {
+        "title": "View",
+        "dropdown": {
+          "0": {
+            "title": "Command Palette...",
+            "function": "_commandPalette",
+            "space": true
+          },
+          "1": {
+            "disable": true,
+            "title": "Terminal",
+            "function": "DoSomething"
+          }
+        }
+      },
+      "4": {
+        "title": "Build",
+        "dropdown": {
+          "0": {
+            "disable": true,
+            "title": "Build an EPK",
+            "function": "DoSomething"
+          },
+          "1": {
+            "disable": true,
+            "title": "Pack into a ZIP",
+            "function": "DoSomething"
+          },
+          "2": {
+            "disable": true,
+            "title": "Build a Store profile",
+            "function": "DoSomething",
+            "space": true
+          },
+          "3": {
+            "disable": true,
+            "title": "Build as a separate Electron app",
+            "function": "DoSomething"
+          }
+        }
+      },
+      "5": {
+        "title": "Run",
+        "dropdown": {
+          "0": {
+            "disable": true,
+            "title": "Start debugging",
+            "function": "DoSomething"
+          },
+          "1": {
+            "disable": true,
+            "title": "Run without debugging",
+            "function": "DoSomething"
+          }
+        }
+      },
+      "6": {
+        "title": "Help",
+        "dropdown": {
+          "0": {
+            "disable": true,
+            "title": "About",
+            "function": "DoSomething"
+          }
+        }
+      }
+    }
+  }
+}

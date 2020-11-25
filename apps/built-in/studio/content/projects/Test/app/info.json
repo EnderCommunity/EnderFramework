@@ -1,0 +1,9 @@
+{
+  "name": "Test",
+  "type": "app",
+  "id": "com.enderadel.test",
+  "publisher": "EnderAdel",
+  "description": "This is a test!",
+  "version": "0.1",
+  "icon": "test.png"
+}

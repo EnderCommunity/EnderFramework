@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches, isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches, isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches, hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified;
+      if(isDarkMode)
+        document.documentElement.setAttribute('prefers-color-scheme', 'dark');
+      else
+        document.documentElement.setAttribute('prefers-color-scheme', 'light');
+      if(!manifest.window.maximizeOnStart)
+        document.documentElement.setAttribute("window-is-minimized", "");
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+    <link rel="stylesheet" id="_mainFrameLink">
+    <link rel="stylesheet" id="_styleLink">
+    <link rel="stylesheet" id="_fontsLink">
+    <link rel="stylesheet" id="_iconsLink">
+    <link rel="stylesheet" href="./../libraries/animateCSS/animate.min.css">
+    <script>
+      document.getElementById("_mainFrameLink").setAttribute("href", `./themes/${manifest.content.theme}/window.css`);
+      document.getElementById("_styleLink").setAttribute("href", `./themes/${manifest.content.theme}/main.css`);
+      document.getElementById("_fontsLink").setAttribute("href", `./themes/${manifest.content.theme}/font.css`);
+      document.getElementById("_iconsLink").setAttribute("href", `./themes/${manifest.content.theme}/icons.css`);
+    </script>
+  </head>
+  <body window-background style="transition-duration: 0s; display: none;">
+    <div id="_topBar" class="topBar" style="transition-duration: 0s; background: transparent;" hideInFullscreen>
+      <img id="_icon" class="topBar--icon _img" clickable style="display: none;">
+      <div id="_title" class="topBar--title" style="display: inline-block;"></div>
+      <script>
+        TopFramework.setTitle(manifest.name);
+        if(isDarkMode)
+          TopFramework.setIcon("icon_dark.png", false);
+        else
+          TopFramework.setIcon("icon_light.png", false);
+      </script>
+      <div id="_menu2" style="display: none;"></div>
+      <div id="_windowControls">
+        <div id="_closeWin" class="topBar--close click_" title="Close">
+          <svg x="0px" y="0px" viewBox="0 0 10.2 10.2">
+            <polygon points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1" />
+          </svg>
+        </div>
+        <div id="_maxWin" name="hideOnSub" class="topBar--max click" title="Restore Down">
+          <svg id="_maxWinIcon" x="0px" y="0px" viewBox="0 0 10.2 10.1" style="display: none;">
+            <path d="M0,0v10.1h10.2V0H0z M9.2,9.2H1.1V1h8.1V9.2z" />
+          </svg>
+          <svg id="_unmaxWinIcon" x="0px" y="0px" viewBox="0 0 10.2 10.1">
+            <path d="M2.1,0v2H0v8.1h8.2v-2h2V0H2.1z M7.2,9.2H1.1V3h6.1V9.2z M9.2,7.1h-1V2H3.1V1h6.1V7.1z" />
+          </svg>
+        </div>
+        <script>
+          var window_MaxButton = document.getElementById("_maxWin"), window_MaxButton_MaxIcon = document.getElementById("_unmaxWinIcon"), window_MaxButton_UnmaxIcon = document.getElementById("_maxWinIcon");
+          if(!manifest.window.maximizeOnStart){
+            window_MaxButton_MaxIcon.style.display = "none";
+            window_MaxButton_UnmaxIcon.style.display = "inline-block";
+            window_MaxButton.setAttribute("title", "Maximize");
+          }
+        </script>
+        <div id="_exitFullscreen" class="topBar--fullscreen click" style="display: none;" title="Exit Fullscreen">↗</div>
+        <div id="_minWin" name="hideOnSub" class="topBar--min click" title="Minimize">
+          <svg x="0px" y="0px" viewBox="0 0 10.2 1">
+            <rect width="10.2" height="1"></rect>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div id="_splash" class="splash" window-background style="transition-duration: 0s; transition: opacity 0.2s linear; opacity: 1; will-change: opacity;">
+      <img id="_splash_image" class="_img">
+      <text id="_splashText"></text>
+    </div>
+    <script>
+      if(!manifest.splashScreen)
+        document.getElementById("_splash").style.display = "none";
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+        setTimeout(function(){
+          document.body.style.display = "block";
+        }, 0);
+      });
+    </script>
+    <div id="_menus" name="_menus" hideInFullscreen>
+      <div id="_topMenu" class="topMenu" blur style="display: none;">
+        <div id="_topMenu_options" class="topMenu--options">
+          <div id="_selector"></div>
+        </div>
+        <div id="_topMenu_account">
+          <div class="profilePicture" style="display: none;"></div>
+        </div>
+      </div>
+      <div id="_topMenuBorder" style="display: none;"></div>
+      <div id="_sideMenu" blur style="display: none;">
+        <h2 id="_sideTitle">Home</h2>
+      </div>
+      <div id="_sideMenuBorder" style="display: none;"></div>
+    </div>
+    <div id="__sideMenu" name="_menus" style="display: none;" hideInFullscreen>
+      <icon id="_sideMenuButton">menu</icon>
+    </div>
+    <div id="_sideMenuCover" name="_menus" style="display: none;" hideInFullscreen></div>
+    <div id="_menu3" name="_menus" class="animated slideInLeft faster" blur style="display: none;" hideInFullscreen>
+      <div class="c"></div>
+      <div id="_sideMenuAccount" class="option account" style="display: none;">
+        <img>
+        <div>
+          <h3>Username</h3>
+          <h4>email@example.com</h4>
+        </div>
+      </div>
+    </div>
+    <div id="_menu" name="_menus"></div>
+    <webview id="_contentView" hideInFullscreen style="transition-duration: 0s;" enableremotemodule="true"></webview>
+    <div id="_cover" class="cover" window-background style="transition-duration: 0s; display: none;"></div>
+    <!--<div id="__longLoading" class="cover" window-background style="display: none; transition-duration: 0s;">
+      <loading></loading>
+    </div>-->
+    <div id="_longLoading" class="cover" window-background style="display: none; transition-duration: 0s;">
+      <loading></loading>
+    </div>
+    <div id="_ErrorScreen" window-background style="display: none; transition-duration: 0s;">
+      <float center pageCenter20>
+        <h1 boldText>An error has accured!</h1>
+        <h3 lightText>This page has failed to load, the page path might be incorrect.</h3>
+        <button id="_errorScreenReloadButton" primary>Reload</button>
+        <button id="_errorScreenHomeButton">Go home</button>
+      </float>
+    </div>
+    <div id="_CrashScreen" window-background style="display: none; transition-duration: 0s;">
+      <float center pagecenter20>
+        <h1 boldtext>Oops, something went wrong!</h1>
+        <h3 lighttext>The app has crashed! You might want to report this to the app's developers.</h3>
+        <button id="_crashCloseButton" primary>Close the app</button>
+        <button id="_crashRestartButton">restart</button>
+      </float>
+    </div>
+    <div id="_notification" class="animated slideInUp faster">
+      <h4>Hello there!</h4>
+      <button onclick="document.getElementById('_notification').removeAttribute('show');">Dismiss</button>
+    </div>
+    <div id="_contextMenuCover" style="transition-duration: 0s; display: none;"></div>
+    <div id="_infoScreen" class="animated slideInRight fast-ish" style="display: none; transition-duration: 0s;">
+      <center>
+        <button>Clear data</button>
+        <button>Force close</button>
+      </center>
+      <br><hr><br>
+      <div class="scroll">
+        <h3>App info:</h3>
+        <h4>App name: <text id="_infoScreen_Name">[Name]</text></h4>
+        <h4>App publisher: <text id="_infoScreen_Publisher">[Publisher]</text></h4>
+        <h4>App version: <text id="_infoScreen_Version">[Version]</text></h4>
+        <br>
+        <h3>Process info:</h3>
+        <h4 style="display: none;">Process type: <text id="_infoScreen_ProcessType">[Version]</text></h4>
+        <h4>EnderFramework version: <text>0.00.1</text></h4>
+        <h4>Electron version: <text id="_infoScreen_ElectronVersion">[Version]</text></h4>
+        <h4>Chrome version: <text id="_infoScreen_ChromeVersion">[Version]</text></h4>
+        <h4>Node version: <text id="_infoScreen_NodeVersion">[Version]</text></h4>
+        <h4>V8 version: <text id="_infoScreen_V8Version">[Version]</text></h4>
+        <h4>Unicode version: <text id="_infoScreen_UnicodeVersion">[Version]</text></h4>
+        <br>
+        <h3>System info:</h3>
+        <h4>Platform: <text id="_infoScreen_Platform">[Data]</text></h4>
+        <h4>Release: <text id="_infoScreen_Release">[Data]</text></h4>
+        <h4>OS type: <text id="_infoScreen_Type">[Data]</text></h4>
+        <h4>The computer's CPUs: <text id="_infoScreen_CPUs">[Data]</text></h4>
+        <h4>The system's memory: <text id="_infoScreen_SystemMemory">[Data]</text></h4>
+        <h4>Load averages: <text id="_infoScreen_LoadAverages">[Data]</text></h4>
+        <h4>Directory for temporary files: <text id="_infoScreen_DirOfTempFiles">[Data]</text></h4>
+        <br>
+        <h3>User info:</h3>
+        <h4>Name: <text id="_infoScreen_Username">[Data]</text></h4>
+        <h4>ID: <text id="_infoScreen_UserID">[Data]</text></h4>
+        <h4>Directory: <text id="_infoScreen_UserHomeDirectory">[Data]</text></h4>
+      </div>
+    </div>
+    <div id="_webBrowserC" class="animated slideInUp fast" style="display: none; transition-duration: 0s;">
+      <div class="WebBrowser--Bar">
+        <icon class="option WebBrowser--Bar-Refresh">refresh</icon>
+        <icon class="option WebBrowser--Bar-Back" disabled>arrow_back</icon>
+        <icon class="option WebBrowser--Bar-Forward" disabled>arrow_forward</icon>
+        <div class="WebBrowser--Bar-Bar">
+          <icon id="_MBrowserConnectionStatus" class="status">https</icon>
+          <text id="_MBrowserURL"></text>
+        </div>
+        <icon class="option WebBrowser--Bar-Close">close</icon>
+      </div>
+      <progress id="_webBrowserProgressBar" style="display: none;"></progress>
+      <webview id="_webBrowserWebview"></webview>
+    </div>
+    <div id="_FeedbackBar" class="animated slideInUp faster" style="display: none;">
+      Are you satisfied with your experience within our app? Give us your feedback!
+      <button primary onclick="document.getElementById('_FeedbackBar').style.display = 'none'; showFeedbackScreen();">Give feedback</button>
+      <button primary onclick="document.getElementById('_FeedbackBar').style.display = 'none'; _content.focus();">No thanks</button>
+    </div>
+    <div id="_COfFeedback" style="display: none; transition-duration: 0s;">
+      <div id="_FeedbackUI" class="animated fadeInUp" style="display: none;">
+        <h3>What do you think? Give us your opinion. Or maybe, you can suggest something new!</h3>
+        <textarea id="_feedbackTextarea" placeholder="You can write your feedback here! Maybe you can just say hi! Ok, maybe not."></textarea>
+        <button primary onclick="SendFeedback(document.getElementById('_feedbackTextarea').value); hideFeedbackScreen(); _content.focus();">Send feedback</button>
+        <button onclick="hideFeedbackScreen(); _content.focus();">Cancel</button>
+      </div>
+    </div>
+    <div id="_COfShare" style="display: none; transition-duration: 0s;">
+      <div id="_shareUI" class="animated fadeInUp" style="display: none;">
+        <h2>Share</h2>
+        <h3>You're going to share the following content:</h3>
+        <div id="_shareContent" class="content">[the_content]</div>
+        <hr>
+        <div class="methods">
+          <!--<div class="option" onclick="hideShareScreen();">
+            <img>
+            <text>Copy text</text>
+          </div>-->
+          <div class="option" onclick="navigator.clipboard.writeText(document.getElementById('_shareContent').textContent); hideShareScreen(); _content.focus();">
+            <icon>content_copy</icon>
+            <text>Copy text</text>
+          </div>
+          <div id="_shareViaEmail" class="option" onclick="hideShareScreen(); _content.focus();">
+            <icon>mail</icon>
+            <text>Email</text>
+          </div>
+          <div id="_twitterShareButton" class="option" onclick="hideShareScreen(); _content.focus();">
+            <img class="_themeSrc" src="./themes/default/icons/share/twitter.svg">
+            <text>Twitter</text>
+          </div>
+          <div id="_redditShareButton" class="option r" onclick="hideShareScreen(); _content.focus();">
+            <img class="_themeSrc" src="./themes/default/icons/share/reddit.svg">
+            <text>Reddit</text>
+          </div>
+        </div>
+        <icon id="_NearbyShareButton" onclick="hideShareScreen();">near_me</icon>
+        <button onclick="hideShareScreen();">Cancel</button>
+      </div>
+    </div>
+    <div id="_COfCast" style="display: none; transition-duration: 0s;">
+      <div id="_castUI" class="animated fadeInUp" style="display: none;">
+        <h2>Cast</h2>
+        <h3>Choose a device to start casting:</h3>
+        <div class="list">
+          <div class="option">
+            <icon>tv</icon>
+            <text>text</text>
+          </div>
+        </div>
+        <button onclick="hideCastScreen(); _content.focus();">Cancel</button>
+      </div>
+    </div>
+    <div id="_transitionCover" style="display: block; transition-duration: 0s;"></div>
+    <style id="_acrylicColors"></style>
+    <script>
+      if(isDarkMode)
+        document.getElementById("_splash_image").setAttribute("src", path.join(manifest.paths.currentApp, "resources", "images", "splash_dark.png"));
+      else
+        document.getElementById("_splash_image").setAttribute("src", path.join(manifest.paths.currentApp, "resources", "images", "splash_light.png"));
+    </script>
+    <script defer type="text/javascript" src="./scripts/elements.js"></script>
+    <script defer type="text/javascript" src="./scripts/global.js"></script>
+    <script defer type="text/javascript" src="./scripts/platform.js"></script>
+    <script defer type="text/javascript" src="./scripts/acrylic.js"></script>
+    <script defer type="text/javascript" src="./scripts/topbar.js"></script>
+    <script defer type="text/javascript" src="./scripts/optimize.js"></script>
+    <script defer type="text/javascript" src="./scripts/controls.js"></script>
+    <script defer type="text/javascript" src="./scripts/dialog.js"></script>
+    <script defer type="text/javascript" src="./scripts/webview.js"></script>
+    <script defer type="text/javascript" src="./scripts/resources.js"></script>
+    <script defer type="text/javascript" src="./scripts/notify.js"></script>
+    <script defer type="text/javascript" src="./scripts/load.js"></script>
+    <script defer type="text/javascript" src="./scripts/loader.js"></script>
+    <script defer type="text/javascript" src="./scripts/contextMenu.js"></script>
+    <script defer type="text/javascript" src="./scripts/contextMenuS.js"></script>
+    <script defer type="text/javascript" src="./scripts/customElements.js"></script>
+    <script defer type="text/javascript" src="./scripts/menu.js"></script>
+    <script defer type="text/javascript" src="./scripts/browser.js"></script>
+    <script defer type="text/javascript" src="./scripts/lockmode.js"></script>
+    <script defer type="text/javascript" src="./scripts/notifications.js"></script>
+    <script defer type="text/javascript" src="./scripts/open.js"></script>
+    <script defer type="text/javascript" src="./scripts/server.js"></script>
+    <script defer type="text/javascript" src="./scripts/share.js"></script>
+    <script defer type="text/javascript" src="./scripts/cast.js"></script>
+    <script defer type="text/javascript" src="./scripts/feedback.js"></script>
+
+    <script defer type="text/javascript" src="./scripts/events.js"></script>
+
+    <script defer type="text/javascript" src="./scripts/theme.js"></script>
+    <script defer type="text/javascript" src="./scripts/info.js"></script>
+    <script defer type="text/javascript" src="./scripts/crash.js"></script>
+    <script defer type="text/javascript" src="./scripts/error.js"></script>
+  </body>
+</html>
