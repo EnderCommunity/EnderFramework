@@ -1,5 +1,5 @@
 # EnderFramework
-EnderFramework is a framework built using Electron than can make it easier to build apps
+EnderFramework is a framework, built using Electron, that can make it easier to build apps!
 
 ## Installation
 To run EnderFramework, you should have [`npm`](https://npmjs.com/) installed on your device. Execute ```npm install``` to install all the modules. And then, after the installation process is done, execute ```npm start```. (You can change the *start.js* to start any app)
