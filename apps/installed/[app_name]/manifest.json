@@ -2,8 +2,8 @@
   "name": "Test",
   "version": "0.1",
   "publisher": "EnderAdel",
-  "splashScreen": false,
-  "splashCooldown": 1000,
+  "splashScreen": true,
+  "splashCooldown": 0,
   "splashText": "Built using EnderStudio!",
   "server": {
     "feedback": "https://example.com/MyServerFiles/Feedback.php?message=[0]",

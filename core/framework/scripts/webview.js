@@ -21,6 +21,7 @@ var isLoading = false, finishedInsertingResources = function(){
     setTimeout(function(){
       updateTopBarColorOnLoad();
       document.hideSplashScreen();
+      _content.style.display = null;
     }, manifest.splashCooldown);
   }
 };
