@@ -1,13 +1,12 @@
 # EnderFramework
 EnderFramework is a framework, built using [Electron](https://electronjs.org), that can make it easier to build apps!
 
+You can find more about this framework in [`here`](https://enderadel.net/EnderFramework)!
+
 *Follow [@EnderAdel](https://twitter.com/EnderAdel) on Twitter to keep yourself up-to-date on everything related to the framework.*
 
 ## Installation
-To run EnderFramework, you should have [NodeJS](https://nodejs.org/) installed on your device. Execute `npm install` to install all the modules. And then, after the installation process is done, execute `npm start`. (You can change the *start.js* to start any app)
-
-## About
-You can find more about this framework in [`here`](https://enderadel.net/EnderFramework)!
+To run EnderFramework, you need to have [NodeJS](https://nodejs.org/) installed on your device. Execute `npm install` to install all the modules. And then, after the installation process is done, execute `npm start`. (You can change the *start.js* to start any app)
 
 ## Contributing
 If you are interested in reporting/fixing issues and contributing directly to the code base, feel free to do so!
