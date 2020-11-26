@@ -1,7 +1,7 @@
 # EnderFramework
 EnderFramework is a framework, built using [Electron](https://electronjs.org), that can make it easier to build apps!
 
-You can find more about this framework in [`here`](https://enderadel.net/EnderFramework)!
+You can find more about this framework in [here](https://enderadel.net/EnderFramework)!
 
 *Follow [@EnderAdel](https://twitter.com/EnderAdel) on Twitter to keep yourself up-to-date on everything related to the framework.*
 
