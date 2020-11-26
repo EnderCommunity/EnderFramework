@@ -11,7 +11,7 @@ To run EnderFramework, you need to have [NodeJS](https://nodejs.org/) installed 
 ## Contributing
 If you are interested in reporting/fixing issues and contributing directly to the code base, feel free to do so!
 
-***Note:*** *As you can see, I'm not very active on GitHub. The reason is because I'm a student. You can contact me using my email ("[adel.sbeh.email@gmail.com](mailto:adel.sbeh.email@gmail.com))" regarding any concern!*
+***Note:*** *As you can see, I'm not very active on GitHub. The reason is because I'm a student. You can contact me using my email ([adel.sbeh.email@gmail.com](mailto:adel.sbeh.email@gmail.com)) regarding any concern!*
 
 ## Screenshots
 
