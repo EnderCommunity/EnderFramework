@@ -1,5 +1,6 @@
 {
   "name": "Test",
+  "start": "file.html",
   "version": "0.1",
   "publisher": "EnderAdel",
   "splashScreen": true,

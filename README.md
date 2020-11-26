@@ -12,12 +12,8 @@ Hello there! As you can see, I'm not very active on GitHub. The reason is becaus
 
 ## Screenshots
 
-![Screenshot](https://enderadel.net/EnderFramework/assets/image/screenshot/1.png "EnderStudio")
-![Screenshot](https://enderadel.net/EnderFramework/assets/image/screenshot/2.png "EnderInstaller")
-![Screenshot](https://enderadel.net/EnderFramework/assets/image/screenshot/3.png "EnderInstaller")
-![Screenshot](https://enderadel.net/EnderFramework/assets/image/screenshot/4.png "A test app")
-![Screenshot](https://enderadel.net/EnderFramework/assets/image/screenshot/5.png "A test app")
-![Screenshot](https://enderadel.net/EnderFramework/assets/image/screenshot/6.png "A test app")
+![Screenshot](https://github.com/EnderAdel/EnderFramework/blob/master/repository/screenshots/1.png?raw=true "A test app")
+![Screenshot](https://github.com/EnderAdel/EnderFramework/blob/master/repository/screenshots/2.png?raw=true "EnderInstaller")
 
 
 EnderFramework is the property of EnderAdel

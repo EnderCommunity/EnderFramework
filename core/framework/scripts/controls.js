@@ -1,4 +1,13 @@
 (function(){
+  if(!manifest.window.isClosable)
+    window_CloseButton.setAttribute("disabled", "");
+  if(!manifest.window.isMinimizable)
+    window_MinButton.setAttribute("disabled", "");
+  if(!manifest.window.isMaximizable)
+    window_MaxButton.setAttribute("disabled", "");
+  //"isFullscreenable": true,
+  //"resizable": true
+
   var isMax = manifest.window.maximizeOnStart, showCover = function(c = true){
     if(manifest.content.coverOnMaximize){
       Window_TransitionCover.style.transitionDuration = "0s";
