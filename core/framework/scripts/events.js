@@ -177,7 +177,7 @@ _content.addEventListener('ipc-message', event => {
     if(event.args == null){
       style.innerHTML = "";
     }else{
-      if(windowType__ == "acrylic")
+      if(manifest.window.type == "acrylic")
         style.innerHTML = `[window-type="acrylic"], [prefers-color-scheme="dark"][window-type="acrylic"]{ --WindowBackgroundColor: #${event.args}33; --WindowBorderColor: #${event.args}; } [window-type="acrylic"][window-is-blurred], [prefers-color-scheme="dark"][window-type="acrylic"][window-is-blurred]{ --WindowBackgroundColor: #${event.args}66; }`;
       else
         style.innerHTML = `:root, [prefers-color-scheme="light"], [prefers-color-scheme="dark"]{ --WindowBackgroundColor: #${event.args}; --TopBar-BackgroundColor: transparent; }`;

@@ -1,12 +1,18 @@
 const { remote, ipcRenderer } = require("electron");
 global._content = undefined;
 global.isDOMContentReady = false;
-document.addEventListener("DOMContentLoaded", function () {
+global.currentWindow = remote.getCurrentWindow();
+global.windowIsReady = function(){
+  if(manifest.window.maximizeOnStart && !isSub)
+    global.currentWindow.maximize();
+  currentWindow.show();
+  currentWindow.focus();
+};
+document.addEventListener("DOMContentLoaded", function(){
   isDOMContentReady = true;
 });
 global.path = require("path");
 global.manifest = ipcRenderer.sendSync('data', "");
-global.currentWindow = remote.getCurrentWindow();
 global.isSub = window.location.search.indexOf("?subwindow") == 0;
 global.subInfo = {
   url: null,
@@ -60,8 +66,6 @@ if(isSub){
     }
   });
 }
-if(manifest.window.maximizeOnStart && !isSub)
-  global.currentWindow.maximize();
 if(isSub){
   setTimeout(function () {
     var title = document.getElementById("_title");
@@ -104,5 +108,3 @@ global.TopFramework = {
     document.getElementById("_splashText").innerHTML = title;
   }
 };
-currentWindow.show();
-currentWindow.focus();

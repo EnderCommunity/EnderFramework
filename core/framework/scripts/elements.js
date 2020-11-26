@@ -24,13 +24,18 @@ HideInFullscreen = document.querySelectorAll("[hideInFullscreen]"),
 window_FullscreenButton = document.getElementById("_exitFullscreen");
 ;
 document.hideSplashScreen = function(){
-  window_SplashScreen.style.opacity = "0";
-  window_SplashScreen.style.pointerEvents = "none";
-  setTimeout(function(){
+  if(manifest.window.type != "acrylic"){
+    window_SplashScreen.style.opacity = "0";
+    window_SplashScreen.style.pointerEvents = "none";
+    setTimeout(function(){
+      window_SplashScreen.style.display = "none";
+      window_SplashScreen.style.opacity = "1";
+    }, 200);
+    window_Icon.style.display = "inline-block"
+  }else{
     window_SplashScreen.style.display = "none";
-    window_SplashScreen.style.opacity = "1";
-  }, 200);
-  window_Icon.style.display = "inline-block"
+    //
+  }
 };
 document.showSplashScreen = function(){
   window_SplashScreen.style.pointerEvents = "all";
