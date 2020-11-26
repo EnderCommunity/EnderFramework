@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <request name="editingTools"></request>
+    <request name="customElements"></request>
+    <request name="scrollAnimation"></request>
+    <request name="tooltip"></request>
+    <request name="media"></request>
+  </head>
+  <body>
+    <!--<top background="./_image/stevenuniverseskyblue.png">
+      <card></card>
+    </top>-->
+    <!-- [START] making text selectable -->
+    <text>This text isn't selectable</text>
+    <text selectable>This text is selectable</text>
+    <!-- [END] making text selectable -->
+
+    <br>
+
+    <!-- [START] float element -->
+    <float>
+      <text>Test! (none)</text>
+    </float>
+    <float right>
+      <text>Test! (right)</text>
+    </float>
+    <float center>
+      <text>Test! (center)</text>
+    </float>
+    <float left>
+      <text>Test! (left)</text>
+    </float>
+    <float inherit>
+      <text>Test! (inherit)</text>
+    </float>
+    <float initial>
+      <text>Test! (initial)</text>
+    </float>
+    <float unset>
+      <text>Test! (unset)</text>
+    </float>
+    <!-- [END] float element -->
+
+    <br>
+
+    <hr>
+
+    <br>
+
+    <center>
+      <!-- [START] Buttons -->
+      <button onclick="location.href = location.href">Hi</button>
+      <button primary onclick="location.href = location.href">Hi</button>
+      <button glass>Hi</button>
+      <button warn='{
+        "message": "The page is going to be reloaded!",
+        "onagree": "{ location.reload(); }",
+        "ondisagree": "{ }"
+      }'>Hi
+      </button>
+      <br>
+      <button bigger onclick="location.href = location.href">Hi</button>
+      <button bigger primary onclick="location.href = location.href">Hi</button>
+      <button bigger glass>Hi</button>
+      <button bigger warn='{
+        "message": "The page is going to be reloaded!",
+        "onagree": "{ location.reload(); }",
+        "ondisagree": "{ }"
+      }'>Hi
+      </button>
+      <!-- [END] Buttons -->
+
+      <br>
+
+      <!-- [START] Links -->
+      <a href="https://google.com">Test</a>
+      <a href="https://google.com" target="_blank">Test (_blank)</a>
+      <!-- [END] Links -->
+
+      <br>
+
+      <!-- [START] Icons -->
+      <!-- EnderFramework uses material icons -->
+      <icon>face</icon>
+      <icon small>face</icon>
+      <icon medium>face</icon>
+      <icon large>face</icon>
+      <icons>3d_rotation accessibility accessibility_new account_circle admin_panel_settings autorenew check_circle help info</icons>
+      <!-- [END] Icons -->
+
+      <br>
+
+      <!-- [START] input -->
+      <input type="text" spellcheck="true">
+      <input type="button">
+      <input type="checkbox">
+      <input type="color">
+      <input type="date">
+      <input type="datetime-local">
+      <input type="email" placeholder="email input">
+      <input type="file">
+      <input type="hidden">
+      <input type="image">
+      <input type="month">
+      <input type="number" placeholder="number input">
+      <input type="password" placeholder="password input">
+      <input type="radio">
+      <input type="range">
+      <input type="reset">
+      <input type="search" placeholder="search input">
+      <input type="submit">
+      <input type="tel" placeholder="tel input">
+      <input type="text" placeholder="text input">
+      <input type="time">
+      <input type="url" placeholder="url input">
+      <input type="week">
+      <textarea></textarea>
+      <!-- [END] input -->
+
+      <br>
+
+      <!-- [START] select -->
+      <select>
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+      <!-- [END] select -->
+
+      <br>
+    </center>
+
+    <br>
+
+    <!-- [START] `Code` element -->
+    <!-- You need to request `editingTools` -->
+    <codebox mode="text/html" startValue="Empty codebox! (htmlmixed)">
+      <script>
+        function codebox_0(codebox){
+          codebox;
+        }
+      </script>
+    </codebox>
+    <codebox mode="text/css" startValue="Empty codebox! (css)">
+      <script>
+        function codebox_1(codebox, engine){
+          codebox;
+        }
+      </script>
+    </codebox>
+    <codebox mode="text/x-csharp" startValue="Empty codebox! (C#)">
+      <script>
+        function codebox_2(codebox, engine){
+          codebox;
+        }
+      </script>
+    </codebox>
+    <codebox mode="text/javascript" startValue="Empty codebox! (JavaScript)" autocomplete>
+      <script>
+        function codebox_3(codebox, engine){
+          codebox;
+        }
+      </script>
+    </codebox>
+    <codebox mode="text/html" startValue="Empty codebox! (htmlmixed)" fullSize>
+      <script>
+        function codebox_4(codebox, engine){
+          codebox;
+        }
+      </script>
+    </codebox>
+    <codebox mode="text/html" startValue="Empty codebox! (with autocomplete)" autocomplete>
+      <script>
+        function codebox_5(codebox, engine){//`engine` is the same as `CodeMirror`
+          codebox;
+          //You can set a custom value using this function
+          var orig = engine.hint.html;
+          engine.hint.html = function(cm){
+            var inner = orig(cm) || {from: cm.getCursor(), to: cm.getCursor(), list: []};
+            inner.list.push("<hello");
+            return inner;
+          };
+        }
+      </script>
+    </codebox>
+    <!-- [END] `Code` element -->
+
+    <!-- [START] `loading` element -->
+    <loading></loading>
+    <progress value="32" max="100"></progress>
+    <!-- [END] `loading` element -->
+
+    <!-- [START] Custom Elements -->
+    <switch></switch>
+    <switch active="false"></switch>
+    <switch active="true"></switch>
+    <br>
+    <item>
+      <img src="./_image/minecraft-cover.jpg">
+      <title>Title</title>
+      <desc>The description</desc>
+      <price>$26</price>
+    </item>
+    <scroll style="height: 60px;">
+      <text>Hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello!</text>
+    </scroll>
+    <scroll vertical style="height: 60px;">
+      <text>Hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello!</text>
+    </scroll>
+    <scroll horizontal style="height: 60px;">
+      <text>Hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello!</text>
+    </scroll>
+    <pad>
+      This is just some text in a "pad" element
+    </pad>
+    <!-- [END] Custom Elements -->
+
+    <!-- [START] Custom Elements (needs `require`) -->
+    <floatingActionButton content='{
+      "_1": {
+        "icon": "cached",
+        "onclick": "_actionsMenu1();"
+      },
+      "_2": {
+        "icon": "face",
+        "onclick": "_actionsMenu2();"
+      },
+      "_3": {
+        "icon": "store",
+        "onclick": "_actionsMenu3();"
+      }
+    }'>
+      <icon>add</icon>
+    </floatingActionButton>
+    <script>
+      function _actionsMenu1(){
+        console.log(1);
+      }
+      function _actionsMenu2(){
+        console.log(2);
+      }
+      function _actionsMenu3(){
+        console.log(3);
+      }
+    </script>
+    <cardView auto time="5000">
+      <card background="url(./_image/wp5054620.png)">
+        <title>Title 1</title>
+        <description>This is the description!</description>
+      </card>
+      <card background="url(./_image/wp4608721.jpg)" clickable onclick="console.log(true);">
+        <title>Title 2</title>
+        <description>This is the description!</description>
+      </card>
+      <card background="url(./_image/wp4608738.jpg)">
+        <title>Title 3</title>
+        <description>This is the description!</description>
+      </card>
+      <card background="url(./_image/wp5054654.jpg)">
+        <title>Title 4</title>
+        <description>This is the description!</description>
+      </card>
+    </cardView>
+    <!-- [END] Custom Elements (needs `require`) -->
+
+    <div blur style="width: 48px; height: 48px; margin: 6px;"></div>
+
+    <!-- [START] Scripts -->
+    <script>
+      //EnderFramework.close();
+      //EnderFramework.relaunch();
+      EnderFramework.notification.snack("The framework is fully loaded!");
+      EnderFramework.feedback();
+      /*waitForFramework(function(){
+        notify("The framework is fully loaded!");
+        //callout("Title", "The description, [link]");
+        //EnderFramework.openInBrowser("[URL]");
+        EnderFramework.feedback();
+        //EnderFramework.feedback(false);
+        
+        //This code isn't working
+        /*EnderFramework.record.voice(false, function(r){
+          //var audio = new Audio(r);
+          //audio.setAttribute("controls", 1);
+          //document.body.appendChild(audio);
+          console.log(r);
+        });*\/
+        //EnderFramework.record.video();
+        //EnderFramework.record.screen();
+      });*/
+    </script>
+    <button onclick="EnderFramework.close();">Close the app</button>
+    <button onclick="EnderFramework.relaunch();">Relaunch the app</button>
+    <button onclick="EnderFramework.openInBrowser({
+      url: 'https:\/\/google.com',
+      browser: 'default'
+    });">Open google in the default browser</button>
+    <button onclick="EnderFramework.openInBrowser({
+      url: 'https:\/\/google.com',
+      browser: 'chrome'
+    });">Open google using Chrome</button>
+    <button onclick="EnderFramework.openInBrowser({
+      url: 'https:\/\/google.com',
+      browser: 'firefox'
+    });">Open google using Firefox</button>
+    <button onclick="EnderFramework.openInBrowser({
+      url: 'https:\/\/google.com',
+      browser: 'microsoftedge'
+    });">Open google using Edge</button>
+    <br>
+    <button onclick="EnderFramework.notification.snack('This is a test!');">Test 1!</button>
+    <button onclick="EnderFramework.notification.snack('This is a long long long long long long long long long long long long long long long long long long text!');">Test 2!</button>
+    <button onclick="EnderFramework.notification.snack('This is a long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long text!');">Test 3!</button>
+    <button onclick="EnderFramework.feedback();">Show the feedback message</button>
+    <button onclick="EnderFramework.feedback(false);">Show the feedback UI</button>
+    <!-- [END] Scripts -->
+
+    <!-- [START] Text -->
+    <h>Hello there! (h)</h>
+    <h1>Hello there! (h1)</h1>
+    <h2>Hello there! (h2)</h2>
+    <h3>Hello there! (h3)</h3>
+    <h4>Hello there! (h4)</h4>
+    <h5>Hello there! (h5)</h5>
+    <h6>Hello there! (h6)</h6>
+    <!-- [END] Text -->
+
+    <!-- [START] Menu funtions -->
+    <script>
+      function funcName(){
+        alert("Coming soon!");
+      }
+    </script>
+    <!-- [END] Menu funtions -->
+
+    <!-- [START] Random stuff -->
+    <button onclick="location.href = 'file:\/\/\/C:/Users/Hi';">Load a nonexistent page!</button>
+    <!-- [END] Random stuff -->
+
+    <!-- [START] On scroll animations (Requires `scrollAnimation`) -->
+    <div scroll-animation scroll-animation-name="slideInDown" style="width: 100px; height: 100px; background-color: red; margin: 16px;"></div>
+    <div scroll-animation scroll-animation-name="slideInDown" scroll-animation-duration="0.4s" style="width: 100px; height: 100px; background-color: red; margin: 16px;"></div>
+    <div scroll-animation scroll-animation-name="slideInDown" scroll-animation-delay="0s" scroll-animation-duration="0.6s" style="width: 100px; height: 100px; background-color: red; margin: 16px;"></div>
+    <div scroll-animation scroll-animation-name="slideInDown" scroll-animation-delay="0.6s" scroll-animation-duration="1s" style="width: 100px; height: 100px; background-color: red; margin: 16px;"></div>
+    <!-- [END] On scroll animations -->
+
+    <!-- [START] The Options element -->
+    <options>
+      <option value="option 1">Option 1</option>
+      <option value="option 2">Option 2</option>
+      <option value="option 3" disabled>Option 3</option>
+      <option value="option 4">Option 4</option>
+    </options>
+    <options>
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option disabled>Option 3</option>
+      <option>Option 4</option>
+      <option>Option 5</option>
+      <option>Option 6</option>
+      <option>Option 7</option>
+      <option>Option 8</option>
+      <option>Option 9</option>
+      <option>Option 10</option>
+      <option>Option 11</option>
+      <option>Option 12</option>
+    </options>
+    <!-- [END] The Options element -->
+
+    <!-- [START] The Selector element (Requires `customElements`) -->
+    <selector>
+      <option value="option_1">Option 1</option>
+      <option value="option_2">Option 2</option>
+      <option value="option_3" disabled>Option 3</option>
+      <!--<indicator></indicator>-->
+    </selector>
+    <script>
+      EnderFramework.wait.elements(function(){
+        document.getElementsByTagName("selector")[0].setOption(null);
+      });
+      console.log(path_);
+      EnderFramework.wait.path(function(){
+        console.log(path_);
+      });
+      EnderFramework.receiver.on("test", function(data){
+        console.log(data);
+      });
+    </script>
+    <!-- [END] The Selector element -->
+
+    <!-- [START] the View element (Requires `customElements`) -->
+    <view>
+      <layout name="layout_1">
+        <text>This is layout 1</text>
+      </layout>
+      <layout name="layout_2">
+        <text>This is layout 2</text>
+      </layout>
+      <layout name="layout_3">
+        <text>This is layout 3</text>
+      </layout>
+    </view>
+    <script>
+      EnderFramework.wait.elements(function(){
+        var viewElement = document.getElementsByTagName("view")[0];
+        if(viewElement.layout == "layout_1")
+          viewElement.setLayout("layout_2");
+      });
+    </script>
+    <!-- [END] the View element -->
+
+    <!-- [START] A test for the view element and the selector element (Both require `customElements`) -->
+    <selector class="seletor2">
+      <option>Layout 1</option>
+      <option>Layout 2</option>
+      <option>Layout 3</option>
+      <option disabled>Layout 4</option>
+    </selector>
+    <view class="view2">
+      <layout name="layout_1">
+        <h2>This is layout 1</h2>
+      </layout>
+      <layout name="layout_2">
+        <h2>This is layout 2</h2>
+      </layout>
+      <layout name="layout_3">
+        <h2>This is layout 3</h2>
+      </layout>
+    </view>
+    <script>
+      var view = document.getElementsByClassName("view2")[0], selectorOptions = document.getElementsByClassName("seletor2")[0].getElementsByTagName("option");
+      selectorOptions[0].addEventListener("click", function(){
+        view.setLayout("layout_1");
+      });
+      selectorOptions[1].addEventListener("click", function(){
+        view.setLayout("layout_2");
+      });
+      selectorOptions[2].addEventListener("click", function(){
+        view.setLayout("layout_3");
+      });
+      selectorOptions[3].addEventListener("click", function(){
+        notify("Nothing should happen!");
+      });
+    </script>
+    <!-- [END] A test for the view element and the selector element -->
+
+
+    <!-- [START] The collapse element (Requires `customElements`) -->
+    <collapse>
+      <header>This is a test</header>
+      <content>
+        <h1>This is the content</h1>
+        <h3>This is the content that is inside of the `content` element</h3>
+      </content>
+    </collapse>
+    <collapse>
+      <header>This is a test</header>
+      <content>
+        <h1>This is the content</h1>
+        <h3>This is the content that is inside of the `content` element</h3>
+      </content>
+    </collapse>
+    <collapse>
+      <header>This is a test</header>
+      <content>
+        <h1>This is the content</h1>
+        <h3>This is the content that is inside of the `content` element</h3>
+      </content>
+    </collapse>
+    <collapse>
+      <header>This is a test</header>
+      <content>
+        <h1>This is the content</h1>
+        <h3>This is the content that is inside of the `content` element</h3>
+      </content>
+    </collapse>
+    <collapse>
+      <header>This is a test</header>
+      <content>
+        <h1>This is the content</h1>
+        <h3>This is the content that is inside of the `content` element</h3>
+      </content>
+    </collapse>
+    <!-- [END] The collapse element -->
+
+
+    <!-- [START] The banner element -->
+    <banner>
+      <h1>Test!</h1>
+      <h3>This is a test for the banner element</h3>
+    </banner>
+    <!-- [END] The banner element -->
+
+
+    <!-- [START] scroll-indicator (Requires `customElements`) -->
+    <!--<scroll-indicator></scroll-indicator>-->
+    <!-- [END] scroll-indicator -->
+
+
+    <!-- [START] The table element -->
+    <table>
+      <thead>
+        <tr>
+          <th>Seller</th>
+          <th>Item</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>[Name]</td>
+          <td>[Name]</td>
+          <td>[Price]</td>
+        </tr>
+        <tr>
+          <td>[Name]</td>
+          <td>[Name]</td>
+          <td>[Price]</td>
+        </tr>
+        <tr>
+          <td>[Name]</td>
+          <td>[Name]</td>
+          <td>[Price]</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <table divide>
+      <thead>
+        <tr>
+          <th>Seller</th>
+          <th>Item</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>[Name]</td>
+          <td>[Name]</td>
+          <td>[Price]</td>
+        </tr>
+        <tr>
+          <td>[Name]</td>
+          <td>[Name]</td>
+          <td>[Price]</td>
+        </tr>
+        <tr>
+          <td>[Name]</td>
+          <td>[Name]</td>
+          <td>[Price]</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <table strip>
+      <thead>
+        <tr>
+          <th>Seller</th>
+          <th>Item</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>[Name]</td>
+          <td>[Name]</td>
+          <td>[Price]</td>
+        </tr>
+        <tr>
+          <td>[Name]</td>
+          <td>[Name]</td>
+          <td>[Price]</td>
+        </tr>
+        <tr>
+          <td>[Name]</td>
+          <td>[Name]</td>
+          <td>[Price]</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- [END] The table element -->
+
+    <!-- [START] The collection element -->
+    <collection>
+      <cheader>
+        <h2>This is the header</h2>
+      </cheader>
+      <citem>
+        <h3>This is an item</h3>
+      </citem>
+      <citem>
+        <h3>This is an item</h3>
+      </citem>
+      <citem>
+        <h3>This is an item</h3>
+      </citem>
+    </collection>
+    <!-- [END] The collection element -->
+
+
+
+    <!-- [START] The breadcrumb element -->
+    <breadcrumb>
+      <crumb>Crumb 1</crumb>
+      <crumb>Crumb 2</crumb>
+      <crumb>Crumb 3</crumb>
+      <crumb>Crumb 4</crumb>
+    </breadcrumb>
+    <!-- [END] The breadcrumb element -->
+
+
+    <!-- [START] The card element -->
+    <card>
+      <h2>This is the title</h2>
+      <h4>This is some random text.</h4>
+      <button>This is a button</button>
+    </card>
+    <!-- [END] The card element -->
+
+    <!-- [START] The pagination element (Requires `customElements`) -->
+    <pagination>
+      <back></back>
+      <option selected>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <break></break>
+      <option>50</option>
+      <forward></forward>
+    </pagination>
+    <!-- [END] The pagination element -->
+
+
+    <!-- [START] The tooltip attribute (Requires `tooltip`) -->
+    <button tooltip-content="Hello there!" tooltip-position="top">Top</button>
+    <button tooltip-content="Hello there!" tooltip-position="left">Left</button>
+    <button tooltip-content="Hello there!" tooltip-position="right">Right</button>
+    <button tooltip-content="Hello there!" tooltip-position="bottom">Bottom</button>
+    <!-- [END] The tooltip attribute -->
+
+
+    <!-- [START] Media controls (Requires `media`) -->
+    <br>
+    <video width="800px">
+      <source src="./_media/movie.mp4" type="video/mp4">
+    </video>
+    <br>
+    <video width="800px" controls>
+      <source src="./_media/movie.mp4" type="video/mp4">
+    </video>
+    <br>
+    <audio>
+      <source src="./_media/horse.mp3" type="audio/mpeg">
+    </audio>
+    <br>
+    <audio controls title="Title">
+      <source src="./_media/horse.mp3" type="audio/mpeg">
+    </audio>
+    <!-- [END] Media controls -->
+
+
+    <!-- [START] The imageView element (Requires `customElements`) -->
+    <imageView>
+      <img src="./_image/wp5054620.png">
+      <img src="./_image/wp4608738.jpg">
+      <img src="./_image/wp5054654.jpg">
+    </imageView>
+    <imageView auto>
+      <img src="./_image/wp5054620.png">
+      <img src="./_image/wp4608738.jpg">
+      <img src="./_image/wp5054654.jpg">
+    </imageView>
+    <imageView auto="1000">
+      <img src="./_image/wp5054620.png">
+      <img src="./_image/wp4608738.jpg">
+      <img src="./_image/wp5054654.jpg">
+    </imageView>
+    <!-- [END] The imageView element -->
+
+
+    <!-- [START] The gallery element (Requires `customElements`) -->
+    <gallery>
+      <img src="./_image/gallery_1.jpg">
+      <img src="./_image/gallery_2.jpg">
+      <video src="./_media/Steven_Universe.mp4"></video>
+      <img src="./_image/gallery_3.jpg">
+      <img src="./_image/gallery_4.jpg">
+      <img src="./_image/gallery_5.jpg">
+      <img src="./_image/gallery_6.jpg">
+      <img src="./_image/gallery_7.jpg">
+      <img src="./_image/gallery_8.jpg">
+      <img src="./_image/gallery_9.jpg">
+    </gallery>
+    <script>
+      EnderFramework.wait.elements(function(){
+        var Element = document.createElement("img");
+        Element.src= "./_image/gallery_10.jpg";
+        document.getElementsByTagName("gallery")[0].appendMediaElement(Element);
+      });
+    </script>
+    <!-- [START] The gallery element -->
+
+    <!-- [START] The badge element -->
+    <badge>4 new</badge>
+    <badge>Action required</badge>
+    <badge>
+      <icon>store</icon>
+      New items
+    </badge>
+    <!-- [END] The badge element -->
+
+    <!-- [START] The carousel element (Requires `customElements`) -->
+    <carousel>
+      <img src="./_image/cover_1.jpg">
+      <img src="./_image/cover_2.jpg">
+      <img src="./_image/cover_3.jpg">
+      <img src="./_image/cover_4.jpg">
+      <img src="./_image/cover_5.jpg">
+      <img src="./_image/cover_6.jpg">
+      <img src="./_image/cover_7.jpg">
+    </carousel>
+    <script>
+      var a = document.createElement("img");
+      a.src = "./_image/cover_8.jpg";
+      EnderFramework.wait.elements(function(){
+        document.getElementsByTagName("carousel")[0].appendMediaElement(a);
+      });
+    </script>
+    <!-- [END] The carousel element -->
+
+
+
+    <space></space>
+    <space></space>
+
+  </body>
+</html>
