@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <request name="tooltip"></request>
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="loading" style="display: none;">
-      <loading></loading>
+        <loading></loading>
     </div>
     <div id="COfDropOSelect" class="dropzone">
-      <h1>Install an app</h1>
-      <text>Drop a file in here, or select a one!</text>
-      <input id="FileSelector" type="file" accept=".EPK">
+        <h1>Install an app</h1>
+        <text>Drop a file in here, or select a one!</text>
+        <input id="FileSelector" type="file" accept=".EPK">
     </div>
     <div id="info" style="display: none;">
-      <img id="info--icon" width="240" height="240">
-      <div class="COfMainInfo">
-        <h2 id="_title">Do you want to install [title]?</h2>
-        <h4 id="_publisher">Publisher: [publisher]</h4>
-        <h4 id="_version">Version: [version]</h4>
-        <h4 id="_type">Type: [type]</h4>
-      </div>
-      <button id="_install" tooltip-content="0 MB" tooltip-position="top" primary>Install</button>
-      <text id="_warningMessage" class="buttonWarning" tooltip-content="This app can harm your device. It would be better not to install it!" tooltip-position="bottom">This app isn't trusted!</text>
-      <div class="COfAI">
-        <h4>Capabilities:</h4>
-        <div id="_capabilites" class="more"></div>
-        <h4>Required Modules:</h4>
-        <div id="_modules" class="more"></div>
-      </div>
+        <img id="info--icon" width="240" height="240">
+        <div class="COfMainInfo">
+            <h2 id="_title">Do you want to install [title]?</h2>
+            <h4 id="_publisher">Publisher: [publisher]</h4>
+            <h4 id="_version">Version: [version]</h4>
+            <h4 id="_type">Type: [type]</h4>
+        </div>
+        <button id="_install" tooltip-content="0 MB" tooltip-position="top" primary>Install</button>
+        <text id="_warningMessage" class="buttonWarning" tooltip-content="This app can harm your device. It would be better not to install it!" tooltip-position="bottom">This app isn't trusted!</text>
+        <div class="COfAI">
+            <h4>Capabilities:</h4>
+            <div id="_capabilites" class="more"></div>
+            <h4>Required Modules:</h4>
+            <div id="_modules" class="more"></div>
+        </div>
     </div>
     <div id="_installationScreen" style="display: none;">
-      <center>
-        <progress id="installationProgress"></progress>
-        <h4 id="installationMessage">Preparing the installation files...</h4>
-      </center>
+        <center>
+            <progress id="installationProgress"></progress>
+            <h4 id="installationMessage">Preparing the installation files...</h4>
+        </center>
     </div>
     <div id="_installed" style="display: none;">
-      <center>
-        <h2>The app has been installed!</h2>
-        <h4>You can now start using this app. But be careful, as it's not a trusted app.</h4>
-        <button onclick="EnderFramework.close();" primary>Close EnderInstaller</button>
-      </center>
+        <center>
+            <h2>The app has been installed!</h2>
+            <h4>You can now start using this app. But be careful, as it's not a trusted app.</h4>
+            <button onclick="EnderFramework.close();" primary>Close EnderInstaller</button>
+        </center>
     </div>
     <script type="text/javascript" src="./EnderServices.js"></script>
     <script type="text/javascript" src="./appSize.js"></script>
     <script type="text/javascript" src="./installProcess.js"></script>
     <script type="text/javascript" src="./installer.js"></script>
     <script type="text/javascript" src="./file.js"></script>
-  </body>
+</body>
+
 </html>

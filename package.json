@@ -1,74 +1,74 @@
 {
-  "name": "enderservices",
-  "version": "0.0.1",
-  "main": "./core/start.js",
-  "devDependencies": {
-    "electron": "11.0.2"
-  },
-  "scripts": {
-    "start": "electron ."
-  },
-  "dependencies": {
-    "aes256": "^1.0.4",
-    "asar": "^3.0.3",
-    "auto-launch": "^5.0.5",
-    "check-types": "^11.1.2",
-    "chokidar": "^3.4.3",
-    "chromecast-api": "^0.3.4",
-    "create-desktop-shortcuts": "^1.2.0",
-    "cross-fetch": "^3.0.6",
-    "del": "^6.0.0",
-    "download-file": "^0.1.5",
-    "electron-acrylic-window": "^0.5.4",
-    "electron-json-storage": "^4.3.0",
-    "electron-squirrel-startup": "^1.0.0",
-    "electron-vibrancy-fixforlatest": "^0.2.0",
-    "fetch": "^1.1.0",
-    "fetch-installed-software": "0.0.6",
-    "fs": "0.0.1-security",
-    "gulp": "^4.0.2",
-    "lock-system": "^2.0.0",
-    "monaco-editor": "^0.21.2",
-    "mv": "^2.1.1",
-    "node-gyp": "^7.1.2",
-    "node-iframe": "^1.5.10",
-    "node-notifier": "^8.0.0",
-    "opn": "^6.0.0",
-    "rage-edit": "^1.2.0",
-    "request": "^2.88.2",
-    "rimraf": "^3.0.2",
-    "run-script": "^0.1.1",
-    "terser": "^5.4.0",
-    "unzipper": "^0.10.11",
-    "v8-compile-cache": "^2.2.0"
-  },
-  "license": "MIT",
-  "description": "EnderServices installs and runs EnderFramework apps!",
-  "author": "EnderAdel <enderadel.email@gmail.com>",
-  "postinstall": "electron-builder install-app-deps",
-  "electronPackagerConfig": {
-    "icon": "build/icon.ico",
-    "win32metadata": {
-      "ProductName": "EnderBrowser",
-      "CompanyName": "EnderAdel"
+    "name": "enderservices",
+    "version": "0.0.1",
+    "main": "./core/start.js",
+    "devDependencies": {
+        "electron": "11.0.2"
+    },
+    "scripts": {
+        "start": "electron ."
+    },
+    "dependencies": {
+        "aes256": "^1.0.4",
+        "asar": "^3.0.3",
+        "auto-launch": "^5.0.5",
+        "check-types": "^11.1.2",
+        "chokidar": "^3.4.3",
+        "chromecast-api": "^0.3.4",
+        "create-desktop-shortcuts": "^1.2.0",
+        "cross-fetch": "^3.0.6",
+        "del": "^6.0.0",
+        "download-file": "^0.1.5",
+        "electron-acrylic-window": "^0.5.4",
+        "electron-json-storage": "^4.3.0",
+        "electron-squirrel-startup": "^1.0.0",
+        "electron-vibrancy-fixforlatest": "^0.2.0",
+        "fetch": "^1.1.0",
+        "fetch-installed-software": "0.0.6",
+        "fs": "0.0.1-security",
+        "gulp": "^4.0.2",
+        "lock-system": "^2.0.0",
+        "monaco-editor": "^0.21.2",
+        "mv": "^2.1.1",
+        "node-gyp": "^7.1.2",
+        "node-iframe": "^1.5.10",
+        "node-notifier": "^8.0.0",
+        "opn": "^6.0.0",
+        "rage-edit": "^1.2.0",
+        "request": "^2.88.2",
+        "rimraf": "^3.0.2",
+        "run-script": "^0.1.1",
+        "terser": "^5.4.0",
+        "unzipper": "^0.10.11",
+        "v8-compile-cache": "^2.2.0"
+    },
+    "license": "MIT",
+    "description": "EnderServices installs and runs EnderFramework apps!",
+    "author": "EnderAdel <enderadel.email@gmail.com>",
+    "postinstall": "electron-builder install-app-deps",
+    "electronPackagerConfig": {
+        "icon": "build/icon.ico",
+        "win32metadata": {
+            "ProductName": "EnderBrowser",
+            "CompanyName": "EnderAdel"
+        }
+    },
+    "build": {
+        "files": [
+            "apps/",
+            "build/",
+            "core/",
+            "services/",
+            "node_modules/",
+            "package.json",
+            "package-lock.json"
+        ],
+        "appId": "net.enderadel.services",
+        "produceName": "EnderServices",
+        "category": "services",
+        "win": {
+            "target": "squirrel",
+            "icon": "build/icon.ico"
+        }
     }
-  },
-  "build": {
-    "files": [
-      "apps/",
-      "build/",
-      "core/",
-      "services/",
-      "node_modules/",
-      "package.json",
-      "package-lock.json"
-    ],
-    "appId": "net.enderadel.services",
-    "produceName": "EnderServices",
-    "category": "services",
-    "win": {
-      "target": "squirrel",
-      "icon": "build/icon.ico"
-    }
-  }
 }

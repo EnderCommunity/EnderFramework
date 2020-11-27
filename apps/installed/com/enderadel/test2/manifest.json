@@ -1,118 +1,118 @@
 {
-  "name": "Test",
-  "version": "0.1",
-  "publisher": "EnderAdel",
-  "splashScreen": false,
-  "splashCooldown": 1000,
-  "splashText": "Built using EnderStudio!",
-  "server": {
-    "feedback": "https://example.com/MyServerFiles/Feedback.php?message=[0]",
-    "bugTracking": "https://example.com/MyServerFiles/BugsTracking.php?useragent=[0]&appversion=[1]&error=[2]",
-    "bugReporting": "https://example.com/MyServerFiles/BugReprots.php?message=[0]"
-  },
-  "window": {
-    "type": "acrylic",
-    "width": 940,
-    "height": 560,
-    "minWidth": 940,
-    "minHeight": 560,
-    "maxWidth": null,
-    "maxHeight": null,
-    "isFullscreenable": true,
-    "isClosable": true,
-    "isMinimizable": true,
-    "isMaximizable": true,
-    "maximizeOnStart": true,
-    "resizable": true
-  },
-  "content": {
-    "theme": "default",
-    "colorScheme": "system",
-    "redirectAnimations": true,
-    "redirectAnimationsCooldown": 0,
-    "contextMenu": true,
-    "infoScreen": true,
-    "protocol": "enderapp"
-  },
-  "enable": {
-    "JavaScript": true,
-    "WebGL": true,
-    "devTools": true,
-    "spellcheck": true,
-    "webview": true
-  },
-  "menu": {
-    "type": "top",
-    "withAccount": true,
-    "options": {
-      "0": {
-        "title": "Home",
-        "home": true
-      },
-      "1": {
-        "title": "options",
-        "dropdown": {
-          "0": {
-            "title": "name 1",
-            "link": "file_1.html"
-          },
-          "1": {
-            "title": "name 2",
-            "link": "file_2.html"
-          },
-          "2": {
-            "title": "options 2",
-            "dropdown": {
-              "0": {
-                "title": "name 1",
-                "link": "file_1.html"
-              },
-              "1": {
-                "title": "name 2",
-                "link": "file_2.html"
-              },
-              "2": {
-                "title": "options 3",
+    "name": "Test",
+    "version": "0.1",
+    "publisher": "EnderAdel",
+    "splashScreen": false,
+    "splashCooldown": 1000,
+    "splashText": "Built using EnderStudio!",
+    "server": {
+        "feedback": "https://example.com/MyServerFiles/Feedback.php?message=[0]",
+        "bugTracking": "https://example.com/MyServerFiles/BugsTracking.php?useragent=[0]&appversion=[1]&error=[2]",
+        "bugReporting": "https://example.com/MyServerFiles/BugReprots.php?message=[0]"
+    },
+    "window": {
+        "type": "acrylic",
+        "width": 940,
+        "height": 560,
+        "minWidth": 940,
+        "minHeight": 560,
+        "maxWidth": null,
+        "maxHeight": null,
+        "isFullscreenable": true,
+        "isClosable": true,
+        "isMinimizable": true,
+        "isMaximizable": true,
+        "maximizeOnStart": true,
+        "resizable": true
+    },
+    "content": {
+        "theme": "default",
+        "colorScheme": "system",
+        "redirectAnimations": true,
+        "redirectAnimationsCooldown": 0,
+        "contextMenu": true,
+        "infoScreen": true,
+        "protocol": "enderapp"
+    },
+    "enable": {
+        "JavaScript": true,
+        "WebGL": true,
+        "devTools": true,
+        "spellcheck": true,
+        "webview": true
+    },
+    "menu": {
+        "type": "top",
+        "withAccount": true,
+        "options": {
+            "0": {
+                "title": "Home",
+                "home": true
+            },
+            "1": {
+                "title": "options",
                 "dropdown": {
-                  "0": {
-                    "title": "name 1",
-                    "link": "file_1.html"
-                  },
-                  "1": {
-                    "title": "name 2",
-                    "link": "file_2.html"
-                  }
+                    "0": {
+                        "title": "name 1",
+                        "link": "file_1.html"
+                    },
+                    "1": {
+                        "title": "name 2",
+                        "link": "file_2.html"
+                    },
+                    "2": {
+                        "title": "options 2",
+                        "dropdown": {
+                            "0": {
+                                "title": "name 1",
+                                "link": "file_1.html"
+                            },
+                            "1": {
+                                "title": "name 2",
+                                "link": "file_2.html"
+                            },
+                            "2": {
+                                "title": "options 3",
+                                "dropdown": {
+                                    "0": {
+                                        "title": "name 1",
+                                        "link": "file_1.html"
+                                    },
+                                    "1": {
+                                        "title": "name 2",
+                                        "link": "file_2.html"
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-              }
+            },
+            "2": {
+                "title": "new",
+                "function": "funcName"
+            },
+            "3": {
+                "title": "page 1",
+                "link": "file_1.html"
+            },
+            "4": {
+                "title": "page 2",
+                "link": "file_2.html"
+            },
+            "5": {
+                "title": "options 2",
+                "dropdown": {
+                    "0": {
+                        "title": "name 1",
+                        "link": "file_1.html"
+                    },
+                    "1": {
+                        "title": "name 2",
+                        "link": "file_2.html"
+                    }
+                }
             }
-          }
         }
-      },
-      "2": {
-        "title": "new",
-        "function": "funcName"
-      },
-      "3": {
-        "title": "page 1",
-        "link": "file_1.html"
-      },
-      "4": {
-        "title": "page 2",
-        "link": "file_2.html"
-      },
-      "5": {
-        "title": "options 2",
-        "dropdown": {
-          "0": {
-            "title": "name 1",
-            "link": "file_1.html"
-          },
-          "1": {
-            "title": "name 2",
-            "link": "file_2.html"
-          }
-        }
-      }
     }
-  }
 }
