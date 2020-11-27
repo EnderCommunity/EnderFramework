@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "main": "./core/start.js",
     "devDependencies": {
-        "electron": "11.0.2"
+        "electron": "^11.0.2"
     },
     "scripts": {
         "start": "electron ."
@@ -39,6 +39,7 @@
         "rimraf": "^3.0.2",
         "run-script": "^0.1.1",
         "terser": "^5.4.0",
+        "typescript": "^4.1.2",
         "unzipper": "^0.10.11",
         "v8-compile-cache": "^2.2.0"
     },
