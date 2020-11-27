@@ -1,13 +1,18 @@
-const storage = require('electron-json-storage'), toast = require("./toast"), { app, nativeTheme } = require("electron"), path = require("path"), os = require("os"), url = require('url');
+const storage = require('electron-json-storage'),
+    toast = require("./toast"),
+    { app, nativeTheme } = require("electron"),
+    path = require("path"),
+    os = require("os"),
+    url = require('url');
 module.exports = {
     createWindow: (contentPath) => {
         storage.setDataPath(contentPath);
-        storage.get('manifest', function (error, data) {
+        storage.get('manifest', function(error, data) {
             if (error) {
                 toast.notify("An error occurred!", "Faild to access the manifest file.");
                 process.exit(0);
             } else {
-                const { BrowserWindow } = (data.window.type == "acrylic") ? require("electron-acrylic-window") : require("electron");
+                const { BrowserWindow } = (data.window.type == "acrylic") ? require("electron-acrylic-window"): require("electron");
                 if (data.hardware != undefined && data.hardware.highGPUPerformance)
                     app.commandLine.appendSwitch("--force_high_performance_gpu");
                 else
@@ -60,7 +65,7 @@ module.exports = {
                         minWidth: data.window.minWidth,
                         maxWidth: data.window.maxWidth,
                         maxHeight: data.window.maxHeight,
-                        paintWhenInitiallyHidden: false,//This may break some things...
+                        paintWhenInitiallyHidden: false, //This may break some things...
                         transparent: false,
                         titleBarStyle: "custom",
                         vibrancy: (data.window.type == "acrylic") ? ((os.platform == "win32") ? {
@@ -98,7 +103,7 @@ module.exports = {
                             show: false
                         });
                     });
-                    data.content.protocol;//Do something with this!
+                    data.content.protocol; //Do something with this!
                     manifest = data;
                     manifest.paths = paths;
                     manifest.paths.currentApp = contentPath;
