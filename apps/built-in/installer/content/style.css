@@ -1,4 +1,4 @@
-#FileSelector{
+#FileSelector {
   position: absolute;
   width: 100%;
   top: 0px;
@@ -9,52 +9,56 @@
   padding: 0px;
   opacity: 0;
 }
-#COfDropOSelect, #loading, #info, #_installationScreen, #_installed{
+#COfDropOSelect,
+#loading,
+#info,
+#_installationScreen,
+#_installed {
   position: fixed;
   top: 0px;
   bottom: 0px;
   right: 0px;
   left: 0px;
 }
-#loading loading{
+#loading loading {
   position: absolute;
   top: calc(50vh - 55.5px);
   right: calc(50vw - 55.5px);
   margin: 0px;
   padding: 0px;
 }
-#info--icon{
+#info--icon {
   margin: 26px;
 }
-.COfMainInfo{
+.COfMainInfo {
   display: inline-block;
   overflow: hidden;
   height: 268px;
   width: calc(100vw - 324px);
 }
-.COfAI{
+.COfAI {
   width: calc(100vw - 84px);
   height: calc(100vh - 300px);
   padding: 0px 28px;
   overflow-y: scroll;
 }
-.more{
+.more {
   opacity: 0.6;
 }
-#info button{
+#info button {
   position: fixed;
   top: 212px;
   right: 42px;
   margin: 0px;
 }
-#info .buttonWarning{
+#info .buttonWarning {
   position: fixed;
   top: 262px;
   right: 42px;
   margin: 0px;
   font-size: 18px;
 }
-.dropzone{
+.dropzone {
   border: 2px dashed var(--Color11);
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -65,12 +69,12 @@
   padding: 0px;
   margin: 42px 48px;
 }
-.dropzone h1{
+.dropzone h1 {
   margin-top: 100px;
 }
-#_installationScreen progress{
+#_installationScreen progress {
   margin-top: calc(50vh - 30px);
 }
-#_installed h2{
+#_installed h2 {
   margin-top: calc(50vh - 58px);
 }

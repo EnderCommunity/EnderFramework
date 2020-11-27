@@ -1,4 +1,6 @@
-const nodeNotifier = require('node-notifier'), notify = (title, message) => {
+const
+nodeNotifier = require('node-notifier'),
+notify = (title, message) => {
   nodeNotifier.notify({
     title: title,
     message: message,
@@ -9,6 +11,7 @@ const nodeNotifier = require('node-notifier'), notify = (title, message) => {
     throw Error(`Title: ${title}\nMessage: ${message}`);
   });
 };
+
 module.exports = {
   notify: (title, message) => {
     notify(title, message);

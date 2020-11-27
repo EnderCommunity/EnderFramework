@@ -1,6 +1,7 @@
 createDesktopShortcut = require('create-desktop-shortcuts');
+
 module.exports = {
-  create: function(args){
+  create: (args) => {
     createDesktopShortcut({
       onlyCurrentOS: true,
       verbose: true,

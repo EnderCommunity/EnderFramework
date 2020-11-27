@@ -1,20 +1,22 @@
 const AutoLaunch = require('auto-launch'), shortcutsCreator = require("./shortcut");
+
 module.exports = {
-  autoLaunch: function(name, shouldEnable, errorCallback){
+  autoLaunch: (name, shouldEnable, errorCallback) => {
     var autoLauncher = new AutoLaunch({
       name: name
     });
-    autoLauncher.isEnabled().then(function(isEnabled){
+
+    autoLauncher.isEnabled().then((isEnabled) => {
       if(isEnabled){
         if(!shouldEnable){
           autoLauncher.disable();
         }
-      }else{
+      } else {
         if(shouldEnable){
           autoLauncher.enable();
         }
       }
-    }).catch(function(error){
+    }).catch((error) => {
         errorCallback(error);
     });
   },

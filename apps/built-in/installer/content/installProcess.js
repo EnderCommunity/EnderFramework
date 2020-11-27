@@ -1,17 +1,29 @@
 const { ipcRenderer } = require('electron');
 
-function install(TPath, id, modules, permissions, name){
+function install(TPath, id, modules, permissions, name) {
   EnderFramework.topBar.title.set(name);
-  const ID = id, installationProgress = document.getElementById("installationProgress"), installationMessage = document.getElementById("installationMessage");
+
+  const
+    ID = id,
+    installationProgress = document.getElementById("installationProgress"),
+    installationMessage = document.getElementById("installationMessage");
+
   installationProgress.value = 0;
   installationMessage.innerHTML = "Preparing for the modules' installation process...";
+
   //console.log(TPath);
   //console.log(id);
   //console.log(modules);
   //console.log(permissions);
-  var appPath = path_.replace("built-in\\Installer\\", "") + "installed\\", length = id.replace(/[^.]/g, "").length, originalID = id, appPaths = [];
+  var
+    appPath = path_.replace("built-in\\Installer\\", "") + "installed\\",
+    length = id.replace(/[^.]/g, "").length,
+    originalID = id,
+    appPaths = [];
+
   appPaths[0] = appPath;
-  for(var i2 = 0; i2 <= length; i2++){
+
+  for (var i2 = 0; i2 <= length; i2++) {
     appPaths[appPaths.length] = id.substring(0, (id.indexOf(".") > -1) ? id.indexOf(".") : id.length);
     appPath += id.substring(0, (id.indexOf(".") > -1) ? id.indexOf(".") : id.length) + "\\";
     id = id.substring(id.indexOf(".") + 1);
@@ -29,87 +41,107 @@ function install(TPath, id, modules, permissions, name){
     }
   });*/
   //console.log(appPath);
-  installTheModules(TPath ,ID, modules, function(){
+
+  installTheModules(TPath, ID, modules, function () {
     //installationProgress.removeAttribute("value");
     //installationMessage.innerHTML = "Installing modules...";
     //const { execFile } = require('child_process');
     //const child = execFile(TPath + "\\executable.bat", ['--version'], (error, stdout, stderr) => {
     (() => {
-      if(false){
+      if (false) {
         //Failed to install the modules!
         installationMessage.innerHTML = "The installation process has failed!";
-      }else{
+      } else {
         installationMessage.innerHTML = "Preparing for the app files to be moved...";
-        var length = originalID.replace(/[^.]/g, "").length, newPath = path_.replace("built-in\\Installer\\", "") + "installed", done = 0;
-        for(var i2 = 0; i2 <= length; i2++){
+
+        var
+          length = originalID.replace(/[^.]/g, "").length,
+          newPath = path_.replace("built-in\\Installer\\", "") + "installed", done = 0;
+
+        for (var i2 = 0; i2 <= length; i2++) {
           newPath += "\\" + originalID.substring(0, (originalID.indexOf(".") > -1) ? originalID.indexOf(".") : originalID.length);
           originalID = originalID.substring(originalID.indexOf(".") + 1);
-          fs.mkdir(newPath, function(err){
-            if(err){
-              if(fs.existsSync(newPath))
+
+          fs.mkdir(newPath, function (err) {
+            if (err) {
+              if (fs.existsSync(newPath))
                 done++;
-              else{
+              else {
                 //Failed!
               }
-            }else{
+            } else {
               done++;
             }
-            if(done >= length + 1){
+            if (done >= length + 1) {
               installationProgress.value = 0;
               installationMessage.innerHTML = "Copying the app files...";
+
               var currentSize = 0;
-              const pathLoop = function(path, newPath){
-                fs.readdir(path, function (err, files){
-                  if(err){
+
+              const pathLoop = function (path, newPath) {
+                fs.readdir(path, function (err, files) {
+                  if (err) {
                     //Error
                   }
-                  files.forEach(function(file){
+
+                  files.forEach(function (file) {
                     var v = fs.lstatSync(path + file);
-                    if(v.isFile()){
+
+                    if (v.isFile()) {
                       fs.copyFile(path + file, newPath + file, (err) => {
-                        if(err){
+                        if (err) {
                           //Failed
-                        }else{
+                        } else {
                           currentSize += v.size;
-                          installationProgress.value = currentSize/totalSize;
-                          if(currentSize == totalSize){
-                            setTimeout(function(){
+                          installationProgress.value = currentSize / totalSize;
+
+                          if (currentSize == totalSize) {
+                            setTimeout(function () {
                               installationProgress.removeAttribute("value");
                               installationMessage.innerHTML = "Managing the app permissions...";
                               permissions;
-                              sendPermissions(id, permissions, function(){
+
+                              sendPermissions(id, permissions, function () {
                                 installationMessage.innerHTML = "Sending a list of the app modules to EnderServices...";
-                                sendModules(id, modules, function(){
+
+                                sendModules(id, modules, function () {
                                   installationMessage.innerHTML = "Cleaning up...";
+
                                   const del = require('del');
                                   //(async () => {
+
                                   (() => {
-                                    try{
+                                    try {
                                       var path = path_ + "temporaryFiles\\";
                                       //await del(path);
+
                                       del(path);
                                       installationMessage.innerHTML = "Finishing up...";
-                                      function finish(){
+
+                                      function finish() {
                                         const ipcRenderer = require('electron').ipcRenderer;
+
                                         ipcRenderer.send("createadesktopshortcut", {
                                           id: ID,
                                           name: window["name"],
                                           description: window["description"],
                                           icon: appPath + "resources\\_icon.ico"
                                         });
+
                                         document.getElementById("_installationScreen").style.display = "none";
                                         document.getElementById("_installed").style.display = "block";
                                       }
-                                      fs.mkdir(path, function(err){
-                                        if(err){
-                                          if(fs.existsSync(path)){
+
+                                      fs.mkdir(path, function (err) {
+                                        if (err) {
+                                          if (fs.existsSync(path)) {
                                             finish();
                                           }
-                                        }else{
+                                        } else {
                                           finish();
                                         }
                                       });
-                                    }catch{
+                                    } catch {
                                       //Error
                                     }
                                   })();
@@ -119,13 +151,13 @@ function install(TPath, id, modules, permissions, name){
                           }
                         }
                       });
-                    }else{
-                      fs.mkdir(newPath + file + "\\", function(err){
-                        if(err){
-                          if(fs.existsSync(newPath + file + "\\")){
+                    } else {
+                      fs.mkdir(newPath + file + "\\", function (err) {
+                        if (err) {
+                          if (fs.existsSync(newPath + file + "\\")) {
                             pathLoop(path + file + "\\", newPath + file + "\\");
                           }
-                        }else{
+                        } else {
                           pathLoop(path + file + "\\", newPath + file + "\\");
                         }
                       });
@@ -133,6 +165,7 @@ function install(TPath, id, modules, permissions, name){
                   });
                 });
               };
+
               pathLoop(TPath + "\\content\\", appPath);
             }
           });

@@ -1,4 +1,5 @@
 const __os = require('os');
+
 module.exports = {
   platform: __os.platform(),
   isWindows10: __os.platform() == "win32" && __os.release() > "10",
