@@ -35,14 +35,16 @@ app.commandLine.appendSwitch("autoplay-policy", "no-user-gesture-required");
 //app.commandLine.appendSwitch("--enable-transparent-visuals");
 app.commandLine.appendSwitch("--disable-renderer-backgrounding");
 app.commandLine.appendSwitch('--enable-features', 'OverlayScrollbar, ElasticOverscrollWin');
-var done = false, appPath = paths.apps;
+var done = false,
+    appPath = paths.apps;
 const windowManager = require("./window");
-app.on("ready", function () {
+app.on("ready", function() {
     for (var i = 0; i < process.argv.length; i++) {
         if (process.argv[i].includes("--start=")) {
             //if(true){
             done = true;
-            var appID = process.argv[i].replace(/\s/g, '').substring(8), length = appID.replace(/[^.]/g, "").length;
+            var appID = process.argv[i].replace(/\s/g, '').substring(8),
+                length = appID.replace(/[^.]/g, "").length;
             //var appID = "com.enderadel.test", length = appID.replace(/[^.]/g, "").length;
             //var appID = "com.enderadel.test2", length = appID.replace(/[^.]/g, "").length;
             //var appID = "com.enderadel.CommandPrompt", length = appID.replace(/[^.]/g, "").length;
@@ -82,7 +84,7 @@ app.on("ready", function () {
     if (!done) {
         var init = require("./initiate");
         init.paths = paths;
-        init.autoLaunch("EnderServices", false, function () {
+        init.autoLaunch("EnderServices", false, function() {
             toast.notify("An error occurred!", "Failed to set up the auto launch process.");
         });
         //init.shortcuts("minimal");
@@ -91,9 +93,9 @@ app.on("ready", function () {
         process.exit(0);
     }
 });
-app.on('renderer-process-crashed', function () {
+app.on('renderer-process-crashed', function() {
     toast.notify("An error occurred!", "The renderer process crashed.");
-    setTimeout(function () {
+    setTimeout(function() {
         process.exit(0);
     }, 1000);
 });
@@ -111,6 +113,7 @@ ipcMain.on('data', (event, arg) => {
 app.on('will-finish-launching', () => {
     //start background activites
 });
+
 function handleSquirrelEvent(application) {
     if (process.argv.length === 1) {
         return false;
@@ -121,16 +124,16 @@ function handleSquirrelEvent(application) {
     const rootAtomFolder = path.resolve(appFolder, '..');
     const updateDotExe = path.resolve(path.join(rootAtomFolder, 'Update.exe'));
     const exeName = path.basename(process.execPath);
-    const spawn = function (command, args) {
+    const spawn = function(command, args) {
         let spawnedProcess, error;
         try {
             spawnedProcess = ChildProcess.spawn(command, args, {
                 detached: true
             });
-        } catch (error) { }
+        } catch (error) {}
         return spawnedProcess;
     };
-    const spawnUpdate = function (args) {
+    const spawnUpdate = function(args) {
         return spawn(updateDotExe, args);
     };
     const squirrelEvent = process.argv[1];
