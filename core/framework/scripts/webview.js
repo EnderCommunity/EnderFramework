@@ -1,6 +1,16 @@
 var isLoading = false, finishedInsertingResources = function(){
   isLoading = false;
-  if(manifest.content.redirectAnimations){
+  if(firstLoad){
+    firstLoad = false;
+    setTimeout(function(){
+      updateTopBarColorOnLoad();
+      //window_Cover.style.display = "none";
+      //window_LongCover.style.display = "none";
+      _content.style.opacity = "1";
+      document.hideSplashScreen();
+      //_content.style.display = null;
+    }, manifest.splashCooldown);
+  }else if(manifest.content.redirectAnimations){
     _content.classList.remove("animated", "fadeInUp2", "fast-ish");
     setTimeout(function(){
       window_Cover.style.display = "none";
@@ -15,14 +25,6 @@ var isLoading = false, finishedInsertingResources = function(){
     window_Cover.style.display = "none";
     window_LongCover.style.display = "none";
     _content.style.opacity = "1";
-  }
-  if(firstLoad){
-    firstLoad = false;
-    setTimeout(function(){
-      updateTopBarColorOnLoad();
-      document.hideSplashScreen();
-      _content.style.display = null;
-    }, manifest.splashCooldown);
   }
 };
 _content.setAttribute("webpreferences", `devTools=${(manifest.enable.devTools) ? "yes" : "no"}, nodeIntegration=yes, nodeIntegrationInWorker=yes, nodeIntegrationInSubFrames=yes, sandbox=no, webviewTag=yes, enableRemoteModule=yes, javascript=${(manifest.enable.JavaScript) ? "yes" : "no"}, webSecurity=yes, images=yes, textAreasAreResizable=no, webgl=${(manifest.enable.WebGL) ? "yes" : "no"}, experimentalFeatures=no, scrollBounce=yes, defaultFontFamily="Muli", defaultFontSiz=16, defaultMonospaceFontSize=13, minimumFontSize=0, defaultEncoding="ISO-8859-1", offscreen=no, contextIsolation=no, nativeWindowOpen=no, safeDialogs=no, navigateOnDragDrop=no, autoplayPolicy="no-user-gesture-required" disableHtmlFullscreenWindowResize=no, spellcheck=${(manifest.enable.spellcheck) ? "yes" : "no"}`);
@@ -42,7 +44,7 @@ _content.addEventListener("dom-ready", function(){
   }
 });*/
 _content.addEventListener('did-start-loading', function(){
-  if(_content.isLoadingMainFrame()){
+  if(_content.isLoadingMainFrame() & !firstLoad){
     window_ErrorScreen.style.display = "none";
     window_Cover.style.display = "block";
     _content.style.opacity = "0";
