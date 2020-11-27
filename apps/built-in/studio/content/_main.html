@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <request name="customElements"></request>
     <request name="scrollAnimation"></request>
     <link rel="stylesheet" href="./style.css">
@@ -11,140 +12,141 @@
     <script type="text/javascript" src="./start.js"></script>
     <script type="text/javascript" src="./monitor.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <pad id="_start">
-      <!-- <profile></profile> -->
-      <img class="profile">
-      <h1>Welcome, [Username]!</h1>
-      <h3>You're free to be creative and build whatever you want!</h3>
-      <div class="COfMainActions">
-        <div class="RecentC">
-          <h2>Open recent</h2>
-          <div class="COfSearch" disabled>
-            <icon>search</icon>
-            <input type="search">
-          </div>
-          <div id="_projects">
-            <h5>There is nothing in here!</h5>
-          </div>
+        <!-- <profile></profile> -->
+        <img class="profile">
+        <h1>Welcome, [Username]!</h1>
+        <h3>You're free to be creative and build whatever you want!</h3>
+        <div class="COfMainActions">
+            <div class="RecentC">
+                <h2>Open recent</h2>
+                <div class="COfSearch" disabled>
+                    <icon>search</icon>
+                    <input type="search">
+                </div>
+                <div id="_projects">
+                    <h5>There is nothing in here!</h5>
+                </div>
+            </div>
+            <div class="StartC">
+                <h2>Get started</h2>
+                <div class="option" disabled>
+                    <icon>cloud_download</icon>
+                    <h5 class="title">Clone code</h5>
+                    <h5 class="desc">Get code from GitHub</h5>
+                </div>
+                <div class="option" disabled>
+                    <icon>file_copy</icon>
+                    <h5 class="title">Open a project</h5>
+                    <h5 class="desc">Open a packed EnderStudio project (.PEP)</h5>
+                </div>
+                <div id="_openAFolder" class="option">
+                    <icon>folder_open</icon>
+                    <h5 class="title">Open a local folder</h5>
+                    <h5 class="desc">Navigiate and edit within any folder</h5>
+                </div>
+                <div id="_newProject" class="option">
+                    <icon>note_add</icon>
+                    <h5 class="title">Create a new project</h5>
+                    <h5 class="desc">Create a project using templates</h5>
+                </div>
+                <a disabled>Connect to a live project</a>
+            </div>
         </div>
-        <div class="StartC">
-          <h2>Get started</h2>
-          <div class="option" disabled>
-            <icon>cloud_download</icon>
-            <h5 class="title">Clone code</h5>
-            <h5 class="desc">Get code from GitHub</h5>
-          </div>
-          <div class="option" disabled>
-            <icon>file_copy</icon>
-            <h5 class="title">Open a project</h5>
-            <h5 class="desc">Open a packed EnderStudio project (.PEP)</h5>
-          </div>
-          <div id="_openAFolder" class="option">
-            <icon>folder_open</icon>
-            <h5 class="title">Open a local folder</h5>
-            <h5 class="desc">Navigiate and edit within any folder</h5>
-          </div>
-          <div id="_newProject" class="option">
-            <icon>note_add</icon>
-            <h5 class="title">Create a new project</h5>
-            <h5 class="desc">Create a project using templates</h5>
-          </div>
-          <a disabled>Connect to a live project</a>
-        </div>
-      </div>
     </pad>
     <div id="_editorLayout" style="display: none;">
-      <div id="_topBar">
-        <img id="_newFileButton" src="./vs_icons/new_file/icon.svg" disabled>
-        <img id="_saveButton" src="./vs_icons/save/icon.svg" disabled>
-        <img id="_saveAllButton" src="./vs_icons/save_all/icon.svg" disabled>
-        <hr>
-        <img id="_undoButton" src="./vs_icons/undo/icon.svg" disabled>
-        <img id="_redoButton" src="./vs_icons/redo/icon.svg" disabled>
-        <hr>
-        <select disabled>
+        <div id="_topBar">
+            <img id="_newFileButton" src="./vs_icons/new_file/icon.svg" disabled>
+            <img id="_saveButton" src="./vs_icons/save/icon.svg" disabled>
+            <img id="_saveAllButton" src="./vs_icons/save_all/icon.svg" disabled>
+            <hr>
+            <img id="_undoButton" src="./vs_icons/undo/icon.svg" disabled>
+            <img id="_redoButton" src="./vs_icons/redo/icon.svg" disabled>
+            <hr>
+            <select disabled>
           <option value="debug">Debug</option>
           <option value="release">Release</option>
           <option value="enderdesktop">EnderDesktop</option>
         </select>
-        <img id="_runButton" src="./vs_icons/run/icon.svg" disabled>
-        <div class="live_share" disabled>
-          <img src="./vs_icons/share/icon.svg">
-          <text>Start a live project</text>
+            <img id="_runButton" src="./vs_icons/run/icon.svg" disabled>
+            <div class="live_share" disabled>
+                <img src="./vs_icons/share/icon.svg">
+                <text>Start a live project</text>
+            </div>
         </div>
-      </div>
-      <div id="_editorC">
-        <loading></loading>
-        <div id="_tabs">
-          <!--<div class="tab" selected="">
+        <div id="_editorC">
+            <loading></loading>
+            <div id="_tabs">
+                <!--<div class="tab" selected="">
             <img src="C:\Users\win10\Desktop\Electron_Projects\EnderServices\Apps\built-in\Studio\content\icons\dark\file-code.svg">
             <text>[name]</text>
             <icon>close</icon>
           </div>-->
+            </div>
+            <breadcrumb id="_bar"></breadcrumb>
+            <div id="_editor" disabled_></div>
+            <div id="_bottomSection">
+                <!---->
+            </div>
         </div>
-        <breadcrumb id="_bar"></breadcrumb>
-        <div id="_editor" disabled_></div>
-        <div id="_bottomSection">
-          <!---->
-        </div>
-      </div>
-      <div id="_fileExplorer">
-        <div class="c"></div>
-        <!--
+        <div id="_fileExplorer">
+            <div class="c"></div>
+            <!--
         <div class="folder">
           <icon></icon>
           <text>[name]</text>
           <div class="content"></div>
         </div>-->
-      </div>
-      <div id="_bottomBar">
-        <img src="./icons/error.svg">
-        <text id="_Errors">0</text>
-        <img src="./icons/warning.svg">
-        <text id="_Warnings">0</text>
-        <div class="right">
-          <text id="_Position">Ln -, Col -</text>
-          <text id="_Type">-</text>
         </div>
-      </div>
+        <div id="_bottomBar">
+            <img src="./icons/error.svg">
+            <text id="_Errors">0</text>
+            <img src="./icons/warning.svg">
+            <text id="_Warnings">0</text>
+            <div class="right">
+                <text id="_Position">Ln -, Col -</text>
+                <text id="_Type">-</text>
+            </div>
+        </div>
     </div>
     <div id="_newProjectLayout" style="display: none;">
-      <div id="_projectType">
-        <h1>Create a new project</h1>
-        <h3>Choose a template to start with!</h3>
-        <div class="COfTemplates">
-          <div class="template" id="_blankTemplate" type="Blank App">
-            <img>
-            <div class="sC">
-              <text class="title">Empty Project</text>
-              <text class="desc">Start from scratch! This template does not provide any starting files except for the "_main" file.</text>
-              <badge>Windows</badge>
-              <!--<badge>Windows 10</badge>-->
-              <badge>macOS</badge>
-              <badge>Linux</badge>
-              <!--<badge>Android</badge>
+        <div id="_projectType">
+            <h1>Create a new project</h1>
+            <h3>Choose a template to start with!</h3>
+            <div class="COfTemplates">
+                <div class="template" id="_blankTemplate" type="Blank App">
+                    <img>
+                    <div class="sC">
+                        <text class="title">Empty Project</text>
+                        <text class="desc">Start from scratch! This template does not provide any starting files except for the "_main" file.</text>
+                        <badge>Windows</badge>
+                        <!--<badge>Windows 10</badge>-->
+                        <badge>macOS</badge>
+                        <badge>Linux</badge>
+                        <!--<badge>Android</badge>
               <badge>iOS</badge>
               <badge>Chrome OS</badge>
               <badge>The Web</badge>-->
+                    </div>
+                </div>
+                <center class="note">More templates are coming soon...</center>
             </div>
-          </div>
-          <center class="note">More templates are coming soon...</center>
+            <div class="COfButtons">
+                <button id="_goBackHome">Cancel</button>
+                <button id="_newNextStep1" primary>Next</button>
+            </div>
         </div>
-        <div class="COfButtons">
-          <button id="_goBackHome">Cancel</button>
-          <button id="_newNextStep1" primary>Next</button>
-        </div>
-      </div>
-      <div id="_projectConfiguration" style="display: none;">
-        <h1>Configure your project</h1>
-        <h3 id="_currentPorjectType">[ProjectType]</h3>
-        <br>
-        <h4>Project Name</h4>
-        <input type="text" value="My Project">
-        <h4>Framework</h4>
-        <select>
+        <div id="_projectConfiguration" style="display: none;">
+            <h1>Configure your project</h1>
+            <h3 id="_currentPorjectType">[ProjectType]</h3>
+            <br>
+            <h4>Project Name</h4>
+            <input type="text" value="My Project">
+            <h4>Framework</h4>
+            <select>
           <option selected>EnderFramework Master</option>
           <option disabled>EnderFramework Pre-Alpha</option>
           <option disabled>EnderFramework Alpha</option>
@@ -153,35 +155,36 @@
           <option disabled>EnderFramework Pre-Release</option>
           <option disabled>EnderFramework 1.0</option>
         </select>
-        <div class="COfButtons">
-          <button id="_goBack1">Back</button>
-          <button id="_createProject" primary>Create</button>
+            <div class="COfButtons">
+                <button id="_goBack1">Back</button>
+                <button id="_createProject" primary>Create</button>
+            </div>
         </div>
-      </div>
     </div>
     <script>
-      var nodeRequire = global.require;
+        var nodeRequire = global.require;
     </script>
     <script src="../../../../node_modules/monaco-editor/min/vs/loader.js"></script>
     <script>
-      var amdRequire = global.require;
-      global.require = nodeRequire;
-      var path = require('path');
-      function uriFromPath(_path){
-        var pathName = path.resolve(_path).replace(/\\/g, '/');
-        if(pathName.length > 0 && pathName.charAt(0) !== '/'){
-          pathName = '/' + pathName;
+        var amdRequire = global.require;
+        global.require = nodeRequire;
+        var path = require('path');
+
+        function uriFromPath(_path) {
+            var pathName = path.resolve(_path).replace(/\\/g, '/');
+            if (pathName.length > 0 && pathName.charAt(0) !== '/') {
+                pathName = '/' + pathName;
+            }
+            return encodeURI('file://' + pathName);
         }
-        return encodeURI('file://' + pathName);
-      }
-      amdRequire.config({
-        baseUrl: uriFromPath(path.join(__dirname.replace("\\Apps\\built-in\\Studio\\content", ""), 'node_modules/monaco-editor/min'))
-      });
-      self.module = undefined;
-      self.process.browser = true;
+        amdRequire.config({
+            baseUrl: uriFromPath(path.join(__dirname.replace("\\Apps\\built-in\\Studio\\content", ""), 'node_modules/monaco-editor/min'))
+        });
+        self.module = undefined;
+        self.process.browser = true;
     </script>
     <script>
-      require('./editor.js')
+        require('./editor.js')
     </script>
     <script type="text/javascript" src="./file_manager.js"></script>
     <script type="text/javascript" src="./editor_process.js"></script>
@@ -190,5 +193,6 @@
     <script type="text/javascript" src="./newProject.js"></script>
     <script type="text/javascript" src="./homeMenu.js"></script>
     <script type="text/javascript" src="./templates.js"></script>
-  </body>
+</body>
+
 </html>

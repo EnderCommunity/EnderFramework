@@ -1,24 +1,24 @@
 /*if(process.platform == "win32"){
   //
 }*/
-var currentShareValue = null, showShareScreen = function(text){
-  currentShareValue = text;
-  document.getElementById("_COfShare").style.display = "block";
-  document.getElementById("_shareUI").style.display = "block";
-  document.getElementById('_shareContent').textContent = text;
-}, hideShareScreen = function(){
-  document.getElementById('_COfShare').style.display = 'none';
-  document.getElementById('_shareUI').style.display = 'none';
-  document.getElementById('_shareContent').textContent = "[the_content]";
+var currentShareValue = null, showShareScreen = function (text) {
+    currentShareValue = text;
+    document.getElementById("_COfShare").style.display = "block";
+    document.getElementById("_shareUI").style.display = "block";
+    document.getElementById('_shareContent').textContent = text;
+}, hideShareScreen = function () {
+    document.getElementById('_COfShare').style.display = 'none';
+    document.getElementById('_shareUI').style.display = 'none';
+    document.getElementById('_shareContent').textContent = "[the_content]";
 };
-document.getElementById("_twitterShareButton").addEventListener("click", function(){
-  openInBrowser("https://twitter.com/intent/tweet?text=" + encodeURI(currentShareValue));
+document.getElementById("_twitterShareButton").addEventListener("click", function () {
+    openInBrowser("https://twitter.com/intent/tweet?text=" + encodeURI(currentShareValue));
 });
-document.getElementById("_shareViaEmail").addEventListener("click", function(){
-  openInBrowser("mailto:?body=" + encodeURI(currentShareValue));
+document.getElementById("_shareViaEmail").addEventListener("click", function () {
+    openInBrowser("mailto:?body=" + encodeURI(currentShareValue));
 });
-document.getElementById("_redditShareButton").addEventListener("click", function(){
-  openInBrowser("https://reddit.com/submit?text=" + encodeURI(currentShareValue));
+document.getElementById("_redditShareButton").addEventListener("click", function () {
+    openInBrowser("https://reddit.com/submit?text=" + encodeURI(currentShareValue));
 });
 /*const fetchApps = require("fetch-installed-software");
 fetchApps.getAllInstalledSoftware().then(function(apps){
