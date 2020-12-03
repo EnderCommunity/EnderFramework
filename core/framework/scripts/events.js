@@ -1,23 +1,31 @@
 _content.addEventListener('ipc-message', event => {
     var isLocked = false;
-    if (event.channel == "environment--tell-done") {
+    if (event.channel == "event--loadStyle") {
+        if (manifest.content.customStyle) {
+            _content.insertCSS(resources.css.main, { cssOrigin: 'author' });
+            _content.insertCSS(resources.css.font, { cssOrigin: 'author' });
+            _content.insertCSS(resources.css.icons, { cssOrigin: 'author' });
+            _content.insertCSS(resources.css.animations, { cssOrigin: 'author' });
+        }
+    } else if (event.channel == "environment--tell-done") {
         finishedInsertingResources();
     } else if (event.channel == "event--startLoading") {
         var elem = document.getElementById("_longLoading");
         elem.style.display = "block";
-    } else if (event.channel == "event--doneLoading") {
+    } else
+    if (event.channel == "event--doneLoading") {
         var elem = document.getElementById("_longLoading");
         if (redirectAnimations_) {
             content.classList.remove("animated", "fadeInUp2", "fast-ish");
-            setTimeout(function () {
+            setTimeout(function() {
                 elem.style.display = "none";
                 content.classList.add("animated", "fadeInUp2", "fast-ish");
-                setTimeout(function () {
+                setTimeout(function() {
                     content.classList.remove("animated", "fadeInUp2", "fast-ish");
                 }, 250);
             }, 400);
         } else {
-            setTimeout(function () {
+            setTimeout(function() {
                 elem.style.display = "none";
             }, 250);
         }
@@ -62,8 +70,11 @@ _content.addEventListener('ipc-message', event => {
     } else if (event.channel == "enderframework--share-show") {
         showShareScreen(event.args[0][0]);
     } else if (event.channel == "enderframework--notification-show") {
-        var id = event.args[0][0], title = event.args[0][1], message = event.args[0][2], icon = event.args[0][3];
-        notify_1(title, message, icon, function (error, action) {
+        var id = event.args[0][0],
+            title = event.args[0][1],
+            message = event.args[0][2],
+            icon = event.args[0][3];
+        notify_1(title, message, icon, function(error, action) {
             if (error) {
                 content.send("enderframework--notification-e" + id);
             } else {
@@ -79,7 +90,8 @@ _content.addEventListener('ipc-message', event => {
             }
         });
     } else if (event.channel == "enderframework--contextmenu-create") {
-        var id = event.args[0][0], c = event.args[0][1];
+        var id = event.args[0][0],
+            c = event.args[0][1];
         if (!checkContextMenuID(id)) {
             saveContextMenu(id, c);
             content.send("enderframework--contextmenu-createdone");
@@ -97,9 +109,10 @@ _content.addEventListener('ipc-message', event => {
         //document.getElementById("_cover").style.display = "block";
         //
         event.args = event.args[0];
-        const CEID = event.args[0], executeDOMJS = function (code) {
-            content.executeJavaScript(code.replace(/{currentFloatingAction}/g, `ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton[${CEID}]`));
-        };
+        const CEID = event.args[0],
+            executeDOMJS = function(code) {
+                content.executeJavaScript(code.replace(/{currentFloatingAction}/g, `ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton[${CEID}]`));
+            };
         ShowFloatingActionContent(executeDOMJS, event.args[1]);
         //
     } else if (event.channel == "enderframework--theme-coverpage") {
@@ -135,29 +148,31 @@ _content.addEventListener('ipc-message', event => {
             //windowNum++;
             //console.log(event);
             event.args = event.args[0];
-            var url = window.location + "?subwindow=" + event.args.id, _window = window.open(url);
+            var url = window.location + "?subwindow=" + event.args.id,
+                _window = window.open(url);
             windowsArray[event.args.id] = _window;
             //console.log(url);
             //console.log(event.args.id);
             //window.location.search.indexOf("?subwindow") == 0
             //console.log(event.args.data[0]);
-            var loop_ = 0, loop = setInterval(function () {
-                _window.postMessage({
-                    url: event.args.data[0],
-                    width: event.args.data[1],
-                    height: event.args.data[2],
-                    title: event.args.data[3],
-                    minWidth: event.args.data[4],
-                    minHeight: event.args.data[5],
-                    maxWidth: event.args.data[6],
-                    maxHeight: event.args.data[7],
-                    menu: event.args.data[8]
-                }, url);
-                if (loop_ == 6) {
-                    clearInterval(loop);
-                }
-                loop_++;
-            }, 100);
+            var loop_ = 0,
+                loop = setInterval(function() {
+                    _window.postMessage({
+                        url: event.args.data[0],
+                        width: event.args.data[1],
+                        height: event.args.data[2],
+                        title: event.args.data[3],
+                        minWidth: event.args.data[4],
+                        minHeight: event.args.data[5],
+                        maxWidth: event.args.data[6],
+                        maxHeight: event.args.data[7],
+                        menu: event.args.data[8]
+                    }, url);
+                    if (loop_ == 6) {
+                        clearInterval(loop);
+                    }
+                    loop_++;
+                }, 100);
         } catch {
             //
         }
@@ -263,7 +278,8 @@ _content.addEventListener('ipc-message', event => {
     } else if (event.channel == "enderframework--contextmenu-defaults") {
         if (contextMenu_) {
             event.args = event.args[0];
-            var Top_ = event.args.Y, Left_ = event.args.X;
+            var Top_ = event.args.Y,
+                Left_ = event.args.X;
             if (_menuContent.type == "none") {
                 Top_ += document.getElementById("_topBar").offsetHeight;
             }
@@ -308,10 +324,10 @@ _content.addEventListener('ipc-message', event => {
     } else if (event.channel == "do--notify") {
         var notif = document.getElementById("_notification");
         notif.removeAttribute("show");
-        setTimeout(function () {
+        setTimeout(function() {
             notif.getElementsByTagName("h4")[0].innerHTML = event.args;
             notif.removeAttribute("style");
-            setTimeout(function () {
+            setTimeout(function() {
                 if (notif.offsetWidth + 36 > window.innerWidth)
                     notif.setAttribute("style", "margin: 0px 18px;");
                 notif.setAttribute("show", "");
@@ -319,7 +335,7 @@ _content.addEventListener('ipc-message', event => {
         }, 100);
         if (global.currentCountdown_notify != null)
             clearTimeout(currentCountdown_notify);
-        global.currentCountdown_notify = setTimeout(function () {
+        global.currentCountdown_notify = setTimeout(function() {
             notif.removeAttribute("show");
         }, 5000);
     } else if (event.channel == "enderframework--feedback") {

@@ -1,10 +1,10 @@
-const showMessageBox_ = function (t, m, d, b) {
+const showMessageBox_ = function(t, m, d, b) {
     var box, title, message, details, buttonsC;
     //document.body.classList.add("noScroll");
     const main = document.createElement("div");
     //main.classList.add("COfAlert", "animated", "fadeIn", "faster");
     main.classList.add("COfAlert");
-    const removeF = function () {
+    const removeF = function() {
         main.outerHTML = "";
         //document.body.classList.remove("noScroll");
         _content.focus();
@@ -29,9 +29,19 @@ const showMessageBox_ = function (t, m, d, b) {
         var button = document.createElement("button");
         button.setAttribute(cb.type, "");
         button.innerHTML = cb.text;
-        button.function = (cb.onclick != undefined) ? cb.onclick : "function(){}";
-        button.addEventListener("click", function () {
-            _content.executeJavaScript(`(${this.function})();`);
+        button.function = cb.onclick;
+        button.addEventListener("click", function() {
+            if (this.function == "" || this.function == "undefined" || this.function == "null" || this.function == null || this.function == undefined)
+                return false;
+            //
+            if (!this.function.includes("`"))
+                _content.executeJavaScript(`(Function(\`${this.function}\`))();`);
+            else if (!this.function.includes(`"`))
+                _content.executeJavaScript(`(Function("${this.function}"))();`);
+            else if (!this.function.includes(`'`))
+                _content.executeJavaScript(`(Function('${this.function}'))();`);
+            else
+                _content.executeJavaScript(`(${this.function})();`);
             removeF();
         });
         buttonsC.appendChild(button);

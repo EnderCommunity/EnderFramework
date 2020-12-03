@@ -1,8 +1,8 @@
-module.exports = function () {
-    setTimeout(function () {
+module.exports = function() {
+    setTimeout(function() {
         var switchEls = document.getElementsByTagName("switch");
         for (var i = 0; i < switchEls.length; i++) {
-            switchEls[i].addEventListener("click", function () {
+            switchEls[i].addEventListener("click", function() {
                 if (this.getAttribute("active") == "false")
                     this.setAttribute("active", "true");
                 else if (this.getAttribute("active") == "true")
@@ -36,24 +36,24 @@ module.exports = function () {
             });
         }
     }
-    (function () {
+    (function() {
         var a = document.getElementsByTagName("a");
         for (var i = 0; i < a.length; i++)
             if (a[i].hasAttribute("href") && a[i].getAttribute("href").substring(0, 4) == "http" && a[i].getAttribute("target") != "_blank") {
                 a[i].setAttribute("Xhref", a[i].getAttribute("href"));
                 a[i].removeAttribute("href");
-                a[i].addEventListener("click", function () {
+                a[i].addEventListener("click", function() {
                     ipcRenderer.sendToHost('do--openawebpage', this.getAttribute("Xhref"));
                 });
             }
     })();
     var buttons = document.getElementsByTagName("button");
     for (var i = 0; i < buttons.length; i++) {
-        Array.prototype.slice.call(buttons[i].attributes).forEach(function (item) {
+        Array.prototype.slice.call(buttons[i].attributes).forEach(function(item) {
             if (item.name == "warn") {
                 var settings = JSON.parse(item.value);
                 buttons[i].settings = settings;
-                buttons[i].addEventListener("click", function () {
+                buttons[i].addEventListener("click", function() {
                     const settings = this.settings;
                     EnderFramework.dialog.messageBox({
                         title: "Warning",

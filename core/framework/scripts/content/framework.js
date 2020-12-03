@@ -1,34 +1,39 @@
 var dialog = require("./dialog");
 const dialog_ = dialog.dialog;
-var isOnCloseEnabled = false, isConfirmBeforeClosingEnabled = false, isConfirmBeforeClosingLocked = false;
-const path = require("path"), currentPath = paths.currentApp;
-const spawn = require('child_process').spawn, start_process = function (cb = function () { }) {
-    f = path.join(currentPath, "process");
-    var done____ = 0;
-    const fs = require("fs"), done = function (t = true) {
-        if (t)
-            done____++;
-        else
-            cb(false);
-        if (done____ >= 3 && t != false) {
-            cb(true);
-        }
-    };
-    fs.mkdir(f, function (err) {
-        if (true) {
-            done();
-            fs.mkdir(path.join(f, "executables"), function (err_) {
-                if (err_) {
-                    console.error(err_)
-                    done(false);
-                } else {
-                    done();
-                    done();
+var isOnCloseEnabled = false,
+    isConfirmBeforeClosingEnabled = false,
+    isConfirmBeforeClosingLocked = false;
+const path = require("path"),
+    currentPath = paths.currentApp;
+const spawn = require('child_process').spawn,
+    start_process = function(cb = function() {}) {
+        f = path.join(currentPath, "process");
+        var done____ = 0;
+        const fs = require("fs"),
+            done = function(t = true) {
+                if (t)
+                    done____++;
+                else
+                    cb(false);
+                if (done____ >= 3 && t != false) {
+                    cb(true);
                 }
-            });
-        }
-    });
-};
+            };
+        fs.mkdir(f, function(err) {
+            if (true) {
+                done();
+                fs.mkdir(path.join(f, "executables"), function(err_) {
+                    if (err_) {
+                        console.error(err_)
+                        done(false);
+                    } else {
+                        done();
+                        done();
+                    }
+                });
+            }
+        });
+    };
 var menus = {};
 const showAMenu = (menuID, position) => {
     ipcRenderer.sendToHost('enderframework--contextmenu-show', [menuID, position]);
@@ -41,38 +46,43 @@ enderframework--contextmenu-remove
 enderframework--contextmenu-removereply
 enderframework--contextmenu-hideall
 */
-var aes256 = require('aes256'), key = (function () {
-    var result = '';
-    var characters = (function () {
-        var s = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~`!@#$%^&*()_+-=[]{};:\'",.<>/?\\|';
-        var arr = s.split('');
-        var n = arr.length;
-        for (var i = 0; i < n - 1; ++i) {
-            var j = Math.floor(Math.random() * Math.random() * n);
-            var temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
+var aes256 = require('aes256'),
+    key = (function() {
+        var result = '';
+        var characters = (function() {
+            var s = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~`!@#$%^&*()_+-=[]{};:\'",.<>/?\\|';
+            var arr = s.split('');
+            var n = arr.length;
+            for (var i = 0; i < n - 1; ++i) {
+                var j = Math.floor(Math.random() * Math.random() * n);
+                var temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+            s = arr.join('');
+            return s;
+        })();
+        var charactersLength = characters.length;
+        for (var i = 0; i < 64; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
         }
-        s = arr.join('');
-        return s;
-    })();
-    var charactersLength = characters.length;
-    for (var i = 0; i < 64; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-})();;
+        return result;
+    })();;
 global.EnderFramework_ContextMenuActions = {
     //
     copy: () => {
         //
-    }, paste: () => {
+    },
+    paste: () => {
         //
-    }, cut: () => {
+    },
+    cut: () => {
         //
-    }, delete: () => {
+    },
+    delete: () => {
         //
-    }, devTools: () => {
+    },
+    devTools: () => {
         //
     }
 };
@@ -80,26 +90,28 @@ global.EnderFramework_ContextMenuActions = {
 function ContextMenu(id) {
     this.ID = id;
 }
-ContextMenu.prototype.attachTo = function (element, v = false) {
+ContextMenu.prototype.attachTo = function(element, v = false) {
     var menuID = this.ID;
     try {
-        element.addEventListener("contextmenu", function (e) {
+        element.addEventListener("contextmenu", function(e) {
             e.preventDefault();
             const rect = this.getBoundingClientRect();
             showAMenu(menuID, (!v) ? {
                 top: rect.top + rect.height,
                 left: rect.left
             } : {
-                    top: e.clientY,
-                    left: e.clientX
-                });
+                top: e.clientY,
+                left: e.clientX
+            });
         });
         return true;
     } catch {
         return false;
     }
 };
-const request = require('request'), fs = require("fs");
+const request = require('request'),
+    fs = require("fs");
+
 function Download(url, name) {
     this.name = name;
     //this.targetPath = path_ + "downloads\\" + Math.round(Math.random()*10000000000) + "-" + this.name;
@@ -114,31 +126,32 @@ function Download(url, name) {
     var out = fs.createWriteStream(this.targetPath);
     this.request.pipe(out);
     var _this = this;
-    this.request.on('response', function (data) {
+    this.request.on('response', function(data) {
         _this.total_bytes = parseInt(data.headers['content-length']);
     });
 }
-Download.prototype.done = function (callback) {
+Download.prototype.done = function(callback) {
     var p = this.targetPath;
-    this.request.on('end', function () {
+    this.request.on('end', function() {
         callback(new LocalFile(p));
     });
 }
-Download.prototype.track = function (callback) {
+Download.prototype.track = function(callback) {
     var _this = this;
-    this.request.on('data', function (chunk) {
+    this.request.on('data', function(chunk) {
         _this.received_bytes += chunk.length;
         callback(_this.total_bytes, _this.received_bytes);
     });
 };
+
 function LocalFile(dir) {
     this.path = dir;
     this.name = path.basename(dir);
     this.extension = path.extname(dir);
 }
-LocalFile.prototype.delete = function () {
+LocalFile.prototype.delete = function() {
     if (this.path == null)
-        return (function () {
+        return (function() {
             console.error("This LocalFile object isn't valid!");
             return false;
         })();
@@ -146,19 +159,21 @@ LocalFile.prototype.delete = function () {
     this.path = null;
     return true;
 }
-LocalFile.prototype.getContent = function (callback) {
-    fs.readFile(this.path, function (err, data) {
+LocalFile.prototype.getContent = function(callback) {
+    fs.readFile(this.path, function(err, data) {
         callback(err, data);
     });
 }
-var https = require("https"), http = require("http");
+var https = require("https"),
+    http = require("http");
+
 function LocalHost(localPath, port, ip, options) {
     var s = http;
     if (options != null) {
         s = https;
         this.options = {
-            key: fs.readFileSync(options.key),//'key.pem'
-            cert: fs.readFileSync(options.certificate)//'cert.pem'
+            key: fs.readFileSync(options.key), //'key.pem'
+            cert: fs.readFileSync(options.certificate) //'cert.pem'
         };
     }
     this.localPath = path.join(paths.currentApp, "content", localPath);
@@ -167,15 +182,15 @@ function LocalHost(localPath, port, ip, options) {
     this.onRequest = null;
     this.onError = null;
     var This_ = this;
-    this.server = s.createServer(function (request, response) {
+    this.server = s.createServer(function(request, response) {
         if (request.url === "/")
             request.url = "index.html";
-        fs.readFile(path.join(This_.localPath, request.url), function (err, data) {
+        fs.readFile(path.join(This_.localPath, request.url), function(err, data) {
             if (err) {
                 response.writeHead(404);
-                fs.readFile(path.join(This_.localPath, "error_document.html"), function (error, data) {
+                fs.readFile(path.join(This_.localPath, "error_document.html"), function(error, data) {
                     if (error) {
-                        fs.readFile(path.join(paths.core, "local", "error.html"), function (error, data) {
+                        fs.readFile(path.join(paths.core, "local", "error.html"), function(error, data) {
                             if (error) {
                                 response.end("An error occurred and we can't find the \"error document\"!\n" + JSON.stringify(err));
                             } else {
@@ -205,7 +220,7 @@ function LocalHost(localPath, port, ip, options) {
         });
     });
 }
-LocalHost.prototype.setPort = function (port) {
+LocalHost.prototype.setPort = function(port) {
     if (this.server == null) {
         console.error("This LocalHost object isn't valid!");
         return false;
@@ -213,7 +228,7 @@ LocalHost.prototype.setPort = function (port) {
     this.port = port;
     this.server.listen(port, this.ip);
 };
-LocalHost.prototype.setAddress = function (ip) {
+LocalHost.prototype.setAddress = function(ip) {
     if (this.server == null) {
         console.error("This LocalHost object isn't valid!");
         return false;
@@ -221,14 +236,14 @@ LocalHost.prototype.setAddress = function (ip) {
     this.ip = ip;
     this.server.listen(this.port, ip);
 };
-LocalHost.prototype.setLocalPath = function (localPath) {
+LocalHost.prototype.setLocalPath = function(localPath) {
     if (this.server == null) {
         console.error("This LocalHost object isn't valid!");
         return false;
     }
     this.localPath = path.join(paths.currentApp, "content", localPath);
 };
-LocalHost.prototype.on = function (event, callback) {
+LocalHost.prototype.on = function(event, callback) {
     if (this.server == null) {
         console.error("This LocalHost object isn't valid!");
         return false;
@@ -241,7 +256,7 @@ LocalHost.prototype.on = function (event, callback) {
         console.warn("There is no such event!");
     }
 };
-LocalHost.prototype.close = function (callback) {
+LocalHost.prototype.close = function(callback) {
     if (this.server == null) {
         console.error("This LocalHost object isn't valid!");
         return false;
@@ -254,35 +269,40 @@ LocalHost.prototype.close = function (callback) {
     this.server = null;
 };
 const { nativeTheme } = require('electron').remote;
-ipcRenderer.on("enderframework--theme-tolight", function () {
+ipcRenderer.on("enderframework--theme-tolight", function() {
     document.documentElement.setAttribute("prefers-color-scheme", "light");
 });
-ipcRenderer.on("enderframework--theme-todark", function () {
+ipcRenderer.on("enderframework--theme-todark", function() {
     document.documentElement.setAttribute("prefers-color-scheme", "dark");
 });
+
 function Window(id, settings) {
     this.windowID = id;
     this.windowSettings = settings;
     this.creationTime = new Date();
 };
 const _dialog = require("electron").remote.dialog;
-Window.prototype.send = function (channel, data = "") {
-    const _channel = channel, _data = data, ID = this.windowID, f = () => {
-        if (_data instanceof Window) {
-            console.error("Illegal variable!");
-        } else {
-            ipcRenderer.sendToHost('enderframework--subwindow-sendmessage', {
-                id: ID,
-                channel: _channel,
-                data: (typeof _data == "string") ? `"${_data}"` : ((typeof _data == "number") ? _data : JSON.stringify(_data))
-            });
-        }
-    };
-    var nd = new Date(), cd = this.creationTime;
+Window.prototype.send = function(channel, data = "") {
+    const _channel = channel,
+        _data = data,
+        ID = this.windowID,
+        f = () => {
+            if (_data instanceof Window) {
+                console.error("Illegal variable!");
+            } else {
+                ipcRenderer.sendToHost('enderframework--subwindow-sendmessage', {
+                    id: ID,
+                    channel: _channel,
+                    data: (typeof _data == "string") ? `"${_data}"` : ((typeof _data == "number") ? _data : JSON.stringify(_data))
+                });
+            }
+        };
+    var nd = new Date(),
+        cd = this.creationTime;
     if (this.creationTime == null) {
         f();
     } else if (nd - cd < 1000) {
-        setTimeout(function () {
+        setTimeout(function() {
             f();
         }, 1000 - (nd - cd));
     } else {
@@ -301,6 +321,7 @@ vm.framework = require("electron").remote.app.getVersion();
 //
 //
 module.exports = {
+    request: request,
     /*accounts: {
       authenticate: function(){
         //
@@ -334,13 +355,13 @@ module.exports = {
             location.href = url;
         },
         reload: () => {
-            ipcRenderer.sendToHost('enderframework--theme-coverpage');
-            location.reload();
-        }
-        //
-        //_content.loadURL(appPath + "content/" + this.url);
-        //document.getElementById("_cover").style.display = "block";
-        //
+                ipcRenderer.sendToHost('enderframework--theme-coverpage');
+                location.reload();
+            }
+            //
+            //_content.loadURL(appPath + "content/" + this.url);
+            //document.getElementById("_cover").style.display = "block";
+            //
     },
     /*cast: {
       media: (url) => {
@@ -364,11 +385,11 @@ module.exports = {
             //
           }
         },*/
-        mode: {//(!) Change the blur color
+        mode: { //(!) Change the blur color
             isDark: () => {
                 return document.documentElement.getAttribute("prefers-color-scheme") == "dark";
             },
-            setTo: function (mode) {
+            setTo: function(mode) {
                 if (mode == "light") {
                     document.documentElement.setAttribute("prefers-color-scheme", "light");
                     ipcRenderer.sendToHost('enderframework--theme-changetolight');
@@ -390,7 +411,7 @@ module.exports = {
             }
         }
     },
-    share: (content) => {//Add a function to toggle the "Share UI" and pass the UI
+    share: (content) => { //Add a function to toggle the "Share UI" and pass the UI
         if (typeof content == "string")
             ipcRenderer.sendToHost('enderframework--share-show', [content]);
         else
@@ -398,7 +419,7 @@ module.exports = {
     },
     convert: {
         toLocalFile: directory => {
-            return (typeof directory == "string") ? (function () {
+            return (typeof directory == "string") ? (function() {
                 directory = path.join(paths.currentApp, "content", directory);
                 if (path.extname(directory) != "")
                     return new LocalFile(directory);
@@ -411,13 +432,13 @@ module.exports = {
         downloads: {
             getAll: callback => {
                 const directoryPath = path.join(paths.currentApp, "resources", "downloads");
-                fs.readdir(directoryPath, function (err, files) {
+                fs.readdir(directoryPath, function(err, files) {
                     if (err) {
                         callback(err, undefined);
                         return console.log('Unable to scan downloads!');
                     }
                     const filesArray = [];
-                    files.forEach(function (file) {
+                    files.forEach(function(file) {
                         filesArray[filesArray.length] = new LocalFile(path.join(paths.currentApp, "resources", "downloads", file));
                     });
                     callback(false, filesArray);
@@ -448,29 +469,30 @@ module.exports = {
     },
     wait: {
         elements: (callback) => {
-            if (areCustomElementsLoaded) {
-                callback();
-                return true;
-            }
-            const waitForCustomElements_ = setInterval(function () {
                 if (areCustomElementsLoaded) {
                     callback();
-                    clearInterval(waitForCustomElements_);
+                    return true;
                 }
-            }, 10);
-        }/*,
-    paths: (callback) => {
-      if(typeof paths != "undefined"){
-        callback();
-        return true;
-      }
-      var waitForPath_ = setInterval(function(){
-        if(typeof paths != "undefined") {
-          clearInterval(waitForPath_);
-          callback();
-        }
-      }, 10);
-    }*/
+                const waitForCustomElements_ = setInterval(function() {
+                    if (areCustomElementsLoaded) {
+                        callback();
+                        clearInterval(waitForCustomElements_);
+                    }
+                }, 10);
+            }
+            /*,
+                paths: (callback) => {
+                  if(typeof paths != "undefined"){
+                    callback();
+                    return true;
+                  }
+                  var waitForPath_ = setInterval(function(){
+                    if(typeof paths != "undefined") {
+                      clearInterval(waitForPath_);
+                      callback();
+                    }
+                  }, 10);
+                }*/
     },
     notification: {
         snack: message => {
@@ -479,22 +501,23 @@ module.exports = {
             else
                 console.error("You can only pass strings to this function!");
         },
-        toast: (title, message, icon = "0", callback = function () { }) => {
-            const cbf = callback, ID = Math.round(Math.random() * 100000000000000000000);
+        toast: (title, message, icon = "0", callback = function() {}) => {
+            const cbf = callback,
+                ID = Math.round(Math.random() * 100000000000000000000);
             ipcRenderer.sendToHost('enderframework--notification-show', [ID, title, message, icon]);
-            ipcRenderer.on("enderframework--notification-e" + ID, function () {
+            ipcRenderer.on("enderframework--notification-e" + ID, function() {
                 callback(true, undefined);
             });
-            ipcRenderer.on("enderframework--notification-c" + ID, function () {
+            ipcRenderer.on("enderframework--notification-c" + ID, function() {
                 callback(false, "clicked");
             });
-            ipcRenderer.on("enderframework--notification-d" + ID, function () {
+            ipcRenderer.on("enderframework--notification-d" + ID, function() {
                 callback(false, "dismissed");
             });
-            ipcRenderer.on("enderframework--notification-t" + ID, function () {
+            ipcRenderer.on("enderframework--notification-t" + ID, function() {
                 callback(false, "timeout");
             });
-            ipcRenderer.on("enderframework--notification-u" + ID, function () {
+            ipcRenderer.on("enderframework--notification-u" + ID, function() {
                 callback(false, "unknown");
             });
         }
@@ -607,10 +630,10 @@ module.exports = {
               console.log(menu.attachTo(document.documentElement, true));
             });
             */
-            (function () {
+            (function() {
                 const _menuID = menuID;
                 ipcRenderer.sendToHost('enderframework--contextmenu-create', [_menuID, content]);
-                ipcRenderer.on("enderframework--contextmenu-createdone", function () {
+                ipcRenderer.on("enderframework--contextmenu-createdone", function() {
                     if (!menus[_menuID]) {
                         menus[_menuID] = true;
                         //console.log(_menuID);
@@ -619,7 +642,7 @@ module.exports = {
                         callback(false, new ContextMenu(_menuID));
                     }
                 });
-                ipcRenderer.on("enderframework--contextmenu-createfailed", function () {
+                ipcRenderer.on("enderframework--contextmenu-createfailed", function() {
                     if (!menus[_menuID]) {
                         menus[_menuID] = true;
                         callback(true, null);
@@ -630,10 +653,10 @@ module.exports = {
         },
         remove: (menuID) => {
             //Remove a context menu
-            (function () {
+            (function() {
                 const _menuID = menuID;
                 ipcRenderer.sendToHost('enderframework--contextmenu-remove', _menuID);
-                ipcRenderer.on("enderframework--contextmenu-removereply", function (e) {
+                ipcRenderer.on("enderframework--contextmenu-removereply", function(e) {
                     callback(e.args[0]);
                 });
             })();
@@ -646,21 +669,21 @@ module.exports = {
         }
     },
     window: {
-        setBackgroundColor: function (color) {
+        setBackgroundColor: function(color) {
             if ((typeof color == "string" && color.length == 6) || color == null)
                 ipcRenderer.sendToHost('enderframework--windowblur-setcolor', color);
             else
                 console.error("You can only use hex colors!");
         },
-        flash: function (shouldEnable) {
+        flash: function(shouldEnable) {
             currentWindow.flashFrame(shouldEnable);
         },
-        on: function (event, callback) {
+        on: function(event, callback) {
             if (event == "enter-lock-mode") {
                 EnderFramework.receiver.on("enter-lock-mode", callback);
             } else if (event == "leave-lock-mode") {
                 EnderFramework.receiver.on("leave-lock-mode", callback);
-            } else if (event == "cover-status-changed") {//function([isHidden]){}
+            } else if (event == "cover-status-changed") { //function([isHidden]){}
                 EnderFramework.receiver.on("cover-status-changed", callback);
             } else {
                 currentWindow.on(event, callback);
@@ -671,11 +694,11 @@ module.exports = {
                 ipcRenderer.sendToHost('enderframework--windowcover-hide');
             },
             show: () => {
-                ipcRenderer.sendToHost('enderframework--windowcover-show');
-            }
-            /*isHidden: () => {
-              //
-            }*/
+                    ipcRenderer.sendToHost('enderframework--windowcover-show');
+                }
+                /*isHidden: () => {
+                  //
+                }*/
         },
         enterLockMode: () => {
             ipcRenderer.sendToHost('enderframework--lockmode-enter');
@@ -689,13 +712,13 @@ module.exports = {
         exitFullscreen: () => {
             document.exitFullscreen();
         },
-        close: function () {
+        close: function() {
             ipcRenderer.sendToHost('enderframework--close');
         },
-        relaunch: function () {
+        relaunch: function() {
             ipcRenderer.sendToHost('enderframework--relaunch');
         },
-        open: function (v = null) {
+        open: function(v = null) {
             if (v === undefined || v === "")
                 v = null;
             if (v == null) {
@@ -718,7 +741,8 @@ module.exports = {
                 }
                 if (v.url !== undefined && v.width !== undefined && v.height !== undefined && v.title !== undefined) {
                     windowNum++;
-                    var data = [v.url, v.width, v.height, v.title, v.minWidth, v.minHeight, v.maxWidth, v.maxHeight, v.menu], id = windowNum + "-" + Math.round(Math.random() * 100000000000000000000);
+                    var data = [v.url, v.width, v.height, v.title, v.minWidth, v.minHeight, v.maxWidth, v.maxHeight, v.menu],
+                        id = windowNum + "-" + Math.round(Math.random() * 100000000000000000000);
                     ipcRenderer.sendToHost('enderframework--new2', { id: id, data: data });
                     return new Window(id, data);
                 } else {
@@ -727,46 +751,46 @@ module.exports = {
                 }
             }
         },
-        openInBrowser: function (tS) {//Check the tS variable!
+        openInBrowser: function(tS) { //Check the tS variable!
             if (typeof tS == "object")
                 ipcRenderer.sendToHost('enderframework--openinbrowser', tS);
             else
                 console.error("You must pass a JSON object!");
         },
         menu: {
-            hide: function () {
+            hide: function() {
                 ipcRenderer.sendToHost('enderframework--menu-hide');
             },
-            show: function () {
+            show: function() {
                 ipcRenderer.sendToHost('enderframework--menu-show');
             }
         },
-        setTitle: function (v) {
+        setTitle: function(v) {
             ipcRenderer.sendToHost('enderframework--title-set', v);
         },
         topBar: {
-            setToOverlay: function (bool = true) {
+            setToOverlay: function(bool = true) {
                 ipcRenderer.sendToHost(`enderframework--topbar-${(bool) ? "set" : "remove"}overlay`);
             },
-            setToNoneDragRegion: function (bool) {
+            setToNoneDragRegion: function(bool) {
                 ipcRenderer.sendToHost(`enderframework--topbar-setto${(bool) ? "none" : ""}drag`);
             },
-            setColor: function (color) {
+            setColor: function(color) {
                 ipcRenderer.sendToHost('enderframework--menu-color', color);
             },
             title: {
-                hide: function () {
+                hide: function() {
                     ipcRenderer.sendToHost('enderframework--title-hide');
                 },
-                show: function () {
+                show: function() {
                     ipcRenderer.sendToHost('enderframework--title-show');
                 }
             },
             icon: {
-                hide: function () {
+                hide: function() {
                     ipcRenderer.sendToHost('enderframework--icon-hide');
                 },
-                show: function () {
+                show: function() {
                     ipcRenderer.sendToHost('enderframework--icon-show');
                 }
             }
@@ -774,7 +798,10 @@ module.exports = {
     },
     dialog: {
         messageBox: (options = {}) => {
-            var buttons = [], title = "", message = "", detail = "";
+            var buttons = [],
+                title = "",
+                message = "",
+                detail = "";
             if (options.buttons != undefined) {
                 buttons = options.buttons;
             }
@@ -795,14 +822,14 @@ module.exports = {
         appInfoScreen: () => {
             ipcRenderer.sendToHost('enderframework--dialog-infoscreen');
         },
-        showOpenDialog: (options) => {//https://www.electronjs.org/docs/api/dialog#dialogshowopendialogbrowserwindow-options
+        showOpenDialog: (options) => { //https://www.electronjs.org/docs/api/dialog#dialogshowopendialogbrowserwindow-options
             _dialog.showOpenDialog(options);
         },
-        showSaveDialog: (options) => {//https://www.electronjs.org/docs/api/dialog#dialogshowsavedialogbrowserwindow-options
+        showSaveDialog: (options) => { //https://www.electronjs.org/docs/api/dialog#dialogshowsavedialogbrowserwindow-options
             _dialog.showSaveDialog(options);
         },
-        showCertificateTrustDialog: (options) => {//https://www.electronjs.org/docs/api/dialog#dialogshowcertificatetrustdialogbrowserwindow-options-macos-windows
-            _dialog.showCertificateTrustDialog(options);//Replace this Dialog with a custom one
+        showCertificateTrustDialog: (options) => { //https://www.electronjs.org/docs/api/dialog#dialogshowcertificatetrustdialogbrowserwindow-options-macos-windows
+            _dialog.showCertificateTrustDialog(options); //Replace this Dialog with a custom one
         }
     },
     process: {
@@ -811,7 +838,7 @@ module.exports = {
         node: node,
         python: python,
         java: java,*/
-        execute: (content = null, exit_callback = function () { }, stdout_callback = function () { }, stderr_callback = function () { }) => {
+        execute: (content = null, exit_callback = function() {}, stdout_callback = function() {}, stderr_callback = function() {}) => {
             if (content == null || content === undefined) {
                 console.warn("The content is missing!");
                 exit_callback(null);
@@ -825,33 +852,33 @@ module.exports = {
                 const path____ = path.join(currentPath, "process", "executables");
                 var f = path____;
                 for (var i = 0; i < content.length; i++) {
-                    (function () {
+                    (function() {
                         const processCode = (past) ? content[i] : Math.round(Math.random() * 10000000000000000000);
                         const filePath_ = path.join(path____, "executable-" + processCode + ".bat");
                         if (past) {
                             const process = spawn('cmd.exe', ['/c', filePath_]);
-                            process.stdout.on('data', function (data) {
+                            process.stdout.on('data', function(data) {
                                 stdout_callback(data);
                             });
-                            process.stderr.on('data', function (data) {
+                            process.stderr.on('data', function(data) {
                                 stderr_callback(data);
                             });
-                            process.on('exit', function (code) {
+                            process.on('exit', function(code) {
                                 exit_callback(code, processCode);
                             });
                         } else {
-                            fs.writeFile(filePath_, "cd \"" + path.join(f, "..", "events") + "\"\n" + content[i], function (error) {
+                            fs.writeFile(filePath_, "cd \"" + path.join(f, "..", "events") + "\"\n" + content[i], function(error) {
                                 if (error) {
                                     console.error(error);
                                 } else {
                                     const process = spawn('cmd.exe', ['/c', filePath_]);
-                                    process.stdout.on('data', function (data) {
+                                    process.stdout.on('data', function(data) {
                                         stdout_callback(data);
                                     });
-                                    process.stderr.on('data', function (data) {
+                                    process.stderr.on('data', function(data) {
                                         stderr_callback(data);
                                     });
-                                    process.on('exit', function (code) {
+                                    process.on('exit', function(code) {
                                         exit_callback(code, processCode);
                                         //fs.unlink(filePath_, function(){});
                                     });
@@ -863,21 +890,21 @@ module.exports = {
             }
         },
         clean: {
-            executables: function (callback = function () { }) {
+            executables: function(callback = function() {}) {
                 const process = spawn('cmd.exe', ['/c', path.join(currentPath, "process", "clean_executables.bat")]);
-                process.on('exit', function (code) {
+                process.on('exit', function(code) {
                     callback(code);
                 });
             },
-            temporary: function (callback = function () { }) {
+            temporary: function(callback = function() {}) {
                 const process = spawn('cmd.exe', ['/c', path.join(currentPath, "process", "clean_temporary.bat")]);
-                process.on('exit', function (code) {
+                process.on('exit', function(code) {
                     callback(code);
                 });
             },
-            all: function (callback = function () { }) {
+            all: function(callback = function() {}) {
                 const process = spawn('cmd.exe', ['/c', path.join(currentPath, "process", "clean.bat")]);
-                process.on('exit', function (code) {
+                process.on('exit', function(code) {
                     callback(code);
                 });
             }
@@ -897,13 +924,13 @@ module.exports = {
         //
       }
     },*/
-    confirmBeforeClosing: function (v, message = "Are you sure that you want to close this app?") {
+    confirmBeforeClosing: function(v, message = "Are you sure that you want to close this app?") {
         if (!isOnCloseEnabled) {
             if (v == true) {
                 if (!isConfirmBeforeClosingEnabled && !isConfirmBeforeClosingLocked) {
                     isConfirmBeforeClosingEnabled = true;
                     ipcRenderer.sendToHost('enderframework--waitbeforeclosing');
-                    ipcRenderer.on("enderframework--willclose", function (e) {
+                    ipcRenderer.on("enderframework--willclose", function(e) {
                         EnderFramework.dialog.messageBox({
                             title: "Warning!",
                             message: message,
@@ -912,7 +939,7 @@ module.exports = {
                             }, {
                                 text: "Yes",
                                 type: "primary",
-                                onclick: function () {
+                                onclick: function() {
                                     ENDERFRAMEWORK_ENVIRONMENT.closingEvent.done();
                                 }
                             }]
@@ -941,14 +968,14 @@ module.exports = {
             console.warn("You can not use this function when there are other event listeners set for the closing event!");
         }
     },
-    on: function (e = "", f = function () { }) {
+    on: function(e = "", f = function() {}) {
         if (e == "close") {
             if (!isConfirmBeforeClosingEnabled && !isOnCloseEnabled) {
                 isOnCloseEnabled = true;
-                (function () {
+                (function() {
                     const func = f;
                     ipcRenderer.sendToHost('enderframework--waitbeforeclosing');
-                    ipcRenderer.on("enderframework--willclose", function (e) {
+                    ipcRenderer.on("enderframework--willclose", function(e) {
                         func();
                         ipcRenderer.sendToHost('enderframework--waitbeforeclosing-done');
                     });
@@ -961,10 +988,10 @@ module.exports = {
             console.error("There is no such event!");
         }
     },
-    report: function (message, source, lineNumber, columnNumber, errorObject = null) {
+    report: function(message, source, lineNumber, columnNumber, errorObject = null) {
         ipcRenderer.sendToHost('reportingsystem--api', [message, source, lineNumber, columnNumber, errorObject]);
     },
-    feedback: function (tS = true) {
+    feedback: function(tS = true) {
         ipcRenderer.sendToHost('enderframework--feedback', tS);
     },
     /*record: {
@@ -999,10 +1026,15 @@ module.exports = {
         //
       }
     },*/
-    parse: function (data) {
-        var result = [], length = data.replace(/[^\n]/g, "").length + 1;
+    parse: function(data) {
+        var result = [],
+            length = data.replace(/[^\n]/g, "").length + 1;
         for (var i = 0; i < length; i++) {
-            var currentLineData = {}, line = data.substring(0, (data.indexOf("\n") > -1) ? data.indexOf("\n") : data.length).replace(/\s/g, ""), isThereAComment = false, isThereAnAttribute = false, isStrict = false;
+            var currentLineData = {},
+                line = data.substring(0, (data.indexOf("\n") > -1) ? data.indexOf("\n") : data.length).replace(/\s/g, ""),
+                isThereAComment = false,
+                isThereAnAttribute = false,
+                isStrict = false;
             if (line.indexOf("@") == 0) {
                 line = line.substring(1);
                 isStrict = true;
@@ -1027,7 +1059,7 @@ module.exports = {
         return result;
     },
     receiver: {
-        on: function (channel, callback) {
+        on: function(channel, callback) {
             if (typeof callback != "function") {
                 console.error("You must pass a callback function!");
                 return false;
@@ -1038,23 +1070,23 @@ module.exports = {
                 global.ENDERFRAMEWORK_ENVIRONMENT.events[channel][global.ENDERFRAMEWORK_ENVIRONMENT.events[channel].length] = callback;
             }
         },
-        disband: function (channel) {
+        disband: function(channel) {
             if (global.ENDERFRAMEWORK_ENVIRONMENT.events[channel] == undefined) {
                 console.error("There is no such event!");
             } else {
                 global.ENDERFRAMEWORK_ENVIRONMENT.events[channel] = undefined;
             }
         },
-        disable: function () {
+        disable: function() {
             global.ENDERFRAMEWORK_ENVIRONMENT.ReceiverEnabled = false;
         },
-        enable: function () {
+        enable: function() {
             global.ENDERFRAMEWORK_ENVIRONMENT.ReceiverEnabled = true;
         }
     }
 };
 //
-document.addEventListener('keydown', function (event) {
+document.addEventListener('keydown', function(event) {
     if (event.key == "Escape") {
         ipcRenderer.sendToHost('enderframework--contextmenu-hideall');
     }

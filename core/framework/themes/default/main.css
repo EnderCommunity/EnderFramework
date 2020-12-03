@@ -1,10 +1,12 @@
-:root, [prefers-color-scheme="light"] {
+:root,
+[prefers-color-scheme="light"] {
     --BlurNoise: url("data:image/png;base64,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");
     --PrimaryColor1: #004CC7;
     --PrimaryColor2: #5596ff;
     --PrimaryColor3: #002F7A;
     --PrimaryColor4: #0043ad;
     --TextColor: #000000;
+    --LoadingBackgroundColor: #ffffff;
     --Inputs-BackgroundColor: #d8d8d8;
     --Inputs-ShadowBoxColor: #d8d8d8;
     --Inputs-BorderColor: #dadada;
@@ -148,6 +150,7 @@
     --PrimaryColor3: #0050d2;
     --PrimaryColor4: #0043ad;
     --TextColor: #ffffff;
+    --LoadingBackgroundColor: #000000;
     --Inputs-BackgroundColor: #101010;
     --Inputs-ShadowBoxColor: #101010;
     --Inputs-BorderColor: #0c0c0c;
@@ -285,7 +288,8 @@
     --Constrast: 0.8;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     min-height: 100vh;
     padding: 0px;
@@ -312,9 +316,23 @@ html {
     transition-duration: 0ms;
     /*color: var(--Color11);*/
     color: var(--TextColor);
+    overscroll-behavior: contain;
 }
 
-dropdown, input[type=text], input[type=tel], input[type=date], input[type=datetime-local], input[type=month], input[type=week], input[type=time], input[type=email], input[type=number], input[type=password], input[type=search], input[type=url], select {
+dropdown,
+input[type=text],
+input[type=tel],
+input[type=date],
+input[type=datetime-local],
+input[type=month],
+input[type=week],
+input[type=time],
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=url],
+select {
     /*background-color: var(--Color6);*/
     background-color: var(--Inputs-BackgroundColor);
     min-width: 120px;
@@ -338,12 +356,32 @@ input[type=image] {
     color: var(--TextColor);
 }
 
-input[type=text], input[type=tel], input[type=email], input[type=number], input[type=password], input[type=search], input[type=url], select {
+input[type=text],
+input[type=tel],
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=url],
+select {
     padding-left: 6px;
     padding-right: 6px;
 }
 
-dropdown:active, input[type=text]:active, input[type=tel]:active, input[type="date"]:active, input[type=datetime-local]:active, input[type=month]:active, input[type=week]:active, input[type=time]:active, input[type=email]:active, input[type=number]:active, input[type=password]:active, input[type=search]:active, input[type=url]:active, select:active {
+dropdown:active,
+input[type=text]:active,
+input[type=tel]:active,
+input[type="date"]:active,
+input[type=datetime-local]:active,
+input[type=month]:active,
+input[type=week]:active,
+input[type=time]:active,
+input[type=email]:active,
+input[type=number]:active,
+input[type=password]:active,
+input[type=search]:active,
+input[type=url]:active,
+select:active {
     -webkit-transition-duration: 160ms;
     transition-duration: 160ms;
     /*-webkit-box-shadow: 0px 1px 16px 0px var(--Color6);
@@ -354,7 +392,10 @@ dropdown:active, input[type=text]:active, input[type=tel]:active, input[type="da
     border-color: var(--Inputs-BorderColorACTIVE);
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator, input[type=datetime-local]::-webkit-calendar-picker-indicator, input[type=month]::-webkit-calendar-picker-indicator, input[type=week]::-webkit-calendar-picker-indicator {
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type=datetime-local]::-webkit-calendar-picker-indicator,
+input[type=month]::-webkit-calendar-picker-indicator,
+input[type=week]::-webkit-calendar-picker-indicator {
     color: transparent;
     opacity: 1;
     display: block;
@@ -500,7 +541,14 @@ input[type=file]:after {
     color: var(--TextColor);
 }
 
-button, input[type=reset], input[type=button], input[type=submit] {
+button,
+warn-button,
+input[type=reset],
+input[type=button],
+input[type=submit] {
+    overflow: hidden;
+    content-visibility: auto;
+    display: inline-block;
     /*background-color: var(--Color6);*/
     background-color: var(--Buttons-BackgroundColor);
     width: fit-content;
@@ -522,7 +570,11 @@ button, input[type=reset], input[type=button], input[type=submit] {
     color: var(--TextColor);
 }
 
-button[bigger], input[type=reset][bigger], input[type=button][bigger], input[type=submit][bigger] {
+button[bigger],
+warn-button[bigger],
+input[type=reset][bigger],
+input[type=button][bigger],
+input[type=submit][bigger] {
     min-width: 160px;
     height: 52px;
     font-size: 20px;
@@ -531,7 +583,11 @@ button[bigger], input[type=reset][bigger], input[type=button][bigger], input[typ
     margin: 6px;
 }
 
-button:hover, input[type=reset]:hover, input[type=button]:hover, input[type=submit]:hover {
+warn-button:hover,
+button:hover,
+input[type=reset]:hover,
+input[type=button]:hover,
+input[type=submit]:hover {
     -webkit-transition-duration: 160ms;
     transition-duration: 160ms;
     /*background-color: var(--Color6);*/
@@ -544,7 +600,11 @@ button:hover, input[type=reset]:hover, input[type=button]:hover, input[type=subm
     border-color: var(--Buttons-BorderColorHOVER);
 }
 
-button:active, input[type=reset]:active, input[type=button]:active, input[type=submit]:active {
+warn-button:active,
+button:active,
+input[type=reset]:active,
+input[type=button]:active,
+input[type=submit]:active {
     -webkit-transition-duration: 160ms;
     transition-duration: 160ms;
     /*background-color: var(--Color2);*/
@@ -557,7 +617,10 @@ button:active, input[type=reset]:active, input[type=button]:active, input[type=s
     border-color: var(--Buttons-BorderColorACTIVE);
 }
 
-button[primary], input[type=reset][primary], input[type=button][primary], input[type=submit][primary] {
+button[primary],
+input[type=reset][primary],
+input[type=button][primary],
+input[type=submit][primary] {
     /*background-color: var(--Color1);*/
     background-color: var(--PrimaryButtons-BackgroundColor);
     /*-webkit-box-shadow: 0px 1px 10px -2px var(--Color1);
@@ -569,7 +632,10 @@ button[primary], input[type=reset][primary], input[type=button][primary], input[
     color: #ffffff;
 }
 
-button[primary]:hover, input[type=reset][primary]:hover, input[type=button][primary]:hover, input[type=submit][primary]:hover {
+button[primary]:hover,
+input[type=reset][primary]:hover,
+input[type=button][primary]:hover,
+input[type=submit][primary]:hover {
     /*background-color: var(--Color1);*/
     background-color: var(--PrimaryButtons-BackgroundColorHOVER);
     /*-webkit-box-shadow: 0px 1px 14px -2px var(--Color1);
@@ -580,7 +646,10 @@ button[primary]:hover, input[type=reset][primary]:hover, input[type=button][prim
     border-color: var(--PrimaryButtons-BorderColorHOVER);
 }
 
-button[primary]:active, input[type=reset][primary]:active, input[type=button][primary]:active, input[type=submit][primary]:active {
+button[primary]:active,
+input[type=reset][primary]:active,
+input[type=button][primary]:active,
+input[type=submit][primary]:active {
     /*background-color: var(--Color10);*/
     background-color: var(--PrimaryButtons-BackgroundColorACTIVE);
     /*-webkit-box-shadow: 0px 1px 14px -2px var(--Color10);
@@ -591,7 +660,10 @@ button[primary]:active, input[type=reset][primary]:active, input[type=button][pr
     border-color: var(--PrimaryButtons-BorderColorACTIVE);
 }
 
-button[glass], input[type=reset][glass], input[type=button][glass], input[type=submit][glass] {
+button[glass],
+input[type=reset][glass],
+input[type=button][glass],
+input[type=submit][glass] {
     /*background-color: transparent;*/
     background-color: var(--GlassButtons-BackgroundColor);
     -webkit-backdrop-filter: blur(12px) saturate(0.8);
@@ -604,7 +676,10 @@ button[glass], input[type=reset][glass], input[type=button][glass], input[type=s
     border-color: var(--GlassButtons-BorderColor);
 }
 
-button[glass]:hover, input[type=reset][glass]:hover, input[type=button][glass]:hover, input[type=submit][glass]:hover {
+button[glass]:hover,
+input[type=reset][glass]:hover,
+input[type=button][glass]:hover,
+input[type=submit][glass]:hover {
     background-color: var(--GlassButtons-BackgroundColorHOVER);
     /*-webkit-box-shadow: 0px 1px 4px 0px var(--Blur3);
   box-shadow: 0px 1px 4px 0px var(--Blur3);*/
@@ -615,7 +690,10 @@ button[glass]:hover, input[type=reset][glass]:hover, input[type=button][glass]:h
     transition-duration: 0ms;
 }
 
-button[glass]:active, input[type=reset][glass]:active, input[type=button][glass]:active, input[type=submit][glass]:active {
+button[glass]:active,
+input[type=reset][glass]:active,
+input[type=button][glass]:active,
+input[type=submit][glass]:active {
     background-color: var(--GlassButtons-BackgroundColorACTIVE);
     -webkit-backdrop-filter: blur(12px) saturate(0.6);
     backdrop-filter: blur(12px) saturate(0.6);
@@ -628,7 +706,11 @@ button[glass]:active, input[type=reset][glass]:active, input[type=button][glass]
     transition-duration: 0ms;
 }
 
-button[warn], input[type=reset][warn], input[type=button][warn], input[type=submit][warn] {
+warn-button,
+button[warn],
+input[type=reset][warn],
+input[type=button][warn],
+input[type=submit][warn] {
     /*background-color: var(--Color12);*/
     background-color: var(--WarnButtons-BackgroundColor);
     /*-webkit-box-shadow: 0px 1px 10px -2px var(--Color12);
@@ -641,7 +723,11 @@ button[warn], input[type=reset][warn], input[type=button][warn], input[type=subm
     color: var(--WarnButtons-TextColor);
 }
 
-button[warn]:hover, input[type=reset][warn]:hover, input[type=button][warn]:hover, input[type=submit][warn]:hover {
+warn-button:hover,
+button[warn]:hover,
+input[type=reset][warn]:hover,
+input[type=button][warn]:hover,
+input[type=submit][warn]:hover {
     /*background-color: var(--Color12);*/
     background-color: var(--WarnButtons-BackgroundColorHOVER);
     /*-webkit-box-shadow: 0px 1px 14px -2px var(Color12);
@@ -652,7 +738,11 @@ button[warn]:hover, input[type=reset][warn]:hover, input[type=button][warn]:hove
     border-color: var(--WarnButtons-BorderColorHOVER);
 }
 
-button[warn]:active, input[type=reset][warn]:active, input[type=button][warn]:active, input[type=submit][warn]:active {
+warn-button:active,
+button[warn]:active,
+input[type=reset][warn]:active,
+input[type=button][warn]:active,
+input[type=submit][warn]:active {
     /*background-color: var(--Color14);*/
     background-color: var(--WarnButtons-BackgroundColorACTIVE);
     /*-webkit-box-shadow: 0px 1px 14px -2px var(--Color14);
@@ -661,6 +751,16 @@ button[warn]:active, input[type=reset][warn]:active, input[type=button][warn]:ac
     box-shadow: 0px 1px 14px -2px var(--WarnButtons-BoxShadowColorACTIVE);
     /*border-color: var(--Color16);*/
     border-color: var(--WarnButtons-BorderColorACTIVE);
+}
+
+warn-button {
+    padding: 0;
+    line-height: 38px;
+}
+
+warn-button[bigger] {
+    padding: 0;
+    line-height: 50px;
 }
 
 card {
@@ -682,6 +782,7 @@ card {
     border: 1px solid var(--Card-BorderColor);
 }
 
+
 /*.noScroll{
   margin: 0;
   height: 100%;
@@ -695,6 +796,7 @@ card {
     overflow: hidden;
 }
 
+
 /*::-webkit-scrollbar-thumb{
   border-radius: 2px;
   background-color: var(--Color8);
@@ -706,9 +808,11 @@ card {
   background-color: var(--Color18);
 }*/
 
-a {
+a,
+inapp-a {
     /*color: var(--Color1);*/
     color: var(--Link-Color);
+    cursor: pointer;
 }
 
 a:visited {
@@ -751,7 +855,8 @@ codebox[fullSize] {
     border-radius: 0px;
 }
 
-icon, icons {
+icon,
+icons {
     width: 38px;
     height: 38px;
     margin: 4px;
@@ -761,28 +866,34 @@ icon, icons {
     overflow: hidden;
 }
 
-icon[small], icons[small] {
+icon[small],
+icons[small] {
     width: 28px;
     height: 28px;
     margin: 6px;
     font-size: 28px;
 }
 
-icon[medium], icons[medium] {
+icon[medium],
+icons[medium] {
     width: 48px;
     height: 48px;
     margin: 4px;
     font-size: 48px;
 }
 
-icon[large], icons[large] {
+icon[large],
+icons[large] {
     width: 68px;
     height: 68px;
     margin: 4px;
     font-size: 68px;
 }
 
-icons, icons[small], icons[medium], icons[large] {
+icons,
+icons[small],
+icons[medium],
+icons[large] {
     width: fit-content;
 }
 
@@ -1185,7 +1296,7 @@ switch[active=true]:before {
     margin-left: 48px;
 }
 
-floatingActionButton {
+floating-action {
     display: block;
     position: fixed;
     z-index: 12;
@@ -1206,14 +1317,14 @@ floatingActionButton {
     cursor: pointer;
 }
 
-floatingactionbutton:hover {
+floating-action:hover {
     /*-webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
   box-shadow: 0px 1px 18px 0px var(--Color6);*/
     -webkit-box-shadow: 0px 1px 10px 0px var(--FloatingActionButton-BoxShadowColorHOVER);
     box-shadow: 0px 1px 18px 0px var(--FloatingActionButton-BoxShadowColorHOVER);
 }
 
-floatingactionbutton:active {
+floating-action:active {
     /*-webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
   box-shadow: 0px 2px 18px 2px var(--Color6);*/
     -webkit-box-shadow: 0px 1px 10px 0px var(--FloatingActionButton-BoxShadowColorACTIVE);
@@ -1269,7 +1380,8 @@ cardView card description {
     font-size: 16px;
 }
 
-cardView card[side], cardView card[side2] {
+cardView card[side],
+cardView card[side2] {
     -webkit-transition-duration: 0.1s;
     transition-duration: 0.1s;
     opacity: 0.8;
@@ -1289,7 +1401,8 @@ cardView card:before {
     transition-duration: 0s;
 }
 
-cardView card[side]:before, cardView card[side2]:before {
+cardView card[side]:before,
+cardView card[side2]:before {
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
 }
@@ -1424,13 +1537,15 @@ imageview control[n] {
     right: 10px;
 }
 
-imageview control[p], imageview control[n] {
+imageview control[p],
+imageview control[n] {
     padding: 4px;
 }
 
 imageview control:active icon {
     color: #ffffff;
 }
+
 
 /*imageview selector{
   display: block;
@@ -1662,7 +1777,8 @@ options option[disabled] {
     background-color: var(--OptionsOption-BackgroundColorDISABLED);
 }
 
-options option[disabled]:hover, options option[disabled]:active {
+options option[disabled]:hover,
+options option[disabled]:active {
     -webkit-box-shadow: 0px 0px 0px 0px transparent;
     box-shadow: 0px 0px 0px 0px transparent;
     /*background-color: var(--Color7);*/
@@ -1696,7 +1812,9 @@ selector option {
     cursor: pointer;
 }
 
-selector option[disabled], selector option[disabled]:hover, selector option[disabled]:active {
+selector option[disabled],
+selector option[disabled]:hover,
+selector option[disabled]:active {
     opacity: 0.2;
     cursor: default;
     background-color: var(--SelectorOption-BackgroundColor);
@@ -1822,11 +1940,15 @@ table thead th {
     border-bottom: 1px solid var(--Table-BorderColor);
 }
 
-tr, th, td {
+tr,
+th,
+td {
     padding: 16px 4vw;
 }
 
-table[divide] tr, table[dividers] th, table[dividers] td {
+table[divide] tr,
+table[dividers] th,
+table[dividers] td {
     color: var(--Color11);
     border-bottom: 1px solid var(--Table-BorderColor);
 }
@@ -2192,7 +2314,8 @@ pagination break:before {
     opacity: 0.2;
 }
 
-pagination back, pagination forward {
+pagination back,
+pagination forward {
     font-size: 22px;
     padding: 2px 2px;
     border-radius: 4px;
@@ -2212,14 +2335,16 @@ pagination forward {
     right: 8px;
 }
 
-pagination back:hover, pagination forward:hover {
+pagination back:hover,
+pagination forward:hover {
     background-color: var(--Blur1);
     -webkit-transition-duration: 0.05s;
     transition-duration: 0.05s;
     opacity: 0.9;
 }
 
-pagination back:active, pagination forward:active {
+pagination back:active,
+pagination forward:active {
     background-color: var(--Blur2);
     -webkit-transition-duration: 0.05s;
     transition-duration: 0.05s;
@@ -2252,6 +2377,7 @@ gallery section * {
     display: none;
 }
 
+
 /*gallery section img, gallery section video{
   display: block;
   width: 100%;
@@ -2261,7 +2387,8 @@ gallery section * {
   background-color: var(--Color8);
 }*/
 
-gallery section img, gallery section div.video {
+gallery section img,
+gallery section div.video {
     display: block;
     width: 100%;
     position: relative;
@@ -2291,6 +2418,7 @@ textarea {
     width: fit-content;
     border-color: var(--Color8);
 }
+
 
 /*top{
   display: block;
@@ -2329,6 +2457,7 @@ top {
     align-self: center;
     z-index: 8;
 }
+
 
 /*top{
   display: block;
@@ -2423,6 +2552,7 @@ top card {
     margin: 0px;
 }
 
+
 /*top card{
   position: absolute;
   display: block;
@@ -2442,7 +2572,8 @@ top card {
   margin: 0px;
 }*/
 
-top:before {
+
+/*top:before {
     content: "";
     display: 0px;
     position: fixed;
@@ -2455,7 +2586,7 @@ top:before {
     backdrop-filter: blur(18px) saturate(128%) saturate(1.6);
     z-index: 10;
     pointer-events: none;
-}
+}*/
 
 badge {
     position: relative;
@@ -2601,6 +2732,7 @@ code {
     display: inline-block;
 }
 
+
 /*body::-webkit-scrollbar{
   display: none;
 }
@@ -2683,11 +2815,23 @@ x-view {
     display: inline-flex;
 }
 
-a[Xhref] {
-    cursor: pointer;
+a {
+    pointer-events: none;
 }
 
-.disabled, .disabled:hover, .disabled:active {
+a[target="_blank"] {
+    pointer-events: all;
+}
+
+media-resource {
+    display: inline-flex;
+    content-visibility: auto;
+    /*background-color: var(--LoadingBackgroundColor);*/
+}
+
+.disabled,
+.disabled:hover,
+.disabled:active {
     opacity: 0.2;
     background-color: transparent;
     -webkit-box-shadow: 0px 0px 0px 0px transparent;
@@ -2704,7 +2848,10 @@ a[Xhref] {
     opacity: 0;
 }
 
-[onclick], [onmousedown], [onmouseup], [clickable] {
+[onclick],
+[onmousedown],
+[onmouseup],
+[clickable] {
     cursor: pointer;
 }
 
@@ -2712,7 +2859,9 @@ body {
     overflow-x: hidden;
 }
 
-[disabled], [disabled]:before, [disabled]:after {
+[disabled],
+[disabled]:before,
+[disabled]:after {
     -webkit-transition-duration: 0.1s;
     transition-duration: 0.1s;
     -webkit-user-select: none;
@@ -2722,7 +2871,9 @@ body {
     opacity: 0.4;
 }
 
-[disabled_], [disabled_]:before, [disabled_]:after {
+[disabled_],
+[disabled_]:before,
+[disabled_]:after {
     -webkit-transition-duration: 0.1s;
     transition-duration: 0.1s;
     -webkit-user-select: none;
@@ -2748,6 +2899,7 @@ body {
     background-image: var(--BlurNoise);
     opacity: 0.16;
 }
+
 
 /**{
   content-visibility: auto;

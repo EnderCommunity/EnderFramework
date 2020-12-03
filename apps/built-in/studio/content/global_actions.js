@@ -1,3 +1,4 @@
+//const path_ = paths.currentApp;
 const _newWindow = () => {
         //
     },
@@ -123,9 +124,19 @@ const _newWindow = () => {
     },
     _closeTheProject = () => {
         //
+        document.getElementById("_editorLayout").style.display = "none";
+        document.getElementById("_start").style.display = "block";
+        EnderFramework.window.menu.hide();
+        EnderFramework.window.topBar.setColor("transparent");
+        document.getElementById("_fileExplorer").getElementsByClassName("c")[0].innerHTML = "Loading...";
+        document.getElementById("_tabs").innerHTML = "";
+        document.getElementById("_bar").innerHTML = "";
+        window.editor.modifiedFiles_ = [];
+        document.getElementById('_editor').innerHTML = "";
+        require('./editor.js');
     },
     _closeTheEditor = () => {
-        //
+        EnderFramework.window.close();
     },
     _cut = () => {
         window.editor.focus()

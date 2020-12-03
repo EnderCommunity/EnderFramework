@@ -1,5 +1,6 @@
 {
     "name": "EnderStudio",
+    "start": "_main.html",
     "version": "0.1",
     "publisher": "EnderAdel",
     "splashScreen": true,
@@ -29,11 +30,11 @@
         "theme": "default",
         "colorScheme": "system",
         "redirectAnimations": false,
-        "redirectAnimationsCooldown": 0,
         "contextMenu": true,
         "infoScreen": true,
         "protocol": "store",
-        "cursor": "default"
+        "coverOnMaximize": false,
+        "customStyle": true
     },
     "enable": {
         "JavaScript": true,
@@ -85,14 +86,12 @@
                         "space": true
                     },
                     "8": {
-                        "disable": true,
                         "title": "Close Editor",
-                        "function": "DoSomething"
+                        "function": "_closeTheEditor"
                     },
                     "9": {
-                        "disable": true,
                         "title": "Close Project",
-                        "function": "DoSomething"
+                        "function": "_closeTheProject"
                     }
                 }
             },

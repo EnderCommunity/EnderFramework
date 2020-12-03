@@ -178,13 +178,13 @@
             return encodeURI('file://' + pathName);
         }
         amdRequire.config({
-            baseUrl: uriFromPath(path.join(__dirname.replace("\\Apps\\built-in\\Studio\\content", ""), 'node_modules/monaco-editor/min'))
+            baseUrl: uriFromPath(path.join(paths.main, 'node_modules/monaco-editor/min'))
         });
         self.module = undefined;
         self.process.browser = true;
     </script>
     <script>
-        require('./editor.js')
+        require('./editor.js');
     </script>
     <script type="text/javascript" src="./file_manager.js"></script>
     <script type="text/javascript" src="./editor_process.js"></script>
