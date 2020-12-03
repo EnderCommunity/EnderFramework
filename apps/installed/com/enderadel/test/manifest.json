@@ -34,8 +34,7 @@
         "infoScreen": true,
         "protocol": "store",
         "coverOnMaximize": false,
-        "customStyle": true,
-        "customElements": true
+        "customStyle": true
     },
     "hardware": {
         "highGPUPerformance": true

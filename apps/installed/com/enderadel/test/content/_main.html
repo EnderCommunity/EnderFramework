@@ -9,6 +9,8 @@
     <request name="scrollAnimation"></request>
     <request name="tooltip"></request>
     <request name="media"></request>
+    <request-element tag="name"></request-element>
+    <request-resource name="name"></request-resource>
 </head>
 
 <body>
@@ -72,33 +74,55 @@
 
     <center>
         <!-- [START] Buttons -->
+        <request-element tag="warn-button"></request-element>
         <button onclick="EnderFramework.page.reload();">Hi</button>
         <button primary onclick="EnderFramework.page.reload();">Hi</button>
         <button glass>Hi</button>
-        <button warn='{
+        <warn-button message="The page is going to be reloaded!" onagree="EnderFramework.page.reload();" ondisagree="">Hi</warn-button>
+        <!--<button warn='{
         "message": "The page is going to be reloaded!",
         "onagree": "function(){ EnderFramework.page.reload(); }",
         "ondisagree": "function(){}"
       }'>Hi
-      </button>
+      </button>-->
         <br>
         <button bigger onclick="EnderFramework.page.reload();">Hi</button>
         <button bigger primary onclick="EnderFramework.page.reload();">Hi</button>
         <button bigger glass>Hi</button>
-        <button bigger warn='{
+        <warn-button bigger message="The page is going to be reloaded!" onagree="EnderFramework.page.reload();" ondisagree="">Hi</warn-button>
+        <!--<button bigger warn='{
         "message": "The page is going to be reloaded!",
         "onagree": "function(){ EnderFramework.page.reload(); }",
         "ondisagree": "function(){}"
       }'>Hi
-      </button>
+      </button>-->
         <!-- [END] Buttons -->
 
         <br>
 
         <!-- [START] Links -->
+        <request-element tag="inapp-a"></request-element>
         <a href="https://google.com">Test</a>
+        <inapp-a href="https://google.com">Test (inapp-a)</inapp-a>
         <a href="https://google.com" target="_blank">Test (_blank)</a>
         <!-- [END] Links -->
+
+        <br>
+
+        <!-- [START] Media -->
+        <media-resource type="image/jpg" src="crystal" style="width: 500px;"></media-resource>
+        <space></space>
+        <space></space>
+        <media-resource type="image/jpg" src="steven" style="width: 900px;"></media-resource>
+        <space></space>
+        <space></space>
+        <media-resource type="image/jpg" src="animal" style="width: 100%;"></media-resource>
+        <space></space>
+        <space></space>
+        <media-resource type="video/mp4" src="lights" style="width: 500px;"></media-resource>
+        <media-resource type="audio/mp3" src="test" style="width: 200px; height: 50px;"></media-resource>
+        <media-resource type="image/png" src="test.test" style="width: 100px; height: 100px;"></media-resource>
+        <!-- [START] Media -->
 
         <br>
 
@@ -244,22 +268,19 @@
     <!-- [END] Custom Elements -->
 
     <!-- [START] Custom Elements (needs `require`) -->
-    <floatingActionButton content='{
-      "_1": {
+    <request-element tag="floating-action"></request-element>
+    <floating-action content='[{
         "icon": "cached",
         "onclick": "_actionsMenu1"
-      },
-      "_2": {
+      }, {
         "icon": "face",
         "onclick": "_actionsMenu2"
-      },
-      "_3": {
+      }, {
         "icon": "store",
         "onclick": "_actionsMenu3"
-      }
-    }'>
+      }]'>
         <icon>add</icon>
-    </floatingActionButton>
+    </floating-action>
     <script>
         function _actionsMenu1() {
             console.log(1);
@@ -678,7 +699,7 @@
 
     <!-- [START] Media controls (Requires `media`) -->
     <br>
-    <video width="800px">
+    <!--<video width="800px">
       <source src="./_media/movie.mp4" type="video/mp4">
     </video>
     <br>
@@ -692,7 +713,7 @@
     <br>
     <audio controls title="Title">
       <source src="./_media/horse.mp3" type="audio/mpeg">
-    </audio>
+    </audio>-->
     <!-- [END] Media controls -->
 
 

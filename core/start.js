@@ -41,13 +41,15 @@ const windowManager = require("./window");
 app.on("ready", function() {
     for (var i = 0; i < process.argv.length; i++) {
         if (process.argv[i].includes("--start=")) {
-            //if(true){
+            //if (true) {
             done = true;
             var appID = process.argv[i].replace(/\s/g, '').substring(8),
                 length = appID.replace(/[^.]/g, "").length;
-            //var appID = "com.enderadel.test", length = appID.replace(/[^.]/g, "").length;
+            /*var appID = "com.enderadel.test",
+                length = appID.replace(/[^.]/g, "").length;*/
             //var appID = "com.enderadel.test2", length = appID.replace(/[^.]/g, "").length;
-            //var appID = "com.enderadel.CommandPrompt", length = appID.replace(/[^.]/g, "").length;
+            /*var appID = "com.enderadel.CommandPrompt",
+                length = appID.replace(/[^.]/g, "").length;*/
             appPath = path.join(appPath, "installed");
             for (var i2 = 0; i2 <= length; i2++) {
                 appPath = path.join(appPath, appID.substring(0, (appID.indexOf(".") > -1) ? appID.indexOf(".") : appID.length));
@@ -68,7 +70,7 @@ app.on("ready", function() {
             windowManager.createWindow(appPath);
             break;
         } else if (process.argv[i] == "--studio") {
-            //}else if(true){
+            //} else if (true) {
             done = true;
             appPath = path.join(appPath, "built-in", "studio");
             windowManager.createWindow(appPath);

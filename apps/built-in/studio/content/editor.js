@@ -65,7 +65,8 @@ function onModuleLoaded() {
         contextmenu: true,
         fontSize: "16px",
         readOnly: true,
-        model: null
+        model: null,
+        tabSize: 4
     });
     //window.editor.modifiedFiles_ = 0;
     window.editor.modifiedFiles_ = [];

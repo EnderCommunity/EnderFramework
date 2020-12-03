@@ -1,5 +1,3 @@
-const { pathToFileURL } = require('url');
-
 /*startProcess(__dirname + "/projects/Test");*/
 const COfProjects = document.getElementById("_projects"),
     { readdirSync } = require('fs'),
