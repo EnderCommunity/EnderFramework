@@ -9,7 +9,33 @@ You can find out more about this framework in [here](https://enderadel.net/Ender
 ***Note: the framework is still in the very early development stages. We are open to suggestions.***
 
 ## Installation
-To run EnderFramework, you need to have [NodeJS](https://nodejs.org/) and [VS Build Tools](https://go.microsoft.com/fwlink/?linkid=840931) installed on your device. Execute `npm install` to install all the modules. And then, after the installation process is done, execute `npm start`. (You can change the file *start.js* to start any app)
+To run EnderFramework, you need to have [NodeJS](https://nodejs.org/) and [VS Build Tools](https://go.microsoft.com/fwlink/?linkid=840931) installed on your device. Execute `npm install` to install all the modules. And then, after the installation process is done, execute `npm start`.
+
+You can change the file *start.js* (*core/start.js*) to start any app! Look for the ready event in the file.
+```js
+app.on("ready", function() {
+    for (var i = 0; i < process.argv.length; i++) {
+        if (process.argv[i].includes("--start=")) {//You can change this to true!
+            done = true;
+            var appID = process.argv[i].replace(/\s/g, '').substring(8),
+                length = appID.replace(/[^.]/g, "").length;
+            /*And replace the code above with any value you want, such as:
+            var appID = "com.enderadel.test",
+                length = appID.replace(/[^.]/g, "").length;*/
+            [...]
+        } else if (process.argv[i] == "--store") {//You can change this to true!
+            [...]
+        } else if (process.argv[i] == "--installer") {//You can change this to true!
+            [...]
+        } else if (process.argv[i] == "--studio") {//You can change this to true!
+            [...]
+        } else if (process.argv[i] == "--settings") {//You can change this to true!
+            [...]
+        }
+    }
+    [...]
+});
+```
 
 ## Contributing
 If you are interested in reporting/fixing issues and contributing directly to the code base, feel free to do so!
