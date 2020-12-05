@@ -54,6 +54,8 @@ If you are interested in reporting/fixing issues and contributing directly to th
 ## License
 [Apache License, Version 2.0](LICENSE)
 
+When using the logos of EnderFramework, or GitHub, be sure to follow the [GitHub logo guidelines](https://github.com/logos).
+
 ## More
 
 *Follow [@EnderAdel](https://twitter.com/EnderAdel) on Twitter to keep yourself up-to-date on everything related to the framework. You can also join our [Discord server](https://discord.gg/rWbtez6).*
