@@ -37,6 +37,9 @@ app.on("ready", function() {
 });
 ```
 
+## Quick start
+*Coming soon!*
+
 ## Contributing
 If you are interested in reporting/fixing issues and contributing directly to the code base, feel free to do so!
 
