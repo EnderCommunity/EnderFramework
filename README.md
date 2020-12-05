@@ -1,5 +1,8 @@
 # EnderFramework
-![Downloads](https://img.shields.io/github/downloads/EnderAdel/EnderFramework/total) ![EnderFramework Repository Size](https://img.shields.io/github/repo-size/EnderAdel/EnderFramework?label=Repository%20Size) ![EnderFramework Top Language](https://img.shields.io/github/languages/top/EnderAdel/EnderFramework) [![EnderFramework Discord Invite](https://img.shields.io/discord/756472096099663954?color=%237289DA&label=Discord%20Server&logo=discord&logoColor=white)](https://discord.com/invite/rWbtez6)
+![Downloads](https://img.shields.io/github/downloads/EnderAdel/EnderFramework/total?color=blue) ![EnderFramework Repository Size](https://img.shields.io/github/repo-size/EnderAdel/EnderFramework?label=Repository%20Size&color=blue) ![EnderFramework Top Language](https://img.shields.io/github/languages/top/EnderAdel/EnderFramework?color=blue) ![License](https://img.shields.io/github/license/EnderAdel/EnderFramework?color=blue) ![Issues](https://img.shields.io/github/issues/EnderAdel/EnderFramework?color=blue) ![Bugs](https://img.shields.io/github/issues/EnderAdel/EnderFramework/bug?label=Bugs) ![To-Do](https://img.shields.io/github/issues/EnderAdel/EnderFramework/To-Do?label=To-Do&color=blue)
+![Help wanted!](https://img.shields.io/github/issues/EnderAdel/EnderFramework/help%20wanted?label=Help%20Wanted&color=red) ![Twitter](https://img.shields.io/twitter/follow/EnderAdel?style=social) ![EnderAdel](https://img.shields.io/github/followers/adel-sbeh?label=The%20creator&style=social) [![EnderFramework Discord Invite](https://img.shields.io/discord/756472096099663954?color=blue&label=Discord%20Server&logo=discord&logoColor=white)](https://discord.com/invite/rWbtez6)
+
+
 
 EnderFramework is a framework, built using [Electron](https://electronjs.org), that can make it easier to build apps!
 
