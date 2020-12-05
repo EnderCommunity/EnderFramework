@@ -1,0 +1,4 @@
+/*
+This file should check the computer capabilities and tweak the framework to ensure a
+pleasant experience for the user.
+*/

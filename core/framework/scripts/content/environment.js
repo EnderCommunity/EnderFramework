@@ -1,6 +1,6 @@
 module.exports = {
     original: {
-        alert: function (text) {
+        alert: function(text) {
             return chromeAlert(text);
         }
     },
@@ -12,7 +12,7 @@ module.exports = {
       }
       this.events[channel][this.events[channel].length] = callback;
     },*/
-    EventReceiver: function (channel, data) {
+    EventReceiver: function(channel, data) {
         if (this.ReceiverEnabled) {
             if (this.events[channel] != undefined) {
                 for (var i = 0; i < this.events[channel].length; i++) {
@@ -22,27 +22,27 @@ module.exports = {
         }
     },
     actions: {
-        Copy: function () {
+        Copy: function() {
             document.execCommand('copy');
         },
-        Paste: function () {
+        Paste: function() {
             document.execCommand("paste")
         },
-        Cut: function () {
+        Cut: function() {
             document.execCommand("cut");
         },
-        Delete: function () {
-            ContextMenuElement_.value = '';
-        }
-        /*
-        global.ContextMenuFunction_Copy
-        ENDERFRAMEWORK_ENVIRONMENT.actions.
-        global.ContextMenuFunction_Paste
-        global.ContextMenuFunction_Cut
-        global.ContextMenuFunction_Delete*/
+        Delete: function() {
+                ContextMenuElement_.value = '';
+            }
+            /*
+            global.ContextMenuFunction_Copy
+            ENDERFRAMEWORK_ENVIRONMENT.actions.
+            global.ContextMenuFunction_Paste
+            global.ContextMenuFunction_Cut
+            global.ContextMenuFunction_Delete*/
     },
     elements: {
-        floatingActionButton: []////Add floating action buttons in here!
+        floatingActionButton: [] ////Add floating action buttons in here!
     },
     elementActions: {
         floatingButtonClicked: (id, content) => {
@@ -62,18 +62,14 @@ module.exports = {
             document.body.insertBefore(document.createElement('space'), document.body.firstChild);
     },
     tell: {
-        done: function () {
+        done: function() {
             if (!isContentLoading) {
-                setTimeout(function () {
-                    ipcRenderer.sendToHost('environment--tell-done');
-                }, 200);
+                ipcRenderer.sendToHost('environment--tell-done');
             } else
-                var loop = setInterval(function () {
+                var loop = setInterval(function() {
                     if (!isContentLoading) {
                         clearInterval(loop);
-                        setTimeout(function () {
-                            ipcRenderer.sendToHost('environment--tell-done');
-                        }, 200);
+                        ipcRenderer.sendToHost('environment--tell-done');
                     }
                 }, 10);
         }

@@ -44,20 +44,23 @@ _content.addEventListener("dom-ready", function() {
     //isLoading = false;
   }
 });*/
+var timeout = setTimeout(function() {}, 0);
 _content.addEventListener('did-start-loading', function() {
     if (_content.isLoadingMainFrame() & !firstLoad) {
+        clearTimeout(timeout);
         window_ErrorScreen.style.display = "none";
         window_Cover.style.display = "block";
         _content.style.opacity = "0";
         isLoading = true;
-        setTimeout(function() {
+        timeout = setTimeout(function() {
             if (isLoading)
                 window_LongCover.style.display = "block";
-        }, 800);
+        }, 1800);
     }
 });
 _content.addEventListener("did-fail-load", function(e) {
     if (e.isMainFrame) {
+        clearTimeout(timeout);
         window_ErrorScreen.style.display = "block";
         window_Cover.style.display = "none";
         window_LongCover.style.display = "none";

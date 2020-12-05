@@ -1,9 +1,9 @@
 # EnderFramework
 EnderFramework is a framework, built using [Electron](https://electronjs.org), that can make it easier to build apps!
 
-You can find more about this framework in [here](https://enderadel.net/EnderFramework)!
+You can find out more about this framework in [here](https://enderadel.net/EnderFramework)!
 
-*Follow [@EnderAdel](https://twitter.com/EnderAdel) on Twitter to keep yourself up-to-date on everything related to the framework. You can also join our [Discord server](https://discord.gg/rWbtez6).*
+***Note: the framework is still in the very early development stages. We are open to suggestions.***
 
 ## Installation
 To run EnderFramework, you need to have [NodeJS](https://nodejs.org/) and [VS Build Tools](https://go.microsoft.com/fwlink/?linkid=840931) installed on your device. Execute `npm install` to install all the modules. And then, after the installation process is done, execute `npm start`. (You can change the file *start.js* to start any app)
@@ -20,5 +20,11 @@ If you are interested in reporting/fixing issues and contributing directly to th
 
 ## License
 [Apache License, Version 2.0](https://github.com/EnderAdel/EnderFramework/blob/master/LICENSE)
+
+## More
+
+*Follow [@EnderAdel](https://twitter.com/EnderAdel) on Twitter to keep yourself up-to-date on everything related to the framework. You can also join our [Discord server](https://discord.gg/rWbtez6).*
+
+<iframe src="https://discord.com/widget?id=756472096099663954&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 
 *EnderFramework is the property of EnderAdel*

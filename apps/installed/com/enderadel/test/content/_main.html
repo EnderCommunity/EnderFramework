@@ -10,6 +10,7 @@
     <request name="tooltip"></request>
     <request name="media"></request>
     <request-element tag="name"></request-element>
+    <request-element tag="v-name"></request-element>
     <request-resource name="name"></request-resource>
 </head>
 
@@ -61,6 +62,7 @@
     <!-- control -->
     <!--<x-view type="window"></x-view>
     <x-view type="screen"></x-view>-->
+    <request-element tag="x-view"></request-element>
     <x-view type="web" src="https://example.com" style="width: 500px; height: 400px; background: green;"></x-view>
     <!--<x-view type="web" src="https://google.com" style="width: 500px; height: 400px; background: red;"></x-view>-->
     <script>
@@ -243,9 +245,11 @@
     <!-- [END] `loading` element -->
 
     <!-- [START] Custom Elements -->
-    <switch></switch>
-    <switch active="false"></switch>
-    <switch active="true"></switch>
+    <request-element tag="toggle-switch"></request-element>
+    <toggle-switch></toggle-switch>
+    <toggle-switch active></toggle-switch>
+    <toggle-switch disabled></toggle-switch>
+    <toggle-switch active disabled></toggle-switch>
     <br>
     <item>
         <img src="./_image/minecraft-cover.jpg">

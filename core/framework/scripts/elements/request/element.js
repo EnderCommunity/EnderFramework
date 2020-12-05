@@ -25,7 +25,7 @@ class RequestElement extends HTMLElement {
                         (require(path.join(paths.currentApp, "resources", "elements", this.name)))();
                         requestedCustomElements[requestedCustomElements.length] = this.name;
                     } catch {
-                        console.error(`Couldn't find the element <${this.name}>!`);
+                        console.error(`Couldn't import the element <${this.name}>!`);
                     }
                 }
         };
