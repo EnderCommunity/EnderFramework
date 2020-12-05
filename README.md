@@ -1,4 +1,6 @@
 # EnderFramework
+[Downloads](https://img.shields.io/github/downloads/EnderAdel/EnderFramework/total) [EnderFramework Repository Size](https://img.shields.io/github/repo-size/EnderAdel/EnderFramework?label=Repository%20Size) [EnderFramework Top Language](https://img.shields.io/github/languages/top/EnderAdel/EnderFramework) [![EnderFramework Discord Invite](https://img.shields.io/discord/756472096099663954?color=%237289DA&label=Discord%20Server&logo=discord&logoColor=white)](https://discord.com/invite/rWbtez6)
+
 EnderFramework is a framework, built using [Electron](https://electronjs.org), that can make it easier to build apps!
 
 You can find out more about this framework in [here](https://enderadel.net/EnderFramework)!
