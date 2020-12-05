@@ -12,7 +12,7 @@ You can find out more about this framework in [here](https://enderadel.net/Ender
 ## Installation
 To run EnderFramework, you need to have [NodeJS](https://nodejs.org/) and [VS Build Tools](https://go.microsoft.com/fwlink/?linkid=840931) installed on your device. Execute `npm install` to install all the modules. And then, after the installation process is done, execute `npm start`.
 
-You can change the file *start.js* ([core/start.js](core/start.js)) to start any app! Look for the ready event in the file.
+You can change the start file ([core/start.js](core/start.js)) to start any app! Look for the ready event in the file.
 ```js
 app.on("ready", function() {
     for (var i = 0; i < process.argv.length; i++) {
