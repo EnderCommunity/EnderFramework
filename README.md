@@ -25,6 +25,4 @@ If you are interested in reporting/fixing issues and contributing directly to th
 
 *Follow [@EnderAdel](https://twitter.com/EnderAdel) on Twitter to keep yourself up-to-date on everything related to the framework. You can also join our [Discord server](https://discord.gg/rWbtez6).*
 
-<iframe src="https://discord.com/widget?id=756472096099663954&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-
 *EnderFramework is the property of EnderAdel*
