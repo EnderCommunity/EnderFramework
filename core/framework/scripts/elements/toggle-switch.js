@@ -7,11 +7,14 @@ class Switch extends HTMLElement {
     }
     constructor() {
         super();
+        this.onToggle = function() {};
     }
     connectedCallback() {
         this.addEventListener("click", () => {
-            if (!this.disabled)
-                (this.active) ? this.removeAttribute("active") : this.setAttribute("active", "");
+            if (!this.disabled) {
+                (this.active) ? this.removeAttribute("active"): this.setAttribute("active", "");
+                this.onToggle(this.active);
+            }
         });
     }
 }
