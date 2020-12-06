@@ -41,6 +41,9 @@ app.on("ready", function() {
 ## Quick start
 *Coming soon!*
 
+## Reporting Bugs and requesting Features
+You can report bugs and request new features by opening a [new issue](https://github.com/EnderAdel/EnderFramework/issues/new).
+
 ## Contributing
 If you are interested in reporting/fixing issues and contributing directly to the code base, feel free to do so! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for more information!
 

@@ -246,7 +246,12 @@
 
     <!-- [START] Custom Elements -->
     <request-element tag="toggle-switch"></request-element>
-    <toggle-switch></toggle-switch>
+    <toggle-switch id="testToggle"></toggle-switch>
+    <script>
+        document.getElementById("testToggle").onToggle = function(isActive) {
+            EnderFramework.notification.snack((isActive) ? "Switched On!" : "Switched Off!");
+        };
+    </script>
     <toggle-switch active></toggle-switch>
     <toggle-switch disabled></toggle-switch>
     <toggle-switch active disabled></toggle-switch>
