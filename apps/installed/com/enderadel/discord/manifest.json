@@ -1,0 +1,51 @@
+{
+    "name": "Discord",
+    "start": "_main.html",
+    "version": "0.1",
+    "publisher": "EnderAdel",
+    "splashScreen": false,
+    "splashCooldown": 0,
+    "splashText": "Built using EnderStudio!",
+    "server": {
+        "feedback": "https://example.com/MyServerFiles/Feedback.php?message=[0]",
+        "bugTracking": "https://example.com/MyServerFiles/BugsTracking.php?useragent=[0]&appversion=[1]&error=[2]",
+        "bugReporting": "https://example.com/MyServerFiles/BugReprots.php?message=[0]"
+    },
+    "window": {
+        "type": "normal",
+        "width": 940,
+        "height": 560,
+        "minWidth": 940,
+        "minHeight": 560,
+        "maxWidth": null,
+        "maxHeight": null,
+        "isFullscreenable": true,
+        "isClosable": true,
+        "isMinimizable": true,
+        "isMaximizable": true,
+        "maximizeOnStart": true,
+        "resizable": true
+    },
+    "content": {
+        "theme": "default",
+        "colorScheme": "system",
+        "redirectAnimations": true,
+        "contextMenu": true,
+        "infoScreen": true,
+        "protocol": "store",
+        "coverOnMaximize": false,
+        "customStyle": true
+    },
+    "hardware": {
+        "highGPUPerformance": true
+    },
+    "enable": {
+        "JavaScript": true,
+        "WebGL": true,
+        "devTools": false,
+        "spellcheck": true
+    },
+    "menu": {
+        "type": "none"
+    }
+}

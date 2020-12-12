@@ -1,96 +1,10 @@
-const { clear } = require("console");
-
-var path = require("path"),
-    praseSRC = function(path_, src, ext) {
-        src = src.split(".");
-        for (var i = 0; i < src.length; i++) {
-            if (i == src.length - 1)
-                path_ = path.join(path_, `${src[i]}.${ext}`);
-            else
-                path_ = path.join(path_, src[i]);
-        }
-        return path_;
-    };
+var path = require("path");
 class RequestMedia extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
         var style = document.createElement("style");
-        style.innerHTML = `
-        :host{
-            display: inline-flex;
-        }
-        img, video, audio, .error{
-            position: relative;
-            z-index: 1;
-            display: flex;
-            width: 100%;
-            height: 100%;
-        }
-        img{
-            display: none;
-        }
-        .plpc{
-            position: relative;
-            display: inline-flex;
-            width: 100%;
-            z-index: 2;
-            opacity: 1;
-            -webkit-transition: opacity 0.4s ease-in-out;
-            transition: opacity 0.4s ease-in-out;
-            -webkit-animation: blur 0s ease;
-            animation: blur 0s ease;
-        }
-        .plpc:after{
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0px;
-            bottom: 0px;
-            right: 0px;
-            left: 0px;
-            z-index: 2;
-            backdrop-filter: blur(20px);
-            -webkit-transition: opacity 0.4s ease-in-out;
-            transition: opacity 0.4s ease-in-out;
-        }
-        img.pre-load{
-            position: relative;
-            z-index: 0;
-            display: flex;
-        }
-        .plpc.load{
-            position: absolute;
-            top: 0px;
-            display: flex;
-            opacity: 0;
-        }
-        img.loaded{
-            display: flex;
-        }
-        .imageC, .videoC{
-            display: flex;
-            width: 100%;
-        }
-        .error{
-            position: relative;
-            z-index: 10;
-            display: inline-block;
-            text-align: center;
-            margin: 18px;
-        }
-        *{
-            outline: none;
-            resize: none;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -webkit-user-drag: none;
-            -khtml-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        `;
+        style.innerHTML = ENDERFRAMEWORK_ENVIRONMENT.resources.css.customElements["request.media"];
         this.shadowRoot.appendChild(style);
         this.errorElement = document.createElement("div");
         this.imageC = document.createElement("div");
@@ -144,7 +58,7 @@ class RequestMedia extends HTMLElement {
                     if (ext == "jpeg" || ext == "jpg" || ext == "webp" || ext == "gif" || ext == "png" || ext == "apng" || ext == "tiff" || ext == "svg" || ext == "bmp" || ext == "ico") {
                         path_ = path.join(path_, "image");
                         //alert("image", path_);
-                        path_ = [praseSRC(path_, this.src, `load.${ext}`), praseSRC(path_, this.src, ext)];
+                        path_ = [ENDERFRAMEWORK_ENVIRONMENT.parse.src(path_, this.src, `load.${ext}`), ENDERFRAMEWORK_ENVIRONMENT.parse.src(path_, this.src, ext)];
                         //
                         this.imageC.style.display = null;
                         this.videoC.style.display = "none";
@@ -187,7 +101,7 @@ class RequestMedia extends HTMLElement {
                     if (ext == "mp4" || ext == "vp8" || ext == "vp9" || ext == "av1") {
                         path_ = path.join(path_, "video");
                         //alert("video", path_);
-                        path_ = praseSRC(path_, this.src, ext);
+                        path_ = ENDERFRAMEWORK_ENVIRONMENT.parse.src(path_, this.src, ext);
                         //
                         this.imageC.style.display = "none";
                         this.videoC.style.display = null;
@@ -207,7 +121,7 @@ class RequestMedia extends HTMLElement {
                     if (ext == "mp3" || ext == "mp4" || ext == "ogg" || ext == "flac" || ext == "webm" || ext == "wav" || ext == "hls") {
                         path_ = path.join(path_, "audio");
                         //alert("audio", path_);
-                        path_ = praseSRC(path_, this.src, ext);
+                        path_ = ENDERFRAMEWORK_ENVIRONMENT.parse.src(path_, this.src, ext);
                         //
                         this.imageC.style.display = "none";
                         this.videoC.style.display = "none";

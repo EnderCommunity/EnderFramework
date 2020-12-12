@@ -1,0 +1,73 @@
+:host {
+    display: inline-flex;
+}
+
+img,
+video,
+audio,
+.error {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    display: none;
+}
+
+.plpc {
+    position: relative;
+    display: inline-flex;
+    width: 100%;
+    z-index: 2;
+    opacity: 1;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
+    -webkit-animation: blur 0s ease;
+    animation: blur 0s ease;
+}
+
+img.pre-load {
+    position: relative;
+    z-index: 0;
+    display: flex;
+}
+
+.plpc.load {
+    position: absolute;
+    top: 0px;
+    display: flex;
+    opacity: 0;
+}
+
+img.loaded {
+    display: flex;
+}
+
+.imageC,
+.videoC {
+    display: flex;
+    width: 100%;
+}
+
+.error {
+    position: relative;
+    z-index: 10;
+    display: inline-block;
+    text-align: center;
+    margin: 18px;
+}
+
+* {
+    outline: none;
+    resize: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

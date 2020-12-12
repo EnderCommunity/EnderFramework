@@ -85,6 +85,9 @@ module.exports = {
                     dimensions.width = Math.round((dimensions.width - data.window.minWidth) / 2);
                     dimensions.height = Math.round((dimensions.height - data.window.minHeight) / 2);
                     win.setPosition(dimensions.width, dimensions.height);
+                    win.webContents.session.webRequest.onHeadersReceived((details, callback) => {
+                        callback({ responseHeaders: Object.fromEntries(Object.entries(details.responseHeaders).filter(header => !/x-frame-options/i.test(header[0]))) });
+                    });
                     win.loadURL(url.format({
                         pathname: path.join(paths.core, 'framework', 'window.html'),
                         protocol: "file",

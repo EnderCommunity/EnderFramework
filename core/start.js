@@ -47,6 +47,10 @@ app.on("ready", function() {
                 length = appID.replace(/[^.]/g, "").length;
             /*var appID = "com.enderadel.test",
                 length = appID.replace(/[^.]/g, "").length;*/
+            /*var appID = "com.enderadel.test3",
+                length = appID.replace(/[^.]/g, "").length;*/
+            /*var appID = "com.enderadel.discord", //DO NOT USE THIS! THIS IS JUST FOR TESTING!
+                length = appID.replace(/[^.]/g, "").length;*/
             //var appID = "com.enderadel.test2", length = appID.replace(/[^.]/g, "").length;
             /*var appID = "com.enderadel.CommandPrompt",
                 length = appID.replace(/[^.]/g, "").length;*/
@@ -114,6 +118,10 @@ ipcMain.on('data', (event, arg) => {
 });
 app.on('will-finish-launching', () => {
     //start background activites
+});
+global.resources = {};
+ipcMain.on('global-resources', function(event, arg) {
+    global.resources = arg;
 });
 
 function handleSquirrelEvent(application) {

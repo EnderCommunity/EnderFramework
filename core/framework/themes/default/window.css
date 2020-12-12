@@ -4,7 +4,7 @@
     --NoiseDisplay: block;
     --WindowBorderDisplay: none;
     --WindowBorderColor: #e0e0e0;
-    --TopBar-BackgroundColor: #d6d6d6;
+    --TopBar-BackgroundColor: #d6d6d6b9;
     --TopBar-TextColor: #000000;
     --ClickColor: #ffffff66;
     --TopBar-Opacity: 1;
@@ -14,7 +14,7 @@
 [prefers-color-scheme="dark"] {
     --WindowBackgroundColor: #101010;
     --WindowBorderColor: #3e3e3e;
-    --TopBar-BackgroundColor: #0e0e0e;
+    --TopBar-BackgroundColor: #0e0e0eb9;
     --TopBar-TextColor: #ffffff;
     --ClickColor: #a0a0a04a;
     --ControlIcon-FillColor: #ffffff;
@@ -103,6 +103,9 @@ body {
     -webkit-user-select: none;
     -webkit-app-region: drag;
     /*background-color: var(--Color5);*/
+    -webkit-backdrop-filter: blur(32px) saturate(1.6);
+    backdrop-filter: blur(28px) saturate(1.6);
+    /*background-color: var(--Blur1);*/
     background-color: var(--TopBar-BackgroundColor);
     /*color: var(--Color11);*/
     color: var(--TopBar-TextColor);
@@ -110,7 +113,20 @@ body {
     -webkit-transition-duration: 0ms;
     transition-duration: 0ms;
     z-index: 200;
-    opacity: var(--TopBar-Opacity);
+}
+
+.topBar::after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--BlurNoise);
+    opacity: 0.5;
+    z-index: -1;
 }
 
 
@@ -246,6 +262,10 @@ body {
     border: #fda000 1px solid;
 }
 
+.topBar * {
+    opacity: var(--TopBar-Opacity);
+}
+
 .click:hover {
     background-color: var(--ClickColor);
     transition: all 200ms;
@@ -284,7 +304,7 @@ body {
 
 #_contentView {
     position: fixed;
-    top: 36px;
+    top: 0px;
     left: 0px;
     right: 0px;
     bottom: 0px;
@@ -382,6 +402,12 @@ body {
 .topBar.withSideMenu,
 .topBar.isOverlay {
     background-color: transparent;
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+}
+
+.topBar.withTopMenu:after {
+    opacity: 0;
 }
 
 #_contentView.withTopMenu,
@@ -1064,14 +1090,32 @@ body {
     transition-duration: 0.3s;
 }
 
+#_webBrowserC progress::-webkit-progress-bar {
+    background-color: transparent;
+}
+
 #_webBrowserC .WebBrowser--Bar {
     position: fixed;
     top: 36px;
     right: 0px;
     left: 0px;
     height: 48px;
-    background-color: var(--Color5);
+    background-color: var(--TopBar-BackgroundColor);
     border-radius: 8px 8px 0px 0px;
+}
+
+#_webBrowserC .WebBrowser--Bar::after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--BlurNoise);
+    opacity: 0.5;
+    z-index: -1;
 }
 
 #_webBrowserC .WebBrowser--Bar .option {
@@ -1084,7 +1128,6 @@ body {
     margin-right: -3px;
     cursor: pointer;
     border-radius: 4px;
-    background-color: var(--Color5);
     font-size: 28px;
     padding: 4px;
 }
@@ -1477,6 +1520,41 @@ body {
 #_transitionCover[sShow] {
     opacity: 1;
     pointer-events: all;
+}
+
+floating-action {
+    display: block;
+    position: fixed;
+    z-index: 12;
+    bottom: 28px;
+    right: 42px;
+    width: 46px;
+    height: 46px;
+    padding: 3px;
+    /*background-color: var(--Color2);*/
+    background-color: var(--FloatingActionButton-BackgroundColor);
+    border-radius: 100px;
+    /*-webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
+  box-shadow: 0px 1px 10px 0px var(--Color6);*/
+    -webkit-box-shadow: 0px 1px 10px 0px var(--FloatingActionButton-BoxShadowColor);
+    box-shadow: 0px 1px 10px 0px var(--FloatingActionButton-BoxShadowColor);
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+floating-action:hover {
+    /*-webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
+  box-shadow: 0px 1px 18px 0px var(--Color6);*/
+    -webkit-box-shadow: 0px 1px 10px 0px var(--FloatingActionButton-BoxShadowColorHOVER);
+    box-shadow: 0px 1px 18px 0px var(--FloatingActionButton-BoxShadowColorHOVER);
+}
+
+floating-action:active {
+    /*-webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
+  box-shadow: 0px 2px 18px 2px var(--Color6);*/
+    -webkit-box-shadow: 0px 1px 10px 0px var(--FloatingActionButton-BoxShadowColorACTIVE);
+    box-shadow: 0px 2px 18px 2px var(--FloatingActionButton-BoxShadowColorACTIVE);
 }
 
 .noneDrag {

@@ -1,4 +1,4 @@
-const { remote } = require("electron"), { app, nativeTheme } = remote, os = require('os'), fs = require("fs"), opn_ = require("opn"), ChromecastAPI = require('chromecast-api'), _changeContextMenuTopValue = function(value) {
+const { remote, ipcRenderer } = require("electron"), { app, nativeTheme } = remote, os = require('os'), fs = require("fs"), opn_ = require("opn"), ChromecastAPI = require('chromecast-api'), _changeContextMenuTopValue = function(value) {
     return (value + _content.offsetTop);
 }, _webviewFinishedLoading = function() {
     //
@@ -12,7 +12,10 @@ var firstLoad = true,
             main: null,
             font: null,
             icons: null,
-            animations: null
+            animations: null,
+            customElements: {
+                //
+            }
         },
         js: {
             //customElements: null,
@@ -20,4 +23,5 @@ var firstLoad = true,
         }
     },
     customTopBarColorDone = false,
-    customTopBarColor = null;
+    customTopBarColor = null,
+    didHideIcon = false;

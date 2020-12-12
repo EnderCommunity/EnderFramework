@@ -542,7 +542,6 @@ input[type=file]:after {
 }
 
 button,
-warn-button,
 input[type=reset],
 input[type=button],
 input[type=submit] {
@@ -571,7 +570,6 @@ input[type=submit] {
 }
 
 button[bigger],
-warn-button[bigger],
 input[type=reset][bigger],
 input[type=button][bigger],
 input[type=submit][bigger] {
@@ -583,7 +581,6 @@ input[type=submit][bigger] {
     margin: 6px;
 }
 
-warn-button:hover,
 button:hover,
 input[type=reset]:hover,
 input[type=button]:hover,
@@ -600,7 +597,6 @@ input[type=submit]:hover {
     border-color: var(--Buttons-BorderColorHOVER);
 }
 
-warn-button:active,
 button:active,
 input[type=reset]:active,
 input[type=button]:active,
@@ -706,7 +702,6 @@ input[type=submit][glass]:active {
     transition-duration: 0ms;
 }
 
-warn-button,
 button[warn],
 input[type=reset][warn],
 input[type=button][warn],
@@ -723,7 +718,6 @@ input[type=submit][warn] {
     color: var(--WarnButtons-TextColor);
 }
 
-warn-button:hover,
 button[warn]:hover,
 input[type=reset][warn]:hover,
 input[type=button][warn]:hover,
@@ -738,7 +732,6 @@ input[type=submit][warn]:hover {
     border-color: var(--WarnButtons-BorderColorHOVER);
 }
 
-warn-button:active,
 button[warn]:active,
 input[type=reset][warn]:active,
 input[type=button][warn]:active,
@@ -751,16 +744,6 @@ input[type=submit][warn]:active {
     box-shadow: 0px 1px 14px -2px var(--WarnButtons-BoxShadowColorACTIVE);
     /*border-color: var(--Color16);*/
     border-color: var(--WarnButtons-BorderColorACTIVE);
-}
-
-warn-button {
-    padding: 0;
-    line-height: 38px;
-}
-
-warn-button[bigger] {
-    padding: 0;
-    line-height: 50px;
 }
 
 card {
@@ -808,8 +791,7 @@ card {
   background-color: var(--Color18);
 }*/
 
-a,
-inapp-a {
+a {
     /*color: var(--Color1);*/
     color: var(--Link-Color);
     cursor: pointer;
@@ -1248,83 +1230,6 @@ space {
     height: 104px;
     margin: 0px;
     padding: 0px;
-}
-
-toggle-switch {
-    display: inline-block;
-    margin: 4px;
-    width: 68px;
-    height: 24px;
-    border-radius: 100px;
-    overflow: hidden;
-    border-style: solid;
-    border-width: 1px;
-    /*border-color: var(--Color11);*/
-    border-color: var(--Switch-BorderColor);
-    opacity: 1;
-    cursor: pointer;
-    -webkit-transition-duration: 0.05s;
-    transition-duration: 0.05s;
-}
-
-toggle-switch:before {
-    content: "";
-    display: block;
-    margin: 4px;
-    width: 16px;
-    height: 16px;
-    border-radius: 8px;
-    background-color: var(--Switch-BorderColor);
-    -webkit-transition-duration: 0.1s;
-    transition-duration: 0.1s;
-}
-
-toggle-switch[active] {
-    margin: 4px;
-    /*background-color: var(--Color1);*/
-    background-color: var(--Switch-BackgroundColorACTIVE);
-    /*border-color: var(--Color1);*/
-    border-color: var(--Switch-BorderColorACTIVE);
-}
-
-toggle-switch[active]:before {
-    margin: 4px;
-    margin-left: 48px;
-}
-
-floating-action {
-    display: block;
-    position: fixed;
-    z-index: 12;
-    bottom: 28px;
-    right: 42px;
-    width: 46px;
-    height: 46px;
-    padding: 3px;
-    /*background-color: var(--Color2);*/
-    background-color: var(--FloatingActionButton-BackgroundColor);
-    border-radius: 100px;
-    /*-webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
-  box-shadow: 0px 1px 10px 0px var(--Color6);*/
-    -webkit-box-shadow: 0px 1px 10px 0px var(--FloatingActionButton-BoxShadowColor);
-    box-shadow: 0px 1px 10px 0px var(--FloatingActionButton-BoxShadowColor);
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
-    cursor: pointer;
-}
-
-floating-action:hover {
-    /*-webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
-  box-shadow: 0px 1px 18px 0px var(--Color6);*/
-    -webkit-box-shadow: 0px 1px 10px 0px var(--FloatingActionButton-BoxShadowColorHOVER);
-    box-shadow: 0px 1px 18px 0px var(--FloatingActionButton-BoxShadowColorHOVER);
-}
-
-floating-action:active {
-    /*-webkit-box-shadow: 0px 1px 10px 0px var(--Color6);
-  box-shadow: 0px 2px 18px 2px var(--Color6);*/
-    -webkit-box-shadow: 0px 1px 10px 0px var(--FloatingActionButton-BoxShadowColorACTIVE);
-    box-shadow: 0px 2px 18px 2px var(--FloatingActionButton-BoxShadowColorACTIVE);
 }
 
 cardView {
