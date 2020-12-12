@@ -31,8 +31,10 @@ const showMessageBox_ = function(t, m, d, b) {
         button.innerHTML = cb.text;
         button.function = cb.onclick;
         button.addEventListener("click", function() {
-            if (this.function == "" || this.function == "undefined" || this.function == "null" || this.function == null || this.function == undefined)
+            if (this.function == "" || this.function == "undefined" || this.function == "null" || this.function == null || this.function == undefined) {
+                removeF();
                 return false;
+            }
             //
             if (!this.function.includes("`"))
                 _content.executeJavaScript(`(Function(\`${this.function}\`))();`);

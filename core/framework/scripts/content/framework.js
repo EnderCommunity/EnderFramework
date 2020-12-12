@@ -1026,37 +1026,13 @@ module.exports = {
         //
       }
     },*/
-    parse: function(data) {
-        var result = [],
-            length = data.replace(/[^\n]/g, "").length + 1;
-        for (var i = 0; i < length; i++) {
-            var currentLineData = {},
-                line = data.substring(0, (data.indexOf("\n") > -1) ? data.indexOf("\n") : data.length).replace(/\s/g, ""),
-                isThereAComment = false,
-                isThereAnAttribute = false,
-                isStrict = false;
-            if (line.indexOf("@") == 0) {
-                line = line.substring(1);
-                isStrict = true;
-            }
-            currentLineData.strict = isStrict;
-            currentLineData.comment = line.substring((line.indexOf("##") > -1) ? line.indexOf("##") : line.length, line.length);
-            isThereAComment = (line.indexOf("##") > -1);
-            line = line.replace(/\s/g, "");
-            line = line.substring(0, (line.indexOf("##") > -1) ? line.indexOf("##") : line.length);
-            currentLineData.action = line.substring(0, line.indexOf("`"));
-            line = line.substring(line.indexOf("`") + 1);
-            currentLineData.value = line.substring(0, line.indexOf("`"));
-            currentLineData.attribute = line.substring((line.indexOf("!") > -1) ? line.indexOf("!") + 1 : 0, line.length);
-            isThereAnAttribute = (line.indexOf("!") > -1);
-            currentLineData.comment = (isThereAComment) ? currentLineData.comment : null;
-            currentLineData.action = (currentLineData.action == "") ? null : currentLineData.action;
-            currentLineData.value = (currentLineData.value == "") ? null : currentLineData.value;
-            currentLineData.attribute = (isThereAnAttribute) ? currentLineData.attribute : null;
-            result[result.length] = currentLineData;
-            data = data.substring(data.indexOf("\n") + 1);
+    parse: {
+        src: function(root, src, ext) {
+            return ENDERFRAMEWORK_ENVIRONMENT.parse.src(root, src, ext);
+        },
+        code: function(data) {
+            return ENDERFRAMEWORK_ENVIRONMENT.parse.code(data);
         }
-        return result;
     },
     receiver: {
         on: function(channel, callback) {

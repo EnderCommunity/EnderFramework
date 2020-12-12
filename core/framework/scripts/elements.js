@@ -21,35 +21,38 @@ var Window_TopBar = document.getElementById("_topBar"),
     Cast_Container = document.getElementById("_COfCast"),
     Cast_UI = document.getElementById("_castUI").style.display = "block",
     HideInFullscreen = document.querySelectorAll("[hideInFullscreen]"),
-    window_FullscreenButton = document.getElementById("_exitFullscreen");
-;
-document.hideSplashScreen = function () {
+    window_FullscreenButton = document.getElementById("_exitFullscreen");;
+document.hideSplashScreen = function() {
     if (manifest.window.type != "acrylic") {
         window_SplashScreen.style.opacity = "0";
         window_SplashScreen.style.pointerEvents = "none";
-        setTimeout(function () {
+        setTimeout(function() {
             window_SplashScreen.style.display = "none";
             window_SplashScreen.style.opacity = "1";
         }, 200);
-        window_Icon.style.display = "inline-block"
+        if (!didHideIcon)
+            window_Icon.style.display = "inline-block"
     } else {
         window_SplashScreen.style.display = "none";
         //
     }
 };
-document.showSplashScreen = function () {
+document.showSplashScreen = function() {
     window_SplashScreen.style.pointerEvents = "all";
     window_SplashScreen.style.display = "block";
-    window_Icon.style.display = "none"
+    window_Icon.style.display = "none";
+    didHideIcon = false;
+    customTopBarColorDone = false;
+    customTopBarColor = null;
 };
 window.cover = document.getElementById("_transitionCover");
-window.cover.show = function () {
+window.cover.show = function() {
     this.setAttribute("show", "");
 };
-window.cover.hide = function () {
+window.cover.hide = function() {
     this.removeAttribute("show");
 };
-window.cover.isHidden = function () {
+window.cover.isHidden = function() {
     return !(this.hasAttribute("show"));
 };
 _content = document.getElementById("_contentView");

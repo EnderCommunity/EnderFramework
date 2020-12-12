@@ -29,6 +29,8 @@ _content.addEventListener('ipc-message', event => {
                 elem.style.display = "none";
             }, 250);
         }
+    } else if (event.channel == "customelements--insertcss") {
+        _content.insertCSS(event.args[0]);
     } else if (event.channel == "get--codebox") {
         //
     } else if (event.channel == "get--customelements") {
@@ -216,13 +218,15 @@ _content.addEventListener('ipc-message', event => {
         document.getElementById("_title").style.display = "inline-block";
     } else if (event.channel == "enderframework--icon-hide") {
         if (!isSub) {
+            didHideIcon = true;
             document.getElementById("_icon").style.display = "none";
-            document.getElementById("_title").style.marginLeft = "8px";
+            //document.getElementById("_title").style.marginLeft = "8px";
         }
     } else if (event.channel == "enderframework--icon-show") {
         if (!isSub) {
+            didHideIcon = false;
             document.getElementById("_icon").style.display = "inline-block";
-            document.getElementById("_title").style.marginLeft = "0px";
+            //document.getElementById("_title").style.marginLeft = "0px";
         }
     } else if (event.channel == "enderframework--title-hide") {
         if (!isSub)

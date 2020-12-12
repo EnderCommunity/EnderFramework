@@ -2,13 +2,13 @@ const { remote, ipcRenderer } = require("electron");
 global._content = undefined;
 global.isDOMContentReady = false;
 global.currentWindow = remote.getCurrentWindow();
-global.windowIsReady = function () {
+global.windowIsReady = function() {
     if (manifest.window.maximizeOnStart && !isSub)
         global.currentWindow.maximize();
     currentWindow.show();
     currentWindow.focus();
 };
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     isDOMContentReady = true;
 });
 global.path = require("path");
@@ -21,7 +21,7 @@ global.subInfo = {
     title: "loading"
 };
 var messageDone = false;
-window.addEventListener("message", function (e) {
+window.addEventListener("message", function(e) {
     if (!messageDone) {
         messageDone = true;
         isSub = true;
@@ -45,19 +45,19 @@ window.addEventListener("message", function (e) {
     }
 }, false);
 if (isSub) {
-    window.addEventListener("message", function (e) {
+    window.addEventListener("message", function(e) {
         if (e.data.channel != undefined) {
-            var f_1 = function () {
+            var f_1 = function() {
                 console.log(e.data);
                 _content.executeJavaScript("ENDERFRAMEWORK_ENVIRONMENT.EventReceiver(\"" + e.data.channel + "\", " + e.data.data.toString() + ")");
             };
             if (isDOMContentReady & typeof _content == "object" && _content != null) {
                 f_1();
             } else {
-                var loop = setInterval(function () {
+                var loop = setInterval(function() {
                     if (isDOMContentReady & typeof _content == "object" && _content != null) {
                         clearInterval(loop);
-                        setTimeout(function () {
+                        setTimeout(function() {
                             f_1();
                         }, 0);
                     }
@@ -67,7 +67,7 @@ if (isSub) {
     });
 }
 if (isSub) {
-    setTimeout(function () {
+    setTimeout(function() {
         var title = document.getElementById("_title");
         title.innerHTML = title.innerHTML + " | " + subInfo.title;
         //document.getElementById("__longLoading").style.display = "none";
@@ -77,7 +77,7 @@ if (isSub) {
         for (var i = 0; i < toHide.length; i++) {
             toHide[i].setAttribute("style", "display: none;");
         }
-        setTimeout(function () {
+        setTimeout(function() {
             document.getElementById("_topBar").classList.remove("withTopMenu", "withSideMenu");
             document.getElementById("global._contentView").classList.remove("withTopMenu", "withSideMenu");
         }, 0);
@@ -85,11 +85,11 @@ if (isSub) {
 }
 const nativeImage = require("electron").remote.nativeImage;
 global.TopFramework = {
-    setTitle: function (title) {
+    setTitle: function(title) {
         document.title = title;
         document.getElementById("_title").innerHTML = title;
     },
-    setIcon: function (path_, w) {
+    setIcon: function(path_, w) {
         if (path_.substring(path_.length - 3) == "png") {
             document.getElementById("_icon").setAttribute("src", global.path.join(global.manifest.paths.currentApp, "resources", "icons", path_));
             if (w)
@@ -104,7 +104,7 @@ global.TopFramework = {
             console.warn("The icon format must be PNG!");
         }
     },
-    splashText: function (title) {
+    splashText: function(title) {
         document.getElementById("_splashText").innerHTML = title;
     }
 };

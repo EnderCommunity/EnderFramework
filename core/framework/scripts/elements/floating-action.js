@@ -5,21 +5,22 @@ class FloatingAction extends HTMLElement {
     }
     constructor() {
         super();
+        console.warn("<floating-action> is an experimental element! If you don't need it, try not to use it.");
     }
     connectedCallback() {
-        this.floatingActionID = ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton.length;
-        ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton[ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton.length] = this;
         if (!isMax) {
             isMax = true;
+            ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton[ENDERFRAMEWORK_ENVIRONMENT.elements.floatingActionButton.length] = this;
             this.addEventListener("click", function() {
-                ENDERFRAMEWORK_ENVIRONMENT.elementActions.floatingButtonClicked(this.floatingActionID, this.content);
+                ENDERFRAMEWORK_ENVIRONMENT.elementActions.floatingButtonClicked(0, this.getAttribute("content"));
             });
         } else {
+            console.error("You can only use one <floating-action> per page!");
             this.outerHTML = "";
-            console.error("You can only add one <floating-action> per page!");
         }
     }
 }
 module.exports = function() {
+    ENDERFRAMEWORK_ENVIRONMENT.tell.fire("customelements--insertcss", ENDERFRAMEWORK_ENVIRONMENT.resources.css.customElements["floating-action"]);
     customElements.define('floating-action', FloatingAction);
 };

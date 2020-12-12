@@ -15,7 +15,7 @@ class RequestElement extends HTMLElement {
             if (!this.name.includes("-"))
                 console.error(`The element tag <${this.name}> is invalid!`);
             else if (requestedCustomElements.includes(this.name))
-                console.error(`The element <${this.name}> has been already requested!`);
+                console.error(`The element <${this.name}> has been already imported!`);
             else
                 try {
                     (require(path.join("../", this.name)))();
