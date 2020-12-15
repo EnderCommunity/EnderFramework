@@ -9,6 +9,7 @@ var isLoading = false,
                 //window_LongCover.style.display = "none";
                 _content.style.opacity = "1";
                 document.hideSplashScreen();
+                Window_TopBar.classList.add("loaded");
                 //_content.style.display = null;
             }, manifest.splashCooldown);
         } else if (manifest.content.redirectAnimations) {

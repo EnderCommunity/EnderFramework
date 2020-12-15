@@ -23,7 +23,8 @@ class XView extends HTMLElement {
         //this.shadowRoot;
         this.iframe = document.createElement("iframe");
         this.iframe.setAttribute("seamless", "");
-        this.iframe.setAttribute("sandbox", "allow-forms allow-pointer-lock allow-presentation allow-same-origin allow-scripts");
+        this.iframe.setAttribute("sandbox", "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-same-origin allow-scripts");
+        /* allow-top-navigation allow-top-navigation-by-user-activation allow-popups-to-escape-sandbox allow-popups*/
         this.shadowRoot.appendChild(style);
         this.shadowRoot.appendChild(this.iframe);
         this.xViewAPI = null;

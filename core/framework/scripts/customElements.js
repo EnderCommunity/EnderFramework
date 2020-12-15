@@ -2,9 +2,11 @@ const ShowFloatingActionContent = function(inDocumentAction, content) {
     var FABElm1 = document.createElement("div"),
         FABElm2 = document.createElement("floating-action"),
         FABElm3 = document.createElement("icon");
+    topBarBlur(false);
     FABElm1.classList.add("FloatingButtonDiv");
     FABElm3.innerHTML = "close";
     FABElm2.addEventListener("click", function() {
+        topBarBlur(true);
         FABElm1.outerHTML = "";
         inDocumentAction(`document.body.classList.remove("noScroll");`);
         inDocumentAction(`{currentFloatingAction}.setAttribute("style", "-webkit-transition-duration: 0s; transition-duration: 0s;");`);
@@ -37,6 +39,7 @@ const ShowFloatingActionContent = function(inDocumentAction, content) {
         el._function = `(${FABContent[v].onclick})();`;
         el.addEventListener("click", function() {
             _content.executeJavaScript(this._function);
+            topBarBlur(true);
             FABElm1.outerHTML = "";
             inDocumentAction(`document.body.classList.remove("noScroll");`);
             inDocumentAction(`{currentFloatingAction}.setAttribute("style", "-webkit-transition-duration: 0s; transition-duration: 0s;");`);

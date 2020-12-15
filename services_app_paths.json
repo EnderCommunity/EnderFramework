@@ -1,0 +1,7 @@
+{
+    "root": ["package.json", "package-lock.json", "LICENSE"],
+    "apps": true,
+    "core": true,
+    "node_modules": true,
+    "services": true
+}

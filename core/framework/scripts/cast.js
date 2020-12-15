@@ -1,11 +1,14 @@
-const showCastScreen = function (text) {
-    currentShareValue = text;
-    Cast_Container.style.display = "block";
-    Cast_UI.style.display = "block";
-}, hideCastScreen = function () {
-    Cast_Container.style.display = 'none';
-    Cast_UI.style.display = 'none';
-};
+const showCastScreen = function(text) {
+        topBarBlur(false);
+        currentShareValue = text;
+        Cast_Container.style.display = "block";
+        Cast_UI.style.display = "block";
+    },
+    hideCastScreen = function() {
+        topBarBlur(true);
+        Cast_Container.style.display = 'none';
+        Cast_UI.style.display = 'none';
+    };
 /*const client = new ChromecastAPI();
 client.on('device', function(device){
   console.log(client.devices);

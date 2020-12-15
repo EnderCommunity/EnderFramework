@@ -47,7 +47,7 @@ app.on("ready", function() {
                 length = appID.replace(/[^.]/g, "").length;
             /*var appID = "com.enderadel.test",
                 length = appID.replace(/[^.]/g, "").length;*/
-            /*var appID = "com.enderadel.test3",
+            /*var appID = "com.enderadel.cats",
                 length = appID.replace(/[^.]/g, "").length;*/
             /*var appID = "com.enderadel.discord", //DO NOT USE THIS! THIS IS JUST FOR TESTING!
                 length = appID.replace(/[^.]/g, "").length;*/

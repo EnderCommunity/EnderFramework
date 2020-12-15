@@ -1,0 +1,16 @@
+{
+    "root": ["package.json", "package-lock.json", "LICENSE"],
+    "core": {
+        "root": ["initiate.js", "os.js", "shortcut.js", "src-parser.js", "start.js", "toast.js", "types.js", "window.js"],
+        "engine": true,
+        "framework": true,
+        "libraries": true,
+        "local": true,
+        "optimizer": true,
+        "processor": true,
+        "resources": {
+            "root": ["notification.png"]
+        }
+    },
+    "node_modules": true
+}
