@@ -793,6 +793,15 @@ module.exports = {
                 show: function() {
                     ipcRenderer.sendToHost('enderframework--icon-show');
                 }
+            },
+            blur: function() {
+                ipcRenderer.sendToHost('enderframework--topbar-blur');
+            },
+            unblur: function() {
+                ipcRenderer.sendToHost('enderframework--topbar-unblur');
+            },
+            autoblur: function() {
+                ipcRenderer.sendToHost('enderframework--topbar-autoblur');
             }
         }
     },

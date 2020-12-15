@@ -24,4 +24,17 @@ var firstLoad = true,
     },
     customTopBarColorDone = false,
     customTopBarColor = null,
-    didHideIcon = false;
+    didHideIcon = false,
+    lockTopBarBlur = false,
+    autoHideIsOn = false,
+    topBarBlur = function(bool) {
+        if (!lockTopBarBlur && autoHideIsOn) {
+            if (bool) {
+                Window_TopBar.classList.add("loaded");
+                Window_TopBar.setAttribute("style", Window_TopBar.getAttribute("style").replace(/ helper: inserted; background: transparent;/g, ""));
+            } else {
+                Window_TopBar.classList.remove("loaded");
+                Window_TopBar.setAttribute("style", `${Window_TopBar.getAttribute("style")} helper: inserted; background: transparent;`);
+            }
+        }
+    };

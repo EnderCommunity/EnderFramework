@@ -102,12 +102,6 @@ body {
     height: 36px;
     -webkit-user-select: none;
     -webkit-app-region: drag;
-    /*background-color: var(--Color5);*/
-    -webkit-backdrop-filter: blur(32px) saturate(1.6);
-    backdrop-filter: blur(28px) saturate(1.6);
-    /*background-color: var(--Blur1);*/
-    background-color: var(--TopBar-BackgroundColor);
-    /*color: var(--Color11);*/
     color: var(--TopBar-TextColor);
     overflow: hidden;
     -webkit-transition-duration: 0ms;
@@ -115,7 +109,13 @@ body {
     z-index: 200;
 }
 
-.topBar::after {
+.topBar.loaded {
+    -webkit-backdrop-filter: blur(32px) saturate(1.6);
+    backdrop-filter: blur(28px) saturate(1.6);
+    background-color: var(--TopBar-BackgroundColor);
+}
+
+.topBar.loaded::after {
     content: "";
     position: absolute;
     z-index: -2;

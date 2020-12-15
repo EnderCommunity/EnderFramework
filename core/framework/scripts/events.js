@@ -117,6 +117,16 @@ _content.addEventListener('ipc-message', event => {
             };
         ShowFloatingActionContent(executeDOMJS, event.args[1]);
         //
+    } else if (event.channel == "enderframework--topbar-autoblur") {
+        Window_TopBar.classList.add("loaded");
+        autoHideIsOn = true;
+        lockTopBarBlur = false;
+    } else if (event.channel == "enderframework--topbar-blur") {
+        Window_TopBar.classList.add("loaded");
+        lockTopBarBlur = true;
+    } else if (event.channel == "enderframework--topbar-unblur") {
+        Window_TopBar.classList.remove("loaded");
+        lockTopBarBlur = true;
     } else if (event.channel == "enderframework--theme-coverpage") {
         document.getElementById("_cover").style.display = "block";
     } else if (event.channel == "enderframework--dialog-infoscreen") {

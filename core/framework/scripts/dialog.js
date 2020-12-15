@@ -4,7 +4,9 @@ const showMessageBox_ = function(t, m, d, b) {
     const main = document.createElement("div");
     //main.classList.add("COfAlert", "animated", "fadeIn", "faster");
     main.classList.add("COfAlert");
+    topBarBlur(false);
     const removeF = function() {
+        topBarBlur(true);
         main.outerHTML = "";
         //document.body.classList.remove("noScroll");
         _content.focus();
