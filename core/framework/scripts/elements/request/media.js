@@ -84,14 +84,14 @@ class RequestMedia extends HTMLElement {
                                     });
                                     intersectionObserver.observe(this);
                                 }
-                            }, 100);
+                            }, 200);
                         };
                         //this.imageC
                         this.imageElement.onload = () => {
                             setTimeout(() => {
                                 this.imageElement.classList.add("loaded");
                                 this.loadImageElementC.classList.add("load");
-                            }, 100);
+                            }, 200);
                         };
                         //console.log(path_);
                     } else {
@@ -146,17 +146,41 @@ class RequestMedia extends HTMLElement {
     get type() {
         return (this.hasAttribute('type')) ? this.getAttribute('type').replace(/\s/g, "") : null;
     }
+    set type(type) {
+        this.setAttribute('type', type);
+    }
     get src() {
         return (this.hasAttribute('src')) ? this.getAttribute('src').replace(/\s/g, "") : null;
+    }
+    set src(src) {
+        this.setAttribute('src', src);
     }
     get instantLoading() {
         return !this.hasAttribute("wait")
     }
+    set instantLoading(bool) {
+        if (bool)
+            this.removeAttribute('wait');
+        else
+            this.setAttribute('wait', '');
+    }
     get auto() {
         return this.hasAttribute('auto');
     }
+    set auto(bool) {
+        if (bool)
+            this.setAttribute('auto', '');
+        else
+            this.removeAttribute('auto');
+    }
     get controls() {
         return this.hasAttribute('controls');
+    }
+    set controls(bool) {
+        if (bool)
+            this.setAttribute('controls', '');
+        else
+            this.removeAttribute('controls');
     }
     connectedCallback() {
         this.refresh();

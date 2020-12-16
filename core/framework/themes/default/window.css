@@ -813,6 +813,10 @@ body {
     backdrop-filter: blur(22px) saturate(128%) saturate(1.6) contrast(.986);
 }
 
+.contextMenu.covered .option.Dropdown {
+    pointer-events: none;
+}
+
 #_infoScreen {
     position: fixed;
     z-index: 199;
@@ -1100,22 +1104,7 @@ body {
     right: 0px;
     left: 0px;
     height: 48px;
-    background-color: var(--TopBar-BackgroundColor);
     border-radius: 8px 8px 0px 0px;
-}
-
-#_webBrowserC .WebBrowser--Bar::after {
-    content: "";
-    position: absolute;
-    z-index: -2;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: var(--BlurNoise);
-    opacity: 0.5;
-    z-index: -1;
 }
 
 #_webBrowserC .WebBrowser--Bar .option {

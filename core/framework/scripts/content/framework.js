@@ -349,20 +349,6 @@ module.exports = {
     },*/
     os: require("./../../../os"),
     versions: vm,
-    page: {
-        redirect: url => {
-            ipcRenderer.sendToHost('enderframework--theme-coverpage');
-            location.href = url;
-        },
-        reload: () => {
-                ipcRenderer.sendToHost('enderframework--theme-coverpage');
-                location.reload();
-            }
-            //
-            //_content.loadURL(appPath + "content/" + this.url);
-            //document.getElementById("_cover").style.display = "block";
-            //
-    },
     /*cast: {
       media: (url) => {
         //
@@ -669,6 +655,22 @@ module.exports = {
         }
     },
     window: {
+        webContents: {
+            redirect: url => {
+                ipcRenderer.sendToHost('enderframework--theme-coverpage');
+                location.href = url;
+            },
+            reload: () => {
+                ipcRenderer.sendToHost('enderframework--theme-coverpage');
+                location.reload();
+            },
+            insertCSS: (content) => {
+                ENDERFRAMEWORK_ENVIRONMENT.tell.fire("customelements--insertcss", content);
+            },
+            executeJavaScript: (content) => {
+                ENDERFRAMEWORK_ENVIRONMENT.tell.fire("customelements--insertjs", content);
+            }
+        },
         setBackgroundColor: function(color) {
             if ((typeof color == "string" && color.length == 6) || color == null)
                 ipcRenderer.sendToHost('enderframework--windowblur-setcolor', color);

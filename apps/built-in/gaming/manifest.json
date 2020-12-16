@@ -1,17 +1,18 @@
 {
-    "name": "Test",
+    "name": "EnderGaming",
+    "start": "_main.html",
     "version": "0.1",
     "publisher": "EnderAdel",
-    "splashScreen": false,
-    "splashCooldown": 1000,
-    "splashText": "Built using EnderStudio!",
+    "splashScreen": true,
+    "splashCooldown": 0,
+    "splashText": "",
     "server": {
         "feedback": "https://example.com/MyServerFiles/Feedback.php?message=[0]",
         "bugTracking": "https://example.com/MyServerFiles/BugsTracking.php?useragent=[0]&appversion=[1]&error=[2]",
         "bugReporting": "https://example.com/MyServerFiles/BugReprots.php?message=[0]"
     },
     "window": {
-        "type": "solid",
+        "type": "normal",
         "width": 940,
         "height": 560,
         "minWidth": 940,
@@ -29,20 +30,63 @@
         "theme": "default",
         "colorScheme": "system",
         "redirectAnimations": true,
-        "redirectAnimationsCooldown": 0,
         "contextMenu": true,
         "infoScreen": true,
-        "protocol": "enderapp",
-        "coverOnMaximize": false
-    },
-    "hardware": {
-        "highGPUPerformance": true
+        "protocol": "store",
+        "coverOnMaximize": false,
+        "customStyle": true
     },
     "enable": {
         "JavaScript": true,
         "WebGL": true,
         "devTools": true,
-        "spellcheck": true,
-        "webview": true
+        "spellcheck": true
+    },
+    "menu": {
+        "type": "top",
+        "withAccount": false,
+        "options": {
+            "0": {
+                "title": "Home",
+                "home": true
+            },
+            "1": {
+                "title": "New",
+                "link": "New.html"
+            },
+            "2": {
+                "title": "Categories",
+                "dropdown": {
+                    "0": {
+                        "title": "Entertainment",
+                        "link": "categories/entertainment.html"
+                    },
+                    "1": {
+                        "title": "Productivity",
+                        "link": "categories/productivity.html"
+                    },
+                    "2": {
+                        "title": "Education",
+                        "link": "categories/education.html"
+                    },
+                    "3": {
+                        "title": "Development",
+                        "link": "categories/development.html"
+                    },
+                    "4": {
+                        "title": "Trusted",
+                        "link": "categories/trusted.html"
+                    }
+                }
+            },
+            "3": {
+                "title": "Themes",
+                "link": "themes.html"
+            },
+            "4": {
+                "title": "Installed apps",
+                "link": "installed.html"
+            }
+        }
     }
 }

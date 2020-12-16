@@ -61,6 +61,12 @@ app.on("ready", function() {
             }
             windowManager.createWindow(appPath);
             break;
+        } else if (process.argv[i] == "--gaming") {
+            //} else if (true) {
+            done = true;
+            appPath = path.join(appPath, "built-in", "gaming");
+            windowManager.createWindow(appPath);
+            break;
         } else if (process.argv[i] == "--store") {
             //}else if(true){
             done = true;
