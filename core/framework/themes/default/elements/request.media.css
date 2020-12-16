@@ -38,9 +38,13 @@ img.pre-load {
 .plpc.load {
     position: absolute;
     top: 0px;
-    display: flex;
+    display: inline-flex;
     flex: 1 1 auto;
     opacity: 0;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
 }
 
 img.loaded {

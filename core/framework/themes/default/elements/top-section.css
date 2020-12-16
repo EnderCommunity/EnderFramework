@@ -1,0 +1,102 @@
+:host {
+    display: block;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    margin-bottom: 36px;
+    background-color: var(--LoadingBackgroundColor);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-self: center;
+    z-index: 8;
+    overflow: hidden;
+}
+
+:host:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    height: 1px;
+    margin-bottom: -1px;
+    background-color: var(--Color7);
+}
+
+title {
+    display: block;
+    position: relative;
+    font-size: 64px;
+    color: var(--Color11);
+    height: fit-content;
+    padding: 0px 18px;
+    width: fit-content;
+    margin: 0px auto;
+    margin-bottom: 16px;
+    padding-top: calc(40vh - 20px);
+    opacity: 0.9;
+    z-index: 10;
+}
+
+title:before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    height: 80px;
+    background-color: var(--Color29);
+    border-radius: 8px;
+    z-index: 0;
+    opacity: 0.16;
+}
+
+desc {
+    display: block;
+    position: relative;
+    font-size: 36px;
+    color: var(--Color11);
+    height: 48px;
+    padding: 0px 12px;
+    width: fit-content;
+    margin: 0px auto;
+    opacity: 0.8;
+    z-index: 10;
+    opacity: 0.8;
+}
+
+media-resource {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+}
+
+card {
+    position: absolute;
+    display: block;
+    width: calc(75% - 2px);
+    height: 60vh;
+    background-color: var(--Color5);
+    left: calc(12.5% + 1px);
+    right: calc(12.5% + 1px);
+    z-index: 2;
+    border-radius: 8px;
+    top: -60vh;
+    -webkit-box-shadow: 0px 4px 26px 1px var(--Color7);
+    box-shadow: 0px 4px 26px 1px var(--Color7);
+    z-index: 10;
+    -webkit-transition-duration: 140ms;
+    transition-duration: 140ms;
+    padding: 0px;
+    margin: 0px;
+}

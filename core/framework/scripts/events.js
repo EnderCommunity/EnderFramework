@@ -31,8 +31,8 @@ _content.addEventListener('ipc-message', event => {
         }
     } else if (event.channel == "customelements--insertcss") {
         _content.insertCSS(event.args[0]);
-    } else if (event.channel == "get--codebox") {
-        //
+    } else if (event.channel == "customelements--insertjs") {
+        _content.executeJavaScript(event.args[0]);
     } else if (event.channel == "get--customelements") {
         content.executeJavaScript(CustomElementsScript);
     } else if (event.channel == "get--scrollAnimation") {

@@ -1,10 +1,11 @@
-const AutoLaunch = require('auto-launch'), shortcutsCreator = require("./shortcut");
+const AutoLaunch = require('auto-launch'),
+    shortcutsCreator = require("./shortcut");
 module.exports = {
-    autoLaunch: function (name, shouldEnable, errorCallback) {
+    autoLaunch: function(name, shouldEnable, errorCallback) {
         var autoLauncher = new AutoLaunch({
             name: name
         });
-        autoLauncher.isEnabled().then(function (isEnabled) {
+        autoLauncher.isEnabled().then(function(isEnabled) {
             if (isEnabled) {
                 if (!shouldEnable) {
                     autoLauncher.disable();
@@ -14,7 +15,7 @@ module.exports = {
                     autoLauncher.enable();
                 }
             }
-        }).catch(function (error) {
+        }).catch(function(error) {
             errorCallback(error);
         });
     },
@@ -34,6 +35,13 @@ module.exports = {
                     description: "",
                     icon: path.join(paths.apps, "built-in", "store", "resources", "icons", "main.ico"),
                     arguments: "--store",
+                    outputDir: paths.currentUser.desktop
+                });
+                shortcutsCreator.create({
+                    name: "EnderGaming",
+                    description: "",
+                    icon: path.join(paths.apps, "built-in", "gaming", "resources", "icons", "main.ico"),
+                    arguments: "--gaming",
                     outputDir: paths.currentUser.desktop
                 });
             case 'minimal':

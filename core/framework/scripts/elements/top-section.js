@@ -1,48 +1,54 @@
 class TopElement extends HTMLElement {
     static get observedAttributes() {
-        return ['type', 'src'];
+        return ['title', 'description', 'background-image', 'background-color'];
     }
-    get type() {
-        return this.getAttribute("type");
+    get title() {
+        return this.getAttribute("title");
     }
-    get src() {
-        return this.getAttribute("src");
+    set title(title) {
+        this.setAttribute("title", title);
     }
-    set type(type) {
-        this.setAttribute("type", type);
+    get description() {
+        return this.getAttribute("description");
     }
-    set src(src) {
-        this.setAttribute("src", src);
+    set description(description) {
+        this.setAttribute("description", description);
+    }
+    get backgroundImage() {
+        return this.getAttribute("background-image");
+    }
+    set backgroundImage(src) {
+        this.setAttribute("background-image", src);
+    }
+    get backgroundColor() {
+        return this.getAttribute("background-color");
+    }
+    set backgroundColor(color) {
+        this.setAttribute("background-color", color);
     }
     constructor() {
         super();
         console.warn("<top-section> is an experimental element! If you don't need it, try not to use it.");
         this.attachShadow({ mode: 'open' });
         var style = document.createElement("style");
-        style.innerHTML = ENDERFRAMEWORK_ENVIRONMENT.resources.css.customElements["x-view"];
-        //this.shadowRoot;
-        this.iframe = document.createElement("iframe");
-        this.iframe.setAttribute("seamless", "");
-        this.iframe.setAttribute("sandbox", "allow-forms allow-pointer-lock allow-presentation allow-same-origin allow-scripts");
+        style.innerHTML = ENDERFRAMEWORK_ENVIRONMENT.resources.css.customElements["top-section"];
+        this.titleElement = document.createElement("title");
+        this.descElement = document.createElement("desc");
+        this.backgroundImageElement = document.createElement("media-resource");
+        this.backgroundImageElement.style.display = "none";
         this.shadowRoot.appendChild(style);
-        this.shadowRoot.appendChild(this.iframe);
-        this.refresh = function() {
-            if (this.type == "web") {
-                this.iframe.onload = () => {
-                    //console.log(this.iframe.contentWindow); //This is not working
-                    //this.src = this.iframe.src;
-                    //this.setAttribute("src", this.iframe.src);
-                };
-                this.iframe.src = this.src;
-            } else if (this.type == "command") {
-                //
-            } else if (this.type == "process") {
-                //
-            } else if (this.type == "window") {
-                //
-            } else {
-                console.error("Invalid <x-view> type!");
-                this.iframe.style.display = "none";
+        this.shadowRoot.appendChild(this.backgroundImageElement);
+        this.shadowRoot.appendChild(this.titleElement);
+        this.shadowRoot.appendChild(this.descElement);
+        this.refresh = () => {
+            this.backgroundImageElement.style.display = "none";
+            this.style.backgroundColor = this.backgroundColor;
+            this.titleElement.textContent = this.title;
+            this.descElement.textContent = this.description;
+            if (this.backgroundImage != "" && this.backgroundImage != null) {
+                this.backgroundImageElement.style.display = "flex";
+                this.backgroundImageElement.src = this.backgroundImage.substring(this.backgroundImage.indexOf("src('") + 5, this.backgroundImage.indexOf("', "));
+                this.backgroundImageElement.type = this.backgroundImage.substring(this.backgroundImage.indexOf("',") + 2, this.backgroundImage.indexOf(")"));
             }
         };
     }

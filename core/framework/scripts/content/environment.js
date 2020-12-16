@@ -65,11 +65,13 @@ module.exports = {
         done: function() {
             if (!isContentLoading) {
                 ipcRenderer.sendToHost('environment--tell-done');
+                //window.scrollTo(0, 0);
             } else
                 var loop = setInterval(function() {
                     if (!isContentLoading) {
                         clearInterval(loop);
                         ipcRenderer.sendToHost('environment--tell-done');
+                        //window.scrollTo(0, 0);
                     }
                 }, 10);
         },
