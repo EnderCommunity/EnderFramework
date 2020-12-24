@@ -259,12 +259,14 @@
     <toggle-switch disabled></toggle-switch>
     <toggle-switch active disabled></toggle-switch>
     <br>
-    <item>
+    <request-element tag="item-element"></request-element>
+    <item-element title="Title" description="The description" sub="$26" background-image="src('minecraft', image/jpg)"></item-element>
+    <!--<item>
         <img src="./_image/minecraft-cover.jpg">
         <title>Title</title>
         <desc>The description</desc>
         <price>$26</price>
-    </item>
+    </item>-->
     <scroll style="height: 60px;">
         <text>Hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello! hello!</text>
     </scroll>
@@ -306,7 +308,29 @@
             console.log(3);
         }
     </script>
-    <cardView auto time="5000">
+    <request-element tag="card-view"></request-element>
+    <card-view>
+        <card-element background-image="src('wp5054620', image/png)">
+            <title>Title 1</title>
+            <description>This is the description!</description>
+        </card-element>
+        <card-element background-image="src('wp4608721', image/jpg)" clickable onclick="console.log(true);">
+            <title>Title 2</title>
+            <description>This is the description!</description>
+        </card-element>
+        <card-element background-image="src('wp4608738', image/jpg)">
+            <title>Title 3</title>
+            <description>This is the description!</description>
+        </card-element>
+        <card-element background-image="src('wp5054654', image/jpg)">
+            <title>Title 4</title>
+            <description>This is the description!</description>
+        </card-element>
+    </card-view>
+    <!--<card-view auto></card-view>
+    <card-view controls></card-view>
+    <card-view auto="5000" controls></card-view>-->
+    <!--<cardView auto time="5000">
         <card background="url(./_image/wp5054620.png)">
             <title>Title 1</title>
             <description>This is the description!</description>
@@ -323,7 +347,7 @@
             <title>Title 4</title>
             <description>This is the description!</description>
         </card>
-    </cardView>
+    </cardView>-->
     <!-- [END] Custom Elements (needs `require`) -->
 
     <div blur style="width: 48px; height: 48px; margin: 6px;"></div>

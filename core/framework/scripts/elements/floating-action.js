@@ -5,7 +5,7 @@ class FloatingAction extends HTMLElement {
     }
     constructor() {
         super();
-        console.warn("<floating-action> is an experimental element! If you don't need it, try not to use it.");
+        ENDERFRAMEWORK_ENVIRONMENT.elements.warn("<floating-action> is an experimental element! If you don't need it, try not to use it.");
     }
     connectedCallback() {
         if (!isMax) {
@@ -15,7 +15,7 @@ class FloatingAction extends HTMLElement {
                 ENDERFRAMEWORK_ENVIRONMENT.elementActions.floatingButtonClicked(0, this.getAttribute("content"));
             });
         } else {
-            console.error("You can only use one <floating-action> per page!");
+            ENDERFRAMEWORK_ENVIRONMENT.elements.error("You can only use one <floating-action> per page!");
             this.outerHTML = "";
         }
     }

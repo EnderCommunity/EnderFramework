@@ -60,7 +60,7 @@ _content.addEventListener('did-start-loading', function() {
     }
 });
 _content.addEventListener("did-fail-load", function(e) {
-    if (e.isMainFrame) {
+    if (e.isMainFrame & !isLoading) {
         clearTimeout(timeout);
         window_ErrorScreen.style.display = "block";
         window_Cover.style.display = "none";

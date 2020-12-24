@@ -42,6 +42,13 @@ module.exports = {
             global.ContextMenuFunction_Delete*/
     },
     elements: {
+        requestedCustomElements: [],
+        warn: function(message) {
+            console.warn("%c Custom Elements Warning:", "font-weight: bold;", message);
+        },
+        error: function(message) {
+            console.error("%c Custom Elements Error:", "font-weight: bold;", message);
+        },
         floatingActionButton: [] ////Add floating action buttons in here!
     },
     elementActions: {

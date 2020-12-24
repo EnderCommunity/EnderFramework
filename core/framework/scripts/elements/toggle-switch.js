@@ -5,9 +5,21 @@ class Switch extends HTMLElement {
     get disabled() {
         return this.hasAttribute("disabled");
     }
+    set active(bool) {
+        if (bool)
+            this.setAttribute("active", "");
+        else
+            this.removeAttribute("active");
+    }
+    set disabled(bool) {
+        if (bool)
+            this.setAttribute("disabled", "");
+        else
+            this.removeAttribute("disabled");
+    }
     constructor() {
         super();
-        console.warn("<toggle-switch> is an experimental element! If you don't need it, try not to use it.");
+        ENDERFRAMEWORK_ENVIRONMENT.elements.warn("<toggle-switch> is an experimental element! If you don't need it, try not to use it.");
         this.onToggle = function() {};
     }
     connectedCallback() {

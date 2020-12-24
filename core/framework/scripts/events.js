@@ -8,7 +8,9 @@ _content.addEventListener('ipc-message', event => {
             _content.insertCSS(resources.css.animations, { cssOrigin: 'author' });
         }
     } else if (event.channel == "environment--tell-done") {
-        finishedInsertingResources();
+        setTimeout(function() {
+            finishedInsertingResources();
+        }, 500);
     } else if (event.channel == "event--startLoading") {
         var elem = document.getElementById("_longLoading");
         elem.style.display = "block";
