@@ -1,6 +1,9 @@
 var isLoading = false,
     finishedInsertingResources = function() {
+        content.style.display = null;
         isLoading = false;
+        loadAfterError = false;
+        isThereError = false;
         if (firstLoad) {
             firstLoad = false;
             setTimeout(function() {
@@ -28,6 +31,7 @@ var isLoading = false,
             window_LongCover.style.display = "none";
             _content.style.opacity = "1";
         }
+        window_ErrorScreen.style.display = "none";
     };
 _content.setAttribute("webpreferences", `devTools=${(manifest.enable.devTools) ? "yes" : "no"}, nodeIntegration=yes, nodeIntegrationInWorker=yes, nodeIntegrationInSubFrames=yes, sandbox=no, webviewTag=no, enableRemoteModule=yes, javascript=${(manifest.enable.JavaScript) ? "yes" : "no"}, webSecurity=yes, images=yes, textAreasAreResizable=no, webgl=${(manifest.enable.WebGL) ? "yes" : "no"}, experimentalFeatures=no, enableBlinkFeatures=no, scrollBounce=yes, defaultFontFamily="Muli", defaultFontSiz=16, defaultMonospaceFontSize=13, minimumFontSize=0, defaultEncoding="ISO-8859-1", contextIsolation=no, nativeWindowOpen=no, safeDialogs=yes, navigateOnDragDrop=no, autoplayPolicy="no-user-gesture-required" disableHtmlFullscreenWindowResize=no, spellcheck=${(manifest.enable.spellcheck) ? "yes" : "no"}`);
 _content.setAttribute("preload", path.join(manifest.paths.core, "framework", "scripts", "content", "preload.js") + "?appPath=" + manifest.paths.currentApp);
@@ -53,6 +57,7 @@ _content.addEventListener('did-start-loading', function() {
         window_Cover.style.display = "block";
         _content.style.opacity = "0";
         isLoading = true;
+        isThereError = false;
         timeout = setTimeout(function() {
             if (isLoading)
                 window_LongCover.style.display = "block";
@@ -60,13 +65,15 @@ _content.addEventListener('did-start-loading', function() {
     }
 });
 _content.addEventListener("did-fail-load", function(e) {
-    if (e.isMainFrame & !isLoading) {
+    if (e.isMainFrame) {
         clearTimeout(timeout);
         window_ErrorScreen.style.display = "block";
         window_Cover.style.display = "none";
         window_LongCover.style.display = "none";
         _content.style.opacity = "1";
         isLoading = false;
+        loadAfterError = true;
+        isThereError = true;
     } else {
         notify("Some resources failed to load!");
     }
