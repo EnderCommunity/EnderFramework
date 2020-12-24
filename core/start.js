@@ -100,7 +100,10 @@ app.on("ready", function() {
         //init.shortcuts("minimal");
         //init.shortcuts("normal");
         init.shortcuts("developer");
-        process.exit(0);
+        toast.notify("EnderServices has been initiated!", "You can now start using EnderServices. EnderServices and EnderFramework are still unstable. Things are subject to change at any given time.");
+        setTimeout(function() {
+            process.exit(0);
+        }, 1000);
     }
 });
 app.on('renderer-process-crashed', function() {
