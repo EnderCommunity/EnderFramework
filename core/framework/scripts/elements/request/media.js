@@ -84,18 +84,16 @@ class RequestMedia extends HTMLElement {
                                     });
                                     intersectionObserver.observe(this);
                                 }
-                            }, 200);
+                            }, 500);
                         };
                         //this.imageC
                         this.imageElement.onload = () => {
-                            setTimeout(() => {
-                                this.imageElement.classList.add("loaded");
-                                this.loadImageElementC.classList.add("load");
-                            }, 200);
+                            this.imageElement.classList.add("loaded");
+                            this.loadImageElementC.classList.add("load");
                         };
                         //console.log(path_);
                     } else {
-                        console.error("This file format is not supported!");
+                        ENDERFRAMEWORK_ENVIRONMENT.elements.error("This file format is not supported!");
                     }
                 } else if (type == "video") {
                     if (ext == "mp4" || ext == "vp8" || ext == "vp9" || ext == "av1") {
@@ -115,7 +113,7 @@ class RequestMedia extends HTMLElement {
                         //
                         //console.log(path_);
                     } else {
-                        console.error("This file format is not supported!");
+                        ENDERFRAMEWORK_ENVIRONMENT.elements.error("This file format is not supported!");
                     }
                 } else if (type == "audio") {
                     if (ext == "mp3" || ext == "mp4" || ext == "ogg" || ext == "flac" || ext == "webm" || ext == "wav" || ext == "hls") {
@@ -129,7 +127,7 @@ class RequestMedia extends HTMLElement {
                         //
                         //console.log(path_);
                     } else {
-                        console.error("This file format is not supported!");
+                        ENDERFRAMEWORK_ENVIRONMENT.elements.error("This file format is not supported!");
                     }
                 }
             };

@@ -16,7 +16,7 @@ class XView extends HTMLElement {
     }
     constructor() {
         super();
-        console.warn("<x-view> is an experimental element! If you don't need it, try not to use it.");
+        ENDERFRAMEWORK_ENVIRONMENT.elements.warn("<x-view> is an experimental element! If you don't need it, try not to use it.");
         this.attachShadow({ mode: 'open' });
         var style = document.createElement("style");
         style.innerHTML = ENDERFRAMEWORK_ENVIRONMENT.resources.css.customElements["x-view"];
@@ -50,7 +50,7 @@ class XView extends HTMLElement {
                 this.xViewAPI = require("./x-view/window-view");
                 this.xViewAPI.start(this);
             } else {
-                console.error("Invalid <x-view> type!");
+                ENDERFRAMEWORK_ENVIRONMENT.elements.error("Invalid <x-view> type!");
                 this.iframe.style.display = "none";
             }
         };

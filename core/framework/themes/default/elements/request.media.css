@@ -24,8 +24,13 @@ img {
     width: 100%;
     z-index: 2;
     opacity: 1;
-    -webkit-transition: opacity 0.6s ease-in-out;
-    transition: opacity 0.6s ease-in-out;
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 img.pre-load {
@@ -64,7 +69,7 @@ img.loaded {
     z-index: 10;
     display: inline-block;
     text-align: center;
-    margin: 18px;
+    margin: 18px 0px;
 }
 
 * {

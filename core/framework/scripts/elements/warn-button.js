@@ -10,7 +10,7 @@ class WarnButton extends HTMLElement {
     }
     constructor() {
         super();
-        console.warn("<warn-button> is an experimental element! If you don't need it, try not to use it.");
+        ENDERFRAMEWORK_ENVIRONMENT.elements.warn("<warn-button> is an experimental element! If you don't need it, try not to use it.");
     }
     connectedCallback() {
         this.addEventListener("click", function() {

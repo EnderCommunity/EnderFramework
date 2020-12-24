@@ -1,5 +1,4 @@
-const path = require("path"),
-    requestedCustomElements = [];
+const path = require("path");
 class RequestElement extends HTMLElement {
     get name() {
         return this.getAttribute('tag').replace(/\s/g, "");
@@ -13,19 +12,19 @@ class RequestElement extends HTMLElement {
     connectedCallback() {
         var sharedCode = () => {
             if (!this.name.includes("-"))
-                console.error(`The element tag <${this.name}> is invalid!`);
-            else if (requestedCustomElements.includes(this.name))
-                console.error(`The element <${this.name}> has been already imported!`);
+                ENDERFRAMEWORK_ENVIRONMENT.elements.error(`The element tag <${this.name}> is invalid!`);
+            else if (ENDERFRAMEWORK_ENVIRONMENT.elements.requestedCustomElements.includes(this.name))
+                ENDERFRAMEWORK_ENVIRONMENT.elements.error(`The element <${this.name}> has been already imported!`);
             else
                 try {
                     (require(path.join("../", this.name)))();
-                    requestedCustomElements[requestedCustomElements.length] = this.name;
+                    ENDERFRAMEWORK_ENVIRONMENT.elements.requestedCustomElements[ENDERFRAMEWORK_ENVIRONMENT.elements.requestedCustomElements.length] = this.name;
                 } catch {
                     try {
                         (require(path.join(paths.currentApp, "resources", "elements", this.name)))();
-                        requestedCustomElements[requestedCustomElements.length] = this.name;
+                        ENDERFRAMEWORK_ENVIRONMENT.elements.requestedCustomElements[ENDERFRAMEWORK_ENVIRONMENT.elements.requestedCustomElements.length] = this.name;
                     } catch {
-                        console.error(`Couldn't import the element <${this.name}>!`);
+                        ENDERFRAMEWORK_ENVIRONMENT.elements.error(`Couldn't import the element <${this.name}>!`);
                     }
                 }
         };
