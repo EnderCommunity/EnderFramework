@@ -1,9 +1,19 @@
-const { remote, ipcRenderer } = require("electron"), { app, nativeTheme } = remote, os = require('os'), fs = require("fs"), opn_ = require("opn"), ChromecastAPI = require('chromecast-api'), _changeContextMenuTopValue = function(value) {
-    return (value + _content.offsetTop);
-}, _webviewFinishedLoading = function() {
-    //
-};
+const electron = require("electron"),
+    { remote, ipcRenderer } = electron,
+    { app, nativeTheme } = remote,
+    os = require('os'),
+    fs = require("fs"),
+    opn_ = require("opn"),
+    ChromecastAPI = require('chromecast-api'),
+    _changeContextMenuTopValue = function(value) {
+        return (value + _content.offsetTop);
+    },
+    _webviewFinishedLoading = function() {
+        //
+    };
 var firstLoad = true,
+    loadAfterError = false,
+    isThereError = false,
     _shouldWait = false,
     currentCountdown_notify = null,
     stopThemeAutoChange = false,
