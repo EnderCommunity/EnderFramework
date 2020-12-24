@@ -8,9 +8,17 @@ module.exports = {
     createWindow: (contentPath) => {
         storage.setDataPath(contentPath);
         storage.get('manifest', function(error, data) {
+            data = (require("./manifest"))(data);
             if (error) {
                 toast.notify("An error occurred!", "Faild to access the manifest file.");
-                process.exit(0);
+                setTimeout(function() {
+                    process.exit(0);
+                }, 1000);
+            } else if (data == false) {
+                toast.notify("An error occurred!", "An invalid manifest file has been received.");
+                setTimeout(function() {
+                    process.exit(0);
+                }, 1000);
             } else {
                 const { BrowserWindow } = (data.window.type == "acrylic") ? require("electron-acrylic-window"): require("electron");
                 if (data.hardware != undefined && data.hardware.highGPUPerformance)
