@@ -39,12 +39,7 @@
     "hardware": {
         "highGPUPerformance": true
     },
-    "enable": {
-        "JavaScript": true,
-        "WebGL": true,
-        "devTools": true,
-        "spellcheck": true
-    },
+    "enable": ["JavaScript", "WebGL", "devTools", "spellcheck"],
     "menu": {
         "type": "top",
         "withAccount": true,
