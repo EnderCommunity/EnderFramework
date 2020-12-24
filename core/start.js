@@ -94,7 +94,7 @@ app.on("ready", function() {
     if (!done) {
         var init = require("./initiate");
         init.paths = paths;
-        init.autoLaunch("EnderServices", false, function() {
+        init.autoLaunch("EnderServices", false, function() { //Change this to true on release
             toast.notify("An error occurred!", "Failed to set up the auto launch process.");
         });
         //init.shortcuts("minimal");
