@@ -376,6 +376,18 @@ html[data-menu='true'] .menu {
     margin: 46px 28px;
 }
 
+.badge {
+    display: block;
+    background-color: #e02b00;
+    padding: 6px;
+    border-radius: 4px;
+    font-size: 18px;
+    width: fit-content;
+    position: relative;
+    top: -76px;
+    margin-bottom: -32px;
+}
+
 html[data-scroll='false'] .menu a:first-of-type {
     margin: 20px 28px;
 }
