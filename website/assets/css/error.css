@@ -29,6 +29,12 @@ body {
     right: -200px;
 }
 
+.content img.rotate-2 {
+    transform: rotate(10deg);
+    bottom: -200px;
+    right: -180px;
+}
+
 .content img.no-rotate {
     transform: rotate(0deg);
 }
