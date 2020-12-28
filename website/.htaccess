@@ -1,0 +1,67 @@
+ErrorDocument 400 /EnderFramework/error/error.html
+ErrorDocument 402 /EnderFramework/error/error.html
+ErrorDocument 403 /EnderFramework/error/403.html
+ErrorDocument 404 /EnderFramework/error/404.html
+ErrorDocument 405 /EnderFramework/error/error.html
+ErrorDocument 406 /EnderFramework/error/error.html
+ErrorDocument 407 /EnderFramework/error/error.html
+ErrorDocument 408 /EnderFramework/error/error.html
+ErrorDocument 409 /EnderFramework/error/error.html
+ErrorDocument 410 /EnderFramework/error/error.html
+ErrorDocument 411 /EnderFramework/error/error.html
+ErrorDocument 412 /EnderFramework/error/error.html
+ErrorDocument 500 "The server has crashed, you'll need to come back later! -EnderAdel team"
+Options -Indexes
+BrowserMatchNoCase SpammerRobot bad_bot
+BrowserMatchNoCase SecurityHoleRobot bad_bot
+Order Deny,Allow
+Deny from env=bad_bot
+Deny from 127.0.0.1
+Deny from 192.168.1.1
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Content-Type-Options nosniff
+Header always set X-Frame-Options "sameorigin"
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+  AddOutputFilterByType DEFLATE application/x-font
+  AddOutputFilterByType DEFLATE application/x-font-opentype
+  AddOutputFilterByType DEFLATE application/x-font-otf
+  AddOutputFilterByType DEFLATE application/x-font-truetype
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE image/x-icon
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+  Header append Vary User-Agent
+</IfModule>
+RewriteEngine On
+DirectoryIndex index.php index.html
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+RewriteCond %{HTTP_HOST} ^www.enderadel.net [NC]
+RewriteRule ^(.*)$ https://enderadel.net/$1 [L,R=301]
+RewriteCond %{QUERY_STRING} proc/self/environ [OR]
+RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|\%3D) [OR]
+RewriteCond %{QUERY_STRING} base64_encode.*(.*) [OR]
+RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|[|\%[0-9A-Z]{0,2})
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+php_value upload_max_filesize 0M
