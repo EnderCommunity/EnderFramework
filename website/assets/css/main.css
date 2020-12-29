@@ -2,7 +2,8 @@
     --header-padding: 20vw;
     --cat-width: 320px;
     --cat-right: 80px;
-    --cat-bottom: 80px;
+    --cat-bottom: 16vh;
+    /* 80px */
     --cat-rotation: 40deg;
     --cat-rotation-2: 39deg;
     --top-a-display: inline-block;
@@ -160,9 +161,13 @@ html[data-scroll='false'] .top,
     padding: 12px 0px;
 }
 
+.content .section h3 {
+    color: #cccccc;
+}
+
 hr {
     border-color: white;
-    width: 32%;
+    width: 36%;
     margin: 24px auto;
     border-width: 1px;
     border-bottom: 0px;
@@ -203,14 +208,14 @@ hr {
 }
 
 .footer .credit {
-    color: white;
+    color: gainsboro;
     position: relative;
     top: 56px;
     width: var(--credit-width);
 }
 
 .footer .enderadel {
-    color: white;
+    color: gainsboro;
     position: relative;
     top: var(--enderadel-top);
     width: var(--credit-width);
@@ -219,7 +224,7 @@ hr {
 }
 
 .footer .enderadel a {
-    color: white;
+    color: gainsboro;
     text-decoration: none;
 }
 
@@ -236,7 +241,8 @@ hr {
     width: fit-content;
     overflow: hidden;
     height: 48px;
-    margin-bottom: 8px;
+    margin-bottom: 19px;
+    margin-top: -10px;
 }
 
 .footer .enderadel .logo img {
@@ -300,7 +306,7 @@ html[data-menu='true'] .menu {
     text-align: center;
     width: fit-content;
     position: relative;
-    top: -76px;
+    top: -82px;
     margin-bottom: -32px;
 }
 
