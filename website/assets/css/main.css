@@ -296,7 +296,8 @@ html[data-menu='true'] .menu {
     padding: 6px;
     border-radius: 4px;
     font-size: 18px;
-    width: 90px;
+    width: 98px;
+    text-align: center;
     width: fit-content;
     position: relative;
     top: -76px;
