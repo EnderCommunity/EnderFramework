@@ -130,7 +130,7 @@ hr.main {
     left: calc(50% - 66px);
     top: 24px;
     opacity: 1;
-    transition-duration: 0.3s;
+    transition-duration: 0.2s;
 }
 
 html[data-scroll='false'] hr.main {
