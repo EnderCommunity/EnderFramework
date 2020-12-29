@@ -11,6 +11,10 @@
     background-size: cover;
 }
 
+html[data-scroll='false'] .background {
+    opacity: 0;
+}
+
 
 /*
 .background:before {
@@ -42,6 +46,10 @@
     padding-top: 46vh;
     position: fixed;
     top: 0px;
+}
+
+.header h4 {
+    color: #ffffffd0;
 }
 
 #stars {
@@ -137,13 +145,13 @@ html[data-scroll='false'] hr.main {
     width: 236px;
     height: 236px;
     display: inline-block;
-    margin: 12px 8px;
+    margin: 8px;
     border-radius: 8px;
     background-color: #232323;
     transition-duration: 0.2s;
     cursor: pointer;
     position: relative;
-    color: white;
+    color: #ababab;
 }
 
 .apps .app:hover {
@@ -154,6 +162,7 @@ html[data-scroll='false'] hr.main {
 .apps .app:active {
     background-color: #505050;
     box-shadow: 0px 0px 18px #000000;
+    color: #cacaca;
 }
 
 .apps .app text {
