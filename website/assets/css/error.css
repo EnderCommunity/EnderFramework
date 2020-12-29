@@ -76,3 +76,15 @@ a:active {
     background-color: transparent;
     text-decoration: underline;
 }
+
+.content.full {
+    height: fit-content;
+    margin: 0px;
+    min-height: calc(100vh - 116px);
+    height: fit-content;
+    width: calc(100vw - 116px);
+    padding: 58px;
+    overflow: visible;
+    position: relative;
+    border-radius: 0px;
+}
