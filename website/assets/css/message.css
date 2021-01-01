@@ -1,0 +1,72 @@
+@keyframes flash {
+    0% {
+        background-color: #171717;
+    }
+    4% {
+        background-color: #adadad;
+    }
+    100% {
+        background-color: #171717;
+    }
+}
+
+.content {
+    transition: background-color 1s ease-out;
+    color: #adadad;
+}
+
+a,
+a:visited {
+    color: #adadad;
+}
+
+a:hover {
+    color: #cacaca;
+}
+
+a:active {
+    color: #eaeaea;
+}
+
+.content.flash {
+    animation: flash 0.8s ease-in-out;
+}
+
+#hidden {
+    display: block;
+    opacity: 0;
+}
+
+#hidden.show {
+    opacity: 1;
+}
+
+#followCursor {
+    position: fixed;
+    pointer-events: none;
+    overflow: visible;
+    width: 98vw;
+    height: 98vw;
+    border-radius: 1000px;
+    z-index: 10;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    background-color: #ffffff;
+    opacity: 0.1;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+    margin-top: -20vw;
+    margin-left: -20vw;
+}
+
+@supports (backdrop-filter: invert()) {
+    #followCursor {
+        backdrop-filter: invert(0.1);
+        background-color: transparent;
+        opacity: 1;
+    }
+}

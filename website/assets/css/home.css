@@ -147,7 +147,7 @@ html[data-scroll='false'] hr.main {
     display: inline-block;
     margin: 8px;
     border-radius: 8px;
-    background-color: #232323;
+    background-color: #1f1f1f;
     transition-duration: 0.2s;
     cursor: pointer;
     position: relative;
@@ -155,12 +155,12 @@ html[data-scroll='false'] hr.main {
 }
 
 .apps .app:hover {
-    background-color: #2b2b2b;
+    background-color: #272727;
     box-shadow: 0px 0px 18px #000000;
 }
 
 .apps .app:active {
-    background-color: #505050;
+    background-color: #353535;
     box-shadow: 0px 0px 18px #000000;
     color: #cacaca;
 }

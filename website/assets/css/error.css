@@ -81,10 +81,19 @@ a:active {
     height: fit-content;
     margin: 0px;
     min-height: calc(100vh - 116px);
+    height: 100%;
     height: fit-content;
-    width: calc(100vw - 116px);
+    width: calc(100% - 116px);
     padding: 58px;
     overflow: visible;
     position: relative;
     border-radius: 0px;
+}
+
+pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
 }
