@@ -28,6 +28,6 @@ class CardView extends HTMLElement {
     }
 }
 module.exports = function() {
-    //ENDERFRAMEWORK_ENVIRONMENT.tell.fire("customelements--insertcss", ENDERFRAMEWORK_ENVIRONMENT.resources.css.customElements["toggle-switch"]);
+    ENDERFRAMEWORK_ENVIRONMENT.tell.fire("customelements--insertcss", ENDERFRAMEWORK_ENVIRONMENT.resources.css.customElements["card-view"]);
     customElements.define('card-view', CardView);
 };

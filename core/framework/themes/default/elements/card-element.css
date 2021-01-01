@@ -1,0 +1,101 @@
+:host {
+    display: block;
+    position: relative;
+    background-color: var(--Card-BackgroundColor);
+    width: fit-content;
+    height: fit-content;
+    margin: 18px;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 28px 24px;
+    padding-top: 12px;
+    -webkit-box-shadow: 0px 1px 10px 0px var(--Card-BoxShadowColor);
+    box-shadow: 0px 8px 10px 1px var(--Card-BoxShadowColor);
+    border: 1px solid var(--Card-BorderColor);
+    padding: 28px 28px;
+}
+
+:host[default] {
+    width: 360px;
+    height: 180px;
+}
+
+:host[default][bigger] {
+    width: 520px;
+    height: 280px;
+}
+
+title {
+    display: block;
+    position: absolute;
+    width: fit-content;
+    height: 28px;
+    bottom: 28px;
+    font-size: 24px;
+    margin-top: 18px;
+    z-index: 2;
+}
+
+description {
+    display: block;
+    position: relative;
+    width: fit-content;
+    font-size: 16px;
+    opacity: 0.8;
+    margin-bottom: 48px;
+    z-index: 2;
+}
+
+media-resource {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 1;
+    /*height: 100%;
+    width: fit-content;
+    object-fit: cover;*
+}
+
+:host[clickable]:hover {
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+    cursor: pointer;
+}
+
+:host[clickable]:active {
+    border-color: var(--Color11);
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+}
+
+:host:before {
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    right: -1px;
+    left: -1px;
+    z-index: 5;
+    display: flex;
+    flex: 1 1 auto;
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+    backdrop-filter: blur(28px);
+    /* better performance */
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    transition: opacity 0.2s;
+    border-radius: 8px;
+}
+
+:host[blurred]:before {
+    opacity: 1;
+    pointer-events: all;
+}

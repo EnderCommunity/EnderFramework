@@ -303,24 +303,14 @@
             console.log(3);
         }
     </script>
+    <request-element tag="card-element"></request-element>
+    <card-element background-image="src('wp5054620', image/png)" title="[Title]" description="[description]"></card-element>
     <request-element tag="card-view"></request-element>
-    <card-view>
-        <card-element background-image="src('wp5054620', image/png)">
-            <title>Title 1</title>
-            <description>This is the description!</description>
-        </card-element>
-        <card-element background-image="src('wp4608721', image/jpg)" clickable onclick="console.log(true);">
-            <title>Title 2</title>
-            <description>This is the description!</description>
-        </card-element>
-        <card-element background-image="src('wp4608738', image/jpg)">
-            <title>Title 3</title>
-            <description>This is the description!</description>
-        </card-element>
-        <card-element background-image="src('wp5054654', image/jpg)">
-            <title>Title 4</title>
-            <description>This is the description!</description>
-        </card-element>
+    <card-view style="width: 100vw; height: 32vw;">
+        <card-element background-image="src('steven', image/jpg)" position="center" title="Title 1" description="This is the description!"></card-element>
+        <card-element position="right" background-image="src('wp4608721', image/jpg)" title="Title 2" description="This is the description!" clickable onclick="console.log(true);"></card-element>
+        <card-element position="right-off" background-image="src('wp4608738', image/jpg)" title="Title 3" description="This is the description!"></card-element>
+        <card-element position="right-off" background-image="src('wp5054654', image/jpg)" title="Title 4" description="This is the description!"></card-element>
     </card-view>
     <!--<card-view auto></card-view>
     <card-view controls></card-view>
@@ -698,13 +688,13 @@
     <!-- [END] The breadcrumb element -->
 
 
-    <!-- [START] The card element -->
+    <!-- [START] The card element 
     <card>
         <h2>This is the title</h2>
         <h4>This is some random text.</h4>
         <button>This is a button</button>
     </card>
-    <!-- [END] The card element -->
+    [END] The card element -->
 
     <!-- [START] The pagination element (Requires `customElements`) -->
     <pagination>

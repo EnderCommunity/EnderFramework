@@ -8,5 +8,5 @@ module.exports = {
     isMacOS: __os.platform() == "darwin",
     isLinux: __os.platform() == "linux",
     nodeModule: __os
-    /*'aix', 'freebsd', 'openbsd', 'sunos'*/
+        /*'aix', 'freebsd', 'openbsd', 'sunos'*/
 };

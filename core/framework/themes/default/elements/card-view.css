@@ -1,61 +1,30 @@
 card-view {
     display: block;
     position: relative;
-    width: 100%;
-    height: 340px;
-    overflow: hidden;
 }
 
-card-view card-element[side],
-card-view card-element[side2] {
-    -webkit-transition-duration: 0.1s;
-    transition-duration: 0.1s;
-    opacity: 0.8;
-    z-index: 1;
-}
-
-card-view card-element[side]:before,
-card-view card-element[side2]:before {
-    -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-}
-
-card-view card-element.cards_center {
+card-view card-element[position="center"] {
     position: absolute;
-    right: 0px;
-    left: 0px;
-    bottom: 0px;
     opacity: 1;
-    z-index: 10;
-    width: 518px;
-    height: 295px;
-    top: 0px;
-    margin: 19px calc(50vw - 265px);
-    -webkit-transition: opacity 0.25s;
-    transition: opacity 0.25s;
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.3s;
+    right: calc(50% - 22% - 29px);
+    left: calc(50% - 22% - 29px);
 }
 
-card-view card-element.cards_left {
+card-view card-element[position="left"] {
     position: absolute;
-    left: -500px;
-    bottom: 25px;
     z-index: 1;
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
+    opacity: 0.9;
+    left: calc(-22% - 80px);
 }
 
-card-view card-element.cards_right {
+card-view card-element[position="right"] {
     position: absolute;
-    right: -500px;
-    bottom: 25px;
+    opacity: 0.9;
     z-index: 1;
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
+    right: calc(-22% - 80px);
 }
 
-card-view card-element.cards_left_ {
+card-view card-element[position="left-off"] {
     position: absolute;
     left: calc(-50vw - 420px);
     bottom: 25px;
@@ -65,7 +34,7 @@ card-view card-element.cards_left_ {
     transition-duration: 0.25s;
 }
 
-card-view card-element.cards_right_ {
+card-view card-element[position="right-off"] {
     position: absolute;
     right: calc(-50vw - 420px);
     bottom: 25px;
@@ -75,68 +44,14 @@ card-view card-element.cards_right_ {
     transition-duration: 0.25s;
 }
 
-card-element {
-    display: block;
-    position: relative;
-    /*background-color: var(--Color8);*/
-    background-color: var(--Card-BackgroundColor);
-    width: 462px;
-    height: 264px;
-    overflow: hidden;
-    margin: 14px calc(50vw - 264px);
-    border-radius: 8px;
-    -webkit-box-shadow: 0px 8px 12px 0px var(--Card-BoxShadowColor);
-    box-shadow: 0px 8px 12px 0px var(--Card-BoxShadowColor);
-    color: #ffffff;
-    border-color: var(--Card-BorderColor);
-    border-style: solid;
-    border-width: 1px;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    padding: 0px;
-}
-
-card-element title {
-    display: block;
-    position: absolute;
-    width: fit-content;
-    height: 28px;
-    bottom: 46px;
-    left: 16px;
-    font-size: 24px;
-}
-
-card-element description {
-    display: block;
-    position: absolute;
-    width: fit-content;
-    height: 20px;
-    bottom: 20px;
-    left: 20px;
-    font-size: 16px;
-}
-
-card-element:before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    right: 0px;
-    z-index: 2;
-    -webkit-transition-duration: 0s;
-    transition-duration: 0s;
-}
-
-card-element[clickable]:hover {
-    -webkit-transition-duration: 0.1s;
-    transition-duration: 0.1s;
-    cursor: pointer;
-}
-
-card-element[clickable]:active {
-    border-color: var(--Color11);
-    -webkit-transition-duration: 0.1s;
-    transition-duration: 0.1s;
+card-view card-element {
+    width: 520px;
+    width: 44%;
+    height: 280px;
+    height: calc(100% - 94px);
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    margin: 18px 0px;
 }
