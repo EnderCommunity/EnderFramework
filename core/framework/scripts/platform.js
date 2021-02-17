@@ -7,5 +7,5 @@ const osInfo = {
     isMacOS: os.platform() == "darwin",
     isLinux: os.platform() == "linux",
     nodeModule: os
-    /*'aix', 'freebsd', 'openbsd', 'sunos'*/
+        /*'aix', 'freebsd', 'openbsd', 'sunos'*/
 };

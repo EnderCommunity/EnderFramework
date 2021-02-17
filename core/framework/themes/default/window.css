@@ -1,6 +1,7 @@
 :root,
 [prefers-color-scheme="light"] {
     --WindowBackgroundColor: #f7f7f7;
+    --TransitionCoverColor: #f7f7f7;
     --NoiseDisplay: block;
     --WindowBorderDisplay: none;
     --WindowBorderColor: #e0e0e0;
@@ -13,6 +14,7 @@
 
 [prefers-color-scheme="dark"] {
     --WindowBackgroundColor: #101010;
+    --TransitionCoverColor: #101010;
     --WindowBorderColor: #3e3e3e;
     --TopBar-BackgroundColor: #0e0e0eb9;
     --TopBar-TextColor: #ffffff;
@@ -77,6 +79,14 @@ html:after {
     right: 0px;
     left: 0px;
     border: var(--WindowBorderColor) 1px solid;
+}
+
+html._hideBorder {
+    background-color: var(--WindowBackgroundColor);
+}
+
+html._hideBorder:after {
+    border: var(--TransitionCoverColor) 1px solid;
 }
 
 .splash {
@@ -1497,7 +1507,8 @@ body {
     opacity: 0;
 }
 
-#_transitionCover {
+#_transitionCover,
+#_transitionCover2 {
     position: fixed;
     z-index: 198;
     top: 0px;
@@ -1512,8 +1523,21 @@ body {
     pointer-events: none;
 }
 
+#_transitionCover2 {
+    /*background-color: var(--WindowBackgroundColor);*/
+    background-color: var(--TransitionCoverColor);
+    transition-duration: 0.4s;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    z-index: 199 !important;
+    transition-duration: 0s;
+    transition: opacity 0.2s;
+}
+
 #_transitionCover[show],
-#_transitionCover[sShow] {
+#_transitionCover2[show],
+#_transitionCover[sShow],
+#_transitionCover2[sShow] {
     opacity: 1;
     pointer-events: all;
 }

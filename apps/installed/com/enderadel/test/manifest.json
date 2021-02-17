@@ -34,6 +34,7 @@
         "infoScreen": true,
         "protocol": "store",
         "coverOnMaximize": false,
+        "coverOnResize": true,
         "customStyle": true
     },
     "hardware": {

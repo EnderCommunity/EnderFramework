@@ -1,8 +1,8 @@
 require('v8-compile-cache');
 const { app } = require('electron');
-if (handleSquirrelEvent(app)) {
+/*if (handleSquirrelEvent(app)) {
     return;
-}
+}*/
 global.os = require('os');
 global.path = require('path');
 global.paths = {
@@ -32,8 +32,19 @@ app.commandLine.appendSwitch('--enable-audio-service-sandbox');
 app.commandLine.appendSwitch('--ssl-version-fallback-min', 'tls1.2');
 app.commandLine.appendSwitch('js-flags', '--max-old-space-size=8192');
 app.commandLine.appendSwitch("autoplay-policy", "no-user-gesture-required");
-//app.commandLine.appendSwitch("--enable-transparent-visuals");
+app.commandLine.appendSwitch("--enable-transparent-visuals");
 app.commandLine.appendSwitch("--disable-renderer-backgrounding");
+
+//app.disableHardwareAcceleration();
+
+//[START] Better Performance
+app.commandLine.appendSwitch('disable-software-rasterizer', 'true');
+app.commandLine.appendSwitch('enable-gpu-rasterization', 'true'); //EXP
+app.commandLine.appendSwitch('enable-zero-copy', 'true'); //EXP
+app.commandLine.appendSwitch('enable-native-gpu-memory-buffers', 'true'); //EXP
+app.commandLine.appendSwitch('[f]', 'true');
+//[END] Better Performance
+
 app.commandLine.appendSwitch('--enable-features', 'OverlayScrollbar, ElasticOverscrollWin');
 var done = false,
     appPath = paths.apps;
@@ -131,7 +142,7 @@ ipcMain.on('global-resources', function(event, arg) {
     global.resources = arg;
 });
 
-function handleSquirrelEvent(application) {
+/*function handleSquirrelEvent(application) {
     if (process.argv.length === 1) {
         return false;
     }
@@ -168,4 +179,4 @@ function handleSquirrelEvent(application) {
             application.quit();
             return true;
     }
-}
+}*/
