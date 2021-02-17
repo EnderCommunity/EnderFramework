@@ -42,7 +42,6 @@ app.commandLine.appendSwitch('disable-software-rasterizer', 'true');
 app.commandLine.appendSwitch('enable-gpu-rasterization', 'true'); //EXP
 app.commandLine.appendSwitch('enable-zero-copy', 'true'); //EXP
 app.commandLine.appendSwitch('enable-native-gpu-memory-buffers', 'true'); //EXP
-app.commandLine.appendSwitch('[f]', 'true');
 //[END] Better Performance
 
 app.commandLine.appendSwitch('--enable-features', 'OverlayScrollbar, ElasticOverscrollWin');

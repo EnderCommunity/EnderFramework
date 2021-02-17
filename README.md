@@ -54,6 +54,11 @@ If you are interested in reporting/fixing issues and contributing directly to th
 ![Screenshot](repository/screenshots/1.png?raw=true "A test app")
 ![Screenshot](repository/screenshots/2.png?raw=true "EnderInstaller")
 
+The framework supports light mode and dark mode!
+![Screenshot](repository/screenshots/3.png?raw=true "A test app - alert (Dark Mode)")
+![Screenshot](repository/screenshots/4.png?raw=true "A test app - alert (Light Mode)")
+
+
 ## License
 [Apache License, Version 2.0](LICENSE)
 
