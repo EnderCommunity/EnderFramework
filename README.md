@@ -66,6 +66,6 @@ When using the logos of EnderFramework, or GitHub, be sure to follow the [GitHub
 
 ## More
 
-*Follow [@EnderAdel](https://twitter.com/EnderAdel) on Twitter to keep yourself up-to-date on everything related to the framework. You can also join our [Discord server](https://discord.gg/rWbtez6).*
+*Follow [@_EnderCommunity](https://twitter.com/_EnderCommunity) on Twitter to keep yourself up-to-date on everything related to the framework. You can also join our [Discord server](https://discord.gg/rWbtez6).*
 
 *EnderFramework is the property of EnderCommunity*
