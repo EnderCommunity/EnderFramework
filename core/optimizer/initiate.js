@@ -17,17 +17,36 @@ if (CMU > 6.4e+9) { //6400 MB (6.4 GB)
     console.log("You're good to go!");
 }*/
 module.exports = {
-    background: {
-        main: {
-            //
-        }
-    },
-    renderer: {
-        main: {
-            //
-        },
-        content: {
-            //
+    mainProcess: {
+        optimize: function(app) {
+            app.commandLine.appendSwitch("--disable-renderer-backgrounding", 'true');
+
+            app.commandLine.appendSwitch('disable-software-rasterizer', 'true'); //EXP
+            app.commandLine.appendSwitch('enable-gpu-rasterization', 'true'); //EXP
+            app.commandLine.appendSwitch('enable-zero-copy', 'true'); //EXP
+            app.commandLine.appendSwitch('enable-native-gpu-memory-buffers', 'true'); //EXP
+
+            app.commandLine.appendSwitch('enable-oop-rasterization', 'true'); //EXP
+            app.commandLine.appendSwitch('enable-accelerated-2d-canvas', 'true'); //EXP
+
+            app.commandLine.appendSwitch("enable-fast-unload", 'true'); //EXP
+            app.commandLine.appendSwitch("low-priority-iframes", 'true'); //EXP
+            app.commandLine.appendSwitch("enable-quic", 'true'); //EXP
+            app.commandLine.appendSwitch("enable-heavy-ad-intervention", 'true'); //EXP
+            app.commandLine.appendSwitch("enable-parallel-downloading", 'true'); //EXP
+
+            app.commandLine.appendSwitch("smooth-scrolling", 'true'); //EXP
+
+            app.commandLine.appendSwitch("proactive-tab-freeze-and-discard", 'true'); //EXP
+
+            app.commandLine.appendSwitch("ignore-gpu-blacklist", 'true'); //EXP
+            app.commandLine.appendSwitch("disable-hyperlink-auditing", 'true'); //EXP
+
+            app.commandLine.appendSwitch("disable-touch-adjustment", 'true'); //EXP
+            app.commandLine.appendSwitch("disable-background-video-track", 'true'); //EXP
+            app.commandLine.appendSwitch("enable-modern-media-controls", 'true'); //EXP
+
+            app.commandLine.appendSwitch("enable-tcp-fast-open", 'true'); //EXP
         }
     }
 };

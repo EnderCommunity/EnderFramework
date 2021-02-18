@@ -56,18 +56,18 @@
             });
         } else {
             var isResizing = false,
-                isDoneLock = false,
+                //isDoneLock = false,
                 isFinished = function() {
                     isResizing = false;
                     setTimeout(function() {
-                        if (!isDoneLock && !isResizing) {
-                            isDoneLock = true;
+                        if (!isResizing) {
+                            //isDoneLock = true;
                             _showCover(false);
-                            setTimeout(function() {
+                            /*setTimeout(function() {
                                 isDoneLock = false;
-                            }, 1000);
+                            }, 1000);*/
                         }
-                    }, 200);
+                    }, 1);
                 };
             currentWindow.on('resize', function() {
                 if (!isFalseAlarm) {
