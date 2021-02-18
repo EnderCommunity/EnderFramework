@@ -33,18 +33,12 @@ app.commandLine.appendSwitch('--ssl-version-fallback-min', 'tls1.2');
 app.commandLine.appendSwitch('js-flags', '--max-old-space-size=8192');
 app.commandLine.appendSwitch("autoplay-policy", "no-user-gesture-required");
 app.commandLine.appendSwitch("--enable-transparent-visuals");
-app.commandLine.appendSwitch("--disable-renderer-backgrounding");
-
-//app.disableHardwareAcceleration();
+app.commandLine.appendSwitch('--enable-features', 'OverlayScrollbar, ElasticOverscrollWin');
 
 //[START] Better Performance
-app.commandLine.appendSwitch('disable-software-rasterizer', 'true');
-app.commandLine.appendSwitch('enable-gpu-rasterization', 'true'); //EXP
-app.commandLine.appendSwitch('enable-zero-copy', 'true'); //EXP
-app.commandLine.appendSwitch('enable-native-gpu-memory-buffers', 'true'); //EXP
+const optimizer = require("./optimizer/initiate");
+optimizer.mainProcess.optimize(app);
 //[END] Better Performance
-
-app.commandLine.appendSwitch('--enable-features', 'OverlayScrollbar, ElasticOverscrollWin');
 var done = false,
     appPath = paths.apps;
 const windowManager = require("./window");
