@@ -18,7 +18,7 @@ if (CMU > 6.4e+9) { //6400 MB (6.4 GB)
 }*/
 module.exports = {
     mainProcess: {
-        optimize: function(app) {
+        optimize: function(app, callback) {
             app.commandLine.appendSwitch("--disable-renderer-backgrounding", 'true');
 
             app.commandLine.appendSwitch('disable-software-rasterizer', 'true'); //EXP
@@ -47,6 +47,12 @@ module.exports = {
             app.commandLine.appendSwitch("enable-modern-media-controls", 'true'); //EXP
 
             app.commandLine.appendSwitch("enable-tcp-fast-open", 'true'); //EXP
+
+            app.commandLine.appendSwitch("--disable-frame-rate-limit", 'true'); //EXP
+            app.commandLine.appendSwitch("--disable-gpu-vsync", 'true'); //EXP
+            app.commandLine.appendSwitch("--max-gum-fps", '9999'); //EXP
+
+            callback();
         }
     }
 };

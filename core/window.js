@@ -79,7 +79,8 @@ module.exports = {
                         vibrancy: (data.window.type == "acrylic") ? ((os.platform == "win32") ? {
                             theme: (nativeTheme.shouldUseDarkColors) ? '#01010100' : '#ffffff00',
                             effect: 'acrylic',
-                            disableOnBlur: false
+                            disableOnBlur: false,
+                            maximumRefreshRate: 32
                         } : "appearance-based") : false
                     });
                     if (data.window.type != "acrylic")

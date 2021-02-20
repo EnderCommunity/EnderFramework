@@ -35,80 +35,92 @@ app.commandLine.appendSwitch("autoplay-policy", "no-user-gesture-required");
 app.commandLine.appendSwitch("--enable-transparent-visuals");
 app.commandLine.appendSwitch('--enable-features', 'OverlayScrollbar, ElasticOverscrollWin');
 
+
+var done = false,
+    appPath = paths.apps,
+    startApp = false;
+const windowManager = require("./window");
+
 //[START] Better Performance
 const optimizer = require("./optimizer/initiate");
-optimizer.mainProcess.optimize(app);
+optimizer.mainProcess.optimize(app, function() {
+    startApp = true;
+});
 //[END] Better Performance
-var done = false,
-    appPath = paths.apps;
-const windowManager = require("./window");
 app.on("ready", function() {
-    for (var i = 0; i < process.argv.length; i++) {
-        if (process.argv[i].includes("--start=")) {
-            //if (true) {
-            done = true;
-            var appID = process.argv[i].replace(/\s/g, '').substring(8),
-                length = appID.replace(/[^.]/g, "").length;
-            /*var appID = "com.enderadel.test",
-                length = appID.replace(/[^.]/g, "").length;*/
-            /*var appID = "com.enderadel.cats",
-                length = appID.replace(/[^.]/g, "").length;*/
-            //var appID = "com.enderadel.test2", length = appID.replace(/[^.]/g, "").length;
-            /*var appID = "com.enderadel.CommandPrompt",
-                length = appID.replace(/[^.]/g, "").length;*/
-            appPath = path.join(appPath, "installed");
-            for (var i2 = 0; i2 <= length; i2++) {
-                appPath = path.join(appPath, appID.substring(0, (appID.indexOf(".") > -1) ? appID.indexOf(".") : appID.length));
-                appID = appID.substring(appID.indexOf(".") + 1);
+    var loop = setInterval(function() {
+        if (startApp) {
+            clearInterval(loop);
+            //
+            for (var i = 0; i < process.argv.length; i++) {
+                if (process.argv[i].includes("--start=")) {
+                    //if (true) {
+                    done = true;
+                    var appID = process.argv[i].replace(/\s/g, '').substring(8),
+                        length = appID.replace(/[^.]/g, "").length;
+                    /*var appID = "com.enderadel.test",
+                        length = appID.replace(/[^.]/g, "").length;*/
+                    /*var appID = "com.enderadel.cats",
+                        length = appID.replace(/[^.]/g, "").length;*/
+                    //var appID = "com.enderadel.test2", length = appID.replace(/[^.]/g, "").length;
+                    /*var appID = "com.enderadel.CommandPrompt",
+                        length = appID.replace(/[^.]/g, "").length;*/
+                    appPath = path.join(appPath, "installed");
+                    for (var i2 = 0; i2 <= length; i2++) {
+                        appPath = path.join(appPath, appID.substring(0, (appID.indexOf(".") > -1) ? appID.indexOf(".") : appID.length));
+                        appID = appID.substring(appID.indexOf(".") + 1);
+                    }
+                    windowManager.createWindow(appPath);
+                    break;
+                } else if (process.argv[i] == "--gaming") {
+                    //} else if (true) {
+                    done = true;
+                    appPath = path.join(appPath, "built-in", "gaming");
+                    windowManager.createWindow(appPath);
+                    break;
+                } else if (process.argv[i] == "--store") {
+                    //}else if(true){
+                    done = true;
+                    appPath = path.join(appPath, "built-in", "store");
+                    windowManager.createWindow(appPath);
+                    break;
+                } else if (process.argv[i] == "--installer") {
+                    //}else if(true){
+                    done = true;
+                    appPath = path.join(appPath, "built-in", "installer");
+                    windowManager.createWindow(appPath);
+                    break;
+                } else if (process.argv[i] == "--studio") {
+                    //} else if (true) {
+                    done = true;
+                    appPath = path.join(appPath, "built-in", "studio");
+                    windowManager.createWindow(appPath);
+                    break;
+                } else if (process.argv[i] == "--settings") {
+                    //}else if(true){
+                    done = true;
+                    appPath = path.join(appPath, "built-in", "settings");
+                    windowManager.createWindow(appPath);
+                    break;
+                }
             }
-            windowManager.createWindow(appPath);
-            break;
-        } else if (process.argv[i] == "--gaming") {
-            //} else if (true) {
-            done = true;
-            appPath = path.join(appPath, "built-in", "gaming");
-            windowManager.createWindow(appPath);
-            break;
-        } else if (process.argv[i] == "--store") {
-            //}else if(true){
-            done = true;
-            appPath = path.join(appPath, "built-in", "store");
-            windowManager.createWindow(appPath);
-            break;
-        } else if (process.argv[i] == "--installer") {
-            //}else if(true){
-            done = true;
-            appPath = path.join(appPath, "built-in", "installer");
-            windowManager.createWindow(appPath);
-            break;
-        } else if (process.argv[i] == "--studio") {
-            //} else if (true) {
-            done = true;
-            appPath = path.join(appPath, "built-in", "studio");
-            windowManager.createWindow(appPath);
-            break;
-        } else if (process.argv[i] == "--settings") {
-            //}else if(true){
-            done = true;
-            appPath = path.join(appPath, "built-in", "settings");
-            windowManager.createWindow(appPath);
-            break;
+            if (!done) {
+                var init = require("./initiate");
+                init.paths = paths;
+                init.autoLaunch("EnderServices", false, function() { //Change this to true on release
+                    toast.notify("An error occurred!", "Failed to set up the auto launch process.");
+                });
+                //init.shortcuts("minimal");
+                //init.shortcuts("normal");
+                init.shortcuts("developer");
+                toast.notify("EnderServices has been initiated!", "You can now start using EnderServices. EnderServices and EnderFramework are still unstable. Things are subject to change at any given time.");
+                setTimeout(function() {
+                    process.exit(0);
+                }, 1000);
+            }
+            //
         }
-    }
-    if (!done) {
-        var init = require("./initiate");
-        init.paths = paths;
-        init.autoLaunch("EnderServices", false, function() { //Change this to true on release
-            toast.notify("An error occurred!", "Failed to set up the auto launch process.");
-        });
-        //init.shortcuts("minimal");
-        //init.shortcuts("normal");
-        init.shortcuts("developer");
-        toast.notify("EnderServices has been initiated!", "You can now start using EnderServices. EnderServices and EnderFramework are still unstable. Things are subject to change at any given time.");
-        setTimeout(function() {
-            process.exit(0);
-        }, 1000);
-    }
+    }, 10)
 });
 app.on('renderer-process-crashed', function() {
     toast.notify("An error occurred!", "The renderer process crashed.");
