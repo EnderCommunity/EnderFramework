@@ -44,13 +44,13 @@ var done = false,
 const windowManager = require("./window");
 app.on("ready", function() {
     for (var i = 0; i < process.argv.length; i++) {
-        if (process.argv[i].includes("--start=")) {
-            //if (true) {
+        //if (process.argv[i].includes("--start=")) {
+        if (true) {
             done = true;
-            var appID = process.argv[i].replace(/\s/g, '').substring(8),
-                length = appID.replace(/[^.]/g, "").length;
-            /*var appID = "com.enderadel.test",
+            /*var appID = process.argv[i].replace(/\s/g, '').substring(8),
                 length = appID.replace(/[^.]/g, "").length;*/
+            var appID = "com.enderadel.test",
+                length = appID.replace(/[^.]/g, "").length;
             /*var appID = "com.enderadel.cats",
                 length = appID.replace(/[^.]/g, "").length;*/
             //var appID = "com.enderadel.test2", length = appID.replace(/[^.]/g, "").length;
