@@ -3,24 +3,24 @@
     "version": "0.0.1",
     "main": "./core/start.js",
     "devDependencies": {
-        "electron": "^11.1.1"
+        "electron": "^11.3.0"
     },
     "scripts": {
         "start": "electron ."
     },
     "dependencies": {
-        "aes256": "^1.0.4",
+        "aes256": "^1.1.0",
         "asar": "^3.0.3",
         "auto-launch": "^5.0.5",
         "babylonjs": "^4.2.0",
         "check-types": "^11.1.2",
-        "chokidar": "^3.4.3",
+        "chokidar": "^3.5.1",
         "chromecast-api": "^0.3.4",
-        "create-desktop-shortcuts": "^1.2.0",
+        "create-desktop-shortcuts": "^1.4.0",
         "cross-fetch": "^3.0.6",
         "del": "^6.0.0",
         "download-file": "^0.1.5",
-        "electron-acrylic-window": "^0.5.4",
+        "electron-acrylic-window": "^0.5.5",
         "electron-json-storage": "^4.3.0",
         "electron-squirrel-startup": "^1.0.0",
         "electron-vibrancy-fixforlatest": "^0.2.0",
@@ -30,7 +30,7 @@
         "gulp": "^4.0.2",
         "ini": ">=1.3.6",
         "lock-system": "^2.0.0",
-        "monaco-editor": "^0.21.2",
+        "monaco-editor": "^0.22.3",
         "mv": "^2.1.1",
         "node-gyp": "^7.1.2",
         "node-iframe": "^1.5.10",
@@ -40,8 +40,8 @@
         "request": "^2.88.2",
         "rimraf": "^3.0.2",
         "run-script": "^0.1.1",
-        "terser": "^5.5.1",
-        "typescript": "^4.1.3",
+        "terser": "^5.6.0",
+        "typescript": "^4.1.5",
         "unzipper": "^0.10.11",
         "v8-compile-cache": "^2.2.0"
     },
