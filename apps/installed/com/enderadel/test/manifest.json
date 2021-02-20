@@ -33,7 +33,7 @@
         "contextMenu": true,
         "infoScreen": true,
         "protocol": "store",
-        "coverOnMaximize": false,
+        "coverOnMaximize": true,
         "coverOnResize": true,
         "customStyle": true
     },

@@ -75,24 +75,24 @@
     <center>
         <!-- [START] Buttons -->
         <request-element tag="warn-button"></request-element>
-        <button onclick="EnderFramework.page.reload();">Hi</button>
-        <button primary onclick="EnderFramework.page.reload();">Hi</button>
+        <button onclick="EnderFramework.window.webContents.reload();">Hi</button>
+        <button primary onclick="EnderFramework.window.webContents.reload();">Hi</button>
         <button glass>Hi</button>
-        <warn-button message="The page is going to be reloaded!" onagree="EnderFramework.page.reload();" ondisagree="">Hi</warn-button>
+        <warn-button message="The page is going to be reloaded!" onagree="EnderFramework.window.webContents.reload();" ondisagree="">Hi</warn-button>
         <!--<button warn='{
         "message": "The page is going to be reloaded!",
-        "onagree": "function(){ EnderFramework.page.reload(); }",
+        "onagree": "function(){ EnderFramework.window.webContents.reload(); }",
         "ondisagree": "function(){}"
       }'>Hi
       </button>-->
         <br>
-        <button bigger onclick="EnderFramework.page.reload();">Hi</button>
-        <button bigger primary onclick="EnderFramework.page.reload();">Hi</button>
+        <button bigger onclick="EnderFramework.window.webContents.reload();">Hi</button>
+        <button bigger primary onclick="EnderFramework.window.webContents.reload();">Hi</button>
         <button bigger glass>Hi</button>
-        <warn-button bigger message="The page is going to be reloaded!" onagree="EnderFramework.page.reload();" ondisagree="">Hi</warn-button>
+        <warn-button bigger message="The page is going to be reloaded!" onagree="EnderFramework.window.webContents.reload();" ondisagree="">Hi</warn-button>
         <!--<button bigger warn='{
         "message": "The page is going to be reloaded!",
-        "onagree": "function(){ EnderFramework.page.reload(); }",
+        "onagree": "function(){ EnderFramework.window.webContents.reload(); }",
         "ondisagree": "function(){}"
       }'>Hi
       </button>-->
