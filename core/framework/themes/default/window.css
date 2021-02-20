@@ -24,6 +24,7 @@
 
 [window-type="acrylic"] {
     --WindowBackgroundColor: #ffffff33;
+    --TransitionCoverColor: transparent;
     /* 80 */
     --NoiseDisplay: none;
     --WindowBorderColor: #ffffff;
@@ -33,6 +34,7 @@
 
 [prefers-color-scheme="dark"][window-type="acrylic"] {
     --WindowBackgroundColor: #10101033;
+    --TransitionCoverColor: transparent;
     /* 80 */
     --WindowBorderColor: #101010;
     /*--WindowBorderColor: #333333;*/
@@ -91,9 +93,15 @@ html._hideBorder2:after {
     border: var(--TransitionCoverColor) 1px solid;
 }
 
+html._hideBorder,
+html._hideBorder2 {
+    transition-duration: 0.2s;
+    opacity: 1;
+}
+
 html._hideBorder [hideOnResize],
 html._hideBorder2 [hideOnMaximize] {
-    display: none !important;
+    transition-duration: 0s;
     opacity: 0 !important;
 }
 
