@@ -13,10 +13,12 @@
             if (manifest.content.coverOnMaximize) {
                 Window_TransitionCover.style.transitionDuration = "0s";
                 Window_TransitionCover.setAttribute("sShow", "");
+                document.documentElement.classList.add("_hideBorder2");
             }
             setTimeout(function() {
                 if (manifest.content.coverOnMaximize & c) {
                     Window_TransitionCover.removeAttribute("style");
+                    document.documentElement.classList.remove("_hideBorder2");
                     setTimeout(function() {
                         Window_TransitionCover.removeAttribute("sShow");
                     }, 200);
@@ -30,8 +32,10 @@
             setTimeout(function() {
                 if (!c) {
                     Window_TransitionCover2.removeAttribute("style");
-                    Window_TransitionCover2.removeAttribute("sShow");
                     document.documentElement.classList.remove("_hideBorder");
+                    setTimeout(function() {
+                        Window_TransitionCover2.removeAttribute("sShow");
+                    }, 100);
                 }
             }, 10);
         };

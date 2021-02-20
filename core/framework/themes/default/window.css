@@ -81,12 +81,20 @@ html:after {
     border: var(--WindowBorderColor) 1px solid;
 }
 
-html._hideBorder {
+html._hideBorder,
+html._hideBorder2 {
     background-color: var(--WindowBackgroundColor);
 }
 
-html._hideBorder:after {
+html._hideBorder:after,
+html._hideBorder2:after {
     border: var(--TransitionCoverColor) 1px solid;
+}
+
+html._hideBorder [hideOnResize],
+html._hideBorder2 [hideOnMaximize] {
+    display: none !important;
+    opacity: 0 !important;
 }
 
 .splash {
@@ -1523,7 +1531,9 @@ body {
     pointer-events: none;
 }
 
+#_transitionCover,
 #_transitionCover2 {
+    /* You could remove "#_transitionCover" from here to get a blurred effect when resizing the window! */
     /*background-color: var(--WindowBackgroundColor);*/
     background-color: var(--TransitionCoverColor);
     transition-duration: 0.4s;
