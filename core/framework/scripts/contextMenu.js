@@ -2,17 +2,17 @@ const Dimension = (elm) => {
     return elm.offsetHeight + parseInt(document.defaultView.getComputedStyle(elm, '').getPropertyValue('margin-top')) + parseInt(document.defaultView.getComputedStyle(elm, '').getPropertyValue('margin-bottom'));
 }
 document.cover = document.getElementById("_contextMenuCover");
-document.cover.hide = function () {
+document.cover.hide = function() {
     var menuCovers = document.getElementsByClassName("menuCover");
     for (var i = 0; i < menuCovers.length; i++)
         menuCovers[i].outerHTML = "";
     document.cover.setAttribute("style", "display: none;");
 };
-document.cover.show = function () {
+document.cover.show = function() {
     document.cover.setAttribute("style", "display: block;");
 };
 var removeContextMenus_Loop = 0;
-document.removeContextMenus = function () {
+document.removeContextMenus = function() {
     var _contextMenus = document.getElementsByClassName("contextMenu");
     for (var i = 0; i < _contextMenus.length; i++) {
         _contextMenus[i].outerHTML = "";
@@ -27,6 +27,7 @@ document.removeContextMenus = function () {
 };
 document.cover.hide();
 var number = 0;
+
 function sharedFunctionDropdown(element) {
     var mainContextMenu_ = element.mainContextMenu;
     var allContextMenus = document.getElementsByClassName("contextMenu");
@@ -39,8 +40,9 @@ function sharedFunctionDropdown(element) {
             tempCover.number = mainContextMenu_.number;
             tempCover.classList.add("menuCover");
             tempCover.setAttribute("style", "width: " + mainContextMenu_.offsetWidth + "px; height: " + mainContextMenu_.offsetHeight + "px; top: " + mainContextMenu_.offsetTop + "px; left: " + mainContextMenu_.offsetLeft + "px;");
-            tempCover.addEventListener("click", function () {
-                var allContextMenus = document.getElementsByClassName("contextMenu"), allMenusCovers = document.getElementsByClassName("menuCover");
+            tempCover.addEventListener("click", function() {
+                var allContextMenus = document.getElementsByClassName("contextMenu"),
+                    allMenusCovers = document.getElementsByClassName("menuCover");
                 for (var tI = 0; tI < allContextMenus.length; tI++) {
                     if (allContextMenus[tI].number > mainContextMenu_.number) {
                         allContextMenus[tI].outerHTML = "";
@@ -91,7 +93,7 @@ const showContextMenu = (content, c) => {
     _ContextMenu.classList.add("contextMenu");
     //_ContextMenu.style.willChange = "auto";
     _ContextMenu.number = number++;
-    const LoopContent = function (c_, MainElement) {
+    const LoopContent = function(c_, MainElement) {
         const c = c_;
         for (var i in c) {
             var Element = document.createElement("div");
@@ -99,7 +101,7 @@ const showContextMenu = (content, c) => {
             Element.innerHTML = c[i].title;
             if (c[i].link !== undefined) {
                 Element.url = c[i].link;
-                Element.addEventListener("click", function () {
+                Element.addEventListener("click", function() {
                     _content.loadURL(path.join(manifest.paths.currentApp, "content", this.url));
                     window_Cover.style.display = "block";
                     document.removeContextMenus();
@@ -108,7 +110,7 @@ const showContextMenu = (content, c) => {
                 delete Element;
             } else if (c[i].function !== undefined) {
                 Element.function_ = c[i].function;
-                Element.addEventListener("click", function () {
+                Element.addEventListener("click", function() {
                     _content.focus();
                     _content.executeJavaScript(this.function_ + "();");
                     document.removeContextMenus();
@@ -133,7 +135,7 @@ const showContextMenu = (content, c) => {
                     Element.timeout = null;
                   }
                 });*/
-                Element.addEventListener("click", function () {
+                Element.addEventListener("click", function() {
                     sharedFunctionDropdown(this);
                 });
                 var a = MainElement.insertAdjacentElement('beforeend', Element);
@@ -154,7 +156,7 @@ const showContextMenu = (content, c) => {
     _ContextMenu.classList.add("animated", "fast-ish");
     document.body.insertAdjacentElement('beforeend', _ContextMenu);
     var name = "contextMenuAnimations";
-    setTimeout(function () {
+    setTimeout(function() {
         var height = _ContextMenu.offsetHeight;
         _ContextMenu.classList.add("b");
         if (Coords.top + height > window.innerHeight) {
@@ -169,22 +171,22 @@ const showContextMenu = (content, c) => {
         if (Coords.left + _ContextMenu.offsetWidth > window.innerWidth)
             Coords.left = window.innerWidth - _ContextMenu.offsetWidth;
         _ContextMenu.setAttribute("style", "top: " + Coords.top + "px; left: " + Coords.left + "px");
-        setTimeout(function () {
+        setTimeout(function() {
             _ContextMenu.classList.add(name);
         }, 0);
     }, 0);
 };
-document.cover.addEventListener("mousedown", function () {
+document.cover.addEventListener("mousedown", function() {
     document.removeContextMenus();
 });
 
-(function () {
-    const { app } = require("electron").remote;
+(function() {
+    const { app } = require('@electron/remote');
     app.on('browser-window-blur', () => {
         document.removeContextMenus();
     });
 })();
-document.addEventListener('keydown', function (event) {
+document.addEventListener('keydown', function(event) {
     if (event.key == "Escape") {
         document.removeContextMenus();
     }

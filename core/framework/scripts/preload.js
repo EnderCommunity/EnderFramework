@@ -1,4 +1,5 @@
-const { remote, ipcRenderer } = require("electron");
+const { ipcRenderer } = require("electron");
+const remote = require('@electron/remote');
 global._content = undefined;
 global.isDOMContentReady = false;
 global.currentWindow = remote.getCurrentWindow();

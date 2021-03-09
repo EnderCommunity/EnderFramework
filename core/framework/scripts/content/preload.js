@@ -1,6 +1,6 @@
 //console.log(0);
 global.ipcRenderer = require("electron").ipcRenderer;
-const remote = require("electron").remote;
+const remote = require('@electron/remote');
 //ipcRenderer.sendToHost('paths--send');
 global.isContentLoading = true;
 

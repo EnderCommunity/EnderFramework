@@ -268,7 +268,7 @@ LocalHost.prototype.close = function(callback) {
     this.server.close(callback);
     this.server = null;
 };
-const { nativeTheme } = require('electron').remote;
+const { nativeTheme } = require('@electron/remote');
 ipcRenderer.on("enderframework--theme-tolight", function() {
     document.documentElement.setAttribute("prefers-color-scheme", "light");
 });
@@ -281,7 +281,7 @@ function Window(id, settings) {
     this.windowSettings = settings;
     this.creationTime = new Date();
 };
-const _dialog = require("electron").remote.dialog;
+const _dialog = require('@electron/remote').dialog;
 Window.prototype.send = function(channel, data = "") {
     const _channel = channel,
         _data = data,
@@ -310,11 +310,11 @@ Window.prototype.send = function(channel, data = "") {
         f();
     }
 };
-const currentWindow = require("electron").remote.getCurrentWindow();
+const currentWindow = require('@electron/remote').getCurrentWindow();
 //
 var vm = process.versions;
 vm.process = process.version;
-vm.framework = require("electron").remote.app.getVersion();
+vm.framework = require('@electron/remote').app.getVersion();
 //
 //const {c, cpp, node, python, java} = require('compile-run');
 //

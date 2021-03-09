@@ -1,5 +1,6 @@
 require('v8-compile-cache');
 const { app } = require('electron');
+require('@electron/remote/main').initialize();
 /*if (handleSquirrelEvent(app)) {
     return;
 }*/
