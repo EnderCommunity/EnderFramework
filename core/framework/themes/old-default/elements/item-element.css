@@ -1,0 +1,56 @@
+:host {
+    display: inline-block;
+    position: relative;
+    /*background-color: var(--Color5);*/
+    background-color: var(--Item-BackgroundColor);
+    height: fit-content;
+    width: 200px;
+    /*color: var(--Color11);*/
+    color: var(--Item-TextColor);
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 18px 0px;
+    margin-right: 12px;
+}
+
+:host:hover {
+    filter: contrast(105%) brightness(100%);
+}
+
+:host:active {
+    filter: contrast(110%) brightness(102%);
+}
+
+:host title {
+    display: block;
+    font-size: 24px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+:host media-resource {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    top: 0px;
+    /*background-color: var(--Color1);*/
+    background-color: var(--ItemImage-BackgroundColor);
+}
+
+:host desc {
+    display: block;
+    font-size: 18px;
+    padding: 10px;
+    padding-bottom: 22px;
+    opacity: 0.8;
+}
+
+:host price {
+    display: block;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-bottom: 8px;
+    opacity: 0.9;
+}

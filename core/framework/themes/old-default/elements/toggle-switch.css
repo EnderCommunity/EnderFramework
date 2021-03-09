@@ -1,0 +1,41 @@
+toggle-switch {
+    display: inline-block;
+    margin: 4px;
+    width: 68px;
+    height: 24px;
+    border-radius: 100px;
+    overflow: hidden;
+    border-style: solid;
+    border-width: 1px;
+    /*border-color: var(--Color11);*/
+    border-color: var(--Switch-BorderColor);
+    opacity: 1;
+    cursor: pointer;
+    -webkit-transition-duration: 0.05s;
+    transition-duration: 0.05s;
+}
+
+toggle-switch:before {
+    content: "";
+    display: block;
+    margin: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background-color: var(--Switch-BorderColor);
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+}
+
+toggle-switch[active] {
+    margin: 4px;
+    /*background-color: var(--Color1);*/
+    background-color: var(--Switch-BackgroundColorACTIVE);
+    /*border-color: var(--Color1);*/
+    border-color: var(--Switch-BorderColorACTIVE);
+}
+
+toggle-switch[active]:before {
+    margin: 4px;
+    margin-left: 48px;
+}
