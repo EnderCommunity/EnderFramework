@@ -1,5 +1,6 @@
 require('v8-compile-cache');
 const { app } = require('electron');
+require('@electron/remote/main').initialize();
 /*if (handleSquirrelEvent(app)) {
     return;
 }*/
@@ -51,14 +52,15 @@ app.on("ready", function() {
     var loop = setInterval(function() {
         if (startApp) {
             clearInterval(loop);
+            //
             for (var i = 0; i < process.argv.length; i++) {
-                if (process.argv[i].includes("--start=")) {
-                    //if (true) {
+                //if (process.argv[i].includes("--start=")) {
+                if (true) {
                     done = true;
-                    var appID = process.argv[i].replace(/\s/g, '').substring(8),
-                        length = appID.replace(/[^.]/g, "").length;
-                    /*var appID = "com.enderadel.design",
+                    /*var appID = process.argv[i].replace(/\s/g, '').substring(8),
                         length = appID.replace(/[^.]/g, "").length;*/
+                    var appID = "com.enderadel.design",
+                        length = appID.replace(/[^.]/g, "").length;
                     /*var appID = "com.enderadel.test",
                         length = appID.replace(/[^.]/g, "").length;*/
                     /*var appID = "com.enderadel.cats",

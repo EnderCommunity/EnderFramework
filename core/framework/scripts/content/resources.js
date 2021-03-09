@@ -1,2 +1,2 @@
-var { remote } = require("electron");
-module.exports = remote.getGlobal('resources');
+var remote = require('@electron/remote');
+module.exports = remote.getGlobal("resources");
