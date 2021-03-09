@@ -1,0 +1,77 @@
+warn-button {
+    padding: 0;
+    line-height: 38px;
+}
+
+warn-button[bigger] {
+    padding: 0;
+    line-height: 50px;
+}
+
+warn-button {
+    overflow: hidden;
+    content-visibility: auto;
+    display: inline-block;
+    background-color: var(--Buttons-BackgroundColor);
+    width: fit-content;
+    min-width: 120px;
+    height: 42px;
+    font-size: 18px;
+    -webkit-box-shadow: 0px 1px 10px 0px var(--Buttons-ShadowColor);
+    box-shadow: 0px 1px 10px 0px var(--Buttons-ShadowColor);
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--Buttons-BorderColor);
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 4px;
+    color: var(--TextColor);
+}
+
+warn-button[bigger] {
+    min-width: 160px;
+    height: 52px;
+    font-size: 20px;
+    border-radius: 6px;
+    margin: 6px;
+}
+
+warn-button:hover {
+    -webkit-transition-duration: 160ms;
+    transition-duration: 160ms;
+    background-color: var(--Buttons-BackgroundColorHOVER);
+    -webkit-box-shadow: 0px 1px 16px 0px var(--Buttons-ShadowColorHOVER);
+    box-shadow: 0px 1px 16px 0px var(--Buttons-ShadowColorHOVER);
+    border-color: var(--Buttons-BorderColorHOVER);
+}
+
+warn-button:active {
+    -webkit-transition-duration: 160ms;
+    transition-duration: 160ms;
+    background-color: var(--Buttons-BackgroundColorACTIVE);
+    -webkit-box-shadow: 0px 1px 16px 0px var(--Buttons-ShadowColorACTIVE);
+    box-shadow: 0px 1px 16px 0px var(--Buttons-ShadowColorACTIVE);
+    border-color: var(--Buttons-BorderColorACTIVE);
+}
+
+warn-button {
+    background-color: var(--WarnButtons-BackgroundColor);
+    -webkit-box-shadow: 0px 1px 10px -2px var(--WarnButtons-BoxShadowColor);
+    box-shadow: 0px 1px 10px -2px var(--WarnButtons-BoxShadowColor);
+    border-color: var(--WarnButtons-BorderColor);
+    color: var(--WarnButtons-TextColor);
+}
+
+warn-button:hover {
+    background-color: var(--WarnButtons-BackgroundColorHOVER);
+    -webkit-box-shadow: 0px 1px 14px -2px var(--WarnButtons-BoxShadowColorHOVER);
+    box-shadow: 0px 1px 14px -2px var(--WarnButtons-BoxShadowColorHOVER);
+    border-color: var(--WarnButtons-BorderColorHOVER);
+}
+
+warn-button:active {
+    background-color: var(--WarnButtons-BackgroundColorACTIVE);
+    -webkit-box-shadow: 0px 1px 14px -2px var(--WarnButtons-BoxShadowColorACTIVE);
+    box-shadow: 0px 1px 14px -2px var(--WarnButtons-BoxShadowColorACTIVE);
+    border-color: var(--WarnButtons-BorderColorACTIVE);
+}
