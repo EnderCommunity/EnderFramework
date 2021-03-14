@@ -71,6 +71,9 @@ _content.addEventListener('ipc-message', event => {
         changeIcons(false);
     } else if (event.channel == "enderframework--theme-changeunlock") {
         stopThemeAutoChange = false;
+    } else if (event.channel == "enderframework--theme-changeaccentcolour") {
+        event.args = event.args[0];
+        changeAccentColour(event.args);
     } else if (event.channel == "enderframework--share-show") {
         showShareScreen(event.args[0][0]);
     } else if (event.channel == "enderframework--notification-show") {
