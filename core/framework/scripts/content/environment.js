@@ -121,5 +121,8 @@ module.exports = {
             }
             return result;
         }
+    },
+    changeContentAccentColor: function(color) {
+        document.documentElement.style.setProperty('--accentColor', color);
     }
 };

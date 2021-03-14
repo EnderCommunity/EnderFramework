@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "main": "./core/start.js",
     "devDependencies": {
-        "electron": "^12.0.0"
+        "electron": "^12.0.1"
     },
     "scripts": {
         "start": "electron . --trace-deprecation"

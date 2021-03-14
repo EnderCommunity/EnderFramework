@@ -29,6 +29,7 @@
     "content": {
         "theme": "default",
         "colorScheme": "system",
+        "accentColor": "system",
         "redirectAnimations": true,
         "contextMenu": true,
         "infoScreen": true,
@@ -38,7 +39,7 @@
         "customStyle": true
     },
     "hardware": {
-        "highGPUPerformance": true
+        "highGPUPerformance": false
     },
     "enable": ["JavaScript", "WebGL", "devTools", "spellcheck"],
     "menu": {

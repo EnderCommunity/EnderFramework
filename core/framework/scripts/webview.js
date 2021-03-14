@@ -36,6 +36,7 @@ var isLoading = false,
 _content.setAttribute("webpreferences", `devTools=${(manifest.enable.devTools) ? "yes" : "no"}, nodeIntegration=yes, nodeIntegrationInWorker=yes, nodeIntegrationInSubFrames=yes, sandbox=no, webviewTag=no, enableRemoteModule=yes, javascript=${(manifest.enable.JavaScript) ? "yes" : "no"}, webSecurity=yes, images=yes, textAreasAreResizable=no, webgl=${(manifest.enable.WebGL) ? "yes" : "no"}, experimentalFeatures=no, enableBlinkFeatures=no, scrollBounce=yes, defaultFontFamily="Muli", defaultFontSiz=16, defaultMonospaceFontSize=13, minimumFontSize=0, defaultEncoding="ISO-8859-1", contextIsolation=no, nativeWindowOpen=no, safeDialogs=yes, navigateOnDragDrop=no, autoplayPolicy="no-user-gesture-required" disableHtmlFullscreenWindowResize=no, spellcheck=${(manifest.enable.spellcheck) ? "yes" : "no"}`);
 _content.setAttribute("preload", path.join(manifest.paths.core, "framework", "scripts", "content", "preload.js") + "?appPath=" + manifest.paths.currentApp);
 _content.addEventListener("dom-ready", function() {
+    startAccentColourTracking();
     setTimeout(function() {
         _content.focus();
         if (manifest.enable.devTools)

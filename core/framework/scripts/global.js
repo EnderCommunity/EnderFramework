@@ -1,4 +1,5 @@
 const electron = require("electron"),
+    { systemPreferences } = electron.remote,
     osInfo = require("./../platform"),
     os = require('os'),
     { ipcRenderer } = electron,
@@ -50,4 +51,7 @@ var firstLoad = true,
                 Window_TopBar.setAttribute("style", `${Window_TopBar.getAttribute("style")} helper: inserted; background: transparent;`);
             }
         }
-    };
+    },
+    accentColour = null,
+    lockAccentColour = false,
+    startAccentColourTracking = undefined;

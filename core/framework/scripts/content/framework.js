@@ -395,6 +395,14 @@ module.exports = {
                     console.error("There is no such mode!");
                 }
             }
+        },
+        accentColor: {
+            onChange: function(callback) {
+                EnderFramework.receiver.on("accent-color-changed", callback);
+            },
+            setTo: function(color) {
+                ipcRenderer.sendToHost('enderframework--theme-changeaccentcolour', color);
+            }
         }
     },
     share: (content) => { //Add a function to toggle the "Share UI" and pass the UI
